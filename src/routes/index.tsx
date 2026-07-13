@@ -1,49 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X, Twitter, Instagram, Youtube, Linkedin } from "lucide-react";
+import { Nav, Footer } from "../components/site-chrome";
 
 export const Route = createFileRoute("/")({
   component: Index,
 });
-
-/* ----------------------------- Logo ----------------------------- */
-/* placeholder pose mark — replace with final IYSF logo SVG when supplied */
-function IysfLogoMark({ className = "" }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      className={className}
-      aria-label="IYSF logo mark: figure with raised arms"
-      role="img"
-    >
-      <circle cx="24" cy="8" r="3.2" fill="#14181F" />
-      <line x1="24" y1="12" x2="24" y2="30" stroke="#14181F" strokeWidth="3" strokeLinecap="round" />
-      {/* left arm — blue */}
-      <line x1="24" y1="14" x2="10" y2="2" stroke="#4898D3" strokeWidth="3.2" strokeLinecap="round" />
-      {/* right arm — orange */}
-      <line x1="24" y1="14" x2="38" y2="2" stroke="#FBAF43" strokeWidth="3.2" strokeLinecap="round" />
-      {/* legs */}
-      <line x1="24" y1="30" x2="17" y2="44" stroke="#14181F" strokeWidth="3" strokeLinecap="round" />
-      <line x1="24" y1="30" x2="31" y2="44" stroke="#14181F" strokeWidth="3" strokeLinecap="round" />
-      {/* sternum pink dot */}
-      <circle cx="24" cy="19" r="2.2" fill="#EA088C" />
-    </svg>
-  );
-}
-
-function IysfWordmark() {
-  return (
-    <div className="flex items-center gap-2">
-      <IysfLogoMark className="h-8 w-8" />
-      <span
-        className="text-[15px] font-bold tracking-[0.14em]"
-        style={{ color: "#575757", fontFamily: "var(--font-display)" }}
-      >
-        IYSF
-      </span>
-    </div>
-  );
-}
 
 /* placeholder pose icon — replace with final illustration */
 function PoseIcon({ color }: { color: string }) {
