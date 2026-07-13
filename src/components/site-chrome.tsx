@@ -41,6 +41,7 @@ export function Nav() {
   const links: { label: string; to: string; hash?: string }[] = [
     { label: "About", to: "/", hash: "about" },
     { label: "Events", to: "/events" },
+    { label: "Rules", to: "/rules" },
     { label: "Results", to: "/", hash: "news" },
     { label: "Members", to: "/", hash: "about" },
     { label: "Academy", to: "/", hash: "about" },
