@@ -1,0 +1,275 @@
+import { Download, Mail } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+
+/* placeholder track icon — replace with final illustration */
+export function TrackIcon({ color }: { color: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className="h-10 w-10" aria-hidden="true">
+      <circle cx="24" cy="9" r="2.8" fill={color} />
+      <line x1="24" y1="12" x2="24" y2="28" stroke={color} strokeWidth="2.6" strokeLinecap="round" />
+      <line x1="24" y1="16" x2="12" y2="8" stroke={color} strokeWidth="2.6" strokeLinecap="round" />
+      <line x1="24" y1="16" x2="36" y2="8" stroke={color} strokeWidth="2.6" strokeLinecap="round" />
+      <line x1="24" y1="28" x2="16" y2="42" stroke={color} strokeWidth="2.6" strokeLinecap="round" />
+      <line x1="24" y1="28" x2="32" y2="42" stroke={color} strokeWidth="2.6" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export type Tier = { name: string; desc: string };
+export type Guide = { title: string; desc: string };
+
+export function TrackHeader({
+  track,
+  color,
+  heading,
+  sub,
+}: {
+  track: string;
+  color: string;
+  heading: string;
+  sub: string;
+}) {
+  return (
+    <section className="border-b border-black/5 bg-white">
+      <div className="mx-auto max-w-[1240px] px-5 pt-14 pb-10 md:px-8 md:pt-20 md:pb-14">
+        <Link
+          to="/academy"
+          className="text-[11px] font-semibold uppercase tracking-[0.22em] hover:underline"
+          style={{ color: "#4898D3", fontFamily: "var(--font-sans)" }}
+        >
+          Academy — {track}
+        </Link>
+        <h1
+          className="mt-3 text-[40px] leading-[1.02] tracking-[-0.02em] md:text-[64px]"
+          style={{
+            fontFamily: "var(--font-display)",
+            fontWeight: 800,
+            color: "#14181F",
+            fontStretch: "expanded",
+          }}
+        >
+          {heading}
+        </h1>
+        <p
+          className="mt-4 max-w-[640px] text-base leading-relaxed md:text-[17px]"
+          style={{ color: "#575757" }}
+        >
+          {/* placeholder subcopy — replace with real academy description */}
+          {sub}
+        </p>
+        <div className="mt-6 h-[3px] w-16" style={{ background: color }} />
+      </div>
+    </section>
+  );
+}
+
+export function TiersGrid({ tiers, color }: { tiers: Tier[]; color: string }) {
+  return (
+    <section className="bg-[#FAFAFA]">
+      <div className="mx-auto max-w-[1240px] px-5 py-16 md:px-8 md:py-20">
+        <div
+          className="mb-8 text-[11px] font-semibold uppercase tracking-[0.22em]"
+          style={{ color: "#575757" }}
+        >
+          Levels & tiers
+        </div>
+        <div className="grid gap-5 md:grid-cols-3">
+          {tiers.map((t, i) => (
+            <div
+              key={t.name}
+              className="rounded-lg border border-black/10 bg-white p-6 transition-all focus-within:ring-2 focus-within:ring-[#4898D3] hover:-translate-y-0.5 hover:shadow-sm"
+            >
+              <div
+                className="mb-4 text-[10.5px] font-mono font-medium tracking-widest"
+                style={{ color, fontFamily: "var(--font-mono)" }}
+              >
+                TIER 0{i + 1}
+              </div>
+              <div
+                className="text-xl leading-tight"
+                style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#14181F" }}
+              >
+                {t.name}
+              </div>
+              <p className="mt-3 text-sm leading-relaxed" style={{ color: "#575757" }}>
+                {/* placeholder tier description */}
+                {t.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function GuidesList({
+  guides,
+  color,
+  track,
+}: {
+  guides: Guide[];
+  color: string;
+  track: string;
+}) {
+  return (
+    <section className="bg-white">
+      <div className="mx-auto max-w-[1240px] px-5 py-16 md:px-8 md:py-20">
+        <div
+          className="mb-8 text-[11px] font-semibold uppercase tracking-[0.22em]"
+          style={{ color: "#575757" }}
+        >
+          Guides & standards
+        </div>
+        <ul className="grid gap-4 md:grid-cols-2">
+          {guides.map((g) => (
+            <li
+              key={g.title}
+              className="flex flex-col justify-between gap-4 rounded-lg border border-black/10 p-5 transition-colors hover:border-black/25"
+            >
+              <div>
+                <div
+                  className="text-[15px] leading-snug"
+                  style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#14181F" }}
+                >
+                  {g.title}
+                </div>
+                <p className="mt-2 text-sm leading-relaxed" style={{ color: "#575757" }}>
+                  {/* placeholder guide description */}
+                  {g.desc}
+                </p>
+              </div>
+              {/* placeholder guide — replace with real PDF link */}
+              <a
+                href="#"
+                className="inline-flex w-fit items-center gap-2 rounded-md border px-3 py-2 text-xs font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                style={{ borderColor: color, color }}
+                aria-label={`Download ${g.title} PDF for ${track}`}
+              >
+                <Download size={14} aria-hidden="true" />
+                Download PDF
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+export function SupportingContent({ track, color }: { track: string; color: string }) {
+  return (
+    <section className="bg-[#FAFAFA]">
+      <div className="mx-auto grid max-w-[1240px] gap-10 px-5 py-16 md:grid-cols-[1.1fr_1fr] md:px-8 md:py-20">
+        <div>
+          <div
+            className="mb-4 text-[11px] font-semibold uppercase tracking-[0.22em]"
+            style={{ color }}
+          >
+            The standard
+          </div>
+          <h2
+            className="text-[28px] leading-tight tracking-[-0.01em] md:text-[36px]"
+            style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#14181F" }}
+          >
+            {/* placeholder heading */}
+            What IYSF expects from every certified {track.toLowerCase()}.
+          </h2>
+          <div className="mt-6 space-y-5 text-[15px] leading-relaxed" style={{ color: "#3a3a3a" }}>
+            {/* placeholder body copy — replace with real academy content */}
+            <p>
+              Placeholder paragraph describing the philosophy of the {track} track. Real editorial
+              content will articulate the standards IYSF holds every {track.toLowerCase()} to, and
+              the reasoning behind them.
+            </p>
+            <h3
+              className="text-[15px] font-semibold uppercase tracking-[0.16em]"
+              style={{ color: "#14181F" }}
+            >
+              {/* placeholder subheading */}
+              Method
+            </h3>
+            <p>
+              Placeholder paragraph outlining methodology. Structured so real copy fits without
+              redesign.
+            </p>
+            <h3
+              className="text-[15px] font-semibold uppercase tracking-[0.16em]"
+              style={{ color: "#14181F" }}
+            >
+              {/* placeholder subheading */}
+              Assessment
+            </h3>
+            <p>
+              Placeholder paragraph outlining how competency is assessed under IYSF oversight.
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-col gap-5">
+          {[1, 2].map((n) => (
+            <div
+              key={n}
+              role="img"
+              aria-label={`Image placeholder — ${track} in practice`}
+              className="flex aspect-[4/3] items-center justify-center rounded-lg border border-dashed border-black/20 bg-white text-center text-xs"
+              style={{ color: "#575757", fontFamily: "var(--font-mono)" }}
+            >
+              Image placeholder — {track} in practice
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function ClosingCta({
+  track,
+  color,
+  primaryLabel,
+}: {
+  track: string;
+  color: string;
+  primaryLabel: string;
+}) {
+  return (
+    <section className="bg-white">
+      <div className="mx-auto flex max-w-[1240px] flex-col items-start justify-between gap-6 border-t border-black/10 px-5 py-14 md:flex-row md:items-center md:px-8">
+        <div>
+          <div
+            className="mb-2 text-[11px] font-semibold uppercase tracking-[0.22em]"
+            style={{ color }}
+          >
+            Get the standards
+          </div>
+          <p
+            className="max-w-[540px] text-[18px] leading-snug"
+            style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#14181F" }}
+          >
+            {/* placeholder closing line */}
+            Download the full {track} guide, or reach the Academy directly with questions.
+          </p>
+        </div>
+        <div className="flex flex-wrap items-center gap-3">
+          {/* placeholder guide — replace with real PDF link */}
+          <a
+            href="#"
+            className="inline-flex items-center gap-2 rounded-md px-4 py-2.5 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:brightness-95"
+            style={{ background: color, color: "#fff" }}
+            aria-label={`Download ${primaryLabel} PDF`}
+          >
+            <Download size={15} aria-hidden="true" />
+            {primaryLabel}
+          </a>
+          <a
+            href="mailto:academy@iysf.example"
+            className="inline-flex items-center gap-2 rounded-md border border-black/15 px-4 py-2.5 text-sm font-semibold text-[#14181F] transition-colors hover:bg-black/5"
+          >
+            <Mail size={15} aria-hidden="true" />
+            Contact the Academy
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
