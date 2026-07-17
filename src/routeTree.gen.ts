@@ -11,7 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RulesRouteImport } from './routes/rules'
 import { Route as EventsRouteImport } from './routes/events'
+import { Route as AcademyRouteImport } from './routes/academy'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AcademyIndexRouteImport } from './routes/academy.index'
+import { Route as AcademyJudgingRouteImport } from './routes/academy.judging'
+import { Route as AcademyCoachingRouteImport } from './routes/academy.coaching'
+import { Route as AcademyAthletesRouteImport } from './routes/academy.athletes'
 
 const RulesRoute = RulesRouteImport.update({
   id: '/rules',
@@ -23,38 +28,102 @@ const EventsRoute = EventsRouteImport.update({
   path: '/events',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AcademyRoute = AcademyRouteImport.update({
+  id: '/academy',
+  path: '/academy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AcademyIndexRoute = AcademyIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AcademyRoute,
+} as any)
+const AcademyJudgingRoute = AcademyJudgingRouteImport.update({
+  id: '/judging',
+  path: '/judging',
+  getParentRoute: () => AcademyRoute,
+} as any)
+const AcademyCoachingRoute = AcademyCoachingRouteImport.update({
+  id: '/coaching',
+  path: '/coaching',
+  getParentRoute: () => AcademyRoute,
+} as any)
+const AcademyAthletesRoute = AcademyAthletesRouteImport.update({
+  id: '/athletes',
+  path: '/athletes',
+  getParentRoute: () => AcademyRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/academy': typeof AcademyRouteWithChildren
   '/events': typeof EventsRoute
   '/rules': typeof RulesRoute
+  '/academy/athletes': typeof AcademyAthletesRoute
+  '/academy/coaching': typeof AcademyCoachingRoute
+  '/academy/judging': typeof AcademyJudgingRoute
+  '/academy/': typeof AcademyIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/events': typeof EventsRoute
   '/rules': typeof RulesRoute
+  '/academy/athletes': typeof AcademyAthletesRoute
+  '/academy/coaching': typeof AcademyCoachingRoute
+  '/academy/judging': typeof AcademyJudgingRoute
+  '/academy': typeof AcademyIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/academy': typeof AcademyRouteWithChildren
   '/events': typeof EventsRoute
   '/rules': typeof RulesRoute
+  '/academy/athletes': typeof AcademyAthletesRoute
+  '/academy/coaching': typeof AcademyCoachingRoute
+  '/academy/judging': typeof AcademyJudgingRoute
+  '/academy/': typeof AcademyIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/events' | '/rules'
+  fullPaths:
+    | '/'
+    | '/academy'
+    | '/events'
+    | '/rules'
+    | '/academy/athletes'
+    | '/academy/coaching'
+    | '/academy/judging'
+    | '/academy/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/events' | '/rules'
-  id: '__root__' | '/' | '/events' | '/rules'
+  to:
+    | '/'
+    | '/events'
+    | '/rules'
+    | '/academy/athletes'
+    | '/academy/coaching'
+    | '/academy/judging'
+    | '/academy'
+  id:
+    | '__root__'
+    | '/'
+    | '/academy'
+    | '/events'
+    | '/rules'
+    | '/academy/athletes'
+    | '/academy/coaching'
+    | '/academy/judging'
+    | '/academy/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AcademyRoute: typeof AcademyRouteWithChildren
   EventsRoute: typeof EventsRoute
   RulesRoute: typeof RulesRoute
 }
@@ -75,6 +144,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EventsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/academy': {
+      id: '/academy'
+      path: '/academy'
+      fullPath: '/academy'
+      preLoaderRoute: typeof AcademyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -82,11 +158,57 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/academy/': {
+      id: '/academy/'
+      path: '/'
+      fullPath: '/academy/'
+      preLoaderRoute: typeof AcademyIndexRouteImport
+      parentRoute: typeof AcademyRoute
+    }
+    '/academy/judging': {
+      id: '/academy/judging'
+      path: '/judging'
+      fullPath: '/academy/judging'
+      preLoaderRoute: typeof AcademyJudgingRouteImport
+      parentRoute: typeof AcademyRoute
+    }
+    '/academy/coaching': {
+      id: '/academy/coaching'
+      path: '/coaching'
+      fullPath: '/academy/coaching'
+      preLoaderRoute: typeof AcademyCoachingRouteImport
+      parentRoute: typeof AcademyRoute
+    }
+    '/academy/athletes': {
+      id: '/academy/athletes'
+      path: '/athletes'
+      fullPath: '/academy/athletes'
+      preLoaderRoute: typeof AcademyAthletesRouteImport
+      parentRoute: typeof AcademyRoute
+    }
   }
 }
 
+interface AcademyRouteChildren {
+  AcademyAthletesRoute: typeof AcademyAthletesRoute
+  AcademyCoachingRoute: typeof AcademyCoachingRoute
+  AcademyJudgingRoute: typeof AcademyJudgingRoute
+  AcademyIndexRoute: typeof AcademyIndexRoute
+}
+
+const AcademyRouteChildren: AcademyRouteChildren = {
+  AcademyAthletesRoute: AcademyAthletesRoute,
+  AcademyCoachingRoute: AcademyCoachingRoute,
+  AcademyJudgingRoute: AcademyJudgingRoute,
+  AcademyIndexRoute: AcademyIndexRoute,
+}
+
+const AcademyRouteWithChildren =
+  AcademyRoute._addFileChildren(AcademyRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AcademyRoute: AcademyRouteWithChildren,
   EventsRoute: EventsRoute,
   RulesRoute: RulesRoute,
 }

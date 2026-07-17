@@ -44,7 +44,7 @@ export function Nav() {
     { label: "Rules", to: "/rules" },
     { label: "Results", to: "/", hash: "news" },
     { label: "Members", to: "/", hash: "about" },
-    { label: "Academy", to: "/", hash: "about" },
+    { label: "Academy", to: "/academy" },
   ];
   return (
     <header
