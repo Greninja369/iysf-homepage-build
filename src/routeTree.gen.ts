@@ -13,6 +13,7 @@ import { Route as RulesRouteImport } from './routes/rules'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as AcademyRouteImport } from './routes/academy'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AcademyIndexRouteImport } from './routes/academy.index'
 
 const RulesRoute = RulesRouteImport.update({
   id: '/rules',
@@ -34,37 +35,44 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AcademyIndexRoute = AcademyIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AcademyRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/academy': typeof AcademyRoute
+  '/academy': typeof AcademyRouteWithChildren
   '/events': typeof EventsRoute
   '/rules': typeof RulesRoute
+  '/academy/': typeof AcademyIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/academy': typeof AcademyRoute
   '/events': typeof EventsRoute
   '/rules': typeof RulesRoute
+  '/academy': typeof AcademyIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/academy': typeof AcademyRoute
+  '/academy': typeof AcademyRouteWithChildren
   '/events': typeof EventsRoute
   '/rules': typeof RulesRoute
+  '/academy/': typeof AcademyIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/academy' | '/events' | '/rules'
+  fullPaths: '/' | '/academy' | '/events' | '/rules' | '/academy/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/academy' | '/events' | '/rules'
-  id: '__root__' | '/' | '/academy' | '/events' | '/rules'
+  to: '/' | '/events' | '/rules' | '/academy'
+  id: '__root__' | '/' | '/academy' | '/events' | '/rules' | '/academy/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AcademyRoute: typeof AcademyRoute
+  AcademyRoute: typeof AcademyRouteWithChildren
   EventsRoute: typeof EventsRoute
   RulesRoute: typeof RulesRoute
 }
@@ -99,12 +107,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/academy/': {
+      id: '/academy/'
+      path: '/'
+      fullPath: '/academy/'
+      preLoaderRoute: typeof AcademyIndexRouteImport
+      parentRoute: typeof AcademyRoute
+    }
   }
 }
 
+interface AcademyRouteChildren {
+  AcademyIndexRoute: typeof AcademyIndexRoute
+}
+
+const AcademyRouteChildren: AcademyRouteChildren = {
+  AcademyIndexRoute: AcademyIndexRoute,
+}
+
+const AcademyRouteWithChildren =
+  AcademyRoute._addFileChildren(AcademyRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AcademyRoute: AcademyRoute,
+  AcademyRoute: AcademyRouteWithChildren,
   EventsRoute: EventsRoute,
   RulesRoute: RulesRoute,
 }
