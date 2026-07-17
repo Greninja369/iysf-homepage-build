@@ -14,6 +14,7 @@ import { Route as EventsRouteImport } from './routes/events'
 import { Route as AcademyRouteImport } from './routes/academy'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AcademyIndexRouteImport } from './routes/academy.index'
+import { Route as AcademyJudgingRouteImport } from './routes/academy.judging'
 
 const RulesRoute = RulesRouteImport.update({
   id: '/rules',
@@ -40,18 +41,25 @@ const AcademyIndexRoute = AcademyIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AcademyRoute,
 } as any)
+const AcademyJudgingRoute = AcademyJudgingRouteImport.update({
+  id: '/judging',
+  path: '/judging',
+  getParentRoute: () => AcademyRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/academy': typeof AcademyRouteWithChildren
   '/events': typeof EventsRoute
   '/rules': typeof RulesRoute
+  '/academy/judging': typeof AcademyJudgingRoute
   '/academy/': typeof AcademyIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/events': typeof EventsRoute
   '/rules': typeof RulesRoute
+  '/academy/judging': typeof AcademyJudgingRoute
   '/academy': typeof AcademyIndexRoute
 }
 export interface FileRoutesById {
@@ -60,14 +68,28 @@ export interface FileRoutesById {
   '/academy': typeof AcademyRouteWithChildren
   '/events': typeof EventsRoute
   '/rules': typeof RulesRoute
+  '/academy/judging': typeof AcademyJudgingRoute
   '/academy/': typeof AcademyIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/academy' | '/events' | '/rules' | '/academy/'
+  fullPaths:
+    | '/'
+    | '/academy'
+    | '/events'
+    | '/rules'
+    | '/academy/judging'
+    | '/academy/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/events' | '/rules' | '/academy'
-  id: '__root__' | '/' | '/academy' | '/events' | '/rules' | '/academy/'
+  to: '/' | '/events' | '/rules' | '/academy/judging' | '/academy'
+  id:
+    | '__root__'
+    | '/'
+    | '/academy'
+    | '/events'
+    | '/rules'
+    | '/academy/judging'
+    | '/academy/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -114,14 +136,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AcademyIndexRouteImport
       parentRoute: typeof AcademyRoute
     }
+    '/academy/judging': {
+      id: '/academy/judging'
+      path: '/judging'
+      fullPath: '/academy/judging'
+      preLoaderRoute: typeof AcademyJudgingRouteImport
+      parentRoute: typeof AcademyRoute
+    }
   }
 }
 
 interface AcademyRouteChildren {
+  AcademyJudgingRoute: typeof AcademyJudgingRoute
   AcademyIndexRoute: typeof AcademyIndexRoute
 }
 
 const AcademyRouteChildren: AcademyRouteChildren = {
+  AcademyJudgingRoute: AcademyJudgingRoute,
   AcademyIndexRoute: AcademyIndexRoute,
 }
 
