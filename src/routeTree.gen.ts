@@ -15,6 +15,7 @@ import { Route as AcademyRouteImport } from './routes/academy'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AcademyIndexRouteImport } from './routes/academy.index'
 import { Route as AcademyJudgingRouteImport } from './routes/academy.judging'
+import { Route as AcademyCoachingRouteImport } from './routes/academy.coaching'
 import { Route as AcademyAthletesRouteImport } from './routes/academy.athletes'
 
 const RulesRoute = RulesRouteImport.update({
@@ -47,6 +48,11 @@ const AcademyJudgingRoute = AcademyJudgingRouteImport.update({
   path: '/judging',
   getParentRoute: () => AcademyRoute,
 } as any)
+const AcademyCoachingRoute = AcademyCoachingRouteImport.update({
+  id: '/coaching',
+  path: '/coaching',
+  getParentRoute: () => AcademyRoute,
+} as any)
 const AcademyAthletesRoute = AcademyAthletesRouteImport.update({
   id: '/athletes',
   path: '/athletes',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/events': typeof EventsRoute
   '/rules': typeof RulesRoute
   '/academy/athletes': typeof AcademyAthletesRoute
+  '/academy/coaching': typeof AcademyCoachingRoute
   '/academy/judging': typeof AcademyJudgingRoute
   '/academy/': typeof AcademyIndexRoute
 }
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/events': typeof EventsRoute
   '/rules': typeof RulesRoute
   '/academy/athletes': typeof AcademyAthletesRoute
+  '/academy/coaching': typeof AcademyCoachingRoute
   '/academy/judging': typeof AcademyJudgingRoute
   '/academy': typeof AcademyIndexRoute
 }
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/events': typeof EventsRoute
   '/rules': typeof RulesRoute
   '/academy/athletes': typeof AcademyAthletesRoute
+  '/academy/coaching': typeof AcademyCoachingRoute
   '/academy/judging': typeof AcademyJudgingRoute
   '/academy/': typeof AcademyIndexRoute
 }
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/events'
     | '/rules'
     | '/academy/athletes'
+    | '/academy/coaching'
     | '/academy/judging'
     | '/academy/'
   fileRoutesByTo: FileRoutesByTo
@@ -96,6 +106,7 @@ export interface FileRouteTypes {
     | '/events'
     | '/rules'
     | '/academy/athletes'
+    | '/academy/coaching'
     | '/academy/judging'
     | '/academy'
   id:
@@ -105,6 +116,7 @@ export interface FileRouteTypes {
     | '/events'
     | '/rules'
     | '/academy/athletes'
+    | '/academy/coaching'
     | '/academy/judging'
     | '/academy/'
   fileRoutesById: FileRoutesById
@@ -160,6 +172,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AcademyJudgingRouteImport
       parentRoute: typeof AcademyRoute
     }
+    '/academy/coaching': {
+      id: '/academy/coaching'
+      path: '/coaching'
+      fullPath: '/academy/coaching'
+      preLoaderRoute: typeof AcademyCoachingRouteImport
+      parentRoute: typeof AcademyRoute
+    }
     '/academy/athletes': {
       id: '/academy/athletes'
       path: '/athletes'
@@ -172,12 +191,14 @@ declare module '@tanstack/react-router' {
 
 interface AcademyRouteChildren {
   AcademyAthletesRoute: typeof AcademyAthletesRoute
+  AcademyCoachingRoute: typeof AcademyCoachingRoute
   AcademyJudgingRoute: typeof AcademyJudgingRoute
   AcademyIndexRoute: typeof AcademyIndexRoute
 }
 
 const AcademyRouteChildren: AcademyRouteChildren = {
   AcademyAthletesRoute: AcademyAthletesRoute,
+  AcademyCoachingRoute: AcademyCoachingRoute,
   AcademyJudgingRoute: AcademyJudgingRoute,
   AcademyIndexRoute: AcademyIndexRoute,
 }
