@@ -371,7 +371,7 @@ function News() {
 /* --------------------------- CTA band --------------------------- */
 function CtaBand() {
   return (
-    <section style={{ background: "#FBAF43" }}>
+    <section id="join" style={{ background: "#FBAF43" }}>
       <div className="mx-auto flex max-w-[1240px] flex-col items-start justify-between gap-6 px-5 py-14 md:flex-row md:items-center md:gap-10 md:px-8 md:py-16">
         <h2
           className="max-w-[640px] text-[28px] leading-[1.1] tracking-[-0.015em] md:text-[38px]"
