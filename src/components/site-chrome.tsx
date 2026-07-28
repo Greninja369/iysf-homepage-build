@@ -77,20 +77,22 @@ export function Nav() {
           >
             Log in
           </a>
-          <a
-            href="#"
+          <Link
+            to="/"
+            hash="join"
             className="hidden rounded-md px-4 py-2 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:brightness-95 md:inline-block"
             style={{ background: "#FBAF43", color: "#3A2400" }}
           >
             Join a federation
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            to="/"
+            hash="join"
             className="rounded-md px-3.5 py-2 text-xs font-semibold transition-all hover:-translate-y-0.5 hover:brightness-95 md:hidden"
             style={{ background: "#FBAF43", color: "#3A2400" }}
           >
             Join
-          </a>
+          </Link>
           <button
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
