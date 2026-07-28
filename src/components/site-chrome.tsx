@@ -43,7 +43,7 @@ export function Nav() {
     { label: "Events", to: "/events" },
     { label: "Rules", to: "/rules" },
     { label: "Results", to: "/", hash: "news" },
-    { label: "Members", to: "/", hash: "about" },
+    { label: "Directory", to: "/directory" },
     { label: "Academy", to: "/academy" },
   ];
   return (
