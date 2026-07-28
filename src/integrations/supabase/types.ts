@@ -14,7 +14,54 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      federation_applications: {
+        Row: {
+          athletes_estimate: string | null
+          contact_name: string
+          contact_role: string | null
+          country: string
+          created_at: string
+          email: string
+          id: string
+          membership_type: string
+          message: string | null
+          organisation_name: string
+          phone: string | null
+          region: string
+          website: string | null
+        }
+        Insert: {
+          athletes_estimate?: string | null
+          contact_name: string
+          contact_role?: string | null
+          country: string
+          created_at?: string
+          email: string
+          id?: string
+          membership_type: string
+          message?: string | null
+          organisation_name: string
+          phone?: string | null
+          region: string
+          website?: string | null
+        }
+        Update: {
+          athletes_estimate?: string | null
+          contact_name?: string
+          contact_role?: string | null
+          country?: string
+          created_at?: string
+          email?: string
+          id?: string
+          membership_type?: string
+          message?: string | null
+          organisation_name?: string
+          phone?: string | null
+          region?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
