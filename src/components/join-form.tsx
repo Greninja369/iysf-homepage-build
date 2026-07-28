@@ -1,0 +1,348 @@
+import { useState } from "react";
+import { z } from "zod";
+import { supabase } from "@/integrations/supabase/client";
+
+const REGIONS = ["Africa", "Americas", "Asia", "Europe", "Oceania"] as const;
+const MEMBERSHIP = ["Full member", "Provisional member", "Observer"] as const;
+
+const schema = z.object({
+  organisation_name: z.string().trim().min(2, "Enter your organisation name").max(120),
+  country: z.string().trim().min(2, "Enter a country").max(80),
+  region: z.enum(REGIONS, { message: "Select a region" }),
+  contact_name: z.string().trim().min(2, "Enter a contact name").max(120),
+  contact_role: z.string().trim().max(120).optional().or(z.literal("")),
+  email: z.string().trim().email("Enter a valid email address").max(255),
+  phone: z.string().trim().max(40).optional().or(z.literal("")),
+  website: z.string().trim().max(255).optional().or(z.literal("")),
+  athletes_estimate: z.string().trim().max(40).optional().or(z.literal("")),
+  membership_type: z.enum(MEMBERSHIP, { message: "Select a membership type" }),
+  message: z.string().trim().max(1000).optional().or(z.literal("")),
+});
+
+type FormState = Record<string, string>;
+
+const EMPTY: FormState = {
+  organisation_name: "",
+  country: "",
+  region: "",
+  contact_name: "",
+  contact_role: "",
+  email: "",
+  phone: "",
+  website: "",
+  athletes_estimate: "",
+  membership_type: "",
+  message: "",
+};
+
+const labelCls = "block text-[10.5px] font-semibold uppercase tracking-[0.2em] text-[#575757]";
+const fieldCls =
+  "mt-2 w-full rounded-md border border-black/15 bg-white px-3.5 py-2.5 text-sm text-[#14181F] outline-none transition-colors focus:border-[#4898D3] focus:ring-2 focus:ring-[#4898D3]/20";
+
+function Field({
+  id,
+  label,
+  error,
+  children,
+  className = "",
+}: {
+  id: string;
+  label: string;
+  error?: string;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={className}>
+      <label htmlFor={id} className={labelCls}>
+        {label}
+      </label>
+      {children}
+      {error ? (
+        <p id={`${id}-error`} className="mt-1.5 text-xs font-medium" style={{ color: "#EA088C" }}>
+          {error}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
+export function JoinForm() {
+  const [values, setValues] = useState<FormState>(EMPTY);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [status, setStatus] = useState<"idle" | "saving" | "done" | "error">("idle");
+  const [serverError, setServerError] = useState("");
+
+  const set = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setValues((v) => ({ ...v, [k]: e.target.value }));
+    setErrors((prev) => (prev[k] ? { ...prev, [k]: "" } : prev));
+  };
+
+  async function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setServerError("");
+    const parsed = schema.safeParse(values);
+    if (!parsed.success) {
+      const next: Record<string, string> = {};
+      for (const issue of parsed.error.issues) {
+        const key = String(issue.path[0]);
+        if (!next[key]) next[key] = issue.message;
+      }
+      setErrors(next);
+      const first = document.getElementById(Object.keys(next)[0]);
+      first?.focus();
+      return;
+    }
+
+    setStatus("saving");
+    const d = parsed.data;
+    const { error } = await supabase.from("federation_applications").insert({
+      organisation_name: d.organisation_name,
+      country: d.country,
+      region: d.region,
+      contact_name: d.contact_name,
+      contact_role: d.contact_role || null,
+      email: d.email,
+      phone: d.phone || null,
+      website: d.website || null,
+      athletes_estimate: d.athletes_estimate || null,
+      membership_type: d.membership_type,
+      message: d.message || null,
+    });
+
+    if (error) {
+      setStatus("error");
+      setServerError("We couldn't submit your application. Please try again in a moment.");
+      return;
+    }
+    setStatus("done");
+    setValues(EMPTY);
+  }
+
+  return (
+    <section id="join" className="bg-white">
+      <div className="mx-auto max-w-[1240px] px-5 py-20 md:px-8 md:py-24">
+        <div className="grid gap-10 md:grid-cols-[0.85fr_1.15fr] md:gap-16">
+          <div>
+            <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]" style={{ color: "#EA088C" }}>
+              Membership
+            </div>
+            <h2
+              className="text-[30px] leading-[1.08] tracking-[-0.015em] md:text-[42px]"
+              style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#14181F" }}
+            >
+              Join a federation
+            </h2>
+            <p className="mt-5 max-w-[420px] text-base leading-relaxed" style={{ color: "#575757" }}>
+              National bodies governing competitive Yogasana may apply for IYSF affiliation. Submit
+              your details and the membership commission will respond with the next steps.
+            </p>
+            <ul className="mt-8 space-y-4 border-l border-black/10 pl-6">
+              {[
+                "Application received and acknowledged",
+                "Eligibility and governance review",
+                "Provisional status granted",
+                "Full membership ratified at congress",
+              ].map((s, i) => (
+                <li key={s} className="flex gap-3">
+                  <span
+                    className="mt-0.5 text-[12px]"
+                    style={{ fontFamily: "var(--font-mono)", color: "#4898D3" }}
+                  >
+                    0{i + 1}
+                  </span>
+                  <span className="text-sm" style={{ color: "#575757" }}>
+                    {s}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-8 text-[11px] uppercase tracking-[0.2em]" style={{ color: "#575757", opacity: 0.6 }}>
+              placeholder — review timelines to be confirmed
+            </p>
+          </div>
+
+          <div className="rounded-xl border border-black/[0.08] bg-[#FAFAFA] p-6 md:p-8">
+            {status === "done" ? (
+              <div className="flex min-h-[320px] flex-col items-start justify-center">
+                <div
+                  className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-full"
+                  style={{ background: "#FBAF43", color: "#3A2400" }}
+                  aria-hidden="true"
+                >
+                  ✓
+                </div>
+                <h3
+                  className="text-[24px] leading-tight"
+                  style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#14181F" }}
+                >
+                  Application received
+                </h3>
+                <p className="mt-3 max-w-[420px] text-sm leading-relaxed" style={{ color: "#575757" }}>
+                  Thank you. The IYSF membership commission will contact you at the email address
+                  provided.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setStatus("idle")}
+                  className="mt-6 rounded-md border-2 px-4 py-2 text-sm font-semibold transition-all hover:-translate-y-0.5"
+                  style={{ borderColor: "#4898D3", color: "#4898D3" }}
+                >
+                  Submit another application
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={onSubmit} noValidate className="grid gap-5 sm:grid-cols-2">
+                <Field id="organisation_name" label="Organisation name" error={errors.organisation_name} className="sm:col-span-2">
+                  <input
+                    id="organisation_name"
+                    name="organisation_name"
+                    value={values.organisation_name}
+                    onChange={set("organisation_name")}
+                    maxLength={120}
+                    className={fieldCls}
+                    aria-invalid={!!errors.organisation_name}
+                  />
+                </Field>
+
+                <Field id="country" label="Country" error={errors.country}>
+                  <input
+                    id="country"
+                    value={values.country}
+                    onChange={set("country")}
+                    maxLength={80}
+                    className={fieldCls}
+                    aria-invalid={!!errors.country}
+                  />
+                </Field>
+
+                <Field id="region" label="Region" error={errors.region}>
+                  <select
+                    id="region"
+                    value={values.region}
+                    onChange={set("region")}
+                    className={fieldCls}
+                    aria-invalid={!!errors.region}
+                  >
+                    <option value="">Select a region</option>
+                    {REGIONS.map((r) => (
+                      <option key={r} value={r}>
+                        {r}
+                      </option>
+                    ))}
+                  </select>
+                </Field>
+
+                <Field id="contact_name" label="Primary contact" error={errors.contact_name}>
+                  <input
+                    id="contact_name"
+                    value={values.contact_name}
+                    onChange={set("contact_name")}
+                    maxLength={120}
+                    className={fieldCls}
+                    aria-invalid={!!errors.contact_name}
+                  />
+                </Field>
+
+                <Field id="contact_role" label="Role (optional)" error={errors.contact_role}>
+                  <input
+                    id="contact_role"
+                    value={values.contact_role}
+                    onChange={set("contact_role")}
+                    maxLength={120}
+                    className={fieldCls}
+                  />
+                </Field>
+
+                <Field id="email" label="Email" error={errors.email}>
+                  <input
+                    id="email"
+                    type="email"
+                    value={values.email}
+                    onChange={set("email")}
+                    maxLength={255}
+                    className={fieldCls}
+                    aria-invalid={!!errors.email}
+                  />
+                </Field>
+
+                <Field id="phone" label="Phone (optional)" error={errors.phone}>
+                  <input id="phone" value={values.phone} onChange={set("phone")} maxLength={40} className={fieldCls} />
+                </Field>
+
+                <Field id="website" label="Website (optional)" error={errors.website}>
+                  <input
+                    id="website"
+                    value={values.website}
+                    onChange={set("website")}
+                    maxLength={255}
+                    placeholder="example.org"
+                    className={fieldCls}
+                  />
+                </Field>
+
+                <Field id="athletes_estimate" label="Registered athletes (optional)" error={errors.athletes_estimate}>
+                  <input
+                    id="athletes_estimate"
+                    value={values.athletes_estimate}
+                    onChange={set("athletes_estimate")}
+                    maxLength={40}
+                    className={fieldCls}
+                  />
+                </Field>
+
+                <Field id="membership_type" label="Membership sought" error={errors.membership_type} className="sm:col-span-2">
+                  <select
+                    id="membership_type"
+                    value={values.membership_type}
+                    onChange={set("membership_type")}
+                    className={fieldCls}
+                    aria-invalid={!!errors.membership_type}
+                  >
+                    <option value="">Select a membership type</option>
+                    {MEMBERSHIP.map((m) => (
+                      <option key={m} value={m}>
+                        {m}
+                      </option>
+                    ))}
+                  </select>
+                </Field>
+
+                <Field id="message" label="Notes (optional)" error={errors.message} className="sm:col-span-2">
+                  <textarea
+                    id="message"
+                    rows={4}
+                    value={values.message}
+                    onChange={set("message")}
+                    maxLength={1000}
+                    className={fieldCls}
+                  />
+                </Field>
+
+                {serverError ? (
+                  <p role="alert" className="text-sm font-medium sm:col-span-2" style={{ color: "#EA088C" }}>
+                    {serverError}
+                  </p>
+                ) : null}
+
+                <div className="flex flex-wrap items-center gap-4 sm:col-span-2">
+                  <button
+                    type="submit"
+                    disabled={status === "saving"}
+                    className="rounded-md px-5 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-60"
+                    style={{ background: "#FBAF43", color: "#3A2400" }}
+                  >
+                    {status === "saving" ? "Submitting…" : "Submit application"}
+                  </button>
+                  <span className="text-xs" style={{ color: "#575757" }}>
+                    Reviewed by the IYSF membership commission.
+                  </span>
+                </div>
+              </form>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

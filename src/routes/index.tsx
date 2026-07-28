@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Nav, Footer } from "../components/site-chrome";
+import { JoinForm } from "../components/join-form";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -66,7 +67,7 @@ function Hero() {
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <a
-            href="#"
+            href="#join"
             className="rounded-md px-5 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:brightness-95"
             style={{ background: "#FBAF43", color: "#3A2400" }}
           >
@@ -371,7 +372,7 @@ function News() {
 /* --------------------------- CTA band --------------------------- */
 function CtaBand() {
   return (
-    <section id="join" style={{ background: "#FBAF43" }}>
+    <section style={{ background: "#FBAF43" }}>
       <div className="mx-auto flex max-w-[1240px] flex-col items-start justify-between gap-6 px-5 py-14 md:flex-row md:items-center md:gap-10 md:px-8 md:py-16">
         <h2
           className="max-w-[640px] text-[28px] leading-[1.1] tracking-[-0.015em] md:text-[38px]"
@@ -380,7 +381,7 @@ function CtaBand() {
           Ready to compete under the IYSF banner?
         </h2>
         <a
-          href="#"
+          href="#join"
           className="rounded-md px-5 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5"
           style={{ background: "#14181F", color: "#fff" }}
         >
@@ -402,6 +403,7 @@ function Index() {
         <Championships />
         <News />
         <CtaBand />
+        <JoinForm />
       </main>
       <Footer />
     </div>
