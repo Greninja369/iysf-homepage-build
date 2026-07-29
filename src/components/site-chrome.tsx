@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, Twitter, Instagram, Youtube, Linkedin } from "lucide-react";
+import { Menu, X, Twitter, Instagram, Youtube, Linkedin, ChevronDown } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 /* placeholder pose mark — replace with final IYSF logo SVG when supplied */
