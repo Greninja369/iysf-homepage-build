@@ -38,8 +38,12 @@ export function IysfWordmark() {
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
+  const aboutItems: { label: string; to: string; hash?: string; desc: string }[] = [
+    { label: "Overview", to: "/", hash: "about", desc: "Our mandate and governance" },
+    { label: "History", to: "/about/history", desc: "1973 to today — the IYSF story" },
+  ];
   const links: { label: string; to: string; hash?: string }[] = [
-    { label: "About", to: "/", hash: "about" },
     { label: "Events", to: "/events" },
     { label: "Rules", to: "/rules" },
     { label: "Results", to: "/", hash: "news" },
@@ -57,6 +61,41 @@ export function Nav() {
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex">
+          <div
+            className="relative"
+            onMouseEnter={() => setAboutOpen(true)}
+            onMouseLeave={() => setAboutOpen(false)}
+          >
+            <button
+              type="button"
+              aria-expanded={aboutOpen}
+              aria-haspopup="true"
+              onClick={() => setAboutOpen((v) => !v)}
+              className="group relative inline-flex items-center gap-1 text-sm font-medium text-[#14181F] transition-colors hover:text-[#4898D3]"
+            >
+              About
+              <ChevronDown size={14} aria-hidden="true" />
+              <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-[#4898D3] transition-all duration-300 group-hover:w-[calc(100%-18px)]" />
+            </button>
+            {aboutOpen && (
+              <div className="absolute left-0 top-full z-50 w-[260px] pt-3">
+                <div className="rounded-md border border-black/10 bg-white p-2 shadow-[0_18px_40px_-24px_rgba(20,24,31,0.5)]">
+                  {aboutItems.map((it) => (
+                    <Link
+                      key={it.label}
+                      to={it.to}
+                      hash={it.hash}
+                      onClick={() => setAboutOpen(false)}
+                      className="block rounded-md px-3 py-2.5 hover:bg-black/[0.04]"
+                    >
+                      <div className="text-sm font-semibold text-[#14181F]">{it.label}</div>
+                      <div className="mt-0.5 text-xs text-[#575757]">{it.desc}</div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
           {links.map((l) => (
             <Link
               key={l.label}
