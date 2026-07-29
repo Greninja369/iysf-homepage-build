@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Nav, Footer } from "../components/site-chrome";
 import { JoinForm } from "../components/join-form";
@@ -135,6 +135,13 @@ function Mandate() {
             and world championships, and coordinating the Olympic recognition pathway with national
             member federations.
           </p>
+          <Link
+            to="/about/history"
+            className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline"
+            style={{ color: "#4898D3" }}
+          >
+            Read our full history →
+          </Link>
         </div>
 
         <div className="border-l border-black/10 pl-6 md:pl-10">
