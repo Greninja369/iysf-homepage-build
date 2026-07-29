@@ -146,7 +146,11 @@ export function Nav() {
       {open && (
         <div className="border-t border-black/5 bg-white md:hidden">
           <nav className="mx-auto flex max-w-[1240px] flex-col gap-1 px-5 py-3">
-            {links.map((l) => (
+            {[
+              { label: "About", to: "/", hash: "about" },
+              { label: "Our history", to: "/about/history" },
+              ...links,
+            ].map((l) => (
               <Link
                 key={l.label}
                 to={l.to}
