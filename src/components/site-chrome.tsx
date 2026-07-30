@@ -20,7 +20,7 @@ export function IysfLogoMark({ className = "h-10 w-[25px]" }: { className?: stri
 export function IysfWordmark({ dark = false }: { dark?: boolean }) {
   return (
     <span className="flex items-center gap-2.5">
-      <IysfLogoMark />
+      <IysfLogoMark className={dark ? "h-10 w-[27px] rounded-md bg-white" : "h-10 w-[25px]"} />
       <span
         className="text-[17px] font-extrabold tracking-[0.16em]"
         style={{ color: dark ? "#FFFFFF" : "#414042", fontFamily: "var(--font-display)" }}
