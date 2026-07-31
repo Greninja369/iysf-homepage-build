@@ -1,110 +1,169 @@
 import { useState } from "react";
-import { Menu, X, Twitter, Instagram, Youtube, Linkedin, ChevronDown } from "lucide-react";
+import { Menu, X, Facebook, Instagram, Youtube, ChevronDown } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import logoSrc from "../assets/iysf-logo.png";
 
-/* placeholder pose mark — replace with final IYSF logo SVG when supplied */
-export function IysfLogoMark({ className = "" }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      className={className}
-      aria-label="IYSF logo mark: figure with raised arms"
-      role="img"
-    >
-      <circle cx="24" cy="8" r="3.2" fill="#14181F" />
-      <line x1="24" y1="12" x2="24" y2="30" stroke="#14181F" strokeWidth="3" strokeLinecap="round" />
-      <line x1="24" y1="14" x2="10" y2="2" stroke="#4898D3" strokeWidth="3.2" strokeLinecap="round" />
-      <line x1="24" y1="14" x2="38" y2="2" stroke="#FBAF43" strokeWidth="3.2" strokeLinecap="round" />
-      <line x1="24" y1="30" x2="17" y2="44" stroke="#14181F" strokeWidth="3" strokeLinecap="round" />
-      <line x1="24" y1="30" x2="31" y2="44" stroke="#14181F" strokeWidth="3" strokeLinecap="round" />
-      <circle cx="24" cy="19" r="2.2" fill="#EA088C" />
-    </svg>
-  );
-}
+export const IYSF = {
+  blue: "#4298D3",
+  orange: "#FAAF40",
+  magenta: "#DE007A",
+  charcoal: "#414042",
+  blueWash: "rgba(66,152,211,0.06)",
+  blueLine: "rgba(66,152,211,0.28)",
+  blueShadow: "0 14px 34px -18px rgba(66,152,211,0.55)",
+} as const;
 
-export function IysfWordmark() {
+export function IysfWordmark({ light = false }: { light?: boolean }) {
   return (
-    <div className="flex items-center gap-2">
-      <IysfLogoMark className="h-8 w-8" />
+    <span className="flex items-center gap-2.5">
+      <img
+        src={logoSrc}
+        alt="IYSF — International Yoga Sports Federation"
+        width={40}
+        height={40}
+        className="h-9 w-auto"
+      />
       <span
-        className="text-[15px] font-bold tracking-[0.14em]"
-        style={{ color: "#575757", fontFamily: "var(--font-display)" }}
+        className="hidden text-[15px] font-extrabold leading-tight tracking-[0.12em] sm:block"
+        style={{ color: light ? "#FFFFFF" : IYSF.charcoal, fontFamily: "var(--font-display)" }}
       >
         IYSF
       </span>
+    </span>
+  );
+}
+
+type Item = { label: string; to: string; hash?: string };
+
+const ABOUT_ITEMS: Item[] = [
+  { label: "Yoga as a sport?", to: "/", hash: "about" },
+  { label: "Champions", to: "/", hash: "about" },
+  { label: "Executive Committee", to: "/", hash: "about" },
+  { label: "Athletes' Commission", to: "/", hash: "about" },
+  { label: "Technical Committee", to: "/", hash: "about" },
+  { label: "International Judges", to: "/academy/judging" },
+  { label: "International Coaches", to: "/academy/coaching" },
+  { label: "History", to: "/about/history" },
+  { label: "Athletes", to: "/academy/athletes" },
+  { label: "Governance", to: "/", hash: "about" },
+];
+
+const ACADEMY_ITEMS: Item[] = [
+  { label: "IYSF Academy", to: "/academy" },
+  { label: "Training", to: "/academy/athletes" },
+  { label: "Judging", to: "/academy/judging" },
+  { label: "Coaching", to: "/academy/coaching" },
+];
+
+const MAIN_LINKS: Item[] = [
+  { label: "News", to: "/", hash: "news" },
+  { label: "Rules", to: "/rules" },
+  { label: "Events", to: "/events" },
+  { label: "Championship results", to: "/events" },
+];
+
+const TAIL_LINKS: Item[] = [
+  { label: "Directory", to: "/directory" },
+  { label: "Contact", to: "/", hash: "contact" },
+];
+
+function Dropdown({
+  label,
+  items,
+  wide = false,
+}: {
+  label: string;
+  items: Item[];
+  wide?: boolean;
+}) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-haspopup="true"
+        onClick={() => setOpen((v) => !v)}
+        className="group relative inline-flex items-center gap-1 text-[13px] font-semibold transition-colors"
+        style={{ color: IYSF.charcoal }}
+      >
+        {label}
+        <ChevronDown size={13} aria-hidden="true" />
+        <span
+          className="absolute -bottom-1.5 left-0 h-[2px] w-0 transition-all duration-300 group-hover:w-[calc(100%-16px)]"
+          style={{ background: IYSF.magenta }}
+        />
+      </button>
+      {open && (
+        <div className={`absolute left-0 top-full z-50 pt-4 ${wide ? "w-[430px]" : "w-[230px]"}`}>
+          <div
+            className="rounded-xl border bg-white p-2 shadow-[0_24px_50px_-26px_rgba(66,152,211,0.7)]"
+            style={{ borderColor: IYSF.blueLine }}
+          >
+            <div className={wide ? "grid grid-cols-2 gap-0.5" : ""}>
+              {items.map((it) => (
+                <Link
+                  key={it.label}
+                  to={it.to}
+                  hash={it.hash}
+                  onClick={() => setOpen(false)}
+                  className="block rounded-lg px-3 py-2 text-[13px] font-medium transition-colors hover:bg-[rgba(66,152,211,0.08)]"
+                  style={{ color: IYSF.charcoal }}
+                >
+                  {it.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
 export function Nav() {
   const [open, setOpen] = useState(false);
-  const [aboutOpen, setAboutOpen] = useState(false);
-  const aboutItems: { label: string; to: string; hash?: string; desc: string }[] = [
-    { label: "Overview", to: "/", hash: "about", desc: "Our mandate and governance" },
-    { label: "History", to: "/about/history", desc: "1973 to today — the IYSF story" },
-  ];
-  const links: { label: string; to: string; hash?: string }[] = [
-    { label: "Events", to: "/events" },
-    { label: "Rules", to: "/rules" },
-    { label: "Results", to: "/", hash: "news" },
-    { label: "Directory", to: "/directory" },
-    { label: "Academy", to: "/academy" },
-  ];
   return (
     <header
-      className="sticky top-0 z-50 w-full border-b border-black/5 bg-white/85 backdrop-blur"
-      style={{ fontFamily: "var(--font-sans)" }}
+      className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur"
+      style={{ borderBottom: `1px solid ${IYSF.blueLine}`, fontFamily: "var(--font-sans)" }}
     >
-      <div className="mx-auto flex max-w-[1240px] items-center justify-between px-5 py-3.5 md:px-8">
-        <Link to="/" className="flex items-center gap-2">
+      <div className="mx-auto flex max-w-[1320px] items-center justify-between gap-4 px-5 py-3 md:px-8">
+        <Link to="/" aria-label="IYSF home">
           <IysfWordmark />
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex">
-          <div
-            className="relative"
-            onMouseEnter={() => setAboutOpen(true)}
-            onMouseLeave={() => setAboutOpen(false)}
-          >
-            <button
-              type="button"
-              aria-expanded={aboutOpen}
-              aria-haspopup="true"
-              onClick={() => setAboutOpen((v) => !v)}
-              className="group relative inline-flex items-center gap-1 text-sm font-medium text-[#14181F] transition-colors hover:text-[#4898D3]"
-            >
-              About
-              <ChevronDown size={14} aria-hidden="true" />
-              <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-[#4898D3] transition-all duration-300 group-hover:w-[calc(100%-18px)]" />
-            </button>
-            {aboutOpen && (
-              <div className="absolute left-0 top-full z-50 w-[260px] pt-3">
-                <div className="rounded-md border border-black/10 bg-white p-2 shadow-[0_18px_40px_-24px_rgba(20,24,31,0.5)]">
-                  {aboutItems.map((it) => (
-                    <Link
-                      key={it.label}
-                      to={it.to}
-                      hash={it.hash}
-                      onClick={() => setAboutOpen(false)}
-                      className="block rounded-md px-3 py-2.5 hover:bg-black/[0.04]"
-                    >
-                      <div className="text-sm font-semibold text-[#14181F]">{it.label}</div>
-                      <div className="mt-0.5 text-xs text-[#575757]">{it.desc}</div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-          {links.map((l) => (
+        <nav className="hidden items-center gap-5 xl:flex">
+          <Dropdown label="About" items={ABOUT_ITEMS} wide />
+          {MAIN_LINKS.map((l) => (
             <Link
               key={l.label}
               to={l.to}
               hash={l.hash}
-              className="group relative text-sm font-medium text-[#14181F] transition-colors hover:text-[#4898D3]"
+              className="group relative text-[13px] font-semibold transition-colors"
+              style={{ color: IYSF.charcoal }}
             >
               {l.label}
-              <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-[#4898D3] transition-all duration-300 group-hover:w-full" />
+              <span
+                className="absolute -bottom-1.5 left-0 h-[2px] w-0 transition-all duration-300 group-hover:w-full"
+                style={{ background: IYSF.magenta }}
+              />
+            </Link>
+          ))}
+          <Dropdown label="Academy" items={ACADEMY_ITEMS} />
+          {TAIL_LINKS.map((l) => (
+            <Link
+              key={l.label}
+              to={l.to}
+              hash={l.hash}
+              className="group relative text-[13px] font-semibold transition-colors"
+              style={{ color: IYSF.charcoal }}
+            >
+              {l.label}
+              <span
+                className="absolute -bottom-1.5 left-0 h-[2px] w-0 transition-all duration-300 group-hover:w-full"
+                style={{ background: IYSF.magenta }}
+              />
             </Link>
           ))}
         </nav>
@@ -112,31 +171,32 @@ export function Nav() {
         <div className="flex items-center gap-2">
           <a
             href="#"
-            className="hidden rounded-md border border-[#14181F]/15 px-3.5 py-2 text-sm font-medium text-[#14181F] transition-colors hover:bg-[#14181F]/5 md:inline-block"
+            className="hidden text-[13px] font-semibold transition-colors hover:opacity-70 lg:inline-block"
+            style={{ color: IYSF.charcoal }}
           >
             Log in
+          </a>
+          <a
+            href="#donate"
+            className="hidden rounded-[10px] border-2 px-3.5 py-1.5 text-[13px] font-bold transition-colors hover:bg-[rgba(66,152,211,0.08)] lg:inline-block"
+            style={{ borderColor: IYSF.blue, color: IYSF.blue }}
+          >
+            Donate
           </a>
           <Link
             to="/"
             hash="join"
-            className="hidden rounded-md px-4 py-2 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:brightness-95 md:inline-block"
-            style={{ background: "#FBAF43", color: "#3A2400" }}
+            className="rounded-[10px] px-4 py-2 text-[13px] font-bold text-white transition-all hover:-translate-y-0.5"
+            style={{ background: IYSF.orange, boxShadow: "0 10px 22px -12px rgba(250,175,64,0.9)" }}
           >
-            Join a federation
-          </Link>
-          <Link
-            to="/"
-            hash="join"
-            className="rounded-md px-3.5 py-2 text-xs font-semibold transition-all hover:-translate-y-0.5 hover:brightness-95 md:hidden"
-            style={{ background: "#FBAF43", color: "#3A2400" }}
-          >
-            Join
+            Join us
           </Link>
           <button
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md text-[#14181F] hover:bg-black/5 md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-[10px] hover:bg-[rgba(66,152,211,0.08)] xl:hidden"
+            style={{ color: IYSF.charcoal }}
           >
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -144,28 +204,27 @@ export function Nav() {
       </div>
 
       {open && (
-        <div className="border-t border-black/5 bg-white md:hidden">
-          <nav className="mx-auto flex max-w-[1240px] flex-col gap-1 px-5 py-3">
-            {[
-              { label: "About", to: "/", hash: "about" },
-              { label: "Our history", to: "/about/history" },
-              ...links,
-            ].map((l) => (
+        <div className="max-h-[70vh] overflow-y-auto bg-white xl:hidden" style={{ borderTop: `1px solid ${IYSF.blueLine}` }}>
+          <nav className="mx-auto flex max-w-[1320px] flex-col gap-0.5 px-5 py-3">
+            {[...ABOUT_ITEMS.slice(7, 10), ...MAIN_LINKS, ...ACADEMY_ITEMS, ...TAIL_LINKS].map((l) => (
               <Link
                 key={l.label}
                 to={l.to}
                 hash={l.hash}
                 onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-2.5 text-sm font-medium text-[#14181F] hover:bg-black/5"
+                className="rounded-lg px-3 py-2.5 text-sm font-semibold hover:bg-[rgba(66,152,211,0.08)]"
+                style={{ color: IYSF.charcoal }}
               >
                 {l.label}
               </Link>
             ))}
             <a
-              href="#"
-              className="mt-1 rounded-md border border-[#14181F]/15 px-3 py-2.5 text-sm font-medium text-[#14181F]"
+              href="#donate"
+              onClick={() => setOpen(false)}
+              className="mt-1 rounded-[10px] border-2 px-3 py-2.5 text-center text-sm font-bold"
+              style={{ borderColor: IYSF.blue, color: IYSF.blue }}
             >
-              Log in
+              Donate
             </a>
           </nav>
         </div>
@@ -174,72 +233,88 @@ export function Nav() {
   );
 }
 
-export function Footer() {
-  const cols = [
-    { title: "Federation", links: ["About IYSF", "Governance", "Member federations", "Rulebook"] },
-    { title: "Compete", links: ["Championships", "Results", "Athlete certification", "Judging"] },
-    { title: "Connect", links: ["Newsroom", "Academy", "Contact", "Careers"] },
+export function Footer({ minimal = false }: { minimal?: boolean }) {
+  const links: Item[] = [
+    { label: "About", to: "/", hash: "about" },
+    { label: "News", to: "/", hash: "news" },
+    { label: "Rules", to: "/rules" },
+    { label: "Events", to: "/events" },
+    { label: "Results", to: "/events" },
+    { label: "Academy", to: "/academy" },
+    { label: "Directory", to: "/directory" },
+    { label: "Join us", to: "/", hash: "join" },
   ];
   return (
-    <footer style={{ background: "#0D1830", color: "#B7C4DA" }}>
-      <div className="mx-auto grid max-w-[1240px] gap-10 px-5 py-16 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:px-8">
-        <div>
-          <div className="flex items-center gap-2">
-            <IysfLogoMark className="h-9 w-9" />
-            <span
-              className="text-[15px] font-bold tracking-[0.14em]"
-              style={{ color: "#fff", fontFamily: "var(--font-display)" }}
-            >
-              IYSF
-            </span>
-          </div>
-          <p className="mt-4 max-w-[320px] text-sm leading-relaxed">
-            International Yoga Sports Federation — the governing body for competitive Yogasana.
-          </p>
-          <div className="mt-5 flex items-center gap-3">
-            {[Twitter, Instagram, Youtube, Linkedin].map((Icon, i) => (
+    <footer style={{ background: IYSF.charcoal, color: "#fff", fontFamily: "var(--font-sans)" }}>
+      {minimal ? (
+        <div className="mx-auto flex max-w-[1320px] flex-col items-center gap-4 px-5 py-10 md:px-8">
+          <IysfWordmark light />
+          <div className="flex items-center gap-3">
+            {[Facebook, Instagram, Youtube].map((Icon, i) => (
               <a
                 key={i}
                 href="#"
-                aria-label="Social link"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-white/10 transition-colors hover:bg-white/10"
+                aria-label="IYSF social profile"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-[10px] border border-white/15 transition-colors hover:bg-white/10"
               >
-                <Icon size={16} color="#fff" />
+                <Icon size={16} color={IYSF.blue} />
+              </a>
+            ))}
+          </div>
+        </div>
+      ) : (
+      <div className="mx-auto grid max-w-[1320px] gap-10 px-5 py-14 md:grid-cols-[1.3fr_1fr_1fr] md:px-8">
+        <div>
+          <IysfWordmark light />
+          <p className="mt-4 max-w-[320px] text-sm leading-relaxed text-white/70">
+            International Yoga Sports Federation — the global governing body for Yogasana sport.
+          </p>
+          <div className="mt-5 flex items-center gap-3">
+            {[Facebook, Instagram, Youtube].map((Icon, i) => (
+              <a
+                key={i}
+                href="#"
+                aria-label="IYSF social profile"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-[10px] border border-white/15 transition-colors hover:bg-white/10"
+              >
+                <Icon size={16} color={IYSF.blue} />
               </a>
             ))}
           </div>
         </div>
 
-        {cols.map((col) => (
-          <div key={col.title}>
-            <div
-              className="mb-4 text-[10.5px] font-semibold uppercase tracking-[0.22em]"
-              style={{ color: "#FBAF43" }}
-            >
-              {col.title}
-            </div>
-            <ul className="space-y-2.5">
-              {col.links.map((l) => (
-                <li key={l}>
-                  <a href="#" className="text-sm text-white/80 hover:text-white">
-                    {l}
-                  </a>
-                </li>
-              ))}
-            </ul>
+        <div>
+          <div className="mb-4 text-[10.5px] font-bold uppercase tracking-[0.22em]" style={{ color: IYSF.orange }}>
+            Explore
           </div>
-        ))}
+          <ul className="grid grid-cols-2 gap-y-2.5">
+            {links.map((l) => (
+              <li key={l.label}>
+                <Link to={l.to} hash={l.hash} className="text-sm text-white/80 hover:text-white">
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <div className="mb-4 text-[10.5px] font-bold uppercase tracking-[0.22em]" style={{ color: IYSF.orange }}>
+            Headquarters
+          </div>
+          <address className="text-sm not-italic leading-relaxed text-white/80">
+            Maison du Sport International
+            <br />
+            Av de Rhodanie 54
+            <br />
+            Lausanne, Switzerland
+          </address>
+        </div>
       </div>
+      )}
       <div className="border-t border-white/10">
-        <div
-          className="mx-auto flex max-w-[1240px] flex-col items-start justify-between gap-2 px-5 py-5 text-xs md:flex-row md:items-center md:px-8"
-          style={{ color: "#B7C4DA", fontFamily: "var(--font-mono)" }}
-        >
-          <div>© placeholder — International Yoga Sports Federation. All rights reserved.</div>
-          <div className="flex gap-5">
-            <a href="#" className="hover:text-white">Privacy</a>
-            <a href="#" className="hover:text-white">Terms</a>
-          </div>
+        <div className="mx-auto max-w-[1320px] px-5 py-5 text-center text-xs text-white/60 md:px-8">
+          © 2026 IYSF
         </div>
       </div>
     </footer>

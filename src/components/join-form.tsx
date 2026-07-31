@@ -157,12 +157,9 @@ export function JoinForm() {
                 </li>
               ))}
             </ul>
-            <p className="mt-8 text-[11px] uppercase tracking-[0.2em]" style={{ color: "#575757", opacity: 0.6 }}>
-              placeholder — review timelines to be confirmed
-            </p>
           </div>
 
-          <div className="rounded-xl border border-black/[0.08] bg-[#FAFAFA] p-6 md:p-8">
+          <div className="rounded-[14px] border border-[rgba(66,152,211,0.28)] bg-white p-6 shadow-[0_14px_34px_-18px_rgba(66,152,211,0.55)] md:p-8">
             {status === "done" ? (
               <div className="flex min-h-[320px] flex-col items-start justify-center">
                 <div
