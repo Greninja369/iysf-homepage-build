@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { FileText, ArrowRight, ArrowDown, MapPin } from "lucide-react";
 import { Nav, Footer } from "../components/site-chrome";
+import { Link } from "@tanstack/react-router";
 import {
   Reveal,
   CountUp,
@@ -399,6 +400,14 @@ function TimelinePoint({
           >
             {open ? "Hide detail" : "Show detail"}
           </button>
+          <Link
+            to="/results"
+            search={{ year: item.year.match(/\d{4}/)?.[0] ?? item.year }}
+            className="ml-3 mt-2 inline-block text-xs font-semibold underline-offset-4 hover:underline"
+            style={{ color }}
+          >
+            View results →
+          </Link>
           {open && (
             <div
               className="mt-3 max-w-[260px] rounded-md border border-black/10 bg-white p-3 text-xs leading-relaxed"
@@ -660,7 +669,7 @@ function Olympic() {
   const reduced = usePrefersReducedMotion();
   const pct = (25 / 40) * 100;
   return (
-    <section style={{ background: "#16264A" }}>
+    <section id="olympic" style={{ background: "#16264A" }}>
       <div className="mx-auto grid max-w-[1240px] gap-10 px-5 py-20 md:grid-cols-[1.2fr_1fr] md:items-center md:gap-16 md:px-8 md:py-28">
         <Reveal>
           <div

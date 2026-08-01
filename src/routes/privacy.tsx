@@ -167,7 +167,7 @@ function PrivacyPage() {
               </div>
 
               <div className="mt-16 flex flex-wrap items-center gap-6 border-t border-black/10 pt-8">
-                <Link to="/governance" className="text-sm font-semibold hover:underline" style={{ color: IYSF.blue }}>
+                <Link to={"/governance" as "/"} className="text-sm font-semibold hover:underline" style={{ color: IYSF.blue }}>
                   Governance
                 </Link>
                 <Link to="/rules" className="text-sm font-semibold hover:underline" style={{ color: IYSF.blue }}>

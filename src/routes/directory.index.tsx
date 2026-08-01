@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState, lazy, Suspense } from "react";
-import { Search, Users } from "lucide-react";
+import { Search, ExternalLink, X, Users, ArrowRight } from "lucide-react";
 import { Nav, Footer } from "../components/site-chrome";
 import {
   FEDERATIONS,
@@ -410,8 +410,10 @@ function FederationCard({
                   {f.name}
                 </button>
               ) : (
-                <h3
-                  className="text-[15px]"
+                <Link
+                  to="/directory/$slug"
+                  params={{ slug: f.slug }}
+                  className="text-[15px] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4898D3]"
                   style={{
                     fontFamily: "var(--font-display)",
                     fontWeight: 700,
@@ -419,7 +421,7 @@ function FederationCard({
                   }}
                 >
                   {f.name}
-                </h3>
+                </Link>
               )}
               <div className="mt-1 text-sm" style={{ color: "#575757" }}>
                 {f.country} · {f.region}
@@ -450,16 +452,32 @@ function FederationCard({
             </span>
           </div>
 
-          <a
-            href={f.website}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Visit ${f.name} website, opens in new tab`}
-            className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-[#4898D3] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4898D3]"
-          >
-            <ExternalLink size={14} aria-hidden="true" />
-            Visit website
-          </a>
+          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+            <Link
+              to="/directory/$slug"
+              params={{ slug: f.slug }}
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-[#4898D3] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4898D3]"
+            >
+              View profile
+              <ArrowRight size={14} aria-hidden="true" />
+            </Link>
+            {f.website ? (
+              <a
+                href={f.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Visit ${f.name} website, opens in new tab`}
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-[#4898D3] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4898D3]"
+              >
+                <ExternalLink size={14} aria-hidden="true" />
+                Visit website
+              </a>
+            ) : (
+              <span className="text-xs" style={{ color: "#575757" }}>
+                Website pending
+              </span>
+            )}
+          </div>
         </div>
       </div>
     </article>

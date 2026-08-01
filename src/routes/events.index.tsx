@@ -1,7 +1,16 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState, lazy, Suspense } from "react";
 import { Search, MapPin, X } from "lucide-react";
 import { Nav, Footer } from "../components/site-chrome";
+import {
+  upcomingEvents,
+  pastEvents,
+  TIER_COLOR,
+  REGIONS,
+  type Region,
+  type Tier,
+  type EventRecord,
+} from "../data/iysf";
 
 export const Route = createFileRoute("/events/")({
   head: () => ({
@@ -25,162 +34,10 @@ export const Route = createFileRoute("/events/")({
   component: EventsPage,
 });
 
-/* ------------------------------------------------------------------ */
-/* placeholder event data — replace with real coordinates + details.  */
-/* Tier names are also placeholders; confirm before treating as final.*/
-/* ------------------------------------------------------------------ */
-type Tier =
-  | "World Championship"
-  | "Continental Qualifier"
-  | "Junior Circuit"
-  | "Academy Camp";
+type EventItem = EventRecord;
 
-type EventItem = {
-  id: string;
-  name: string;
-  date: string; // display string, monospace
-  dateISO: string;
-  location: string;
-  region: Region;
-  tier: Tier;
-  lat: number;
-  lng: number;
-};
-
-type Region =
-  | "Africa"
-  | "Asia"
-  | "Europe"
-  | "North America"
-  | "South America"
-  | "Oceania";
-
-const REGIONS: (Region | "All")[] = [
-  "All",
-  "Africa",
-  "Asia",
-  "Europe",
-  "North America",
-  "South America",
-  "Oceania",
-];
-
-const TIER_COLOR: Record<Tier, string> = {
-  "World Championship": "#EA088C",
-  "Continental Qualifier": "#4898D3",
-  "Junior Circuit": "#FBAF43",
-  "Academy Camp": "#575757",
-};
-
-/* placeholder event location — replace with real coordinates */
-const UPCOMING: EventItem[] = [
-  {
-    id: "u1",
-    name: "Event name placeholder — flagship",
-    date: "— / — / ——",
-    dateISO: "2026-01-01",
-    location: "Location placeholder, Europe",
-    region: "Europe",
-    tier: "World Championship",
-    lat: 48.85,
-    lng: 2.35,
-  },
-  {
-    id: "u2",
-    name: "Event name placeholder — qualifier",
-    date: "— / — / ——",
-    dateISO: "2026-02-01",
-    location: "Location placeholder, Asia",
-    region: "Asia",
-    tier: "Continental Qualifier",
-    lat: 28.61,
-    lng: 77.21,
-  },
-  {
-    id: "u3",
-    name: "Event name placeholder — junior",
-    date: "— / — / ——",
-    dateISO: "2026-03-15",
-    location: "Location placeholder, North America",
-    region: "North America",
-    tier: "Junior Circuit",
-    lat: 40.71,
-    lng: -74.0,
-  },
-  {
-    id: "u4",
-    name: "Event name placeholder — camp",
-    date: "— / — / ——",
-    dateISO: "2026-04-20",
-    location: "Location placeholder, Oceania",
-    region: "Oceania",
-    tier: "Academy Camp",
-    lat: -33.87,
-    lng: 151.21,
-  },
-  {
-    id: "u5",
-    name: "Event name placeholder — continental",
-    date: "— / — / ——",
-    dateISO: "2026-05-05",
-    location: "Location placeholder, Africa",
-    region: "Africa",
-    tier: "Continental Qualifier",
-    lat: -1.29,
-    lng: 36.82,
-  },
-  {
-    id: "u6",
-    name: "Event name placeholder — qualifier",
-    date: "— / — / ——",
-    dateISO: "2026-06-10",
-    location: "Location placeholder, South America",
-    region: "South America",
-    tier: "Continental Qualifier",
-    lat: -23.55,
-    lng: -46.63,
-  },
-];
-
-/* placeholder archive rows — replace with real past-event history */
-const ARCHIVE: Omit<EventItem, "lat" | "lng">[] = [
-  {
-    id: "a1",
-    name: "Event name placeholder — prior world",
-    date: "— / — / ——",
-    dateISO: "2025-01-01",
-    location: "Location placeholder",
-    region: "Europe",
-    tier: "World Championship",
-  },
-  {
-    id: "a2",
-    name: "Event name placeholder — prior qualifier",
-    date: "— / — / ——",
-    dateISO: "2024-11-11",
-    location: "Location placeholder",
-    region: "Asia",
-    tier: "Continental Qualifier",
-  },
-  {
-    id: "a3",
-    name: "Event name placeholder — prior camp",
-    date: "— / — / ——",
-    dateISO: "2024-06-06",
-    location: "Location placeholder",
-    region: "Africa",
-    tier: "Academy Camp",
-  },
-  {
-    id: "a4",
-    name: "Event name placeholder — prior junior",
-    date: "— / — / ——",
-    dateISO: "2024-03-03",
-    location: "Location placeholder",
-    region: "Oceania",
-    tier: "Junior Circuit",
-  },
-];
+const UPCOMING: EventItem[] = upcomingEvents();
+const ARCHIVE: EventItem[] = pastEvents();
 
 /* ------------------------------------------------------------------ */
 /* Leaflet map — client-only via lazy component.                       */
@@ -426,20 +283,44 @@ function EventsPage() {
                   >
                     {e.date}
                   </div>
-                  <div
-                    className="text-[15px]"
-                    style={{
-                      fontFamily: "var(--font-display)",
-                      fontWeight: 700,
-                      color: "#14181F",
-                    }}
-                  >
-                    {e.name}
+                  <div>
+                    <Link
+                      to="/events/$slug"
+                      params={{ slug: e.slug }}
+                      className="text-[15px] hover:underline"
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        fontWeight: 700,
+                        color: "#14181F",
+                      }}
+                    >
+                      {e.name}
+                    </Link>
                   </div>
                   <div className="text-sm" style={{ color: "#575757" }}>
                     {e.location}
                   </div>
-                  <TierBadge tier={e.tier} muted />
+                  <div className="flex items-center gap-3">
+                    <TierBadge tier={e.tier} muted />
+                    <Link
+                      to="/events/$slug"
+                      params={{ slug: e.slug }}
+                      className="text-xs font-semibold hover:underline"
+                      style={{ color: "#4898D3" }}
+                    >
+                      View event →
+                    </Link>
+                    {e.results && (
+                      <Link
+                        to="/results/$slug"
+                        params={{ slug: e.slug }}
+                        className="text-xs font-semibold hover:underline"
+                        style={{ color: "#EA088C" }}
+                      >
+                        Results →
+                      </Link>
+                    )}
+                  </div>
                 </li>
               ))}
             </ul>
@@ -550,7 +431,7 @@ function EventCard({
         >
           <MapPin size={14} aria-hidden="true" /> {event.location}
         </div>
-        <div className="mt-4">
+        <div className="mt-4 flex flex-wrap items-center gap-3">
           <button
             onClick={onRegister}
             className="rounded-md px-4 py-2 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4898D3]"
@@ -558,6 +439,14 @@ function EventCard({
           >
             Register
           </button>
+          <Link
+            to="/events/$slug"
+            params={{ slug: event.slug }}
+            className="text-sm font-semibold hover:underline"
+            style={{ color: "#4898D3" }}
+          >
+            View event →
+          </Link>
         </div>
       </div>
     </article>
