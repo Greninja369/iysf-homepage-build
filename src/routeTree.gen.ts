@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as RulesRouteImport } from './routes/rules'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as GovernanceRouteImport } from './routes/governance'
 import { Route as DonateRouteImport } from './routes/donate'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as AcademyRouteImport } from './routes/academy'
@@ -20,6 +21,9 @@ import { Route as ResultsIndexRouteImport } from './routes/results.index'
 import { Route as EventsIndexRouteImport } from './routes/events.index'
 import { Route as DirectoryIndexRouteImport } from './routes/directory.index'
 import { Route as AcademyIndexRouteImport } from './routes/academy.index'
+import { Route as ResultsSlugRouteImport } from './routes/results.$slug'
+import { Route as EventsSlugRouteImport } from './routes/events.$slug'
+import { Route as DirectorySlugRouteImport } from './routes/directory.$slug'
 import { Route as AcademyJudgingRouteImport } from './routes/academy.judging'
 import { Route as AcademyCoachingRouteImport } from './routes/academy.coaching'
 import { Route as AcademyAthletesRouteImport } from './routes/academy.athletes'
@@ -38,6 +42,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GovernanceRoute = GovernanceRouteImport.update({
+  id: '/governance',
+  path: '/governance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DonateRoute = DonateRouteImport.update({
@@ -80,6 +89,21 @@ const AcademyIndexRoute = AcademyIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AcademyRoute,
 } as any)
+const ResultsSlugRoute = ResultsSlugRouteImport.update({
+  id: '/results/$slug',
+  path: '/results/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsSlugRoute = EventsSlugRouteImport.update({
+  id: '/events/$slug',
+  path: '/events/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DirectorySlugRoute = DirectorySlugRouteImport.update({
+  id: '/directory/$slug',
+  path: '/directory/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AcademyJudgingRoute = AcademyJudgingRouteImport.update({
   id: '/judging',
   path: '/judging',
@@ -106,6 +130,7 @@ export interface FileRoutesByFullPath {
   '/academy': typeof AcademyRouteWithChildren
   '/dashboard': typeof DashboardRoute
   '/donate': typeof DonateRoute
+  '/governance': typeof GovernanceRoute
   '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
   '/rules': typeof RulesRoute
@@ -113,6 +138,9 @@ export interface FileRoutesByFullPath {
   '/academy/athletes': typeof AcademyAthletesRoute
   '/academy/coaching': typeof AcademyCoachingRoute
   '/academy/judging': typeof AcademyJudgingRoute
+  '/directory/$slug': typeof DirectorySlugRoute
+  '/events/$slug': typeof EventsSlugRoute
+  '/results/$slug': typeof ResultsSlugRoute
   '/academy/': typeof AcademyIndexRoute
   '/directory/': typeof DirectoryIndexRoute
   '/events/': typeof EventsIndexRoute
@@ -122,6 +150,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
   '/donate': typeof DonateRoute
+  '/governance': typeof GovernanceRoute
   '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
   '/rules': typeof RulesRoute
@@ -129,6 +158,9 @@ export interface FileRoutesByTo {
   '/academy/athletes': typeof AcademyAthletesRoute
   '/academy/coaching': typeof AcademyCoachingRoute
   '/academy/judging': typeof AcademyJudgingRoute
+  '/directory/$slug': typeof DirectorySlugRoute
+  '/events/$slug': typeof EventsSlugRoute
+  '/results/$slug': typeof ResultsSlugRoute
   '/academy': typeof AcademyIndexRoute
   '/directory': typeof DirectoryIndexRoute
   '/events': typeof EventsIndexRoute
@@ -140,6 +172,7 @@ export interface FileRoutesById {
   '/academy': typeof AcademyRouteWithChildren
   '/dashboard': typeof DashboardRoute
   '/donate': typeof DonateRoute
+  '/governance': typeof GovernanceRoute
   '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
   '/rules': typeof RulesRoute
@@ -147,6 +180,9 @@ export interface FileRoutesById {
   '/academy/athletes': typeof AcademyAthletesRoute
   '/academy/coaching': typeof AcademyCoachingRoute
   '/academy/judging': typeof AcademyJudgingRoute
+  '/directory/$slug': typeof DirectorySlugRoute
+  '/events/$slug': typeof EventsSlugRoute
+  '/results/$slug': typeof ResultsSlugRoute
   '/academy/': typeof AcademyIndexRoute
   '/directory/': typeof DirectoryIndexRoute
   '/events/': typeof EventsIndexRoute
@@ -159,6 +195,7 @@ export interface FileRouteTypes {
     | '/academy'
     | '/dashboard'
     | '/donate'
+    | '/governance'
     | '/login'
     | '/privacy'
     | '/rules'
@@ -166,6 +203,9 @@ export interface FileRouteTypes {
     | '/academy/athletes'
     | '/academy/coaching'
     | '/academy/judging'
+    | '/directory/$slug'
+    | '/events/$slug'
+    | '/results/$slug'
     | '/academy/'
     | '/directory/'
     | '/events/'
@@ -175,6 +215,7 @@ export interface FileRouteTypes {
     | '/'
     | '/dashboard'
     | '/donate'
+    | '/governance'
     | '/login'
     | '/privacy'
     | '/rules'
@@ -182,6 +223,9 @@ export interface FileRouteTypes {
     | '/academy/athletes'
     | '/academy/coaching'
     | '/academy/judging'
+    | '/directory/$slug'
+    | '/events/$slug'
+    | '/results/$slug'
     | '/academy'
     | '/directory'
     | '/events'
@@ -192,6 +236,7 @@ export interface FileRouteTypes {
     | '/academy'
     | '/dashboard'
     | '/donate'
+    | '/governance'
     | '/login'
     | '/privacy'
     | '/rules'
@@ -199,6 +244,9 @@ export interface FileRouteTypes {
     | '/academy/athletes'
     | '/academy/coaching'
     | '/academy/judging'
+    | '/directory/$slug'
+    | '/events/$slug'
+    | '/results/$slug'
     | '/academy/'
     | '/directory/'
     | '/events/'
@@ -210,10 +258,14 @@ export interface RootRouteChildren {
   AcademyRoute: typeof AcademyRouteWithChildren
   DashboardRoute: typeof DashboardRoute
   DonateRoute: typeof DonateRoute
+  GovernanceRoute: typeof GovernanceRoute
   LoginRoute: typeof LoginRoute
   PrivacyRoute: typeof PrivacyRoute
   RulesRoute: typeof RulesRoute
   AboutHistoryRoute: typeof AboutHistoryRoute
+  DirectorySlugRoute: typeof DirectorySlugRoute
+  EventsSlugRoute: typeof EventsSlugRoute
+  ResultsSlugRoute: typeof ResultsSlugRoute
   DirectoryIndexRoute: typeof DirectoryIndexRoute
   EventsIndexRoute: typeof EventsIndexRoute
   ResultsIndexRoute: typeof ResultsIndexRoute
@@ -240,6 +292,13 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/governance': {
+      id: '/governance'
+      path: '/governance'
+      fullPath: '/governance'
+      preLoaderRoute: typeof GovernanceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/donate': {
@@ -298,6 +357,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AcademyIndexRouteImport
       parentRoute: typeof AcademyRoute
     }
+    '/results/$slug': {
+      id: '/results/$slug'
+      path: '/results/$slug'
+      fullPath: '/results/$slug'
+      preLoaderRoute: typeof ResultsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events/$slug': {
+      id: '/events/$slug'
+      path: '/events/$slug'
+      fullPath: '/events/$slug'
+      preLoaderRoute: typeof EventsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/directory/$slug': {
+      id: '/directory/$slug'
+      path: '/directory/$slug'
+      fullPath: '/directory/$slug'
+      preLoaderRoute: typeof DirectorySlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/academy/judging': {
       id: '/academy/judging'
       path: '/judging'
@@ -351,10 +431,14 @@ const rootRouteChildren: RootRouteChildren = {
   AcademyRoute: AcademyRouteWithChildren,
   DashboardRoute: DashboardRoute,
   DonateRoute: DonateRoute,
+  GovernanceRoute: GovernanceRoute,
   LoginRoute: LoginRoute,
   PrivacyRoute: PrivacyRoute,
   RulesRoute: RulesRoute,
   AboutHistoryRoute: AboutHistoryRoute,
+  DirectorySlugRoute: DirectorySlugRoute,
+  EventsSlugRoute: EventsSlugRoute,
+  ResultsSlugRoute: ResultsSlugRoute,
   DirectoryIndexRoute: DirectoryIndexRoute,
   EventsIndexRoute: EventsIndexRoute,
   ResultsIndexRoute: ResultsIndexRoute,
@@ -362,13 +446,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
