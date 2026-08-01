@@ -1,9 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState, lazy, Suspense } from "react";
-import { Search, ExternalLink, X, Users } from "lucide-react";
+import { Search, ExternalLink, X, Users, ArrowRight } from "lucide-react";
 import { Nav, Footer } from "../components/site-chrome";
+import {
+  FEDERATIONS,
+  REGIONS,
+  STATUS_COLOR,
+  type Federation,
+  type Region,
+  type MembershipStatus,
+} from "../data/iysf";
 
-export const Route = createFileRoute("/directory")({
+export const Route = createFileRoute("/directory/")({
   head: () => ({
     meta: [
       { title: "Federation Directory — IYSF Member Federations" },
@@ -29,145 +37,6 @@ export const Route = createFileRoute("/directory")({
 /* placeholder federation data — replace with real member list.        */
 /* Names, countries, contacts, years, and links are ALL placeholders.  */
 /* ------------------------------------------------------------------ */
-type Region =
-  | "Africa"
-  | "Asia"
-  | "Europe"
-  | "North America"
-  | "South America"
-  | "Oceania";
-
-type Status = "Full Member" | "Provisional" | "Observer";
-
-type Federation = {
-  id: string;
-  name: string;
-  country: string;
-  region: Region;
-  status: Status;
-  president: string;
-  joined: string;
-  website: string;
-  lat: number;
-  lng: number;
-};
-
-const REGIONS: (Region | "All")[] = [
-  "All",
-  "Africa",
-  "Asia",
-  "Europe",
-  "North America",
-  "South America",
-  "Oceania",
-];
-
-const STATUS_COLOR: Record<Status, string> = {
-  "Full Member": "#4898D3",
-  Provisional: "#FBAF43",
-  Observer: "#EA088C",
-};
-
-/* placeholder federation location — replace with real coordinates */
-const FEDERATIONS: Federation[] = [
-  {
-    id: "f1",
-    name: "Federation Name Placeholder 1",
-    country: "Country Placeholder A",
-    region: "Europe",
-    status: "Full Member",
-    president: "President name placeholder",
-    joined: "————",
-    website: "#",
-    lat: 48.85,
-    lng: 2.35,
-  },
-  {
-    id: "f2",
-    name: "Federation Name Placeholder 2",
-    country: "Country Placeholder B",
-    region: "Asia",
-    status: "Full Member",
-    president: "President name placeholder",
-    joined: "————",
-    website: "#",
-    lat: 28.61,
-    lng: 77.21,
-  },
-  {
-    id: "f3",
-    name: "Federation Name Placeholder 3",
-    country: "Country Placeholder C",
-    region: "North America",
-    status: "Provisional",
-    president: "President name placeholder",
-    joined: "————",
-    website: "#",
-    lat: 40.71,
-    lng: -74.0,
-  },
-  {
-    id: "f4",
-    name: "Federation Name Placeholder 4",
-    country: "Country Placeholder D",
-    region: "Oceania",
-    status: "Observer",
-    president: "President name placeholder",
-    joined: "————",
-    website: "#",
-    lat: -33.87,
-    lng: 151.21,
-  },
-  {
-    id: "f5",
-    name: "Federation Name Placeholder 5",
-    country: "Country Placeholder E",
-    region: "Africa",
-    status: "Provisional",
-    president: "President name placeholder",
-    joined: "————",
-    website: "#",
-    lat: -1.29,
-    lng: 36.82,
-  },
-  {
-    id: "f6",
-    name: "Federation Name Placeholder 6",
-    country: "Country Placeholder F",
-    region: "South America",
-    status: "Full Member",
-    president: "President name placeholder",
-    joined: "————",
-    website: "#",
-    lat: -23.55,
-    lng: -46.63,
-  },
-  {
-    id: "f7",
-    name: "Federation Name Placeholder 7",
-    country: "Country Placeholder G",
-    region: "Asia",
-    status: "Observer",
-    president: "President name placeholder",
-    joined: "————",
-    website: "#",
-    lat: 35.68,
-    lng: 139.69,
-  },
-  {
-    id: "f8",
-    name: "Federation Name Placeholder 8",
-    country: "Country Placeholder H",
-    region: "Europe",
-    status: "Provisional",
-    president: "President name placeholder",
-    joined: "————",
-    website: "#",
-    lat: 52.52,
-    lng: 13.4,
-  },
-];
-
 /* Map is the same Leaflet component used on the Events page (client-only). */
 const PinMap = lazy(() => import("../components/events-map"));
 
@@ -337,7 +206,7 @@ function DirectoryPage() {
 
                 {/* Legend */}
                 <ul className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2">
-                  {(Object.keys(STATUS_COLOR) as Status[]).map((s) => (
+                  {(Object.keys(STATUS_COLOR) as MembershipStatus[]).map((s) => (
                     <li
                       key={s}
                       className="flex items-center gap-2 text-xs"
@@ -541,8 +410,10 @@ function FederationCard({
                   {f.name}
                 </button>
               ) : (
-                <h3
-                  className="text-[15px]"
+                <Link
+                  to="/directory/$slug"
+                  params={{ slug: f.slug }}
+                  className="text-[15px] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4898D3]"
                   style={{
                     fontFamily: "var(--font-display)",
                     fontWeight: 700,
@@ -550,7 +421,7 @@ function FederationCard({
                   }}
                 >
                   {f.name}
-                </h3>
+                </Link>
               )}
               <div className="mt-1 text-sm" style={{ color: "#575757" }}>
                 {f.country} · {f.region}
@@ -581,23 +452,39 @@ function FederationCard({
             </span>
           </div>
 
-          <a
-            href={f.website}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Visit ${f.name} website, opens in new tab`}
-            className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-[#4898D3] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4898D3]"
-          >
-            <ExternalLink size={14} aria-hidden="true" />
-            Visit website
-          </a>
+          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+            <Link
+              to="/directory/$slug"
+              params={{ slug: f.slug }}
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-[#4898D3] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4898D3]"
+            >
+              View profile
+              <ArrowRight size={14} aria-hidden="true" />
+            </Link>
+            {f.website ? (
+              <a
+                href={f.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Visit ${f.name} website, opens in new tab`}
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-[#4898D3] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4898D3]"
+              >
+                <ExternalLink size={14} aria-hidden="true" />
+                Visit website
+              </a>
+            ) : (
+              <span className="text-xs" style={{ color: "#575757" }}>
+                Website pending
+              </span>
+            )}
+          </div>
         </div>
       </div>
     </article>
   );
 }
 
-function StatusBadge({ status }: { status: Status }) {
+function StatusBadge({ status }: { status: MembershipStatus }) {
   const color = STATUS_COLOR[status];
   const darkText = color === "#FBAF43";
   return (

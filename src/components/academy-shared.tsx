@@ -16,7 +16,7 @@ export function TrackIcon({ color }: { color: string }) {
 }
 
 export type Tier = { name: string; desc: string };
-export type Guide = { title: string; desc: string };
+export type Guide = { title: string; desc: string; pdf: string };
 
 export function TrackHeader({
   track,
@@ -139,9 +139,10 @@ export function GuidesList({
                   {g.desc}
                 </p>
               </div>
-              {/* placeholder guide — replace with real PDF link */}
               <a
-                href="#"
+                href={g.pdf}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex w-fit items-center gap-2 rounded-md border px-3 py-2 text-xs font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
                 style={{ borderColor: color, color }}
                 aria-label={`Download ${g.title} PDF for ${track}`}
@@ -227,10 +228,16 @@ export function ClosingCta({
   track,
   color,
   primaryLabel,
+  primaryHref,
+  relatedTo,
+  relatedLabel,
 }: {
   track: string;
   color: string;
   primaryLabel: string;
+  primaryHref: string;
+  relatedTo?: string;
+  relatedLabel?: string;
 }) {
   return (
     <section className="bg-white">
@@ -250,24 +257,35 @@ export function ClosingCta({
             Download the full {track} guide, or reach the Academy directly with questions.
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-3">
-          {/* placeholder guide — replace with real PDF link */}
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 rounded-md px-4 py-2.5 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:brightness-95"
-            style={{ background: color, color: "#fff" }}
-            aria-label={`Download ${primaryLabel} PDF`}
-          >
-            <Download size={15} aria-hidden="true" />
-            {primaryLabel}
-          </a>
-          <a
-            href="mailto:academy@iysf.example"
-            className="inline-flex items-center gap-2 rounded-md border border-black/15 px-4 py-2.5 text-sm font-semibold text-[#14181F] transition-colors hover:bg-black/5"
-          >
-            <Mail size={15} aria-hidden="true" />
-            Contact the Academy
-          </a>
+        <div className="flex flex-col items-start gap-3 md:items-end">
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href={primaryHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-md px-4 py-2.5 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:brightness-95"
+              style={{ background: color, color: "#fff" }}
+              aria-label={`Download ${primaryLabel} PDF`}
+            >
+              <Download size={15} aria-hidden="true" />
+              {primaryLabel}
+            </a>
+            <a
+              href="mailto:academy@iysf.example"
+              className="inline-flex items-center gap-2 rounded-md border border-black/15 px-4 py-2.5 text-sm font-semibold text-[#14181F] transition-colors hover:bg-black/5"
+            >
+              <Mail size={15} aria-hidden="true" />
+              Contact the Academy
+            </a>
+          </div>
+          {relatedTo && relatedLabel && (
+            <Link
+              to={relatedTo}
+              className="text-xs text-[#575757] underline decoration-black/20 underline-offset-2 hover:text-[#14181F]"
+            >
+              Related: {relatedLabel}
+            </Link>
+          )}
         </div>
       </div>
     </section>

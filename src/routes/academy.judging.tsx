@@ -38,10 +38,10 @@ const TIERS = [
 
 /* placeholder guides — replace with real PDF links */
 const GUIDES = [
-  { title: "Judging Standards Guide", desc: "The complete framework used across IYSF events." },
-  { title: "Scoring Rubric", desc: "Reference rubric for pose difficulty, execution, and form." },
-  { title: "Officiating Protocol", desc: "Conduct and procedure at sanctioned competitions." },
-  { title: "Recertification Handbook", desc: "Requirements and cycle for maintaining status." },
+  { title: "Judging Standards Guide", desc: "The complete framework used across IYSF events.", pdf: "/documents/academy/judging/judging-standards-guide.pdf" },
+  { title: "Scoring Rubric", desc: "Reference rubric for pose difficulty, execution, and form.", pdf: "/documents/academy/judging/scoring-rubric.pdf" },
+  { title: "Officiating Protocol", desc: "Conduct and procedure at sanctioned competitions.", pdf: "/documents/academy/judging/officiating-protocol.pdf" },
+  { title: "Recertification Handbook", desc: "Requirements and cycle for maintaining status.", pdf: "/documents/academy/judging/recertification-handbook.pdf" },
 ];
 
 function JudgingTrack() {
@@ -57,7 +57,14 @@ function JudgingTrack() {
       <TiersGrid tiers={TIERS} color={COLOR} />
       <GuidesList guides={GUIDES} color={COLOR} track="Judging" />
       <SupportingContent track="Judging" color={COLOR} />
-      <ClosingCta track="Judging" color={COLOR} primaryLabel="Download Judging Guide PDF" />
+      <ClosingCta
+        track="Judging"
+        color={COLOR}
+        primaryLabel="Download Judging Guide PDF"
+        primaryHref="/documents/academy/judging/judging-standards-guide.pdf"
+        relatedTo="/rules"
+        relatedLabel="Judging criteria in the rulebook"
+      />
       <Footer />
     </div>
   );

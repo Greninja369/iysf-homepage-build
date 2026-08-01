@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState, useEffect, useRef } from "react";
 import { Search, FileDown, Menu, X } from "lucide-react";
 import { Nav, Footer } from "../components/site-chrome";
+import { Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/rules")({
   head: () => ({
@@ -53,7 +54,7 @@ const DOCS: RuleDoc[] = [
     version: "v0.0 — placeholder",
     effective: "Effective Jan 2026 — placeholder",
     updated: "Last updated — placeholder",
-    pdfHref: "#",
+    pdfHref: "/documents/rules/judging-criteria.pdf",
     blocks: [
       { type: "p", text: "Placeholder summary text for Judging Criteria — replace with real policy language describing how IYSF-certified judges evaluate a competitive Yogasana routine." },
       { type: "h3", text: "Scoring domains (placeholder)" },
@@ -74,7 +75,7 @@ const DOCS: RuleDoc[] = [
     version: "v0.0 — placeholder",
     effective: "Effective Jan 2026 — placeholder",
     updated: "Last updated — placeholder",
-    pdfHref: "#",
+    pdfHref: "/documents/rules/athlete-eligibility.pdf",
     blocks: [
       { type: "p", text: "Placeholder summary text for Athlete Eligibility — replace with real policy language covering who may compete under IYSF sanction." },
       { type: "h3", text: "Categories (placeholder)" },
@@ -94,7 +95,7 @@ const DOCS: RuleDoc[] = [
     version: "v0.0 — placeholder",
     effective: "Effective Jan 2026 — placeholder",
     updated: "Last updated — placeholder",
-    pdfHref: "#",
+    pdfHref: "/documents/rules/anti-doping.pdf",
     blocks: [
       { type: "p", text: "Placeholder summary text for the Anti-Doping Policy — replace with real policy language aligned with the applicable international anti-doping standards." },
       { type: "h3", text: "Scope (placeholder)" },
@@ -114,7 +115,7 @@ const DOCS: RuleDoc[] = [
     version: "v0.0 — placeholder",
     effective: "Effective Jan 2026 — placeholder",
     updated: "Last updated — placeholder",
-    pdfHref: "#",
+    pdfHref: "/documents/rules/code-of-conduct.pdf",
     blocks: [
       { type: "p", text: "Placeholder summary text for the Code of Conduct — replace with real policy language governing behavior of athletes, coaches, judges and officials." },
       { type: "h3", text: "Core principles (placeholder)" },
@@ -134,7 +135,7 @@ const DOCS: RuleDoc[] = [
     version: "v0.0 — placeholder",
     effective: "Effective Jan 2026 — placeholder",
     updated: "Last updated — placeholder",
-    pdfHref: "#",
+    pdfHref: "/documents/rules/competition-format.pdf",
     blocks: [
       { type: "p", text: "Placeholder summary text for Competition Format — replace with real policy language covering event structure at IYSF-sanctioned competitions." },
       { type: "h3", text: "Rounds & progression (placeholder)" },
@@ -366,17 +367,39 @@ function RulesPage() {
                         </div>
 
                         <div className="mt-4">
-                          {/* placeholder PDF link — replace with real document URL */}
                           <a
                             href={d.pdfHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 rounded-md border border-black/15 bg-white px-3.5 py-2 text-sm font-medium text-[#14181F] transition-colors hover:bg-black/[0.04] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4898D3]/40"
                           >
                             <FileDown size={15} style={{ color: d.accent }} aria-hidden />
                             <span>Download {d.title} PDF</span>
-                            <span className="text-[10.5px] uppercase tracking-[0.16em] text-[#575757]" style={{ fontFamily: "var(--font-mono)" }}>
-                              placeholder
-                            </span>
                           </a>
+                          {d.id === "judging-criteria" && (
+                            <div className="mt-3 text-xs text-[#575757]">
+                              Related:{" "}
+                              <Link to="/academy/judging" className="underline decoration-black/20 underline-offset-2 hover:text-[#14181F]">
+                                Judging Academy track
+                              </Link>
+                            </div>
+                          )}
+                          {(d.id === "athlete-eligibility" || d.id === "anti-doping") && (
+                            <div className="mt-3 text-xs text-[#575757]">
+                              Related:{" "}
+                              <Link to="/academy/athletes" className="underline decoration-black/20 underline-offset-2 hover:text-[#14181F]">
+                                Athletes Academy track
+                              </Link>
+                            </div>
+                          )}
+                          {d.id === "code-of-conduct" && (
+                            <div className="mt-3 text-xs text-[#575757]">
+                              Related:{" "}
+                              <Link to="/academy/coaching" className="underline decoration-black/20 underline-offset-2 hover:text-[#14181F]">
+                                Coaching Academy track
+                              </Link>
+                            </div>
+                          )}
                         </div>
 
                         {/* placeholder rule content — replace with real policy text */}

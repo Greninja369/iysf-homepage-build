@@ -10,11 +10,20 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RulesRouteImport } from './routes/rules'
-import { Route as EventsRouteImport } from './routes/events'
-import { Route as DirectoryRouteImport } from './routes/directory'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as GovernanceRouteImport } from './routes/governance'
+import { Route as DonateRouteImport } from './routes/donate'
+import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as AcademyRouteImport } from './routes/academy'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ResultsIndexRouteImport } from './routes/results.index'
+import { Route as EventsIndexRouteImport } from './routes/events.index'
+import { Route as DirectoryIndexRouteImport } from './routes/directory.index'
 import { Route as AcademyIndexRouteImport } from './routes/academy.index'
+import { Route as ResultsSlugRouteImport } from './routes/results.$slug'
+import { Route as EventsSlugRouteImport } from './routes/events.$slug'
+import { Route as DirectorySlugRouteImport } from './routes/directory.$slug'
 import { Route as AcademyJudgingRouteImport } from './routes/academy.judging'
 import { Route as AcademyCoachingRouteImport } from './routes/academy.coaching'
 import { Route as AcademyAthletesRouteImport } from './routes/academy.athletes'
@@ -25,14 +34,29 @@ const RulesRoute = RulesRouteImport.update({
   path: '/rules',
   getParentRoute: () => rootRouteImport,
 } as any)
-const EventsRoute = EventsRouteImport.update({
-  id: '/events',
-  path: '/events',
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DirectoryRoute = DirectoryRouteImport.update({
-  id: '/directory',
-  path: '/directory',
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GovernanceRoute = GovernanceRouteImport.update({
+  id: '/governance',
+  path: '/governance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DonateRoute = DonateRouteImport.update({
+  id: '/donate',
+  path: '/donate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AcademyRoute = AcademyRouteImport.update({
@@ -45,10 +69,40 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResultsIndexRoute = ResultsIndexRouteImport.update({
+  id: '/results/',
+  path: '/results/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsIndexRoute = EventsIndexRouteImport.update({
+  id: '/events/',
+  path: '/events/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DirectoryIndexRoute = DirectoryIndexRouteImport.update({
+  id: '/directory/',
+  path: '/directory/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AcademyIndexRoute = AcademyIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AcademyRoute,
+} as any)
+const ResultsSlugRoute = ResultsSlugRouteImport.update({
+  id: '/results/$slug',
+  path: '/results/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsSlugRoute = EventsSlugRouteImport.update({
+  id: '/events/$slug',
+  path: '/events/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DirectorySlugRoute = DirectorySlugRouteImport.update({
+  id: '/directory/$slug',
+  path: '/directory/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const AcademyJudgingRoute = AcademyJudgingRouteImport.update({
   id: '/judging',
@@ -74,84 +128,147 @@ const AboutHistoryRoute = AboutHistoryRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/academy': typeof AcademyRouteWithChildren
-  '/directory': typeof DirectoryRoute
-  '/events': typeof EventsRoute
+  '/dashboard': typeof DashboardRoute
+  '/donate': typeof DonateRoute
+  '/governance': typeof GovernanceRoute
+  '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
   '/rules': typeof RulesRoute
   '/about/history': typeof AboutHistoryRoute
   '/academy/athletes': typeof AcademyAthletesRoute
   '/academy/coaching': typeof AcademyCoachingRoute
   '/academy/judging': typeof AcademyJudgingRoute
+  '/directory/$slug': typeof DirectorySlugRoute
+  '/events/$slug': typeof EventsSlugRoute
+  '/results/$slug': typeof ResultsSlugRoute
   '/academy/': typeof AcademyIndexRoute
+  '/directory/': typeof DirectoryIndexRoute
+  '/events/': typeof EventsIndexRoute
+  '/results/': typeof ResultsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/directory': typeof DirectoryRoute
-  '/events': typeof EventsRoute
+  '/dashboard': typeof DashboardRoute
+  '/donate': typeof DonateRoute
+  '/governance': typeof GovernanceRoute
+  '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
   '/rules': typeof RulesRoute
   '/about/history': typeof AboutHistoryRoute
   '/academy/athletes': typeof AcademyAthletesRoute
   '/academy/coaching': typeof AcademyCoachingRoute
   '/academy/judging': typeof AcademyJudgingRoute
+  '/directory/$slug': typeof DirectorySlugRoute
+  '/events/$slug': typeof EventsSlugRoute
+  '/results/$slug': typeof ResultsSlugRoute
   '/academy': typeof AcademyIndexRoute
+  '/directory': typeof DirectoryIndexRoute
+  '/events': typeof EventsIndexRoute
+  '/results': typeof ResultsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/academy': typeof AcademyRouteWithChildren
-  '/directory': typeof DirectoryRoute
-  '/events': typeof EventsRoute
+  '/dashboard': typeof DashboardRoute
+  '/donate': typeof DonateRoute
+  '/governance': typeof GovernanceRoute
+  '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
   '/rules': typeof RulesRoute
   '/about/history': typeof AboutHistoryRoute
   '/academy/athletes': typeof AcademyAthletesRoute
   '/academy/coaching': typeof AcademyCoachingRoute
   '/academy/judging': typeof AcademyJudgingRoute
+  '/directory/$slug': typeof DirectorySlugRoute
+  '/events/$slug': typeof EventsSlugRoute
+  '/results/$slug': typeof ResultsSlugRoute
   '/academy/': typeof AcademyIndexRoute
+  '/directory/': typeof DirectoryIndexRoute
+  '/events/': typeof EventsIndexRoute
+  '/results/': typeof ResultsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/academy'
-    | '/directory'
-    | '/events'
+    | '/dashboard'
+    | '/donate'
+    | '/governance'
+    | '/login'
+    | '/privacy'
     | '/rules'
     | '/about/history'
     | '/academy/athletes'
     | '/academy/coaching'
     | '/academy/judging'
+    | '/directory/$slug'
+    | '/events/$slug'
+    | '/results/$slug'
     | '/academy/'
+    | '/directory/'
+    | '/events/'
+    | '/results/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/directory'
-    | '/events'
+    | '/dashboard'
+    | '/donate'
+    | '/governance'
+    | '/login'
+    | '/privacy'
     | '/rules'
     | '/about/history'
     | '/academy/athletes'
     | '/academy/coaching'
     | '/academy/judging'
+    | '/directory/$slug'
+    | '/events/$slug'
+    | '/results/$slug'
     | '/academy'
+    | '/directory'
+    | '/events'
+    | '/results'
   id:
     | '__root__'
     | '/'
     | '/academy'
-    | '/directory'
-    | '/events'
+    | '/dashboard'
+    | '/donate'
+    | '/governance'
+    | '/login'
+    | '/privacy'
     | '/rules'
     | '/about/history'
     | '/academy/athletes'
     | '/academy/coaching'
     | '/academy/judging'
+    | '/directory/$slug'
+    | '/events/$slug'
+    | '/results/$slug'
     | '/academy/'
+    | '/directory/'
+    | '/events/'
+    | '/results/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AcademyRoute: typeof AcademyRouteWithChildren
-  DirectoryRoute: typeof DirectoryRoute
-  EventsRoute: typeof EventsRoute
+  DashboardRoute: typeof DashboardRoute
+  DonateRoute: typeof DonateRoute
+  GovernanceRoute: typeof GovernanceRoute
+  LoginRoute: typeof LoginRoute
+  PrivacyRoute: typeof PrivacyRoute
   RulesRoute: typeof RulesRoute
   AboutHistoryRoute: typeof AboutHistoryRoute
+  DirectorySlugRoute: typeof DirectorySlugRoute
+  EventsSlugRoute: typeof EventsSlugRoute
+  ResultsSlugRoute: typeof ResultsSlugRoute
+  DirectoryIndexRoute: typeof DirectoryIndexRoute
+  EventsIndexRoute: typeof EventsIndexRoute
+  ResultsIndexRoute: typeof ResultsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -163,18 +280,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RulesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/events': {
-      id: '/events'
-      path: '/events'
-      fullPath: '/events'
-      preLoaderRoute: typeof EventsRouteImport
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/directory': {
-      id: '/directory'
-      path: '/directory'
-      fullPath: '/directory'
-      preLoaderRoute: typeof DirectoryRouteImport
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/governance': {
+      id: '/governance'
+      path: '/governance'
+      fullPath: '/governance'
+      preLoaderRoute: typeof GovernanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/donate': {
+      id: '/donate'
+      path: '/donate'
+      fullPath: '/donate'
+      preLoaderRoute: typeof DonateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/academy': {
@@ -191,12 +329,54 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/results/': {
+      id: '/results/'
+      path: '/results'
+      fullPath: '/results/'
+      preLoaderRoute: typeof ResultsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events/': {
+      id: '/events/'
+      path: '/events'
+      fullPath: '/events/'
+      preLoaderRoute: typeof EventsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/directory/': {
+      id: '/directory/'
+      path: '/directory'
+      fullPath: '/directory/'
+      preLoaderRoute: typeof DirectoryIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/academy/': {
       id: '/academy/'
       path: '/'
       fullPath: '/academy/'
       preLoaderRoute: typeof AcademyIndexRouteImport
       parentRoute: typeof AcademyRoute
+    }
+    '/results/$slug': {
+      id: '/results/$slug'
+      path: '/results/$slug'
+      fullPath: '/results/$slug'
+      preLoaderRoute: typeof ResultsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events/$slug': {
+      id: '/events/$slug'
+      path: '/events/$slug'
+      fullPath: '/events/$slug'
+      preLoaderRoute: typeof EventsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/directory/$slug': {
+      id: '/directory/$slug'
+      path: '/directory/$slug'
+      fullPath: '/directory/$slug'
+      preLoaderRoute: typeof DirectorySlugRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/academy/judging': {
       id: '/academy/judging'
@@ -249,10 +429,19 @@ const AcademyRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AcademyRoute: AcademyRouteWithChildren,
-  DirectoryRoute: DirectoryRoute,
-  EventsRoute: EventsRoute,
+  DashboardRoute: DashboardRoute,
+  DonateRoute: DonateRoute,
+  GovernanceRoute: GovernanceRoute,
+  LoginRoute: LoginRoute,
+  PrivacyRoute: PrivacyRoute,
   RulesRoute: RulesRoute,
   AboutHistoryRoute: AboutHistoryRoute,
+  DirectorySlugRoute: DirectorySlugRoute,
+  EventsSlugRoute: EventsSlugRoute,
+  ResultsSlugRoute: ResultsSlugRoute,
+  DirectoryIndexRoute: DirectoryIndexRoute,
+  EventsIndexRoute: EventsIndexRoute,
+  ResultsIndexRoute: ResultsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

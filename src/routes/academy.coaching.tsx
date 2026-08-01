@@ -38,10 +38,10 @@ const TIERS = [
 
 /* placeholder guides — replace with real PDF links */
 const GUIDES = [
-  { title: "Coaching Curriculum Guide", desc: "The IYSF coaching syllabus across all tiers." },
-  { title: "Session Planning Handbook", desc: "Reference structure for training programs." },
-  { title: "Athlete Welfare Standards", desc: "Baseline duty-of-care expectations for coaches." },
-  { title: "Recertification Handbook", desc: "Requirements and cycle for maintaining status." },
+  { title: "Coaching Curriculum Guide", desc: "The IYSF coaching syllabus across all tiers.", pdf: "/documents/academy/coaching/coaching-curriculum-guide.pdf" },
+  { title: "Session Planning Handbook", desc: "Reference structure for training programs.", pdf: "/documents/academy/coaching/session-planning-handbook.pdf" },
+  { title: "Athlete Welfare Standards", desc: "Baseline duty-of-care expectations for coaches.", pdf: "/documents/academy/coaching/athlete-welfare-standards.pdf" },
+  { title: "Recertification Handbook", desc: "Requirements and cycle for maintaining status.", pdf: "/documents/academy/coaching/recertification-handbook.pdf" },
 ];
 
 function CoachingTrack() {
@@ -57,7 +57,14 @@ function CoachingTrack() {
       <TiersGrid tiers={TIERS} color={COLOR} />
       <GuidesList guides={GUIDES} color={COLOR} track="Coaching" />
       <SupportingContent track="Coaching" color={COLOR} />
-      <ClosingCta track="Coaching" color={COLOR} primaryLabel="Download Coaching Guide PDF" />
+      <ClosingCta
+        track="Coaching"
+        color={COLOR}
+        primaryLabel="Download Coaching Guide PDF"
+        primaryHref="/documents/academy/coaching/coaching-curriculum-guide.pdf"
+        relatedTo="/rules"
+        relatedLabel="Code of conduct"
+      />
       <Footer />
     </div>
   );

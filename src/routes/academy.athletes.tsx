@@ -38,10 +38,10 @@ const TIERS = [
 
 /* placeholder guides — replace with real PDF links */
 const GUIDES = [
-  { title: "Athlete Development Guide", desc: "Long-term development framework across tiers." },
-  { title: "Competition Readiness Handbook", desc: "Preparation standards for sanctioned events." },
-  { title: "Registration & Eligibility", desc: "How athletes register and remain eligible." },
-  { title: "Anti-Doping Overview", desc: "Athlete-facing summary of IYSF anti-doping rules." },
+  { title: "Athlete Development Guide", desc: "Long-term development framework across tiers.", pdf: "/documents/academy/athletes/athlete-development-guide.pdf" },
+  { title: "Competition Readiness Handbook", desc: "Preparation standards for sanctioned events.", pdf: "/documents/academy/athletes/competition-readiness-handbook.pdf" },
+  { title: "Registration & Eligibility", desc: "How athletes register and remain eligible.", pdf: "/documents/academy/athletes/registration-and-eligibility.pdf" },
+  { title: "Anti-Doping Overview", desc: "Athlete-facing summary of IYSF anti-doping rules.", pdf: "/documents/academy/athletes/anti-doping-overview.pdf" },
 ];
 
 function AthletesTrack() {
@@ -57,7 +57,14 @@ function AthletesTrack() {
       <TiersGrid tiers={TIERS} color={COLOR} />
       <GuidesList guides={GUIDES} color={COLOR} track="Athletes" />
       <SupportingContent track="Athletes" color={COLOR} />
-      <ClosingCta track="Athletes" color={COLOR} primaryLabel="Download Athlete Guide PDF" />
+      <ClosingCta
+        track="Athletes"
+        color={COLOR}
+        primaryLabel="Download Athlete Guide PDF"
+        primaryHref="/documents/academy/athletes/athlete-development-guide.pdf"
+        relatedTo="/rules"
+        relatedLabel="Athlete eligibility & anti-doping rules"
+      />
       <Footer />
     </div>
   );
