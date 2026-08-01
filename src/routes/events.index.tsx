@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, useState, lazy, Suspense } from "react";
 import { Search, MapPin, X } from "lucide-react";
 import { Nav, Footer } from "../components/site-chrome";
 
-export const Route = createFileRoute("/events")({
+export const Route = createFileRoute("/events/")({
   head: () => ({
     meta: [
       { title: "Championship Calendar — IYSF Events" },
