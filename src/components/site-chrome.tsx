@@ -45,7 +45,7 @@ const ABOUT_ITEMS: Item[] = [
   { label: "International Coaches", to: "/academy/coaching" },
   { label: "History", to: "/about/history" },
   { label: "Athletes", to: "/academy/athletes" },
-  { label: "Governance", to: "/", hash: "about" },
+  { label: "Governance", to: "/governance" },
 ];
 
 const ACADEMY_ITEMS: Item[] = [
@@ -59,12 +59,29 @@ const MAIN_LINKS: Item[] = [
   { label: "News", to: "/", hash: "news" },
   { label: "Rules", to: "/rules" },
   { label: "Events", to: "/events" },
-  { label: "Championship results", to: "/events" },
+  { label: "Championship results", to: "/results" },
 ];
 
 const TAIL_LINKS: Item[] = [
   { label: "Directory", to: "/directory" },
   { label: "Contact", to: "/", hash: "contact" },
+];
+
+/* Explore / quick-links list, shared by the footer and the homepage
+   "Quick links" block so new pages stay discoverable sitewide. */
+export const EXPLORE_LINKS: Item[] = [
+  { label: "About", to: "/", hash: "about" },
+  { label: "News", to: "/", hash: "news" },
+  { label: "Rules", to: "/rules" },
+  { label: "Events", to: "/events" },
+  { label: "Results", to: "/results" },
+  { label: "Academy", to: "/academy" },
+  { label: "Directory", to: "/directory" },
+  { label: "Governance", to: "/governance" },
+  { label: "History", to: "/about/history" },
+  { label: "Donate", to: "/donate" },
+  { label: "Privacy", to: "/privacy" },
+  { label: "Join us", to: "/", hash: "join" },
 ];
 
 function Dropdown({
@@ -169,20 +186,20 @@ export function Nav() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <a
-            href="#"
+          <Link
+            to="/login"
             className="hidden text-[13px] font-semibold transition-colors hover:opacity-70 lg:inline-block"
             style={{ color: IYSF.charcoal }}
           >
             Log in
-          </a>
-          <a
-            href="#donate"
+          </Link>
+          <Link
+            to="/donate"
             className="hidden rounded-[10px] border-2 px-3.5 py-1.5 text-[13px] font-bold transition-colors hover:bg-[rgba(66,152,211,0.08)] lg:inline-block"
             style={{ borderColor: IYSF.blue, color: IYSF.blue }}
           >
             Donate
-          </a>
+          </Link>
           <Link
             to="/"
             hash="join"
@@ -218,14 +235,22 @@ export function Nav() {
                 {l.label}
               </Link>
             ))}
-            <a
-              href="#donate"
+            <Link
+              to="/login"
+              onClick={() => setOpen(false)}
+              className="rounded-lg px-3 py-2.5 text-sm font-semibold hover:bg-[rgba(66,152,211,0.08)]"
+              style={{ color: IYSF.charcoal }}
+            >
+              Log in
+            </Link>
+            <Link
+              to="/donate"
               onClick={() => setOpen(false)}
               className="mt-1 rounded-[10px] border-2 px-3 py-2.5 text-center text-sm font-bold"
               style={{ borderColor: IYSF.blue, color: IYSF.blue }}
             >
               Donate
-            </a>
+            </Link>
           </nav>
         </div>
       )}
@@ -234,16 +259,7 @@ export function Nav() {
 }
 
 export function Footer({ minimal = false }: { minimal?: boolean }) {
-  const links: Item[] = [
-    { label: "About", to: "/", hash: "about" },
-    { label: "News", to: "/", hash: "news" },
-    { label: "Rules", to: "/rules" },
-    { label: "Events", to: "/events" },
-    { label: "Results", to: "/events" },
-    { label: "Academy", to: "/academy" },
-    { label: "Directory", to: "/directory" },
-    { label: "Join us", to: "/", hash: "join" },
-  ];
+  const links: Item[] = EXPLORE_LINKS;
   return (
     <footer style={{ background: IYSF.charcoal, color: "#fff", fontFamily: "var(--font-sans)" }}>
       {minimal ? (
@@ -251,14 +267,14 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
           <IysfWordmark light />
           <div className="flex items-center gap-3">
             {[Facebook, Instagram, Youtube].map((Icon, i) => (
-              <a
+              <span
                 key={i}
-                href="#"
-                aria-label="IYSF social profile"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-[10px] border border-white/15 transition-colors hover:bg-white/10"
+                aria-hidden="true"
+                title="Social profile link pending"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-[10px] border border-white/15"
               >
                 <Icon size={16} color={IYSF.blue} />
-              </a>
+              </span>
             ))}
           </div>
         </div>
@@ -271,14 +287,14 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
           </p>
           <div className="mt-5 flex items-center gap-3">
             {[Facebook, Instagram, Youtube].map((Icon, i) => (
-              <a
+              <span
                 key={i}
-                href="#"
-                aria-label="IYSF social profile"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-[10px] border border-white/15 transition-colors hover:bg-white/10"
+                aria-hidden="true"
+                title="Social profile link pending"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-[10px] border border-white/15"
               >
                 <Icon size={16} color={IYSF.blue} />
-              </a>
+              </span>
             ))}
           </div>
         </div>
@@ -318,5 +334,40 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
         </div>
       </div>
     </footer>
+  );
+}
+
+
+/* ------------------------------------------------------------------ */
+/* Breadcrumb — used on every nested page (event detail, federation    */
+/* profile, results detail) to mirror the Academy "Academy — Judging"  */
+/* pattern and always offer a way back to the parent listing.          */
+/* ------------------------------------------------------------------ */
+export function Breadcrumb({
+  parentLabel,
+  parentTo,
+  current,
+  color = IYSF.blue,
+}: {
+  parentLabel: string;
+  parentTo: string;
+  current: string;
+  color?: string;
+}) {
+  return (
+    <nav
+      aria-label="Breadcrumb"
+      className="text-[11px] font-semibold uppercase tracking-[0.22em]"
+      style={{ fontFamily: "var(--font-sans)" }}
+    >
+      <Link to={parentTo} className="hover:underline" style={{ color }}>
+        {parentLabel}
+      </Link>
+      <span aria-hidden="true" style={{ color: "rgba(65,64,66,0.45)" }}>
+        {" "}
+        —{" "}
+      </span>
+      <span style={{ color: "rgba(65,64,66,0.7)" }}>{current}</span>
+    </nav>
   );
 }
