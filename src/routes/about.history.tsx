@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { FileText, ArrowRight, ArrowDown, MapPin } from "lucide-react";
 import { Nav, Footer } from "../components/site-chrome";
-import { Link } from "@tanstack/react-router";
 import {
   Reveal,
   CountUp,
