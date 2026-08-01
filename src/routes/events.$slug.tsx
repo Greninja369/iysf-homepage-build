@@ -501,7 +501,9 @@ function RegistrationSection({ event }: { event: NonNullable<ReturnType<typeof g
                 <select
                   id="ef-div"
                   value={form.division}
-                  onChange={(e) => setForm({ ...form, division: e.target.value })}
+                  onChange={(e) =>
+                    setForm({ ...form, division: e.target.value as Division })
+                  }
                   className="w-full rounded-md border border-black/15 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#4898D3] focus:ring-2 focus:ring-[#4898D3]/25"
                 >
                   {event.divisions.map((d) => (
