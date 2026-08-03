@@ -311,6 +311,67 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
 
 /* ------------------------------------------------------------------ */
 /* Breadcrumb — used on every nested page (event detail, federation    */
+
+/* ------------------------------------------------------------------ */
+/* JoinCta — consistent page-bottom conversion block. Every interior   */
+/* page renders this directly above the footer so there is always a    */
+/* route back to Home and into the membership application flow.        */
+/* ------------------------------------------------------------------ */
+export function JoinCta({
+  heading = "Bring competitive Yogasana to your country",
+  body = "IYSF works with national bodies that want to build a competitive Yogasana programme — from judging and coaching standards to a route into the World Championship.",
+}: {
+  heading?: string;
+  body?: string;
+}) {
+  return (
+    <section style={{ background: IYSF.blueWash, borderTop: `1px solid ${IYSF.blueLine}` }}>
+      <div className="mx-auto max-w-[1320px] px-5 py-14 md:px-8 md:py-16">
+        <div
+          className="flex flex-col gap-6 rounded-[14px] border bg-white p-7 md:flex-row md:items-center md:justify-between md:p-9"
+          style={{ borderColor: IYSF.blueLine, boxShadow: IYSF.blueShadow }}
+        >
+          <div className="max-w-[640px]">
+            <div
+              className="text-[10.5px] font-bold uppercase tracking-[0.22em]"
+              style={{ color: IYSF.magenta }}
+            >
+              Membership
+            </div>
+            <h2
+              className="mt-2 text-[24px] leading-tight md:text-[30px]"
+              style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: IYSF.charcoal }}
+            >
+              {heading}
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed" style={{ color: "rgba(65,64,66,0.72)" }}>
+              {body}
+            </p>
+          </div>
+          <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
+            <Link
+              to="/"
+              hash="join"
+              className="rounded-[12px] px-6 py-3.5 text-center text-base font-bold text-white transition-transform hover:-translate-y-0.5"
+              style={{ background: IYSF.orange, boxShadow: "0 16px 36px -16px rgba(250,175,64,0.95)" }}
+            >
+              Start your application
+            </Link>
+            <Link
+              to="/"
+              className="rounded-[12px] border-2 px-6 py-3.5 text-center text-base font-bold transition-colors hover:bg-[rgba(66,152,211,0.08)]"
+              style={{ borderColor: IYSF.blue, color: IYSF.blue }}
+            >
+              Back to home
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /* profile, results detail) to mirror the Academy "Academy — Judging"  */
 /* pattern and always offer a way back to the parent listing.          */
 /* ------------------------------------------------------------------ */
