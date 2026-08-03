@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import { Nav, Footer } from "../components/site-chrome";
+import { Nav, Footer, JoinCta } from "../components/site-chrome";
 import { TrackIcon } from "../components/academy-shared";
 
 export const Route = createFileRoute("/academy/")({
@@ -188,6 +188,7 @@ function AcademyOverview() {
         </div>
       </section>
 
+      <JoinCta />
       <Footer />
     </div>
   );

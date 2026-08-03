@@ -4,6 +4,7 @@ import { Volume2, VolumeX, Play, Pause, ArrowRight, Globe2, Trophy, GraduationCa
 import { Nav, Footer, IYSF } from "../components/site-chrome";
 import { JoinForm } from "../components/join-form";
 import { Reveal } from "../components/history-motion";
+import { ARTICLES, FEATURED, type Article } from "../data/news";
 import heroVideo from "../assets/hero-championship.mp4.asset.json";
 import heroPoster from "../assets/hero-championship.jpg";
 import aboutCompetition from "../assets/about-competition.jpg";
@@ -13,10 +14,6 @@ import aboutGovernance from "../assets/about-governance.jpg";
 import delegation1 from "../assets/delegation-1.jpg";
 import delegation2 from "../assets/delegation-2.jpg";
 import delegation3 from "../assets/delegation-3.jpg";
-import newsFeatured from "../assets/news-featured.jpg";
-import news1 from "../assets/news-1.jpg";
-import news2 from "../assets/news-2.jpg";
-import news3 from "../assets/news-3.jpg";
 import event1 from "../assets/event-1.jpg";
 
 export const Route = createFileRoute("/")({
@@ -362,12 +359,7 @@ function HowToJoin() {
 
 /* ------------------------------- News -------------------------------- */
 function News() {
-  const rows = [
-    { img: news1, title: "International judges complete the 2026 recertification cycle" },
-    { img: news2, title: "Junior division records fall at the continental qualifier" },
-    { img: news3, title: "Two new national federations sign membership agreements" },
-    { img: event1, title: "Host city shortlist announced for the next World Championship" },
-  ];
+  const rows = ARTICLES.filter((a: Article) => a.slug !== FEATURED.slug).slice(0, 4);
   return (
     <section id="news" className="bg-white">
       <div className="mx-auto max-w-[1320px] px-5 pb-20 md:px-8 md:pb-24">
@@ -378,10 +370,15 @@ function News() {
         </Reveal>
         <div className="mt-10 grid gap-6 lg:grid-cols-[1.15fr_1fr]">
           <Reveal>
-            <a href="#" className="group block h-full overflow-hidden" style={CARD}>
+            <Link
+              to="/news/$slug"
+              params={{ slug: FEATURED.slug }}
+              className="group block h-full overflow-hidden"
+              style={CARD}
+            >
               <img
-                src={newsFeatured}
-                alt="Athletes competing at an IYSF world championship"
+                src={FEATURED.image}
+                alt={FEATURED.imageAlt}
                 loading="lazy"
                 width={1200}
                 height={800}
@@ -398,22 +395,26 @@ function News() {
                   className="mt-3 text-[24px] leading-snug"
                   style={{ color: IYSF.charcoal, fontFamily: "var(--font-display)", fontWeight: 800 }}
                 >
-                  World Championship delivers the largest field in IYSF history
+                  {FEATURED.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed" style={{ color: "rgba(65,64,66,0.72)" }}>
-                  Athletes from across six continents contested the compulsory and optional rounds under the
-                  federation's standardized scoring system.
+                  {FEATURED.excerpt}
                 </p>
               </div>
-            </a>
+            </Link>
           </Reveal>
 
           <div className="grid gap-4 content-start">
-            {rows.map((r, i) => (
-              <Reveal key={r.title} delay={i * 70}>
-                <a href="#" className="group flex items-center gap-4 p-3 transition-transform hover:-translate-y-0.5" style={CARD}>
+            {rows.map((r: Article, i: number) => (
+              <Reveal key={r.slug} delay={i * 70}>
+                <Link
+                  to="/news/$slug"
+                  params={{ slug: r.slug }}
+                  className="group flex items-center gap-4 p-3 transition-transform hover:-translate-y-0.5"
+                  style={CARD}
+                >
                   <img
-                    src={r.img}
+                    src={r.image}
                     alt=""
                     loading="lazy"
                     width={680}
@@ -426,10 +427,19 @@ function News() {
                   >
                     {r.title}
                   </h3>
-                </a>
+                </Link>
               </Reveal>
             ))}
           </div>
+        </div>
+        <div className="mt-8">
+          <Link
+            to="/news"
+            className="inline-flex items-center gap-1.5 text-sm font-bold"
+            style={{ color: IYSF.blue }}
+          >
+            All news <ArrowRight size={15} aria-hidden="true" />
+          </Link>
         </div>
       </div>
     </section>
@@ -444,12 +454,12 @@ function DonateBanner() {
         <h2 className="max-w-[720px] text-[26px] leading-tight text-white md:text-[34px]" style={H2({ color: "#fff" })}>
           Support IYSF's mission to bring Yogasana to the Olympics
         </h2>
-        <a
-          href="#"
+        <Link
+          to="/donate"
           className="shrink-0 rounded-[12px] border-2 border-white px-6 py-3 text-base font-bold text-white transition-colors hover:bg-white/15"
         >
           Donate
-        </a>
+        </Link>
       </div>
     </section>
   );
