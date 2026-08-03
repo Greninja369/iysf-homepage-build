@@ -4,6 +4,7 @@ import { Volume2, VolumeX, Play, Pause, ArrowRight, Globe2, Trophy, GraduationCa
 import { Nav, Footer, IYSF } from "../components/site-chrome";
 import { JoinForm } from "../components/join-form";
 import { Reveal } from "../components/history-motion";
+import { ARTICLES, FEATURED, type Article } from "../data/news";
 import heroVideo from "../assets/hero-championship.mp4.asset.json";
 import heroPoster from "../assets/hero-championship.jpg";
 import aboutCompetition from "../assets/about-competition.jpg";
@@ -362,7 +363,7 @@ function HowToJoin() {
 
 /* ------------------------------- News -------------------------------- */
 function News() {
-  const rows = ARTICLES.filter((a) => a.slug !== FEATURED.slug).slice(0, 4);
+  const rows = ARTICLES.filter((a: Article) => a.slug !== FEATURED.slug).slice(0, 4);
   return (
     <section id="news" className="bg-white">
       <div className="mx-auto max-w-[1320px] px-5 pb-20 md:px-8 md:pb-24">
@@ -408,7 +409,7 @@ function News() {
           </Reveal>
 
           <div className="grid gap-4 content-start">
-            {rows.map((r, i) => (
+            {rows.map((r: Article, i: number) => (
               <Reveal key={r.slug} delay={i * 70}>
                 <Link
                   to="/news/$slug"

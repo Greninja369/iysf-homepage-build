@@ -93,7 +93,7 @@ function ArticlePage() {
           style={{ border: `1px solid ${IYSF.blueLine}` }}
         />
         <div className="mt-8 space-y-5">
-          {article.body.map((p) => (
+          {article.body.map((p: string) => (
             <p key={p.slice(0, 24)} className="text-[16.5px] leading-[1.75]" style={{ color: "rgba(65,64,66,0.85)" }}>
               {p}
             </p>
