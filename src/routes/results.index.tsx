@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Nav, Footer, JoinCta } from "../components/site-chrome";
+import { Nav, Footer } from "../components/site-chrome";
 import {
   eventsWithResults,
   TIER_COLOR,
@@ -200,7 +200,6 @@ function ResultsIndexPage() {
           </div>
         </section>
       </main>
-      <JoinCta />
       <Footer />
     </div>
   );

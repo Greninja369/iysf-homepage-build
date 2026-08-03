@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RulesRouteImport } from './routes/rules'
 import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as NewsRouteImport } from './routes/news'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as GovernanceRouteImport } from './routes/governance'
 import { Route as DonateRouteImport } from './routes/donate'
@@ -19,12 +18,10 @@ import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as AcademyRouteImport } from './routes/academy'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ResultsIndexRouteImport } from './routes/results.index'
-import { Route as NewsIndexRouteImport } from './routes/news.index'
 import { Route as EventsIndexRouteImport } from './routes/events.index'
 import { Route as DirectoryIndexRouteImport } from './routes/directory.index'
 import { Route as AcademyIndexRouteImport } from './routes/academy.index'
 import { Route as ResultsSlugRouteImport } from './routes/results.$slug'
-import { Route as NewsSlugRouteImport } from './routes/news.$slug'
 import { Route as EventsSlugRouteImport } from './routes/events.$slug'
 import { Route as DirectorySlugRouteImport } from './routes/directory.$slug'
 import { Route as AcademyJudgingRouteImport } from './routes/academy.judging'
@@ -40,11 +37,6 @@ const RulesRoute = RulesRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NewsRoute = NewsRouteImport.update({
-  id: '/news',
-  path: '/news',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -82,11 +74,6 @@ const ResultsIndexRoute = ResultsIndexRouteImport.update({
   path: '/results/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const NewsIndexRoute = NewsIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => NewsRoute,
-} as any)
 const EventsIndexRoute = EventsIndexRouteImport.update({
   id: '/events/',
   path: '/events/',
@@ -106,11 +93,6 @@ const ResultsSlugRoute = ResultsSlugRouteImport.update({
   id: '/results/$slug',
   path: '/results/$slug',
   getParentRoute: () => rootRouteImport,
-} as any)
-const NewsSlugRoute = NewsSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => NewsRoute,
 } as any)
 const EventsSlugRoute = EventsSlugRouteImport.update({
   id: '/events/$slug',
@@ -150,7 +132,6 @@ export interface FileRoutesByFullPath {
   '/donate': typeof DonateRoute
   '/governance': typeof GovernanceRoute
   '/login': typeof LoginRoute
-  '/news': typeof NewsRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/rules': typeof RulesRoute
   '/about/history': typeof AboutHistoryRoute
@@ -159,12 +140,10 @@ export interface FileRoutesByFullPath {
   '/academy/judging': typeof AcademyJudgingRoute
   '/directory/$slug': typeof DirectorySlugRoute
   '/events/$slug': typeof EventsSlugRoute
-  '/news/$slug': typeof NewsSlugRoute
   '/results/$slug': typeof ResultsSlugRoute
   '/academy/': typeof AcademyIndexRoute
   '/directory/': typeof DirectoryIndexRoute
   '/events/': typeof EventsIndexRoute
-  '/news/': typeof NewsIndexRoute
   '/results/': typeof ResultsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -181,12 +160,10 @@ export interface FileRoutesByTo {
   '/academy/judging': typeof AcademyJudgingRoute
   '/directory/$slug': typeof DirectorySlugRoute
   '/events/$slug': typeof EventsSlugRoute
-  '/news/$slug': typeof NewsSlugRoute
   '/results/$slug': typeof ResultsSlugRoute
   '/academy': typeof AcademyIndexRoute
   '/directory': typeof DirectoryIndexRoute
   '/events': typeof EventsIndexRoute
-  '/news': typeof NewsIndexRoute
   '/results': typeof ResultsIndexRoute
 }
 export interface FileRoutesById {
@@ -197,7 +174,6 @@ export interface FileRoutesById {
   '/donate': typeof DonateRoute
   '/governance': typeof GovernanceRoute
   '/login': typeof LoginRoute
-  '/news': typeof NewsRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/rules': typeof RulesRoute
   '/about/history': typeof AboutHistoryRoute
@@ -206,12 +182,10 @@ export interface FileRoutesById {
   '/academy/judging': typeof AcademyJudgingRoute
   '/directory/$slug': typeof DirectorySlugRoute
   '/events/$slug': typeof EventsSlugRoute
-  '/news/$slug': typeof NewsSlugRoute
   '/results/$slug': typeof ResultsSlugRoute
   '/academy/': typeof AcademyIndexRoute
   '/directory/': typeof DirectoryIndexRoute
   '/events/': typeof EventsIndexRoute
-  '/news/': typeof NewsIndexRoute
   '/results/': typeof ResultsIndexRoute
 }
 export interface FileRouteTypes {
@@ -223,7 +197,6 @@ export interface FileRouteTypes {
     | '/donate'
     | '/governance'
     | '/login'
-    | '/news'
     | '/privacy'
     | '/rules'
     | '/about/history'
@@ -232,12 +205,10 @@ export interface FileRouteTypes {
     | '/academy/judging'
     | '/directory/$slug'
     | '/events/$slug'
-    | '/news/$slug'
     | '/results/$slug'
     | '/academy/'
     | '/directory/'
     | '/events/'
-    | '/news/'
     | '/results/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -254,12 +225,10 @@ export interface FileRouteTypes {
     | '/academy/judging'
     | '/directory/$slug'
     | '/events/$slug'
-    | '/news/$slug'
     | '/results/$slug'
     | '/academy'
     | '/directory'
     | '/events'
-    | '/news'
     | '/results'
   id:
     | '__root__'
@@ -269,7 +238,6 @@ export interface FileRouteTypes {
     | '/donate'
     | '/governance'
     | '/login'
-    | '/news'
     | '/privacy'
     | '/rules'
     | '/about/history'
@@ -278,12 +246,10 @@ export interface FileRouteTypes {
     | '/academy/judging'
     | '/directory/$slug'
     | '/events/$slug'
-    | '/news/$slug'
     | '/results/$slug'
     | '/academy/'
     | '/directory/'
     | '/events/'
-    | '/news/'
     | '/results/'
   fileRoutesById: FileRoutesById
 }
@@ -294,7 +260,6 @@ export interface RootRouteChildren {
   DonateRoute: typeof DonateRoute
   GovernanceRoute: typeof GovernanceRoute
   LoginRoute: typeof LoginRoute
-  NewsRoute: typeof NewsRouteWithChildren
   PrivacyRoute: typeof PrivacyRoute
   RulesRoute: typeof RulesRoute
   AboutHistoryRoute: typeof AboutHistoryRoute
@@ -320,13 +285,6 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/news': {
-      id: '/news'
-      path: '/news'
-      fullPath: '/news'
-      preLoaderRoute: typeof NewsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -378,13 +336,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResultsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/news/': {
-      id: '/news/'
-      path: '/'
-      fullPath: '/news/'
-      preLoaderRoute: typeof NewsIndexRouteImport
-      parentRoute: typeof NewsRoute
-    }
     '/events/': {
       id: '/events/'
       path: '/events'
@@ -412,13 +363,6 @@ declare module '@tanstack/react-router' {
       fullPath: '/results/$slug'
       preLoaderRoute: typeof ResultsSlugRouteImport
       parentRoute: typeof rootRouteImport
-    }
-    '/news/$slug': {
-      id: '/news/$slug'
-      path: '/$slug'
-      fullPath: '/news/$slug'
-      preLoaderRoute: typeof NewsSlugRouteImport
-      parentRoute: typeof NewsRoute
     }
     '/events/$slug': {
       id: '/events/$slug'
@@ -482,18 +426,6 @@ const AcademyRouteChildren: AcademyRouteChildren = {
 const AcademyRouteWithChildren =
   AcademyRoute._addFileChildren(AcademyRouteChildren)
 
-interface NewsRouteChildren {
-  NewsSlugRoute: typeof NewsSlugRoute
-  NewsIndexRoute: typeof NewsIndexRoute
-}
-
-const NewsRouteChildren: NewsRouteChildren = {
-  NewsSlugRoute: NewsSlugRoute,
-  NewsIndexRoute: NewsIndexRoute,
-}
-
-const NewsRouteWithChildren = NewsRoute._addFileChildren(NewsRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AcademyRoute: AcademyRouteWithChildren,
@@ -501,7 +433,6 @@ const rootRouteChildren: RootRouteChildren = {
   DonateRoute: DonateRoute,
   GovernanceRoute: GovernanceRoute,
   LoginRoute: LoginRoute,
-  NewsRoute: NewsRouteWithChildren,
   PrivacyRoute: PrivacyRoute,
   RulesRoute: RulesRoute,
   AboutHistoryRoute: AboutHistoryRoute,
@@ -515,3 +446,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

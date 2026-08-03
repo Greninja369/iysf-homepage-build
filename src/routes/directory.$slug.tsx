@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Nav, Footer, Breadcrumb, JoinCta } from "../components/site-chrome";
+import { Nav, Footer, Breadcrumb } from "../components/site-chrome";
 import { getFederation, eventsForFederation, STATUS_COLOR } from "../data/iysf";
 
 export const Route = createFileRoute("/directory/$slug")({
@@ -120,7 +120,6 @@ function FederationDetailPage() {
           </section>
         )}
       </main>
-      <JoinCta />
       <Footer />
     </div>
   );

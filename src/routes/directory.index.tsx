@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState, lazy, Suspense } from "react";
 import { Search, ExternalLink, X, Users, ArrowRight } from "lucide-react";
-import { Nav, Footer, JoinCta } from "../components/site-chrome";
+import { Nav, Footer } from "../components/site-chrome";
 import {
   FEDERATIONS,
   REGIONS,
@@ -347,7 +347,6 @@ function DirectoryPage() {
           </div>
         </section>
       </main>
-      <JoinCta />
       <Footer />
 
       <style>{`
