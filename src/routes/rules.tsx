@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState, useEffect, useRef } from "react";
 import { Search, FileDown, Menu, X } from "lucide-react";
-import { Nav, Footer } from "../components/site-chrome";
+import { Nav, Footer, JoinCta } from "../components/site-chrome";
 import { Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/rules")({
@@ -431,6 +431,7 @@ function RulesPage() {
         </div>
       </main>
 
+      <JoinCta />
       <Footer />
     </div>
   );

@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { FileDown, ArrowRight } from "lucide-react";
-import { Nav, Footer } from "../components/site-chrome";
+import { Nav, Footer, JoinCta } from "../components/site-chrome";
 import { FEDERATIONS, STATUS_COLOR, type MembershipStatus } from "../data/iysf";
 
 export const Route = createFileRoute("/governance")({
@@ -469,6 +469,7 @@ function GovernancePage() {
           </div>
         </section>
       </main>
+      <JoinCta />
       <Footer />
     </div>
   );

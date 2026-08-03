@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Nav, Footer, Breadcrumb } from "../components/site-chrome";
+import { Nav, Footer, Breadcrumb, JoinCta } from "../components/site-chrome";
 import {
   getEvent,
   getFederationById,
@@ -287,6 +287,7 @@ function ResultsDetailPage() {
           </section>
         )}
       </main>
+      <JoinCta />
       <Footer />
     </div>
   );

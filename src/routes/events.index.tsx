@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState, lazy, Suspense } from "react";
 import { Search, MapPin, X } from "lucide-react";
-import { Nav, Footer } from "../components/site-chrome";
+import { Nav, Footer, JoinCta } from "../components/site-chrome";
 import {
   upcomingEvents,
   pastEvents,
@@ -327,6 +327,7 @@ function EventsPage() {
           </div>
         </section>
       </main>
+      <JoinCta />
       <Footer />
 
       {registerFor && (
