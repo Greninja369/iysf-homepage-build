@@ -14,10 +14,6 @@ import aboutGovernance from "../assets/about-governance.jpg";
 import delegation1 from "../assets/delegation-1.jpg";
 import delegation2 from "../assets/delegation-2.jpg";
 import delegation3 from "../assets/delegation-3.jpg";
-import newsFeatured from "../assets/news-featured.jpg";
-import news1 from "../assets/news-1.jpg";
-import news2 from "../assets/news-2.jpg";
-import news3 from "../assets/news-3.jpg";
 import event1 from "../assets/event-1.jpg";
 
 export const Route = createFileRoute("/")({
