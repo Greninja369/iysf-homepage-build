@@ -28,6 +28,7 @@ import { Route as AcademyJudgingRouteImport } from './routes/academy.judging'
 import { Route as AcademyCoachingRouteImport } from './routes/academy.coaching'
 import { Route as AcademyAthletesRouteImport } from './routes/academy.athletes'
 import { Route as AboutYogaAsASportRouteImport } from './routes/about.yoga-as-a-sport'
+import { Route as AboutTechnicalCommitteeRouteImport } from './routes/about.technical-committee'
 import { Route as AboutHistoryRouteImport } from './routes/about.history'
 import { Route as AboutGovernanceRouteImport } from './routes/about.governance'
 import { Route as AboutExecutiveCommitteeRouteImport } from './routes/about.executive-committee'
@@ -129,6 +130,11 @@ const AboutYogaAsASportRoute = AboutYogaAsASportRouteImport.update({
   path: '/about/yoga-as-a-sport',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutTechnicalCommitteeRoute = AboutTechnicalCommitteeRouteImport.update({
+  id: '/about/technical-committee',
+  path: '/about/technical-committee',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutHistoryRoute = AboutHistoryRouteImport.update({
   id: '/about/history',
   path: '/about/history',
@@ -169,6 +175,7 @@ export interface FileRoutesByFullPath {
   '/about/executive-committee': typeof AboutExecutiveCommitteeRoute
   '/about/governance': typeof AboutGovernanceRoute
   '/about/history': typeof AboutHistoryRoute
+  '/about/technical-committee': typeof AboutTechnicalCommitteeRoute
   '/about/yoga-as-a-sport': typeof AboutYogaAsASportRoute
   '/academy/athletes': typeof AcademyAthletesRoute
   '/academy/coaching': typeof AcademyCoachingRoute
@@ -194,6 +201,7 @@ export interface FileRoutesByTo {
   '/about/executive-committee': typeof AboutExecutiveCommitteeRoute
   '/about/governance': typeof AboutGovernanceRoute
   '/about/history': typeof AboutHistoryRoute
+  '/about/technical-committee': typeof AboutTechnicalCommitteeRoute
   '/about/yoga-as-a-sport': typeof AboutYogaAsASportRoute
   '/academy/athletes': typeof AcademyAthletesRoute
   '/academy/coaching': typeof AcademyCoachingRoute
@@ -221,6 +229,7 @@ export interface FileRoutesById {
   '/about/executive-committee': typeof AboutExecutiveCommitteeRoute
   '/about/governance': typeof AboutGovernanceRoute
   '/about/history': typeof AboutHistoryRoute
+  '/about/technical-committee': typeof AboutTechnicalCommitteeRoute
   '/about/yoga-as-a-sport': typeof AboutYogaAsASportRoute
   '/academy/athletes': typeof AcademyAthletesRoute
   '/academy/coaching': typeof AcademyCoachingRoute
@@ -249,6 +258,7 @@ export interface FileRouteTypes {
     | '/about/executive-committee'
     | '/about/governance'
     | '/about/history'
+    | '/about/technical-committee'
     | '/about/yoga-as-a-sport'
     | '/academy/athletes'
     | '/academy/coaching'
@@ -274,6 +284,7 @@ export interface FileRouteTypes {
     | '/about/executive-committee'
     | '/about/governance'
     | '/about/history'
+    | '/about/technical-committee'
     | '/about/yoga-as-a-sport'
     | '/academy/athletes'
     | '/academy/coaching'
@@ -300,6 +311,7 @@ export interface FileRouteTypes {
     | '/about/executive-committee'
     | '/about/governance'
     | '/about/history'
+    | '/about/technical-committee'
     | '/about/yoga-as-a-sport'
     | '/academy/athletes'
     | '/academy/coaching'
@@ -327,6 +339,7 @@ export interface RootRouteChildren {
   AboutExecutiveCommitteeRoute: typeof AboutExecutiveCommitteeRoute
   AboutGovernanceRoute: typeof AboutGovernanceRoute
   AboutHistoryRoute: typeof AboutHistoryRoute
+  AboutTechnicalCommitteeRoute: typeof AboutTechnicalCommitteeRoute
   AboutYogaAsASportRoute: typeof AboutYogaAsASportRoute
   DirectorySlugRoute: typeof DirectorySlugRoute
   EventsSlugRoute: typeof EventsSlugRoute
@@ -471,6 +484,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutYogaAsASportRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about/technical-committee': {
+      id: '/about/technical-committee'
+      path: '/about/technical-committee'
+      fullPath: '/about/technical-committee'
+      preLoaderRoute: typeof AboutTechnicalCommitteeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about/history': {
       id: '/about/history'
       path: '/about/history'
@@ -540,6 +560,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutExecutiveCommitteeRoute: AboutExecutiveCommitteeRoute,
   AboutGovernanceRoute: AboutGovernanceRoute,
   AboutHistoryRoute: AboutHistoryRoute,
+  AboutTechnicalCommitteeRoute: AboutTechnicalCommitteeRoute,
   AboutYogaAsASportRoute: AboutYogaAsASportRoute,
   DirectorySlugRoute: DirectorySlugRoute,
   EventsSlugRoute: EventsSlugRoute,
