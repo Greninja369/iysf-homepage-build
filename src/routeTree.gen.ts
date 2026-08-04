@@ -30,6 +30,7 @@ import { Route as AcademyAthletesRouteImport } from './routes/academy.athletes'
 import { Route as AboutYogaAsASportRouteImport } from './routes/about.yoga-as-a-sport'
 import { Route as AboutTechnicalCommitteeRouteImport } from './routes/about.technical-committee'
 import { Route as AboutInternationalJudgesRouteImport } from './routes/about.international-judges'
+import { Route as AboutInternationalCoachesRouteImport } from './routes/about.international-coaches'
 import { Route as AboutHistoryRouteImport } from './routes/about.history'
 import { Route as AboutGovernanceRouteImport } from './routes/about.governance'
 import { Route as AboutExecutiveCommitteeRouteImport } from './routes/about.executive-committee'
@@ -142,6 +143,12 @@ const AboutInternationalJudgesRoute =
     path: '/about/international-judges',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AboutInternationalCoachesRoute =
+  AboutInternationalCoachesRouteImport.update({
+    id: '/about/international-coaches',
+    path: '/about/international-coaches',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const AboutHistoryRoute = AboutHistoryRouteImport.update({
   id: '/about/history',
   path: '/about/history',
@@ -182,6 +189,7 @@ export interface FileRoutesByFullPath {
   '/about/executive-committee': typeof AboutExecutiveCommitteeRoute
   '/about/governance': typeof AboutGovernanceRoute
   '/about/history': typeof AboutHistoryRoute
+  '/about/international-coaches': typeof AboutInternationalCoachesRoute
   '/about/international-judges': typeof AboutInternationalJudgesRoute
   '/about/technical-committee': typeof AboutTechnicalCommitteeRoute
   '/about/yoga-as-a-sport': typeof AboutYogaAsASportRoute
@@ -209,6 +217,7 @@ export interface FileRoutesByTo {
   '/about/executive-committee': typeof AboutExecutiveCommitteeRoute
   '/about/governance': typeof AboutGovernanceRoute
   '/about/history': typeof AboutHistoryRoute
+  '/about/international-coaches': typeof AboutInternationalCoachesRoute
   '/about/international-judges': typeof AboutInternationalJudgesRoute
   '/about/technical-committee': typeof AboutTechnicalCommitteeRoute
   '/about/yoga-as-a-sport': typeof AboutYogaAsASportRoute
@@ -238,6 +247,7 @@ export interface FileRoutesById {
   '/about/executive-committee': typeof AboutExecutiveCommitteeRoute
   '/about/governance': typeof AboutGovernanceRoute
   '/about/history': typeof AboutHistoryRoute
+  '/about/international-coaches': typeof AboutInternationalCoachesRoute
   '/about/international-judges': typeof AboutInternationalJudgesRoute
   '/about/technical-committee': typeof AboutTechnicalCommitteeRoute
   '/about/yoga-as-a-sport': typeof AboutYogaAsASportRoute
@@ -268,6 +278,7 @@ export interface FileRouteTypes {
     | '/about/executive-committee'
     | '/about/governance'
     | '/about/history'
+    | '/about/international-coaches'
     | '/about/international-judges'
     | '/about/technical-committee'
     | '/about/yoga-as-a-sport'
@@ -295,6 +306,7 @@ export interface FileRouteTypes {
     | '/about/executive-committee'
     | '/about/governance'
     | '/about/history'
+    | '/about/international-coaches'
     | '/about/international-judges'
     | '/about/technical-committee'
     | '/about/yoga-as-a-sport'
@@ -323,6 +335,7 @@ export interface FileRouteTypes {
     | '/about/executive-committee'
     | '/about/governance'
     | '/about/history'
+    | '/about/international-coaches'
     | '/about/international-judges'
     | '/about/technical-committee'
     | '/about/yoga-as-a-sport'
@@ -352,6 +365,7 @@ export interface RootRouteChildren {
   AboutExecutiveCommitteeRoute: typeof AboutExecutiveCommitteeRoute
   AboutGovernanceRoute: typeof AboutGovernanceRoute
   AboutHistoryRoute: typeof AboutHistoryRoute
+  AboutInternationalCoachesRoute: typeof AboutInternationalCoachesRoute
   AboutInternationalJudgesRoute: typeof AboutInternationalJudgesRoute
   AboutTechnicalCommitteeRoute: typeof AboutTechnicalCommitteeRoute
   AboutYogaAsASportRoute: typeof AboutYogaAsASportRoute
@@ -512,6 +526,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutInternationalJudgesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about/international-coaches': {
+      id: '/about/international-coaches'
+      path: '/about/international-coaches'
+      fullPath: '/about/international-coaches'
+      preLoaderRoute: typeof AboutInternationalCoachesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about/history': {
       id: '/about/history'
       path: '/about/history'
@@ -581,6 +602,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutExecutiveCommitteeRoute: AboutExecutiveCommitteeRoute,
   AboutGovernanceRoute: AboutGovernanceRoute,
   AboutHistoryRoute: AboutHistoryRoute,
+  AboutInternationalCoachesRoute: AboutInternationalCoachesRoute,
   AboutInternationalJudgesRoute: AboutInternationalJudgesRoute,
   AboutTechnicalCommitteeRoute: AboutTechnicalCommitteeRoute,
   AboutYogaAsASportRoute: AboutYogaAsASportRoute,
