@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as RulesRouteImport } from './routes/rules'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as JoinUsRouteImport } from './routes/join-us'
 import { Route as GovernanceRouteImport } from './routes/governance'
 import { Route as DonateRouteImport } from './routes/donate'
 import { Route as DashboardRouteImport } from './routes/dashboard'
@@ -50,6 +51,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JoinUsRoute = JoinUsRouteImport.update({
+  id: '/join-us',
+  path: '/join-us',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GovernanceRoute = GovernanceRouteImport.update({
@@ -181,6 +187,7 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRoute
   '/donate': typeof DonateRoute
   '/governance': typeof GovernanceRoute
+  '/join-us': typeof JoinUsRoute
   '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
   '/rules': typeof RulesRoute
@@ -209,6 +216,7 @@ export interface FileRoutesByTo {
   '/dashboard': typeof DashboardRoute
   '/donate': typeof DonateRoute
   '/governance': typeof GovernanceRoute
+  '/join-us': typeof JoinUsRoute
   '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
   '/rules': typeof RulesRoute
@@ -239,6 +247,7 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRoute
   '/donate': typeof DonateRoute
   '/governance': typeof GovernanceRoute
+  '/join-us': typeof JoinUsRoute
   '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
   '/rules': typeof RulesRoute
@@ -270,6 +279,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/donate'
     | '/governance'
+    | '/join-us'
     | '/login'
     | '/privacy'
     | '/rules'
@@ -298,6 +308,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/donate'
     | '/governance'
+    | '/join-us'
     | '/login'
     | '/privacy'
     | '/rules'
@@ -327,6 +338,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/donate'
     | '/governance'
+    | '/join-us'
     | '/login'
     | '/privacy'
     | '/rules'
@@ -357,6 +369,7 @@ export interface RootRouteChildren {
   DashboardRoute: typeof DashboardRoute
   DonateRoute: typeof DonateRoute
   GovernanceRoute: typeof GovernanceRoute
+  JoinUsRoute: typeof JoinUsRoute
   LoginRoute: typeof LoginRoute
   PrivacyRoute: typeof PrivacyRoute
   RulesRoute: typeof RulesRoute
@@ -398,6 +411,13 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/join-us': {
+      id: '/join-us'
+      path: '/join-us'
+      fullPath: '/join-us'
+      preLoaderRoute: typeof JoinUsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/governance': {
@@ -594,6 +614,7 @@ const rootRouteChildren: RootRouteChildren = {
   DashboardRoute: DashboardRoute,
   DonateRoute: DonateRoute,
   GovernanceRoute: GovernanceRoute,
+  JoinUsRoute: JoinUsRoute,
   LoginRoute: LoginRoute,
   PrivacyRoute: PrivacyRoute,
   RulesRoute: RulesRoute,
