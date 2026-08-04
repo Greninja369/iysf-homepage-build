@@ -36,52 +36,51 @@ export function IysfWordmark({ light = false }: { light?: boolean }) {
 type Item = { label: string; to: string; hash?: string };
 
 const ABOUT_ITEMS: Item[] = [
-  { label: "Yoga as a sport?", to: "/", hash: "about" },
-  { label: "Champions", to: "/", hash: "about" },
-  { label: "Executive Committee", to: "/", hash: "about" },
-  { label: "Athletes' Commission", to: "/", hash: "about" },
-  { label: "Technical Committee", to: "/", hash: "about" },
-  { label: "International Judges", to: "/academy/judging" },
-  { label: "International Coaches", to: "/academy/coaching" },
   { label: "History", to: "/about/history" },
-  { label: "Athletes", to: "/academy/athletes" },
-  { label: "Governance", to: "/governance" },
+  { label: "Governance", to: "/about/governance" },
+  { label: "Yoga as a Sport", to: "/about/yoga-as-a-sport" },
+  { label: "Champions", to: "/about/champions" },
+  { label: "Executive Committee", to: "/about/executive-committee" },
+  { label: "Athletes' Commission", to: "/about/athletes-commission" },
+  { label: "Technical Committee", to: "/about/technical-committee" },
+  { label: "International Judges", to: "/about/international-judges" },
+  { label: "International Coaches", to: "/about/international-coaches" },
 ];
 
 const ACADEMY_ITEMS: Item[] = [
-  { label: "IYSF Academy", to: "/academy" },
-  { label: "Training", to: "/academy/athletes" },
+  { label: "Overview", to: "/academy" },
+  { label: "Training", to: "/academy/training" },
   { label: "Judging", to: "/academy/judging" },
   { label: "Coaching", to: "/academy/coaching" },
 ];
 
-const MAIN_LINKS: Item[] = [
-  { label: "News", to: "/", hash: "news" },
+const COMPETE_ITEMS: Item[] = [
   { label: "Rules", to: "/rules" },
   { label: "Events", to: "/events" },
-  { label: "Championship results", to: "/results" },
+  { label: "Championship Results", to: "/results" },
+  { label: "Directory", to: "/directory" },
 ];
 
 const TAIL_LINKS: Item[] = [
   { label: "Directory", to: "/directory" },
-  { label: "Contact", to: "/", hash: "contact" },
+  { label: "Contact", to: "/contact" },
 ];
 
 /* Explore / quick-links list, shared by the footer and the homepage
    "Quick links" block so new pages stay discoverable sitewide. */
 export const EXPLORE_LINKS: Item[] = [
-  { label: "About", to: "/", hash: "about" },
-  { label: "News", to: "/", hash: "news" },
+  { label: "History", to: "/about/history" },
+  { label: "Governance", to: "/about/governance" },
   { label: "Rules", to: "/rules" },
   { label: "Events", to: "/events" },
   { label: "Results", to: "/results" },
   { label: "Academy", to: "/academy" },
   { label: "Directory", to: "/directory" },
-  { label: "Governance", to: "/governance" },
-  { label: "History", to: "/about/history" },
+  { label: "Executive Committee", to: "/about/executive-committee" },
+  { label: "Contact", to: "/contact" },
   { label: "Donate", to: "/donate" },
   { label: "Privacy", to: "/privacy" },
-  { label: "Join us", to: "/", hash: "join" },
+  { label: "Join us", to: "/join-us" },
 ];
 
 function Dropdown({
@@ -152,21 +151,7 @@ export function Nav() {
 
         <nav className="hidden items-center gap-5 xl:flex">
           <Dropdown label="About" items={ABOUT_ITEMS} wide />
-          {MAIN_LINKS.map((l) => (
-            <Link
-              key={l.label}
-              to={l.to}
-              hash={l.hash}
-              className="group relative text-[13px] font-semibold transition-colors"
-              style={{ color: IYSF.charcoal }}
-            >
-              {l.label}
-              <span
-                className="absolute -bottom-1.5 left-0 h-[2px] w-0 transition-all duration-300 group-hover:w-full"
-                style={{ background: IYSF.magenta }}
-              />
-            </Link>
-          ))}
+          <Dropdown label="Compete" items={COMPETE_ITEMS} />
           <Dropdown label="Academy" items={ACADEMY_ITEMS} />
           {TAIL_LINKS.map((l) => (
             <Link
@@ -201,8 +186,7 @@ export function Nav() {
             Donate
           </Link>
           <Link
-            to="/"
-            hash="join"
+            to="/join-us"
             className="rounded-[10px] px-4 py-2 text-[13px] font-bold text-white transition-all hover:-translate-y-0.5"
             style={{ background: IYSF.orange, boxShadow: "0 10px 22px -12px rgba(250,175,64,0.9)" }}
           >
@@ -223,9 +207,9 @@ export function Nav() {
       {open && (
         <div className="max-h-[70vh] overflow-y-auto bg-white xl:hidden" style={{ borderTop: `1px solid ${IYSF.blueLine}` }}>
           <nav className="mx-auto flex max-w-[1320px] flex-col gap-0.5 px-5 py-3">
-            {[...ABOUT_ITEMS.slice(7, 10), ...MAIN_LINKS, ...ACADEMY_ITEMS, ...TAIL_LINKS].map((l) => (
+            {[...ABOUT_ITEMS, ...COMPETE_ITEMS, ...ACADEMY_ITEMS, ...TAIL_LINKS.slice(1)].map((l) => (
               <Link
-                key={l.label}
+                key={`${l.label}-${l.to}`}
                 to={l.to}
                 hash={l.hash}
                 onClick={() => setOpen(false)}
