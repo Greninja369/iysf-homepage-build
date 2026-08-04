@@ -28,6 +28,7 @@ import { Route as AcademyJudgingRouteImport } from './routes/academy.judging'
 import { Route as AcademyCoachingRouteImport } from './routes/academy.coaching'
 import { Route as AcademyAthletesRouteImport } from './routes/academy.athletes'
 import { Route as AboutHistoryRouteImport } from './routes/about.history'
+import { Route as AboutGovernanceRouteImport } from './routes/about.governance'
 
 const RulesRoute = RulesRouteImport.update({
   id: '/rules',
@@ -124,6 +125,11 @@ const AboutHistoryRoute = AboutHistoryRouteImport.update({
   path: '/about/history',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutGovernanceRoute = AboutGovernanceRouteImport.update({
+  id: '/about/governance',
+  path: '/about/governance',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -134,6 +140,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
   '/rules': typeof RulesRoute
+  '/about/governance': typeof AboutGovernanceRoute
   '/about/history': typeof AboutHistoryRoute
   '/academy/athletes': typeof AcademyAthletesRoute
   '/academy/coaching': typeof AcademyCoachingRoute
@@ -154,6 +161,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
   '/rules': typeof RulesRoute
+  '/about/governance': typeof AboutGovernanceRoute
   '/about/history': typeof AboutHistoryRoute
   '/academy/athletes': typeof AcademyAthletesRoute
   '/academy/coaching': typeof AcademyCoachingRoute
@@ -176,6 +184,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
   '/rules': typeof RulesRoute
+  '/about/governance': typeof AboutGovernanceRoute
   '/about/history': typeof AboutHistoryRoute
   '/academy/athletes': typeof AcademyAthletesRoute
   '/academy/coaching': typeof AcademyCoachingRoute
@@ -199,6 +208,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/privacy'
     | '/rules'
+    | '/about/governance'
     | '/about/history'
     | '/academy/athletes'
     | '/academy/coaching'
@@ -219,6 +229,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/privacy'
     | '/rules'
+    | '/about/governance'
     | '/about/history'
     | '/academy/athletes'
     | '/academy/coaching'
@@ -240,6 +251,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/privacy'
     | '/rules'
+    | '/about/governance'
     | '/about/history'
     | '/academy/athletes'
     | '/academy/coaching'
@@ -262,6 +274,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   PrivacyRoute: typeof PrivacyRoute
   RulesRoute: typeof RulesRoute
+  AboutGovernanceRoute: typeof AboutGovernanceRoute
   AboutHistoryRoute: typeof AboutHistoryRoute
   DirectorySlugRoute: typeof DirectorySlugRoute
   EventsSlugRoute: typeof EventsSlugRoute
@@ -406,6 +419,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutHistoryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about/governance': {
+      id: '/about/governance'
+      path: '/about/governance'
+      fullPath: '/about/governance'
+      preLoaderRoute: typeof AboutGovernanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -435,6 +455,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   PrivacyRoute: PrivacyRoute,
   RulesRoute: RulesRoute,
+  AboutGovernanceRoute: AboutGovernanceRoute,
   AboutHistoryRoute: AboutHistoryRoute,
   DirectorySlugRoute: DirectorySlugRoute,
   EventsSlugRoute: EventsSlugRoute,
