@@ -30,6 +30,7 @@ import { Route as AcademyAthletesRouteImport } from './routes/academy.athletes'
 import { Route as AboutYogaAsASportRouteImport } from './routes/about.yoga-as-a-sport'
 import { Route as AboutHistoryRouteImport } from './routes/about.history'
 import { Route as AboutGovernanceRouteImport } from './routes/about.governance'
+import { Route as AboutExecutiveCommitteeRouteImport } from './routes/about.executive-committee'
 import { Route as AboutChampionsRouteImport } from './routes/about.champions'
 
 const RulesRoute = RulesRouteImport.update({
@@ -137,6 +138,11 @@ const AboutGovernanceRoute = AboutGovernanceRouteImport.update({
   path: '/about/governance',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutExecutiveCommitteeRoute = AboutExecutiveCommitteeRouteImport.update({
+  id: '/about/executive-committee',
+  path: '/about/executive-committee',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutChampionsRoute = AboutChampionsRouteImport.update({
   id: '/about/champions',
   path: '/about/champions',
@@ -153,6 +159,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/rules': typeof RulesRoute
   '/about/champions': typeof AboutChampionsRoute
+  '/about/executive-committee': typeof AboutExecutiveCommitteeRoute
   '/about/governance': typeof AboutGovernanceRoute
   '/about/history': typeof AboutHistoryRoute
   '/about/yoga-as-a-sport': typeof AboutYogaAsASportRoute
@@ -176,6 +183,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/rules': typeof RulesRoute
   '/about/champions': typeof AboutChampionsRoute
+  '/about/executive-committee': typeof AboutExecutiveCommitteeRoute
   '/about/governance': typeof AboutGovernanceRoute
   '/about/history': typeof AboutHistoryRoute
   '/about/yoga-as-a-sport': typeof AboutYogaAsASportRoute
@@ -201,6 +209,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/rules': typeof RulesRoute
   '/about/champions': typeof AboutChampionsRoute
+  '/about/executive-committee': typeof AboutExecutiveCommitteeRoute
   '/about/governance': typeof AboutGovernanceRoute
   '/about/history': typeof AboutHistoryRoute
   '/about/yoga-as-a-sport': typeof AboutYogaAsASportRoute
@@ -227,6 +236,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/rules'
     | '/about/champions'
+    | '/about/executive-committee'
     | '/about/governance'
     | '/about/history'
     | '/about/yoga-as-a-sport'
@@ -250,6 +260,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/rules'
     | '/about/champions'
+    | '/about/executive-committee'
     | '/about/governance'
     | '/about/history'
     | '/about/yoga-as-a-sport'
@@ -274,6 +285,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/rules'
     | '/about/champions'
+    | '/about/executive-committee'
     | '/about/governance'
     | '/about/history'
     | '/about/yoga-as-a-sport'
@@ -299,6 +311,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   RulesRoute: typeof RulesRoute
   AboutChampionsRoute: typeof AboutChampionsRoute
+  AboutExecutiveCommitteeRoute: typeof AboutExecutiveCommitteeRoute
   AboutGovernanceRoute: typeof AboutGovernanceRoute
   AboutHistoryRoute: typeof AboutHistoryRoute
   AboutYogaAsASportRoute: typeof AboutYogaAsASportRoute
@@ -459,6 +472,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutGovernanceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about/executive-committee': {
+      id: '/about/executive-committee'
+      path: '/about/executive-committee'
+      fullPath: '/about/executive-committee'
+      preLoaderRoute: typeof AboutExecutiveCommitteeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about/champions': {
       id: '/about/champions'
       path: '/about/champions'
@@ -496,6 +516,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   RulesRoute: RulesRoute,
   AboutChampionsRoute: AboutChampionsRoute,
+  AboutExecutiveCommitteeRoute: AboutExecutiveCommitteeRoute,
   AboutGovernanceRoute: AboutGovernanceRoute,
   AboutHistoryRoute: AboutHistoryRoute,
   AboutYogaAsASportRoute: AboutYogaAsASportRoute,
