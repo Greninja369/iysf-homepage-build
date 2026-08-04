@@ -26,6 +26,7 @@ import { Route as AcademyIndexRouteImport } from './routes/academy.index'
 import { Route as ResultsSlugRouteImport } from './routes/results.$slug'
 import { Route as EventsSlugRouteImport } from './routes/events.$slug'
 import { Route as DirectorySlugRouteImport } from './routes/directory.$slug'
+import { Route as AcademyTrainingRouteImport } from './routes/academy.training'
 import { Route as AcademyJudgingRouteImport } from './routes/academy.judging'
 import { Route as AcademyCoachingRouteImport } from './routes/academy.coaching'
 import { Route as AcademyAthletesRouteImport } from './routes/academy.athletes'
@@ -124,6 +125,11 @@ const DirectorySlugRoute = DirectorySlugRouteImport.update({
   path: '/directory/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AcademyTrainingRoute = AcademyTrainingRouteImport.update({
+  id: '/training',
+  path: '/training',
+  getParentRoute: () => AcademyRoute,
+} as any)
 const AcademyJudgingRoute = AcademyJudgingRouteImport.update({
   id: '/judging',
   path: '/judging',
@@ -210,6 +216,7 @@ export interface FileRoutesByFullPath {
   '/academy/athletes': typeof AcademyAthletesRoute
   '/academy/coaching': typeof AcademyCoachingRoute
   '/academy/judging': typeof AcademyJudgingRoute
+  '/academy/training': typeof AcademyTrainingRoute
   '/directory/$slug': typeof DirectorySlugRoute
   '/events/$slug': typeof EventsSlugRoute
   '/results/$slug': typeof ResultsSlugRoute
@@ -240,6 +247,7 @@ export interface FileRoutesByTo {
   '/academy/athletes': typeof AcademyAthletesRoute
   '/academy/coaching': typeof AcademyCoachingRoute
   '/academy/judging': typeof AcademyJudgingRoute
+  '/academy/training': typeof AcademyTrainingRoute
   '/directory/$slug': typeof DirectorySlugRoute
   '/events/$slug': typeof EventsSlugRoute
   '/results/$slug': typeof ResultsSlugRoute
@@ -272,6 +280,7 @@ export interface FileRoutesById {
   '/academy/athletes': typeof AcademyAthletesRoute
   '/academy/coaching': typeof AcademyCoachingRoute
   '/academy/judging': typeof AcademyJudgingRoute
+  '/academy/training': typeof AcademyTrainingRoute
   '/directory/$slug': typeof DirectorySlugRoute
   '/events/$slug': typeof EventsSlugRoute
   '/results/$slug': typeof ResultsSlugRoute
@@ -305,6 +314,7 @@ export interface FileRouteTypes {
     | '/academy/athletes'
     | '/academy/coaching'
     | '/academy/judging'
+    | '/academy/training'
     | '/directory/$slug'
     | '/events/$slug'
     | '/results/$slug'
@@ -335,6 +345,7 @@ export interface FileRouteTypes {
     | '/academy/athletes'
     | '/academy/coaching'
     | '/academy/judging'
+    | '/academy/training'
     | '/directory/$slug'
     | '/events/$slug'
     | '/results/$slug'
@@ -366,6 +377,7 @@ export interface FileRouteTypes {
     | '/academy/athletes'
     | '/academy/coaching'
     | '/academy/judging'
+    | '/academy/training'
     | '/directory/$slug'
     | '/events/$slug'
     | '/results/$slug'
@@ -524,6 +536,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DirectorySlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/academy/training': {
+      id: '/academy/training'
+      path: '/training'
+      fullPath: '/academy/training'
+      preLoaderRoute: typeof AcademyTrainingRouteImport
+      parentRoute: typeof AcademyRoute
+    }
     '/academy/judging': {
       id: '/academy/judging'
       path: '/judging'
@@ -615,6 +634,7 @@ interface AcademyRouteChildren {
   AcademyAthletesRoute: typeof AcademyAthletesRoute
   AcademyCoachingRoute: typeof AcademyCoachingRoute
   AcademyJudgingRoute: typeof AcademyJudgingRoute
+  AcademyTrainingRoute: typeof AcademyTrainingRoute
   AcademyIndexRoute: typeof AcademyIndexRoute
 }
 
@@ -622,6 +642,7 @@ const AcademyRouteChildren: AcademyRouteChildren = {
   AcademyAthletesRoute: AcademyAthletesRoute,
   AcademyCoachingRoute: AcademyCoachingRoute,
   AcademyJudgingRoute: AcademyJudgingRoute,
+  AcademyTrainingRoute: AcademyTrainingRoute,
   AcademyIndexRoute: AcademyIndexRoute,
 }
 
