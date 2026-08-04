@@ -27,6 +27,7 @@ import { Route as DirectorySlugRouteImport } from './routes/directory.$slug'
 import { Route as AcademyJudgingRouteImport } from './routes/academy.judging'
 import { Route as AcademyCoachingRouteImport } from './routes/academy.coaching'
 import { Route as AcademyAthletesRouteImport } from './routes/academy.athletes'
+import { Route as AboutYogaAsASportRouteImport } from './routes/about.yoga-as-a-sport'
 import { Route as AboutHistoryRouteImport } from './routes/about.history'
 import { Route as AboutGovernanceRouteImport } from './routes/about.governance'
 
@@ -120,6 +121,11 @@ const AcademyAthletesRoute = AcademyAthletesRouteImport.update({
   path: '/athletes',
   getParentRoute: () => AcademyRoute,
 } as any)
+const AboutYogaAsASportRoute = AboutYogaAsASportRouteImport.update({
+  id: '/about/yoga-as-a-sport',
+  path: '/about/yoga-as-a-sport',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutHistoryRoute = AboutHistoryRouteImport.update({
   id: '/about/history',
   path: '/about/history',
@@ -142,6 +148,7 @@ export interface FileRoutesByFullPath {
   '/rules': typeof RulesRoute
   '/about/governance': typeof AboutGovernanceRoute
   '/about/history': typeof AboutHistoryRoute
+  '/about/yoga-as-a-sport': typeof AboutYogaAsASportRoute
   '/academy/athletes': typeof AcademyAthletesRoute
   '/academy/coaching': typeof AcademyCoachingRoute
   '/academy/judging': typeof AcademyJudgingRoute
@@ -163,6 +170,7 @@ export interface FileRoutesByTo {
   '/rules': typeof RulesRoute
   '/about/governance': typeof AboutGovernanceRoute
   '/about/history': typeof AboutHistoryRoute
+  '/about/yoga-as-a-sport': typeof AboutYogaAsASportRoute
   '/academy/athletes': typeof AcademyAthletesRoute
   '/academy/coaching': typeof AcademyCoachingRoute
   '/academy/judging': typeof AcademyJudgingRoute
@@ -186,6 +194,7 @@ export interface FileRoutesById {
   '/rules': typeof RulesRoute
   '/about/governance': typeof AboutGovernanceRoute
   '/about/history': typeof AboutHistoryRoute
+  '/about/yoga-as-a-sport': typeof AboutYogaAsASportRoute
   '/academy/athletes': typeof AcademyAthletesRoute
   '/academy/coaching': typeof AcademyCoachingRoute
   '/academy/judging': typeof AcademyJudgingRoute
@@ -210,6 +219,7 @@ export interface FileRouteTypes {
     | '/rules'
     | '/about/governance'
     | '/about/history'
+    | '/about/yoga-as-a-sport'
     | '/academy/athletes'
     | '/academy/coaching'
     | '/academy/judging'
@@ -231,6 +241,7 @@ export interface FileRouteTypes {
     | '/rules'
     | '/about/governance'
     | '/about/history'
+    | '/about/yoga-as-a-sport'
     | '/academy/athletes'
     | '/academy/coaching'
     | '/academy/judging'
@@ -253,6 +264,7 @@ export interface FileRouteTypes {
     | '/rules'
     | '/about/governance'
     | '/about/history'
+    | '/about/yoga-as-a-sport'
     | '/academy/athletes'
     | '/academy/coaching'
     | '/academy/judging'
@@ -276,6 +288,7 @@ export interface RootRouteChildren {
   RulesRoute: typeof RulesRoute
   AboutGovernanceRoute: typeof AboutGovernanceRoute
   AboutHistoryRoute: typeof AboutHistoryRoute
+  AboutYogaAsASportRoute: typeof AboutYogaAsASportRoute
   DirectorySlugRoute: typeof DirectorySlugRoute
   EventsSlugRoute: typeof EventsSlugRoute
   ResultsSlugRoute: typeof ResultsSlugRoute
@@ -412,6 +425,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AcademyAthletesRouteImport
       parentRoute: typeof AcademyRoute
     }
+    '/about/yoga-as-a-sport': {
+      id: '/about/yoga-as-a-sport'
+      path: '/about/yoga-as-a-sport'
+      fullPath: '/about/yoga-as-a-sport'
+      preLoaderRoute: typeof AboutYogaAsASportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about/history': {
       id: '/about/history'
       path: '/about/history'
@@ -457,6 +477,7 @@ const rootRouteChildren: RootRouteChildren = {
   RulesRoute: RulesRoute,
   AboutGovernanceRoute: AboutGovernanceRoute,
   AboutHistoryRoute: AboutHistoryRoute,
+  AboutYogaAsASportRoute: AboutYogaAsASportRoute,
   DirectorySlugRoute: DirectorySlugRoute,
   EventsSlugRoute: EventsSlugRoute,
   ResultsSlugRoute: ResultsSlugRoute,
