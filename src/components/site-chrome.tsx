@@ -324,6 +324,34 @@ function MobileGroup({
 }
 
 export function Footer({ minimal = false }: { minimal?: boolean }) {
+  return <FooterInner minimal={minimal} />;
+}
+
+/* Social icons route to the contact page until the federation's verified
+   channel URLs are supplied — no dead "#" links anywhere. */
+function SocialRow() {
+  return (
+    <div className="flex items-center gap-3">
+      {([
+        [Facebook, "Facebook"],
+        [Instagram, "Instagram"],
+        [Youtube, "YouTube"],
+      ] as const).map(([Icon, name]) => (
+        <Link
+          key={name}
+          to="/contact"
+          aria-label={`${name} — request IYSF channel details`}
+          title={`${name} — verified channel link pending; contact IYSF`}
+          className="inline-flex h-9 w-9 items-center justify-center rounded-[10px] border border-white/15 transition-colors hover:bg-white/10"
+        >
+          <Icon size={16} color={IYSF.blue} aria-hidden="true" />
+        </Link>
+      ))}
+    </div>
+  );
+}
+
+function FooterInner({ minimal = false }: { minimal?: boolean }) {
   const links: Item[] = EXPLORE_LINKS;
   return (
     <footer style={{ background: IYSF.charcoal, color: "#fff", fontFamily: "var(--font-sans)" }}>
