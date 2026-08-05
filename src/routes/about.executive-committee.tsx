@@ -86,7 +86,7 @@ function ExecutiveCommitteePage() {
         <ul className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {OFFICERS.map((o) => (
             <li key={o.name}>
-              <InfoCard title={o.name} meta={o.role} accent={o.accent}>
+              <InfoCard title={o.name} meta={o.role} accent={o.accent} photo>
                 {o.bio}
               </InfoCard>
             </li>
