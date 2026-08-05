@@ -198,7 +198,200 @@ function StatStrip() {
   );
 }
 
-/* ----------------------------- About Us ----------------------------- */
+/* --------------------------- About preview -------------------------- */
+function AboutPreview() {
+  return (
+    <section id="about" className="bg-white">
+      <div className="mx-auto grid max-w-[1320px] items-center gap-10 px-5 py-20 md:grid-cols-2 md:px-8 md:py-24">
+        <Reveal>
+          <div>
+            <h2 className="text-[30px] md:text-[44px]" style={H2()}>
+              About the federation
+            </h2>
+            <p className="mt-5 text-base leading-relaxed md:text-[17px]" style={{ color: "rgba(65,64,66,0.78)" }}>
+              IYSF was founded in 2013 to give competitive Yogasana the same footing as any other
+              judged sport: written rules, certified officials, and results that hold up to
+              scrutiny. From a single international championship, the federation now oversees
+              national qualifiers, continental rounds and a world final each season.
+            </p>
+            <p className="mt-4 text-base leading-relaxed md:text-[17px]" style={{ color: "rgba(65,64,66,0.78)" }}>
+              Everything the federation does points one way — recognition of Yogasana on the
+              Olympic pathway.
+            </p>
+            <Link
+              to="/about/history"
+              className="mt-7 inline-flex items-center gap-1.5 text-sm font-bold"
+              style={{ color: IYSF.magenta }}
+            >
+              Learn more <ArrowRight size={15} aria-hidden="true" />
+            </Link>
+          </div>
+        </Reveal>
+        <Reveal delay={100}>
+          <div className="grid grid-cols-2 gap-4">
+            {[
+              { src: aboutCompetition, alt: "Athlete mid-routine at an IYSF championship" },
+              { src: aboutSport, alt: "Judges scoring a competition round" },
+              { src: aboutChampions, alt: "Medal ceremony at a world championship" },
+              { src: aboutGovernance, alt: "Federation officials in session" },
+            ].map((c) => (
+              <img
+                key={c.src}
+                src={c.src}
+                alt={c.alt}
+                loading="lazy"
+                width={900}
+                height={700}
+                className="h-36 w-full rounded-[12px] object-cover md:h-44"
+                style={{ border: `1px solid ${IYSF.blueLine}` }}
+              />
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------- Featured officers ------------------------ */
+function FeaturedOfficers() {
+  const officers = [
+    { name: "Rajashree Choudhury", role: "President (USA)", accent: IYSF.orange },
+    { name: "Mritunjay Kumar Pandey", role: "Secretary General (India)", accent: IYSF.blue },
+    { name: "Christian Scaraglino", role: "Vice-President (Sweden)", accent: IYSF.magenta },
+    { name: "Umang Dawn", role: "Vice-President (India)", accent: IYSF.blue },
+    { name: "Adrian Alarcon", role: "Vice-President (Mexico)", accent: IYSF.magenta },
+  ];
+  return (
+    <section className="bg-white">
+      <div className="mx-auto max-w-[1320px] px-5 pb-20 md:px-8 md:pb-24">
+        <Reveal>
+          <h2 className="text-[30px] md:text-[44px]" style={H2()}>
+            Who runs IYSF
+          </h2>
+          <p className="mt-4 max-w-[620px] text-sm leading-relaxed md:text-base" style={{ color: "rgba(65,64,66,0.72)" }}>
+            The Executive Committee is elected by the membership and carries the federation's
+            day-to-day decisions, from championship oversight to international recognition work.
+          </p>
+        </Reveal>
+        <div className="mt-10 grid grid-cols-2 gap-5 md:grid-cols-5">
+          {officers.map((o, i) => (
+            <Reveal key={o.name} delay={i * 70}>
+              <Link
+                to="/about/executive-committee"
+                className="flex h-full flex-col items-center p-5 text-center transition-transform hover:-translate-y-1"
+                style={CARD}
+              >
+                <PhotoPlaceholder name={o.name} accent={o.accent} />
+                <span
+                  className="mt-4 text-[15px] font-bold leading-snug"
+                  style={{ color: IYSF.charcoal, fontFamily: "var(--font-display)" }}
+                >
+                  {o.name}
+                </span>
+                <span className="mt-1 text-[12px] font-semibold" style={{ color: "rgba(65,64,66,0.7)" }}>
+                  {o.role}
+                </span>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+        <div className="mt-8">
+          <Link
+            to="/about/executive-committee"
+            className="inline-flex items-center gap-1.5 text-sm font-bold"
+            style={{ color: IYSF.magenta }}
+          >
+            Full Executive Committee <ArrowRight size={15} aria-hidden="true" />
+          </Link>
+        </div>
+        <p className="mt-4 text-xs" style={{ color: "rgba(65,64,66,0.6)" }}>
+          Portraits are labeled placeholders — approved headshots will replace them.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------- Upcoming events ------------------------- */
+function UpcomingEvents() {
+  const next = upcomingEvents().slice(0, 3);
+  return (
+    <section style={{ background: IYSF.blueWash }}>
+      <div className="mx-auto max-w-[1320px] px-5 py-20 md:px-8 md:py-24">
+        <Reveal>
+          <h2 className="text-[30px] md:text-[44px]" style={H2()}>
+            Upcoming events
+          </h2>
+        </Reveal>
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {next.map((e, i) => (
+            <Reveal key={e.slug} delay={i * 80}>
+              <Link
+                to="/events/$slug"
+                params={{ slug: e.slug }}
+                className="block h-full p-6 transition-transform hover:-translate-y-1"
+                style={CARD}
+              >
+                <span
+                  className="inline-block rounded-full px-2.5 py-1 text-[10.5px] font-bold uppercase tracking-[0.16em] text-white"
+                  style={{ background: IYSF.blue }}
+                >
+                  {e.tier}
+                </span>
+                <h3
+                  className="mt-4 text-[19px] leading-snug"
+                  style={{ color: IYSF.charcoal, fontFamily: "var(--font-display)", fontWeight: 800 }}
+                >
+                  {e.name}
+                </h3>
+                <div className="mt-2 text-[13px]" style={{ fontFamily: "var(--font-mono)", color: IYSF.magenta }}>
+                  {e.date}
+                </div>
+                <p className="mt-2 text-sm" style={{ color: "rgba(65,64,66,0.72)" }}>
+                  {e.location}
+                </p>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+        <div className="mt-8">
+          <Link to="/events" className="inline-flex items-center gap-1.5 text-sm font-bold" style={{ color: IYSF.magenta }}>
+            Full calendar <ArrowRight size={15} aria-hidden="true" />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------ Membership CTA band ----------------------- */
+function MembershipCta() {
+  return (
+    <section style={{ background: IYSF.orange }}>
+      <div className="mx-auto flex max-w-[1320px] flex-col items-start justify-between gap-6 px-5 py-14 md:flex-row md:items-center md:px-8 md:py-16">
+        <div>
+          <h2 className="max-w-[720px] text-[26px] leading-tight md:text-[36px]" style={H2({ color: "#3A2400" })}>
+            Bring Your Federation Into IYSF
+          </h2>
+          <p className="mt-3 max-w-[560px] text-sm md:text-base" style={{ color: "#3A2400" }}>
+            Membership gives your athletes a graded route to continental and world competition,
+            and your officials the certification to run it.
+          </p>
+        </div>
+        <Link
+          to="/join-us"
+          className="shrink-0 rounded-[12px] px-7 py-4 text-base font-bold text-white transition-transform hover:-translate-y-0.5"
+          style={{ background: "#14181F" }}
+        >
+          Join us
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------- Legacy About cards ------------------------ */
 function AboutUs() {
   const cards = [
     { img: aboutCompetition, title: "About", desc: "Yoga Sports as athletic competition.", to: "/about/history" },
