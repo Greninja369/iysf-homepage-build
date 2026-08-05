@@ -99,23 +99,68 @@ export function Prose({ children }: { children: ReactNode }) {
   );
 }
 
+/* ------------------------------------------------------------------ */
+/* Headshot placeholder. No external imagery is used anywhere — this   */
+/* renders initials on a tinted brand circle and is clearly labeled as */
+/* a placeholder until approved photos are uploaded.                   */
+/* ------------------------------------------------------------------ */
+export function initialsOf(name: string) {
+  return name
+    .replace(/^Dr\.\s*/, "")
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((p) => p[0])
+    .join("");
+}
+
+export function PhotoPlaceholder({
+  name,
+  size = "md",
+  accent = IYSF.blue,
+}: {
+  name: string;
+  size?: "sm" | "md";
+  accent?: string;
+}) {
+  const dim = size === "sm" ? "h-16 w-16 text-[15px]" : "h-24 w-24 text-[22px]";
+  return (
+    <div
+      className={`flex ${dim} items-center justify-center rounded-full font-bold`}
+      style={{ background: IYSF.blueWash, color: accent, border: `2px solid ${IYSF.blueLine}` }}
+      role="img"
+      aria-label={`Photo placeholder for ${name} — approved headshot pending`}
+      title={`Photo placeholder — ${name}`}
+    >
+      {initialsOf(name)}
+    </div>
+  );
+}
+
 export function InfoCard({
   title,
   meta,
   children,
   accent = IYSF.blue,
+  photo = false,
 }: {
   title: string;
   meta?: string;
   children?: ReactNode;
   accent?: string;
+  /** render a labeled headshot placeholder above the name */
+  photo?: boolean;
 }) {
   return (
     <div
       className="rounded-[12px] border bg-white p-6"
       style={{ borderColor: IYSF.blueLine, boxShadow: IYSF.blueShadow }}
     >
-      <div className="h-[3px] w-10" style={{ background: accent }} />
+      {photo ? (
+        <PhotoPlaceholder name={title} accent={accent} />
+      ) : (
+        <div className="h-[3px] w-10" style={{ background: accent }} />
+      )}
       <h3
         className="mt-4 text-[18px]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#14181F" }}

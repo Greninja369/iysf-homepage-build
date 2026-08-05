@@ -111,7 +111,7 @@ function CoachesPage() {
         <ul className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {COACHES.map((c) => (
             <li key={c.name}>
-              <InfoCard title={c.name} meta={c.role} accent={c.accent}>
+              <InfoCard title={c.name} meta={c.role} accent={c.accent} photo>
                 {c.bio}
               </InfoCard>
             </li>

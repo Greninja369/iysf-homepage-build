@@ -35,11 +35,15 @@ export function IysfWordmark({ light = false }: { light?: boolean }) {
 
 type Item = { label: string; to: string; hash?: string };
 
+/* Flat, functional-first navigation: dropdowns only for tightly related
+   sub-pages; every main functional page is a direct top-level link. */
 const ABOUT_ITEMS: Item[] = [
   { label: "History", to: "/about/history" },
   { label: "Governance", to: "/about/governance" },
   { label: "Yoga as a Sport", to: "/about/yoga-as-a-sport" },
-  { label: "Champions", to: "/about/champions" },
+];
+
+const OFFICIALS_ITEMS: Item[] = [
   { label: "Executive Committee", to: "/about/executive-committee" },
   { label: "Athletes' Commission", to: "/about/athletes-commission" },
   { label: "Technical Committee", to: "/about/technical-committee" },
@@ -48,22 +52,21 @@ const ABOUT_ITEMS: Item[] = [
 ];
 
 const ACADEMY_ITEMS: Item[] = [
-  { label: "Overview", to: "/academy" },
   { label: "Training", to: "/academy/training" },
   { label: "Judging", to: "/academy/judging" },
   { label: "Coaching", to: "/academy/coaching" },
 ];
 
-const COMPETE_ITEMS: Item[] = [
+/* Direct top-level links, in display order after the dropdowns. */
+const RULES_EVENTS_LINKS: Item[] = [
   { label: "Rules", to: "/rules" },
   { label: "Events", to: "/events" },
   { label: "Championship Results", to: "/results" },
-  { label: "Directory", to: "/directory" },
 ];
 
 const TAIL_LINKS: Item[] = [
   { label: "Directory", to: "/directory" },
-  { label: "Contact", to: "/contact" },
+  { label: "Champions", to: "/about/champions" },
 ];
 
 /* Explore / quick-links list, shared by the footer and the homepage
@@ -150,8 +153,33 @@ export function Nav() {
         </Link>
 
         <nav className="hidden items-center gap-5 xl:flex">
-          <Dropdown label="About" items={ABOUT_ITEMS} wide />
-          <Dropdown label="Compete" items={COMPETE_ITEMS} />
+          <Link
+            to="/"
+            className="group relative text-[13px] font-semibold transition-colors"
+            style={{ color: IYSF.charcoal }}
+          >
+            Home
+            <span
+              className="absolute -bottom-1.5 left-0 h-[2px] w-0 transition-all duration-300 group-hover:w-full"
+              style={{ background: IYSF.magenta }}
+            />
+          </Link>
+          <Dropdown label="About" items={ABOUT_ITEMS} />
+          <Dropdown label="Officials" items={OFFICIALS_ITEMS} />
+          {RULES_EVENTS_LINKS.map((l) => (
+            <Link
+              key={l.label}
+              to={l.to}
+              className="group relative text-[13px] font-semibold transition-colors"
+              style={{ color: IYSF.charcoal }}
+            >
+              {l.label}
+              <span
+                className="absolute -bottom-1.5 left-0 h-[2px] w-0 transition-all duration-300 group-hover:w-full"
+                style={{ background: IYSF.magenta }}
+              />
+            </Link>
+          ))}
           <Dropdown label="Academy" items={ACADEMY_ITEMS} />
           {TAIL_LINKS.map((l) => (
             <Link
@@ -171,6 +199,13 @@ export function Nav() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <Link
+            to="/contact"
+            className="hidden text-[13px] font-semibold transition-colors hover:opacity-70 lg:inline-block"
+            style={{ color: IYSF.charcoal }}
+          >
+            Contact
+          </Link>
           <Link
             to="/login"
             className="hidden text-[13px] font-semibold transition-colors hover:opacity-70 lg:inline-block"
@@ -207,26 +242,19 @@ export function Nav() {
       {open && (
         <div className="max-h-[70vh] overflow-y-auto bg-white xl:hidden" style={{ borderTop: `1px solid ${IYSF.blueLine}` }}>
           <nav className="mx-auto flex max-w-[1320px] flex-col gap-0.5 px-5 py-3">
-            {[...ABOUT_ITEMS, ...COMPETE_ITEMS, ...ACADEMY_ITEMS, ...TAIL_LINKS.slice(1)].map((l) => (
-              <Link
-                key={`${l.label}-${l.to}`}
-                to={l.to}
-                hash={l.hash}
-                onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-2.5 text-sm font-semibold hover:bg-[rgba(66,152,211,0.08)]"
-                style={{ color: IYSF.charcoal }}
-              >
-                {l.label}
-              </Link>
+            <MobileLink to="/" label="Home" onDone={() => setOpen(false)} />
+            <MobileGroup title="About" items={ABOUT_ITEMS} onDone={() => setOpen(false)} />
+            <MobileGroup title="Officials" items={OFFICIALS_ITEMS} onDone={() => setOpen(false)} />
+            {RULES_EVENTS_LINKS.map((l) => (
+              <MobileLink key={l.label} to={l.to} label={l.label} onDone={() => setOpen(false)} />
             ))}
-            <Link
-              to="/login"
-              onClick={() => setOpen(false)}
-              className="rounded-lg px-3 py-2.5 text-sm font-semibold hover:bg-[rgba(66,152,211,0.08)]"
-              style={{ color: IYSF.charcoal }}
-            >
-              Log in
-            </Link>
+            <MobileGroup title="Academy" items={ACADEMY_ITEMS} onDone={() => setOpen(false)} />
+            {TAIL_LINKS.map((l) => (
+              <MobileLink key={l.label} to={l.to} label={l.label} onDone={() => setOpen(false)} />
+            ))}
+            <div className="my-2 h-px" style={{ background: IYSF.blueLine }} />
+            <MobileLink to="/contact" label="Contact" onDone={() => setOpen(false)} />
+            <MobileLink to="/login" label="Log in" onDone={() => setOpen(false)} />
             <Link
               to="/donate"
               onClick={() => setOpen(false)}
@@ -235,6 +263,14 @@ export function Nav() {
             >
               Donate
             </Link>
+            <Link
+              to="/join-us"
+              onClick={() => setOpen(false)}
+              className="mt-1 rounded-[10px] px-3 py-2.5 text-center text-sm font-bold text-white"
+              style={{ background: IYSF.orange }}
+            >
+              Join us
+            </Link>
           </nav>
         </div>
       )}
@@ -242,25 +278,87 @@ export function Nav() {
   );
 }
 
+function MobileLink({ to, label, onDone }: { to: string; label: string; onDone: () => void }) {
+  return (
+    <Link
+      to={to}
+      onClick={onDone}
+      className="rounded-lg px-3 py-2.5 text-sm font-semibold hover:bg-[rgba(66,152,211,0.08)]"
+      style={{ color: IYSF.charcoal }}
+    >
+      {label}
+    </Link>
+  );
+}
+
+function MobileGroup({
+  title,
+  items,
+  onDone,
+}: {
+  title: string;
+  items: Item[];
+  onDone: () => void;
+}) {
+  return (
+    <div className="py-1">
+      <div
+        className="px-3 pb-1 pt-2 text-[10.5px] font-bold uppercase tracking-[0.2em]"
+        style={{ color: IYSF.blue }}
+      >
+        {title}
+      </div>
+      {items.map((l) => (
+        <Link
+          key={l.to}
+          to={l.to}
+          onClick={onDone}
+          className="block rounded-lg px-3 py-2.5 text-sm font-medium hover:bg-[rgba(66,152,211,0.08)]"
+          style={{ color: IYSF.charcoal }}
+        >
+          {l.label}
+        </Link>
+      ))}
+    </div>
+  );
+}
+
 export function Footer({ minimal = false }: { minimal?: boolean }) {
+  return <FooterInner minimal={minimal} />;
+}
+
+/* Social icons route to the contact page until the federation's verified
+   channel URLs are supplied — no dead "#" links anywhere. */
+function SocialRow() {
+  return (
+    <div className="flex items-center gap-3">
+      {([
+        [Facebook, "Facebook"],
+        [Instagram, "Instagram"],
+        [Youtube, "YouTube"],
+      ] as const).map(([Icon, name]) => (
+        <Link
+          key={name}
+          to="/contact"
+          aria-label={`${name} — request IYSF channel details`}
+          title={`${name} — verified channel link pending; contact IYSF`}
+          className="inline-flex h-9 w-9 items-center justify-center rounded-[10px] border border-white/15 transition-colors hover:bg-white/10"
+        >
+          <Icon size={16} color={IYSF.blue} aria-hidden="true" />
+        </Link>
+      ))}
+    </div>
+  );
+}
+
+function FooterInner({ minimal = false }: { minimal?: boolean }) {
   const links: Item[] = EXPLORE_LINKS;
   return (
     <footer style={{ background: IYSF.charcoal, color: "#fff", fontFamily: "var(--font-sans)" }}>
       {minimal ? (
         <div className="mx-auto flex max-w-[1320px] flex-col items-center gap-4 px-5 py-10 md:px-8">
           <IysfWordmark light />
-          <div className="flex items-center gap-3">
-            {[Facebook, Instagram, Youtube].map((Icon, i) => (
-              <span
-                key={i}
-                aria-hidden="true"
-                title="Social profile link pending"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-[10px] border border-white/15"
-              >
-                <Icon size={16} color={IYSF.blue} />
-              </span>
-            ))}
-          </div>
+          <SocialRow />
         </div>
       ) : (
       <div className="mx-auto grid max-w-[1320px] gap-10 px-5 py-14 md:grid-cols-[1.3fr_1fr_1fr] md:px-8">
@@ -269,17 +367,8 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
           <p className="mt-4 max-w-[320px] text-sm leading-relaxed text-white/70">
             International Yoga Sports Federation — the global governing body for Yogasana sport.
           </p>
-          <div className="mt-5 flex items-center gap-3">
-            {[Facebook, Instagram, Youtube].map((Icon, i) => (
-              <span
-                key={i}
-                aria-hidden="true"
-                title="Social profile link pending"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-[10px] border border-white/15"
-              >
-                <Icon size={16} color={IYSF.blue} />
-              </span>
-            ))}
+          <div className="mt-5">
+            <SocialRow />
           </div>
         </div>
 
@@ -309,6 +398,12 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
             <br />
             Lausanne, Switzerland
           </address>
+          <Link
+            to="/contact"
+            className="mt-4 inline-block text-sm font-semibold text-white/85 hover:text-white"
+          >
+            Contact IYSF →
+          </Link>
         </div>
       </div>
       )}

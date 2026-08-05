@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageShell, PageHeader, Section, Prose } from "../components/page-shell";
+import { PageShell, PageHeader, Section, Prose, PhotoPlaceholder } from "../components/page-shell";
 import { IYSF } from "../components/site-chrome";
 
 export const Route = createFileRoute("/about/international-judges")({
@@ -60,16 +60,6 @@ const JUDGES: [string, string][] = [
   ["Imelda Turner", "Australia"],
 ];
 
-function initials(name: string) {
-  return name
-    .replace(/^Dr\.\s*/, "")
-    .split(" ")
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((p) => p[0])
-    .join("");
-}
-
 function JudgesPage() {
   return (
     <PageShell>
@@ -101,13 +91,8 @@ function JudgesPage() {
               className="rounded-[12px] border bg-white p-4 text-center"
               style={{ borderColor: IYSF.blueLine }}
             >
-              <div
-                className="mx-auto flex h-16 w-16 items-center justify-center rounded-full text-[15px] font-bold"
-                style={{ background: IYSF.blueWash, color: IYSF.blue }}
-                role="img"
-                aria-label={`Photograph of ${name} pending — placeholder portrait`}
-              >
-                {initials(name)}
+              <div className="flex justify-center">
+                <PhotoPlaceholder name={name} size="sm" />
               </div>
               <div
                 className="mt-3 text-[14px] leading-snug"

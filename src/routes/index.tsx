@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { Volume2, VolumeX, Play, Pause, ArrowRight, Globe2, Trophy, GraduationCap } from "lucide-react";
 import { Nav, Footer, IYSF } from "../components/site-chrome";
 import { JoinForm } from "../components/join-form";
+import { PhotoPlaceholder } from "../components/page-shell";
+import { upcomingEvents } from "../data/iysf";
 import { Reveal } from "../components/history-motion";
 import heroVideo from "../assets/hero-championship.mp4.asset.json";
 import heroPoster from "../assets/hero-championship.jpg";
@@ -151,9 +153,31 @@ function Hero() {
   );
 }
 
-/* ---------------------------- Stat strip ---------------------------- */
+/* --------------------------- Mission strip --------------------------- */
+function MissionStrip() {
+  return (
+    <section className="bg-white" style={{ borderBottom: `1px solid ${IYSF.blueLine}` }}>
+      <div className="mx-auto max-w-[1100px] px-5 py-10 text-center md:px-8 md:py-12">
+        <p
+          className="text-[19px] leading-snug md:text-[26px]"
+          style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: IYSF.charcoal }}
+        >
+          IYSF exists to govern Yogasana as a measured sport — one rulebook, one scoring
+          standard, and one competitive pathway for every national federation.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ----------------------------- Stats bar ---------------------------- */
 function StatStrip() {
-  const stats = ["64 member federations", "Est. 2013 · Lausanne", "16 world championships", "6 continents"];
+  const stats = [
+    "Founded 2013",
+    "64 member federations",
+    "48 countries represented",
+    "16 championships held",
+  ];
   return (
     <section style={{ background: IYSF.blue }}>
       <div className="mx-auto grid max-w-[1320px] grid-cols-2 px-5 md:grid-cols-4 md:px-8">
@@ -176,54 +200,199 @@ function StatStrip() {
   );
 }
 
-/* ----------------------------- About Us ----------------------------- */
-function AboutUs() {
-  const cards = [
-    { img: aboutCompetition, title: "About", desc: "Yoga Sports as athletic competition.", to: "/about/history" },
-    { img: aboutSport, title: "Yoga as a sport?", desc: "The āsana angle: strength, balance, precision.", to: "/rules" },
-    { img: aboutChampions, title: "Champions", desc: "Past winners of our world championships.", to: "/events" },
-    { img: aboutGovernance, title: "Governance", desc: "Swiss non-profit, est. 2013, Lausanne.", to: "/about/history" },
-  ] as const;
+/* --------------------------- About preview -------------------------- */
+function AboutPreview() {
   return (
     <section id="about" className="bg-white">
-      <div className="mx-auto max-w-[1320px] px-5 py-20 md:px-8 md:py-24">
+      <div className="mx-auto grid max-w-[1320px] items-center gap-10 px-5 py-20 md:grid-cols-2 md:px-8 md:py-24">
+        <Reveal>
+          <div>
+            <h2 className="text-[30px] md:text-[44px]" style={H2()}>
+              About the federation
+            </h2>
+            <p className="mt-5 text-base leading-relaxed md:text-[17px]" style={{ color: "rgba(65,64,66,0.78)" }}>
+              IYSF was founded in 2013 to give competitive Yogasana the same footing as any other
+              judged sport: written rules, certified officials, and results that hold up to
+              scrutiny. From a single international championship, the federation now oversees
+              national qualifiers, continental rounds and a world final each season.
+            </p>
+            <p className="mt-4 text-base leading-relaxed md:text-[17px]" style={{ color: "rgba(65,64,66,0.78)" }}>
+              Everything the federation does points one way — recognition of Yogasana on the
+              Olympic pathway.
+            </p>
+            <Link
+              to="/about/history"
+              className="mt-7 inline-flex items-center gap-1.5 text-sm font-bold"
+              style={{ color: IYSF.magenta }}
+            >
+              Learn more <ArrowRight size={15} aria-hidden="true" />
+            </Link>
+          </div>
+        </Reveal>
+        <Reveal delay={100}>
+          <div className="grid grid-cols-2 gap-4">
+            {[
+              { src: aboutCompetition, alt: "Athlete mid-routine at an IYSF championship" },
+              { src: aboutSport, alt: "Judges scoring a competition round" },
+              { src: aboutChampions, alt: "Medal ceremony at a world championship" },
+              { src: aboutGovernance, alt: "Federation officials in session" },
+            ].map((c) => (
+              <img
+                key={c.src}
+                src={c.src}
+                alt={c.alt}
+                loading="lazy"
+                width={900}
+                height={700}
+                className="h-36 w-full rounded-[12px] object-cover md:h-44"
+                style={{ border: `1px solid ${IYSF.blueLine}` }}
+              />
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------- Featured officers ------------------------ */
+function FeaturedOfficers() {
+  const officers = [
+    { name: "Rajashree Choudhury", role: "President (USA)", accent: IYSF.orange },
+    { name: "Mritunjay Kumar Pandey", role: "Secretary General (India)", accent: IYSF.blue },
+    { name: "Christian Scaraglino", role: "Vice-President (Sweden)", accent: IYSF.magenta },
+    { name: "Umang Dawn", role: "Vice-President (India)", accent: IYSF.blue },
+    { name: "Adrian Alarcon", role: "Vice-President (Mexico)", accent: IYSF.magenta },
+  ];
+  return (
+    <section className="bg-white">
+      <div className="mx-auto max-w-[1320px] px-5 pb-20 md:px-8 md:pb-24">
         <Reveal>
           <h2 className="text-[30px] md:text-[44px]" style={H2()}>
-            About Us
+            Who runs IYSF
           </h2>
+          <p className="mt-4 max-w-[620px] text-sm leading-relaxed md:text-base" style={{ color: "rgba(65,64,66,0.72)" }}>
+            The Executive Committee is elected by the membership and carries the federation's
+            day-to-day decisions, from championship oversight to international recognition work.
+          </p>
         </Reveal>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {cards.map((c, i) => (
-            <Reveal key={c.title} delay={i * 80}>
+        <div className="mt-10 grid grid-cols-2 gap-5 md:grid-cols-5">
+          {officers.map((o, i) => (
+            <Reveal key={o.name} delay={i * 70}>
               <Link
-                to={c.to}
-                className="group block h-full overflow-hidden transition-transform hover:-translate-y-1"
+                to="/about/executive-committee"
+                className="flex h-full flex-col items-center p-5 text-center transition-transform hover:-translate-y-1"
                 style={CARD}
               >
-                <img
-                  src={c.img}
-                  alt={c.title}
-                  loading="lazy"
-                  width={900}
-                  height={700}
-                  className="h-44 w-full object-cover"
-                />
-                <div className="p-5">
-                  <h3 className="text-[18px] font-bold" style={{ color: IYSF.charcoal, fontFamily: "var(--font-display)" }}>
-                    {c.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed" style={{ color: "rgba(65,64,66,0.72)" }}>
-                    {c.desc}
-                  </p>
-                </div>
+                <PhotoPlaceholder name={o.name} accent={o.accent} />
+                <span
+                  className="mt-4 text-[15px] font-bold leading-snug"
+                  style={{ color: IYSF.charcoal, fontFamily: "var(--font-display)" }}
+                >
+                  {o.name}
+                </span>
+                <span className="mt-1 text-[12px] font-semibold" style={{ color: "rgba(65,64,66,0.7)" }}>
+                  {o.role}
+                </span>
               </Link>
             </Reveal>
           ))}
+        </div>
+        <div className="mt-8">
+          <Link
+            to="/about/executive-committee"
+            className="inline-flex items-center gap-1.5 text-sm font-bold"
+            style={{ color: IYSF.magenta }}
+          >
+            Full Executive Committee <ArrowRight size={15} aria-hidden="true" />
+          </Link>
+        </div>
+        <p className="mt-4 text-xs" style={{ color: "rgba(65,64,66,0.6)" }}>
+          Portraits are labeled placeholders — approved headshots will replace them.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------- Upcoming events ------------------------- */
+function UpcomingEvents() {
+  const next = upcomingEvents().slice(0, 3);
+  return (
+    <section style={{ background: IYSF.blueWash }}>
+      <div className="mx-auto max-w-[1320px] px-5 py-20 md:px-8 md:py-24">
+        <Reveal>
+          <h2 className="text-[30px] md:text-[44px]" style={H2()}>
+            Upcoming events
+          </h2>
+        </Reveal>
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {next.map((e, i) => (
+            <Reveal key={e.slug} delay={i * 80}>
+              <Link
+                to="/events/$slug"
+                params={{ slug: e.slug }}
+                className="block h-full p-6 transition-transform hover:-translate-y-1"
+                style={CARD}
+              >
+                <span
+                  className="inline-block rounded-full px-2.5 py-1 text-[10.5px] font-bold uppercase tracking-[0.16em] text-white"
+                  style={{ background: IYSF.blue }}
+                >
+                  {e.tier}
+                </span>
+                <h3
+                  className="mt-4 text-[19px] leading-snug"
+                  style={{ color: IYSF.charcoal, fontFamily: "var(--font-display)", fontWeight: 800 }}
+                >
+                  {e.name}
+                </h3>
+                <div className="mt-2 text-[13px]" style={{ fontFamily: "var(--font-mono)", color: IYSF.magenta }}>
+                  {e.date}
+                </div>
+                <p className="mt-2 text-sm" style={{ color: "rgba(65,64,66,0.72)" }}>
+                  {e.location}
+                </p>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+        <div className="mt-8">
+          <Link to="/events" className="inline-flex items-center gap-1.5 text-sm font-bold" style={{ color: IYSF.magenta }}>
+            Full calendar <ArrowRight size={15} aria-hidden="true" />
+          </Link>
         </div>
       </div>
     </section>
   );
 }
+
+/* ------------------------ Membership CTA band ----------------------- */
+function MembershipCta() {
+  return (
+    <section style={{ background: IYSF.orange }}>
+      <div className="mx-auto flex max-w-[1320px] flex-col items-start justify-between gap-6 px-5 py-14 md:flex-row md:items-center md:px-8 md:py-16">
+        <div>
+          <h2 className="max-w-[720px] text-[26px] leading-tight md:text-[36px]" style={H2({ color: "#3A2400" })}>
+            Bring Your Federation Into IYSF
+          </h2>
+          <p className="mt-3 max-w-[560px] text-sm md:text-base" style={{ color: "#3A2400" }}>
+            Membership gives your athletes a graded route to continental and world competition,
+            and your officials the certification to run it.
+          </p>
+        </div>
+        <Link
+          to="/join-us"
+          className="shrink-0 rounded-[12px] px-7 py-4 text-base font-bold text-white transition-transform hover:-translate-y-0.5"
+          style={{ background: "#14181F" }}
+        >
+          Join us
+        </Link>
+      </div>
+    </section>
+  );
+}
+
 
 /* ---------------------------- Why join ------------------------------ */
 function WhyJoin() {
@@ -306,59 +475,6 @@ function WhyJoin() {
   );
 }
 
-/* ---------------------------- How to join --------------------------- */
-function HowToJoin() {
-  const steps = [
-    { n: "01", t: "Apply", d: "Submit your federation's application online." },
-    { n: "02", t: "Review", d: "Our committee reviews governance and structure." },
-    { n: "03", t: "Provisional status", d: "Compete and certify while you build capacity." },
-    { n: "04", t: "Full membership", d: "Voting rights and full championship access." },
-  ];
-  return (
-    <section className="bg-white">
-      <div className="mx-auto max-w-[1320px] px-5 py-20 md:px-8 md:py-24">
-        <Reveal>
-          <h2 className="text-[30px] md:text-[44px]" style={H2()}>
-            How to join
-          </h2>
-        </Reveal>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((s, i) => (
-            <Reveal key={s.n} delay={i * 80}>
-              <div className="h-full p-6" style={CARD}>
-                <span
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-[15px] font-extrabold text-white"
-                  style={{ background: IYSF.orange, fontFamily: "var(--font-mono)" }}
-                >
-                  {s.n}
-                </span>
-                <h3
-                  className="mt-4 text-[18px] font-bold"
-                  style={{ color: IYSF.charcoal, fontFamily: "var(--font-display)" }}
-                >
-                  {s.t}
-                </h3>
-                <p className="mt-1.5 text-sm leading-relaxed" style={{ color: "rgba(65,64,66,0.72)" }}>
-                  {s.d}
-                </p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-        <div className="mt-10 text-center">
-          <Link
-            to="/"
-            hash="join"
-            className="inline-block rounded-[12px] px-7 py-4 text-base font-bold text-white transition-transform hover:-translate-y-0.5"
-            style={{ background: IYSF.orange, boxShadow: "0 16px 36px -16px rgba(250,175,64,0.95)" }}
-          >
-            Start your application
-          </Link>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 /* ------------------------------- News -------------------------------- */
 function News() {
@@ -378,7 +494,7 @@ function News() {
         </Reveal>
         <div className="mt-10 grid gap-6 lg:grid-cols-[1.15fr_1fr]">
           <Reveal>
-            <a href="#" className="group block h-full overflow-hidden" style={CARD}>
+            <Link to="/results" className="group block h-full overflow-hidden" style={CARD}>
               <img
                 src={newsFeatured}
                 alt="Athletes competing at an IYSF world championship"
@@ -405,13 +521,13 @@ function News() {
                   federation's standardized scoring system.
                 </p>
               </div>
-            </a>
+            </Link>
           </Reveal>
 
           <div className="grid gap-4 content-start">
             {rows.map((r, i) => (
               <Reveal key={r.title} delay={i * 70}>
-                <a href="#" className="group flex items-center gap-4 p-3 transition-transform hover:-translate-y-0.5" style={CARD}>
+                <Link to="/events" className="group flex items-center gap-4 p-3 transition-transform hover:-translate-y-0.5" style={CARD}>
                   <img
                     src={r.img}
                     alt=""
@@ -426,7 +542,7 @@ function News() {
                   >
                     {r.title}
                   </h3>
-                </a>
+                </Link>
               </Reveal>
             ))}
           </div>
@@ -436,189 +552,8 @@ function News() {
   );
 }
 
-/* ------------------------------ Donate ------------------------------- */
-function DonateBanner() {
-  return (
-    <section id="donate" style={{ background: IYSF.orange }}>
-      <div className="mx-auto flex max-w-[1320px] flex-col items-start justify-between gap-6 px-5 py-12 md:flex-row md:items-center md:px-8 md:py-14">
-        <h2 className="max-w-[720px] text-[26px] leading-tight text-white md:text-[34px]" style={H2({ color: "#fff" })}>
-          Support IYSF's mission to bring Yogasana to the Olympics
-        </h2>
-        <a
-          href="#"
-          className="shrink-0 rounded-[12px] border-2 border-white px-6 py-3 text-base font-bold text-white transition-colors hover:bg-white/15"
-        >
-          Donate
-        </a>
-      </div>
-    </section>
-  );
-}
 
-/* ------------------------------ Events ------------------------------- */
-function EventsTeaser() {
-  return (
-    <section className="bg-white">
-      <div className="mx-auto max-w-[1320px] px-5 py-20 md:px-8 md:py-24">
-        <Reveal>
-          <h2 className="text-[30px] md:text-[44px]" style={H2()}>
-            Events
-          </h2>
-        </Reveal>
-        <Reveal delay={80}>
-          <div className="mt-8 flex flex-col gap-6 p-6 md:flex-row md:items-center md:p-8" style={CARD}>
-            <div className="flex-1">
-              <p className="text-[20px] font-bold md:text-[24px]" style={{ color: IYSF.charcoal, fontFamily: "var(--font-display)" }}>
-                See what's coming up in the calendar
-              </p>
-              <Link
-                to="/events"
-                className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold"
-                style={{ color: IYSF.magenta }}
-              >
-                View events <ArrowRight size={15} aria-hidden="true" />
-              </Link>
-            </div>
-            <div className="grid grid-cols-2 gap-4 md:w-[420px]">
-              <img
-                src={event1}
-                alt="Championship arena"
-                loading="lazy"
-                width={680}
-                height={512}
-                className="h-28 w-full rounded-[12px] object-cover"
-              />
-              <img
-                src={delegation2}
-                alt="Flags of member federations"
-                loading="lazy"
-                width={720}
-                height={512}
-                className="h-28 w-full rounded-[12px] object-cover"
-              />
-            </div>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
 
-/* ---------------------------- Get in touch ---------------------------- */
-const COUNTRIES = [
-  "United States", "Canada", "Mexico", "United Kingdom", "Belgium", "France", "Italy", "Sweden",
-  "Latvia", "India", "Nepal", "Malaysia", "Australia", "Türkiye", "Argentina", "United Arab Emirates",
-  "Saudi Arabia", "Egypt", "Morocco", "Algeria", "Palestine", "Côte d'Ivoire", "Other",
-];
-
-function GetInTouch() {
-  const [sent, setSent] = useState(false);
-  const inputCls =
-    "w-full rounded-[10px] border-0 bg-white px-3.5 py-2.5 text-sm text-[#414042] outline-none focus:ring-2 focus:ring-[#4298D3]";
-  return (
-    <section id="contact" style={{ background: IYSF.charcoal }}>
-      <div className="mx-auto grid max-w-[1320px] gap-12 px-5 py-20 md:grid-cols-2 md:px-8 md:py-24">
-        <div>
-          <h2 className="text-[30px] text-white md:text-[40px]" style={H2({ color: "#fff" })}>
-            Get in touch
-          </h2>
-          {sent ? (
-            <p className="mt-6 rounded-[12px] bg-white/10 p-5 text-sm text-white">
-              Thank you — your message has been received. We'll be in touch shortly.
-            </p>
-          ) : (
-            <form
-              className="mt-6 space-y-4"
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSent(true);
-              }}
-            >
-              <div>
-                <label htmlFor="c-name" className="mb-1.5 block text-xs font-bold uppercase tracking-[0.14em] text-white/70">
-                  Name
-                </label>
-                <input id="c-name" name="name" required maxLength={100} className={inputCls} />
-              </div>
-              <div>
-                <label htmlFor="c-email" className="mb-1.5 block text-xs font-bold uppercase tracking-[0.14em] text-white/70">
-                  Email
-                </label>
-                <input id="c-email" name="email" type="email" required maxLength={255} className={inputCls} />
-              </div>
-              <div>
-                <label htmlFor="c-country" className="mb-1.5 block text-xs font-bold uppercase tracking-[0.14em] text-white/70">
-                  Country
-                </label>
-                <select id="c-country" name="country" required defaultValue="" className={inputCls}>
-                  <option value="" disabled>
-                    Select a country
-                  </option>
-                  {COUNTRIES.map((c) => (
-                    <option key={c} value={c}>
-                      {c}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label htmlFor="c-msg" className="mb-1.5 block text-xs font-bold uppercase tracking-[0.14em] text-white/70">
-                  Comment
-                </label>
-                <textarea id="c-msg" name="message" rows={4} required maxLength={1000} className={inputCls} />
-              </div>
-              <label className="flex items-start gap-2.5 text-xs leading-relaxed text-white/70">
-                <input type="checkbox" required className="mt-0.5 h-4 w-4 accent-[#4298D3]" />
-                I consent to IYSF storing and processing my details in line with its privacy policy.
-              </label>
-              <button
-                type="submit"
-                className="rounded-[12px] px-6 py-3 text-sm font-bold text-white transition-transform hover:-translate-y-0.5"
-                style={{ background: IYSF.orange }}
-              >
-                Submit
-              </button>
-            </form>
-          )}
-        </div>
-
-        <div className="md:pl-6">
-          <div className="text-[10.5px] font-bold uppercase tracking-[0.22em]" style={{ color: IYSF.orange }}>
-            Headquarters
-          </div>
-          <address className="mt-3 text-base not-italic leading-relaxed text-white/85">
-            Maison du Sport International
-            <br />
-            Av de Rhodanie 54
-            <br />
-            Lausanne, Switzerland
-          </address>
-          <div className="mt-8 text-[10.5px] font-bold uppercase tracking-[0.22em]" style={{ color: IYSF.orange }}>
-            Quick links
-          </div>
-          <ul className="mt-3 grid grid-cols-2 gap-y-2.5">
-            {[
-              { label: "About", to: "/", hash: "about" },
-              { label: "News", to: "/", hash: "news" },
-              { label: "Rules", to: "/rules" },
-              { label: "Events", to: "/events" },
-              { label: "Results", to: "/events" },
-              { label: "Academy", to: "/academy" },
-              { label: "Directory", to: "/directory" },
-              { label: "Join us", to: "/", hash: "join" },
-            ].map((l) => (
-              <li key={l.label}>
-                <Link to={l.to} hash={l.hash} className="text-sm text-white/80 hover:text-white">
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function Index() {
   useEffect(() => {
@@ -632,17 +567,17 @@ function Index() {
       <Nav />
       <main>
         <Hero />
+        <MissionStrip />
         <StatStrip />
-        <AboutUs />
+        <AboutPreview />
         <WhyJoin />
-        <HowToJoin />
+        <FeaturedOfficers />
+        <UpcomingEvents />
         <News />
-        <DonateBanner />
-        <EventsTeaser />
         <JoinForm />
-        <GetInTouch />
+        <MembershipCta />
       </main>
-      <Footer minimal />
+      <Footer />
     </div>
   );
 }
