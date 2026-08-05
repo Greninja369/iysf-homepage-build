@@ -35,11 +35,15 @@ export function IysfWordmark({ light = false }: { light?: boolean }) {
 
 type Item = { label: string; to: string; hash?: string };
 
+/* Flat, functional-first navigation: dropdowns only for tightly related
+   sub-pages; every main functional page is a direct top-level link. */
 const ABOUT_ITEMS: Item[] = [
   { label: "History", to: "/about/history" },
   { label: "Governance", to: "/about/governance" },
   { label: "Yoga as a Sport", to: "/about/yoga-as-a-sport" },
-  { label: "Champions", to: "/about/champions" },
+];
+
+const OFFICIALS_ITEMS: Item[] = [
   { label: "Executive Committee", to: "/about/executive-committee" },
   { label: "Athletes' Commission", to: "/about/athletes-commission" },
   { label: "Technical Committee", to: "/about/technical-committee" },
@@ -48,22 +52,21 @@ const ABOUT_ITEMS: Item[] = [
 ];
 
 const ACADEMY_ITEMS: Item[] = [
-  { label: "Overview", to: "/academy" },
   { label: "Training", to: "/academy/training" },
   { label: "Judging", to: "/academy/judging" },
   { label: "Coaching", to: "/academy/coaching" },
 ];
 
-const COMPETE_ITEMS: Item[] = [
+/* Direct top-level links, in display order after the dropdowns. */
+const RULES_EVENTS_LINKS: Item[] = [
   { label: "Rules", to: "/rules" },
   { label: "Events", to: "/events" },
   { label: "Championship Results", to: "/results" },
-  { label: "Directory", to: "/directory" },
 ];
 
 const TAIL_LINKS: Item[] = [
   { label: "Directory", to: "/directory" },
-  { label: "Contact", to: "/contact" },
+  { label: "Champions", to: "/about/champions" },
 ];
 
 /* Explore / quick-links list, shared by the footer and the homepage
