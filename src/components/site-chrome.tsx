@@ -153,8 +153,33 @@ export function Nav() {
         </Link>
 
         <nav className="hidden items-center gap-5 xl:flex">
-          <Dropdown label="About" items={ABOUT_ITEMS} wide />
-          <Dropdown label="Compete" items={COMPETE_ITEMS} />
+          <Link
+            to="/"
+            className="group relative text-[13px] font-semibold transition-colors"
+            style={{ color: IYSF.charcoal }}
+          >
+            Home
+            <span
+              className="absolute -bottom-1.5 left-0 h-[2px] w-0 transition-all duration-300 group-hover:w-full"
+              style={{ background: IYSF.magenta }}
+            />
+          </Link>
+          <Dropdown label="About" items={ABOUT_ITEMS} />
+          <Dropdown label="Officials" items={OFFICIALS_ITEMS} />
+          {RULES_EVENTS_LINKS.map((l) => (
+            <Link
+              key={l.label}
+              to={l.to}
+              className="group relative text-[13px] font-semibold transition-colors"
+              style={{ color: IYSF.charcoal }}
+            >
+              {l.label}
+              <span
+                className="absolute -bottom-1.5 left-0 h-[2px] w-0 transition-all duration-300 group-hover:w-full"
+                style={{ background: IYSF.magenta }}
+              />
+            </Link>
+          ))}
           <Dropdown label="Academy" items={ACADEMY_ITEMS} />
           {TAIL_LINKS.map((l) => (
             <Link
@@ -174,6 +199,13 @@ export function Nav() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <Link
+            to="/contact"
+            className="hidden text-[13px] font-semibold transition-colors hover:opacity-70 lg:inline-block"
+            style={{ color: IYSF.charcoal }}
+          >
+            Contact
+          </Link>
           <Link
             to="/login"
             className="hidden text-[13px] font-semibold transition-colors hover:opacity-70 lg:inline-block"
@@ -210,26 +242,19 @@ export function Nav() {
       {open && (
         <div className="max-h-[70vh] overflow-y-auto bg-white xl:hidden" style={{ borderTop: `1px solid ${IYSF.blueLine}` }}>
           <nav className="mx-auto flex max-w-[1320px] flex-col gap-0.5 px-5 py-3">
-            {[...ABOUT_ITEMS, ...COMPETE_ITEMS, ...ACADEMY_ITEMS, ...TAIL_LINKS.slice(1)].map((l) => (
-              <Link
-                key={`${l.label}-${l.to}`}
-                to={l.to}
-                hash={l.hash}
-                onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-2.5 text-sm font-semibold hover:bg-[rgba(66,152,211,0.08)]"
-                style={{ color: IYSF.charcoal }}
-              >
-                {l.label}
-              </Link>
+            <MobileLink to="/" label="Home" onDone={() => setOpen(false)} />
+            <MobileGroup title="About" items={ABOUT_ITEMS} onDone={() => setOpen(false)} />
+            <MobileGroup title="Officials" items={OFFICIALS_ITEMS} onDone={() => setOpen(false)} />
+            {RULES_EVENTS_LINKS.map((l) => (
+              <MobileLink key={l.label} to={l.to} label={l.label} onDone={() => setOpen(false)} />
             ))}
-            <Link
-              to="/login"
-              onClick={() => setOpen(false)}
-              className="rounded-lg px-3 py-2.5 text-sm font-semibold hover:bg-[rgba(66,152,211,0.08)]"
-              style={{ color: IYSF.charcoal }}
-            >
-              Log in
-            </Link>
+            <MobileGroup title="Academy" items={ACADEMY_ITEMS} onDone={() => setOpen(false)} />
+            {TAIL_LINKS.map((l) => (
+              <MobileLink key={l.label} to={l.to} label={l.label} onDone={() => setOpen(false)} />
+            ))}
+            <div className="my-2 h-px" style={{ background: IYSF.blueLine }} />
+            <MobileLink to="/contact" label="Contact" onDone={() => setOpen(false)} />
+            <MobileLink to="/login" label="Log in" onDone={() => setOpen(false)} />
             <Link
               to="/donate"
               onClick={() => setOpen(false)}
@@ -238,10 +263,63 @@ export function Nav() {
             >
               Donate
             </Link>
+            <Link
+              to="/join-us"
+              onClick={() => setOpen(false)}
+              className="mt-1 rounded-[10px] px-3 py-2.5 text-center text-sm font-bold text-white"
+              style={{ background: IYSF.orange }}
+            >
+              Join us
+            </Link>
           </nav>
         </div>
       )}
     </header>
+  );
+}
+
+function MobileLink({ to, label, onDone }: { to: string; label: string; onDone: () => void }) {
+  return (
+    <Link
+      to={to}
+      onClick={onDone}
+      className="rounded-lg px-3 py-2.5 text-sm font-semibold hover:bg-[rgba(66,152,211,0.08)]"
+      style={{ color: IYSF.charcoal }}
+    >
+      {label}
+    </Link>
+  );
+}
+
+function MobileGroup({
+  title,
+  items,
+  onDone,
+}: {
+  title: string;
+  items: Item[];
+  onDone: () => void;
+}) {
+  return (
+    <div className="py-1">
+      <div
+        className="px-3 pb-1 pt-2 text-[10.5px] font-bold uppercase tracking-[0.2em]"
+        style={{ color: IYSF.blue }}
+      >
+        {title}
+      </div>
+      {items.map((l) => (
+        <Link
+          key={l.to}
+          to={l.to}
+          onClick={onDone}
+          className="block rounded-lg px-3 py-2.5 text-sm font-medium hover:bg-[rgba(66,152,211,0.08)]"
+          style={{ color: IYSF.charcoal }}
+        >
+          {l.label}
+        </Link>
+      ))}
+    </div>
   );
 }
 
