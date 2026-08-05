@@ -151,9 +151,31 @@ function Hero() {
   );
 }
 
-/* ---------------------------- Stat strip ---------------------------- */
+/* --------------------------- Mission strip --------------------------- */
+function MissionStrip() {
+  return (
+    <section className="bg-white" style={{ borderBottom: `1px solid ${IYSF.blueLine}` }}>
+      <div className="mx-auto max-w-[1100px] px-5 py-10 text-center md:px-8 md:py-12">
+        <p
+          className="text-[19px] leading-snug md:text-[26px]"
+          style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: IYSF.charcoal }}
+        >
+          IYSF exists to govern Yogasana as a measured sport — one rulebook, one scoring
+          standard, and one competitive pathway for every national federation.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ----------------------------- Stats bar ---------------------------- */
 function StatStrip() {
-  const stats = ["64 member federations", "Est. 2013 · Lausanne", "16 world championships", "6 continents"];
+  const stats = [
+    "Founded 2013",
+    "64 member federations",
+    "48 countries represented",
+    "16 championships held",
+  ];
   return (
     <section style={{ background: IYSF.blue }}>
       <div className="mx-auto grid max-w-[1320px] grid-cols-2 px-5 md:grid-cols-4 md:px-8">
