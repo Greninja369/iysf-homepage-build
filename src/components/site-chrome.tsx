@@ -330,18 +330,7 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
       {minimal ? (
         <div className="mx-auto flex max-w-[1320px] flex-col items-center gap-4 px-5 py-10 md:px-8">
           <IysfWordmark light />
-          <div className="flex items-center gap-3">
-            {[Facebook, Instagram, Youtube].map((Icon, i) => (
-              <span
-                key={i}
-                aria-hidden="true"
-                title="Social profile link pending"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-[10px] border border-white/15"
-              >
-                <Icon size={16} color={IYSF.blue} />
-              </span>
-            ))}
-          </div>
+          <SocialRow />
         </div>
       ) : (
       <div className="mx-auto grid max-w-[1320px] gap-10 px-5 py-14 md:grid-cols-[1.3fr_1fr_1fr] md:px-8">
@@ -350,17 +339,8 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
           <p className="mt-4 max-w-[320px] text-sm leading-relaxed text-white/70">
             International Yoga Sports Federation — the global governing body for Yogasana sport.
           </p>
-          <div className="mt-5 flex items-center gap-3">
-            {[Facebook, Instagram, Youtube].map((Icon, i) => (
-              <span
-                key={i}
-                aria-hidden="true"
-                title="Social profile link pending"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-[10px] border border-white/15"
-              >
-                <Icon size={16} color={IYSF.blue} />
-              </span>
-            ))}
+          <div className="mt-5">
+            <SocialRow />
           </div>
         </div>
 
@@ -390,6 +370,12 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
             <br />
             Lausanne, Switzerland
           </address>
+          <Link
+            to="/contact"
+            className="mt-4 inline-block text-sm font-semibold text-white/85 hover:text-white"
+          >
+            Contact IYSF →
+          </Link>
         </div>
       </div>
       )}
