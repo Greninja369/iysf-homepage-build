@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { Volume2, VolumeX, Play, Pause, ArrowRight, Globe2, Trophy, GraduationCap } from "lucide-react";
 import { Nav, Footer, IYSF } from "../components/site-chrome";
 import { JoinForm } from "../components/join-form";
+import { PhotoPlaceholder } from "../components/page-shell";
+import { upcomingEvents } from "../data/iysf";
 import { Reveal } from "../components/history-motion";
 import heroVideo from "../assets/hero-championship.mp4.asset.json";
 import heroPoster from "../assets/hero-championship.jpg";
