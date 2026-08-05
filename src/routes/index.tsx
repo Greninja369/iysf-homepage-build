@@ -494,7 +494,7 @@ function News() {
         </Reveal>
         <div className="mt-10 grid gap-6 lg:grid-cols-[1.15fr_1fr]">
           <Reveal>
-            <a href="#" className="group block h-full overflow-hidden" style={CARD}>
+            <Link to="/results" className="group block h-full overflow-hidden" style={CARD}>
               <img
                 src={newsFeatured}
                 alt="Athletes competing at an IYSF world championship"
@@ -521,13 +521,13 @@ function News() {
                   federation's standardized scoring system.
                 </p>
               </div>
-            </a>
+            </Link>
           </Reveal>
 
           <div className="grid gap-4 content-start">
             {rows.map((r, i) => (
               <Reveal key={r.title} delay={i * 70}>
-                <a href="#" className="group flex items-center gap-4 p-3 transition-transform hover:-translate-y-0.5" style={CARD}>
+                <Link to="/events" className="group flex items-center gap-4 p-3 transition-transform hover:-translate-y-0.5" style={CARD}>
                   <img
                     src={r.img}
                     alt=""
@@ -542,7 +542,7 @@ function News() {
                   >
                     {r.title}
                   </h3>
-                </a>
+                </Link>
               </Reveal>
             ))}
           </div>
