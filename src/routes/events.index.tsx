@@ -166,6 +166,48 @@ function EventsPage() {
 
         {/* -------- Map + list -------- */}
         <section className="bg-white">
+          <div className="mx-auto max-w-[1240px] px-5 pt-10 md:px-8 md:pt-12">
+            <Link
+              to="/events/world-championship-2026"
+              className="block rounded-[14px] border p-6 transition-transform hover:-translate-y-0.5 md:p-8"
+              style={{
+                borderColor: "rgba(66,152,211,0.28)",
+                background: "rgba(66,152,211,0.06)",
+                boxShadow: "0 14px 34px -18px rgba(66,152,211,0.55)",
+              }}
+            >
+              <div
+                className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[10.5px] font-bold uppercase tracking-[0.2em] text-white"
+                style={{ background: "#DE007A" }}
+              >
+                Featured — next championship
+              </div>
+              <h2
+                className="mt-4 text-[26px] leading-[1.08] md:text-[36px]"
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontWeight: 800,
+                  color: "#414042",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                17th World Championship of Yogasana Sports
+              </h2>
+              <p className="mt-3 text-[15px] font-semibold" style={{ color: "#4298D3" }}>
+                Marina di Camerota, Italy · December 4–6, 2026 · Registration now open
+              </p>
+              <p className="mt-3 max-w-[720px] text-[15px] leading-relaxed" style={{ color: "#3a3a3a" }}>
+                Three days of competition on Italy's Cilento coast, with 150+ athletes from 30+
+                countries across individual, pair, and group categories.
+              </p>
+              <span
+                className="mt-5 inline-flex items-center rounded-[12px] px-5 py-3 text-[14px] font-bold"
+                style={{ background: "#FAAF40", color: "#414042" }}
+              >
+                View championship details
+              </span>
+            </Link>
+          </div>
           <div className="mx-auto max-w-[1240px] px-5 py-10 md:px-8 md:py-14">
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
               {/* Map column */}
