@@ -1,13 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Volume2, VolumeX, Play, Pause, ArrowRight, Globe2, Trophy, GraduationCap } from "lucide-react";
+import { ArrowRight, Globe2, Trophy, GraduationCap } from "lucide-react";
 import { Nav, Footer, IYSF } from "../components/site-chrome";
 import { JoinForm } from "../components/join-form";
 import { PhotoPlaceholder } from "../components/page-shell";
 import { upcomingEvents } from "../data/iysf";
 import { Reveal } from "../components/history-motion";
-import heroVideo from "../assets/hero-championship.mp4.asset.json";
-import heroPoster from "../assets/hero-championship.jpg";
+import heroImage from "../assets/hero-championship.jpg";
 import aboutCompetition from "../assets/about-competition.jpg";
 import aboutSport from "../assets/about-sport.jpg";
 import aboutChampions from "../assets/about-champions.jpg";
@@ -59,34 +58,13 @@ const H2 = (extra?: React.CSSProperties): React.CSSProperties => ({
 
 /* ------------------------------- Hero ------------------------------- */
 function Hero() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(true);
-  const [muted, setMuted] = useState(true);
-
-  const toggle = () => {
-    const v = videoRef.current;
-    if (!v) return;
-    if (v.paused) {
-      void v.play();
-      setPlaying(true);
-    } else {
-      v.pause();
-      setPlaying(false);
-    }
-  };
-
   return (
     <section className="relative isolate min-h-[560px] overflow-hidden md:min-h-[680px]">
-      <video
-        ref={videoRef}
-        className="absolute inset-0 h-full w-full object-cover"
-        src={heroVideo.url}
-        poster={heroPoster}
-        autoPlay
-        loop
-        muted={muted}
-        playsInline
-        aria-label="Highlights from the most recent IYSF World Championship"
+      <img
+        src={heroImage}
+        alt="Athletes competing at an IYSF World Championship"
+        className="absolute inset-0 h-full w-full object-cover object-center"
+        fetchPriority="high"
       />
       <div
         className="absolute inset-0"
@@ -130,24 +108,6 @@ function Hero() {
           </div>
         </div>
 
-        <div className="absolute bottom-6 right-5 flex items-center gap-2 md:right-8">
-          <button
-            type="button"
-            onClick={toggle}
-            aria-label={playing ? "Pause background video" : "Play background video"}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/40 bg-white/20 text-white backdrop-blur transition-colors hover:bg-white/30"
-          >
-            {playing ? <Pause size={16} /> : <Play size={16} />}
-          </button>
-          <button
-            type="button"
-            onClick={() => setMuted((m) => !m)}
-            aria-label={muted ? "Unmute background video" : "Mute background video"}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/40 bg-white/20 text-white backdrop-blur transition-colors hover:bg-white/30"
-          >
-            {muted ? <VolumeX size={16} /> : <Volume2 size={16} />}
-          </button>
-        </div>
       </div>
     </section>
   );
