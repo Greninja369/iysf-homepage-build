@@ -24,6 +24,7 @@ import { Route as EventsIndexRouteImport } from './routes/events.index'
 import { Route as DirectoryIndexRouteImport } from './routes/directory.index'
 import { Route as AcademyIndexRouteImport } from './routes/academy.index'
 import { Route as ResultsSlugRouteImport } from './routes/results.$slug'
+import { Route as EventsWorldChampionship2026RouteImport } from './routes/events.world-championship-2026'
 import { Route as EventsSlugRouteImport } from './routes/events.$slug'
 import { Route as DirectorySlugRouteImport } from './routes/directory.$slug'
 import { Route as AcademyTrainingRouteImport } from './routes/academy.training'
@@ -115,6 +116,12 @@ const ResultsSlugRoute = ResultsSlugRouteImport.update({
   path: '/results/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EventsWorldChampionship2026Route =
+  EventsWorldChampionship2026RouteImport.update({
+    id: '/events/world-championship-2026',
+    path: '/events/world-championship-2026',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const EventsSlugRoute = EventsSlugRouteImport.update({
   id: '/events/$slug',
   path: '/events/$slug',
@@ -219,6 +226,7 @@ export interface FileRoutesByFullPath {
   '/academy/training': typeof AcademyTrainingRoute
   '/directory/$slug': typeof DirectorySlugRoute
   '/events/$slug': typeof EventsSlugRoute
+  '/events/world-championship-2026': typeof EventsWorldChampionship2026Route
   '/results/$slug': typeof ResultsSlugRoute
   '/academy/': typeof AcademyIndexRoute
   '/directory/': typeof DirectoryIndexRoute
@@ -250,6 +258,7 @@ export interface FileRoutesByTo {
   '/academy/training': typeof AcademyTrainingRoute
   '/directory/$slug': typeof DirectorySlugRoute
   '/events/$slug': typeof EventsSlugRoute
+  '/events/world-championship-2026': typeof EventsWorldChampionship2026Route
   '/results/$slug': typeof ResultsSlugRoute
   '/academy': typeof AcademyIndexRoute
   '/directory': typeof DirectoryIndexRoute
@@ -283,6 +292,7 @@ export interface FileRoutesById {
   '/academy/training': typeof AcademyTrainingRoute
   '/directory/$slug': typeof DirectorySlugRoute
   '/events/$slug': typeof EventsSlugRoute
+  '/events/world-championship-2026': typeof EventsWorldChampionship2026Route
   '/results/$slug': typeof ResultsSlugRoute
   '/academy/': typeof AcademyIndexRoute
   '/directory/': typeof DirectoryIndexRoute
@@ -317,6 +327,7 @@ export interface FileRouteTypes {
     | '/academy/training'
     | '/directory/$slug'
     | '/events/$slug'
+    | '/events/world-championship-2026'
     | '/results/$slug'
     | '/academy/'
     | '/directory/'
@@ -348,6 +359,7 @@ export interface FileRouteTypes {
     | '/academy/training'
     | '/directory/$slug'
     | '/events/$slug'
+    | '/events/world-championship-2026'
     | '/results/$slug'
     | '/academy'
     | '/directory'
@@ -380,6 +392,7 @@ export interface FileRouteTypes {
     | '/academy/training'
     | '/directory/$slug'
     | '/events/$slug'
+    | '/events/world-championship-2026'
     | '/results/$slug'
     | '/academy/'
     | '/directory/'
@@ -409,6 +422,7 @@ export interface RootRouteChildren {
   AboutYogaAsASportRoute: typeof AboutYogaAsASportRoute
   DirectorySlugRoute: typeof DirectorySlugRoute
   EventsSlugRoute: typeof EventsSlugRoute
+  EventsWorldChampionship2026Route: typeof EventsWorldChampionship2026Route
   ResultsSlugRoute: typeof ResultsSlugRoute
   DirectoryIndexRoute: typeof DirectoryIndexRoute
   EventsIndexRoute: typeof EventsIndexRoute
@@ -520,6 +534,13 @@ declare module '@tanstack/react-router' {
       path: '/results/$slug'
       fullPath: '/results/$slug'
       preLoaderRoute: typeof ResultsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events/world-championship-2026': {
+      id: '/events/world-championship-2026'
+      path: '/events/world-championship-2026'
+      fullPath: '/events/world-championship-2026'
+      preLoaderRoute: typeof EventsWorldChampionship2026RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/events/$slug': {
@@ -671,6 +692,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutYogaAsASportRoute: AboutYogaAsASportRoute,
   DirectorySlugRoute: DirectorySlugRoute,
   EventsSlugRoute: EventsSlugRoute,
+  EventsWorldChampionship2026Route: EventsWorldChampionship2026Route,
   ResultsSlugRoute: ResultsSlugRoute,
   DirectoryIndexRoute: DirectoryIndexRoute,
   EventsIndexRoute: EventsIndexRoute,
