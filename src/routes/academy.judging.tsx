@@ -27,7 +27,7 @@ export const Route = createFileRoute("/academy/judging")({
   component: JudgingTrack,
 });
 
-const COLOR = "#4898D3";
+const COLOR = "#4298D3";
 
 /* placeholder tiers — replace with real certification levels */
 const TIERS = [

@@ -28,7 +28,7 @@ export function PageHeader({
         </div>
         <h1
           className="text-[36px] leading-[1.04] tracking-[-0.02em] md:text-[56px]"
-          style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#14181F" }}
+          style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#414042" }}
         >
           {title}
         </h1>
@@ -77,7 +77,7 @@ export function Section({
         {heading && (
           <h2
             className="text-[26px] leading-[1.08] tracking-[-0.015em] md:text-[36px]"
-            style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#14181F" }}
+            style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#414042" }}
           >
             {heading}
           </h2>
@@ -163,7 +163,7 @@ export function InfoCard({
       )}
       <h3
         className="mt-4 text-[18px]"
-        style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#14181F" }}
+        style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#414042" }}
       >
         {title}
       </h3>
@@ -200,7 +200,7 @@ export function ComingSoon({
     >
       <div
         className="text-[20px]"
-        style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#14181F" }}
+        style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#414042" }}
       >
         {title}
       </div>
@@ -244,7 +244,7 @@ export function JoinCta() {
           <Link
             to="/join-us"
             className="rounded-[10px] px-5 py-2.5 text-sm font-bold text-white transition-transform hover:-translate-y-0.5"
-            style={{ background: "#14181F" }}
+            style={{ background: "#414042" }}
           >
             Start your application
           </Link>
@@ -263,7 +263,7 @@ export function JoinCta() {
 
 export function PageShell({ children }: { children: ReactNode }) {
   return (
-    <div style={{ fontFamily: "var(--font-sans)", color: "#14181F" }} className="bg-white">
+    <div style={{ fontFamily: "var(--font-sans)", color: "#414042" }} className="bg-white">
       <Nav />
       <main>{children}</main>
       <JoinCta />

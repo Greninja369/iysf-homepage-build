@@ -84,7 +84,7 @@ function ContactPage() {
           <div>
             <h2
               className="text-[22px] md:text-[26px]"
-              style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#14181F" }}
+              style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#414042" }}
             >
               Send an inquiry
             </h2>

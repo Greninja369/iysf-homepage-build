@@ -39,16 +39,16 @@ export const REGIONS: (Region | "All")[] = [
 export const DIVISIONS: Division[] = ["Junior", "Adult", "Masters"];
 
 export const TIER_COLOR: Record<Tier, string> = {
-  "World Championship": "#EA088C",
-  "Continental Qualifier": "#4898D3",
-  "Junior Circuit": "#FBAF43",
-  "Academy Camp": "#575757",
+  "World Championship": "#DE007A",
+  "Continental Qualifier": "#4298D3",
+  "Junior Circuit": "#FAAF40",
+  "Academy Camp": "#414042",
 };
 
 export const STATUS_COLOR: Record<MembershipStatus, string> = {
-  "Full Member": "#4898D3",
-  Provisional: "#FBAF43",
-  Observer: "#EA088C",
+  "Full Member": "#4298D3",
+  Provisional: "#FAAF40",
+  Observer: "#DE007A",
 };
 
 /* ------------------------------ Federations ----------------------- */
@@ -283,21 +283,21 @@ const UPCOMING_EVENTS: EventRecord[] = [
   {
     id: "u1",
     slug: "world-championship-2026",
-    name: "IYSF World Championship 2026",
+    name: "17th World Championship of Yogasana Sports",
     tier: "World Championship",
     region: "Europe",
     status: "upcoming",
-    date: "— / — / 2026",
-    dateISO: "2026-01-01",
+    date: "December 4–6, 2026",
+    dateISO: "2026-12-04",
     year: "2026",
-    venue: "Venue placeholder",
-    location: "Host city placeholder, Europe",
-    lat: 48.85,
-    lng: 2.35,
+    venue: "Palazzetto dello Sport",
+    location: "Marina di Camerota, Italy",
+    lat: 40.0,
+    lng: 15.365,
     hostFederationId: "f1",
     divisions: ["Junior", "Adult", "Masters"],
     summary:
-      "Placeholder summary — the flagship IYSF championship, contested across compulsory and optional rounds under the federation's standardized scoring system.",
+      "The 17th consecutive edition of the championship, staged on Italy's Cilento coast across individual, pair, and group categories under IYSF judging standards. Registration is open.",
     schedule: PLACEHOLDER_SCHEDULE,
   },
   {

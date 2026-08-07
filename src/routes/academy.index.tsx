@@ -29,19 +29,19 @@ const TRACKS = [
     slug: "judging" as const,
     name: "Judging",
     desc: "Certification standards and scoring frameworks for IYSF judges.",
-    color: "#4898D3",
+    color: "#4298D3",
   },
   {
     slug: "athletes" as const,
     name: "Athletes",
     desc: "Development pathways and competition-readiness for registered athletes.",
-    color: "#FBAF43",
+    color: "#FAAF40",
   },
   {
     slug: "coaching" as const,
     name: "Coaching",
     desc: "Curriculum and certification tiers for coaches supporting IYSF athletes.",
-    color: "#EA088C",
+    color: "#DE007A",
   },
 ];
 
@@ -63,7 +63,7 @@ function AcademyOverview() {
         <div className="mx-auto max-w-[1240px] px-5 pt-16 pb-12 md:px-8 md:pt-24 md:pb-16">
           <div
             className="text-[11px] font-semibold uppercase tracking-[0.22em]"
-            style={{ color: "#4898D3" }}
+            style={{ color: "#4298D3" }}
           >
             Academy
           </div>
@@ -72,7 +72,7 @@ function AcademyOverview() {
             style={{
               fontFamily: "var(--font-display)",
               fontWeight: 800,
-              color: "#14181F",
+              color: "#414042",
               fontStretch: "expanded",
             }}
           >
@@ -80,7 +80,7 @@ function AcademyOverview() {
           </h1>
           <p
             className="mt-5 max-w-[640px] text-base leading-relaxed md:text-[17px]"
-            style={{ color: "#575757" }}
+            style={{ color: "#414042" }}
           >
             {/* placeholder subcopy — replace with real academy description */}
             The IYSF Academy is the federation's resource center for judges, athletes, and coaches
@@ -117,14 +117,14 @@ function AcademyOverview() {
                   style={{
                     fontFamily: "var(--font-display)",
                     fontWeight: 800,
-                    color: "#14181F",
+                    color: "#414042",
                   }}
                 >
                   {t.name}
                 </div>
                 <p
                   className="mt-3 text-sm leading-relaxed"
-                  style={{ color: "#575757" }}
+                  style={{ color: "#414042" }}
                 >
                   {/* placeholder track description */}
                   {t.desc}
@@ -158,7 +158,7 @@ function AcademyOverview() {
         <div className="relative mx-auto max-w-[1240px] px-5 py-16 md:px-8 md:py-20">
           <div
             className="mb-8 text-[11px] font-semibold uppercase tracking-[0.22em]"
-            style={{ color: "#FBAF43" }}
+            style={{ color: "#FAAF40" }}
           >
             Academy at a glance
           </div>

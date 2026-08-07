@@ -35,9 +35,9 @@ const EMPTY: FormState = {
   message: "",
 };
 
-const labelCls = "block text-[10.5px] font-semibold uppercase tracking-[0.2em] text-[#575757]";
+const labelCls = "block text-[10.5px] font-semibold uppercase tracking-[0.2em] text-[#414042]";
 const fieldCls =
-  "mt-2 w-full rounded-md border border-black/15 bg-white px-3.5 py-2.5 text-sm text-[#14181F] outline-none transition-colors focus:border-[#4898D3] focus:ring-2 focus:ring-[#4898D3]/20";
+  "mt-2 w-full rounded-md border border-black/15 bg-white px-3.5 py-2.5 text-sm text-[#414042] outline-none transition-colors focus:border-[#4298D3] focus:ring-2 focus:ring-[#4298D3]/20";
 
 function Field({
   id,
@@ -59,7 +59,7 @@ function Field({
       </label>
       {children}
       {error ? (
-        <p id={`${id}-error`} className="mt-1.5 text-xs font-medium" style={{ color: "#EA088C" }}>
+        <p id={`${id}-error`} className="mt-1.5 text-xs font-medium" style={{ color: "#DE007A" }}>
           {error}
         </p>
       ) : null}
@@ -124,16 +124,16 @@ export function JoinForm() {
       <div className="mx-auto max-w-[1240px] px-5 py-20 md:px-8 md:py-24">
         <div className="grid gap-10 md:grid-cols-[0.85fr_1.15fr] md:gap-16">
           <div>
-            <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]" style={{ color: "#EA088C" }}>
+            <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]" style={{ color: "#DE007A" }}>
               Membership
             </div>
             <h2
               className="text-[30px] leading-[1.08] tracking-[-0.015em] md:text-[42px]"
-              style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#14181F" }}
+              style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#414042" }}
             >
               Join a federation
             </h2>
-            <p className="mt-5 max-w-[420px] text-base leading-relaxed" style={{ color: "#575757" }}>
+            <p className="mt-5 max-w-[420px] text-base leading-relaxed" style={{ color: "#414042" }}>
               National bodies governing competitive Yogasana may apply for IYSF affiliation. Submit
               your details and the membership commission will respond with the next steps.
             </p>
@@ -147,11 +147,11 @@ export function JoinForm() {
                 <li key={s} className="flex gap-3">
                   <span
                     className="mt-0.5 text-[12px]"
-                    style={{ fontFamily: "var(--font-mono)", color: "#4898D3" }}
+                    style={{ fontFamily: "var(--font-mono)", color: "#4298D3" }}
                   >
                     0{i + 1}
                   </span>
-                  <span className="text-sm" style={{ color: "#575757" }}>
+                  <span className="text-sm" style={{ color: "#414042" }}>
                     {s}
                   </span>
                 </li>
@@ -164,18 +164,18 @@ export function JoinForm() {
               <div className="flex min-h-[320px] flex-col items-start justify-center">
                 <div
                   className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-full"
-                  style={{ background: "#FBAF43", color: "#3A2400" }}
+                  style={{ background: "#FAAF40", color: "#3A2400" }}
                   aria-hidden="true"
                 >
                   ✓
                 </div>
                 <h3
                   className="text-[24px] leading-tight"
-                  style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#14181F" }}
+                  style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#414042" }}
                 >
                   Application received
                 </h3>
-                <p className="mt-3 max-w-[420px] text-sm leading-relaxed" style={{ color: "#575757" }}>
+                <p className="mt-3 max-w-[420px] text-sm leading-relaxed" style={{ color: "#414042" }}>
                   Thank you. The IYSF membership commission will contact you at the email address
                   provided.
                 </p>
@@ -183,7 +183,7 @@ export function JoinForm() {
                   type="button"
                   onClick={() => setStatus("idle")}
                   className="mt-6 rounded-md border-2 px-4 py-2 text-sm font-semibold transition-all hover:-translate-y-0.5"
-                  style={{ borderColor: "#4898D3", color: "#4898D3" }}
+                  style={{ borderColor: "#4298D3", color: "#4298D3" }}
                 >
                   Submit another application
                 </button>
@@ -317,7 +317,7 @@ export function JoinForm() {
                 </Field>
 
                 {serverError ? (
-                  <p role="alert" className="text-sm font-medium sm:col-span-2" style={{ color: "#EA088C" }}>
+                  <p role="alert" className="text-sm font-medium sm:col-span-2" style={{ color: "#DE007A" }}>
                     {serverError}
                   </p>
                 ) : null}
@@ -327,11 +327,11 @@ export function JoinForm() {
                     type="submit"
                     disabled={status === "saving"}
                     className="rounded-md px-5 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-60"
-                    style={{ background: "#FBAF43", color: "#3A2400" }}
+                    style={{ background: "#FAAF40", color: "#3A2400" }}
                   >
                     {status === "saving" ? "Submitting…" : "Submit application"}
                   </button>
-                  <span className="text-xs" style={{ color: "#575757" }}>
+                  <span className="text-xs" style={{ color: "#414042" }}>
                     Reviewed by the IYSF membership commission.
                   </span>
                 </div>

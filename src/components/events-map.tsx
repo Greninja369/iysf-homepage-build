@@ -59,7 +59,7 @@ export default function EventsMap({
         />
         <FitBounds events={events} />
         {events.map((e) => {
-          const color = tierColor[e.tier] ?? "#EA088C";
+          const color = tierColor[e.tier] ?? "#DE007A";
           const isSel = e.id === selectedId;
           return (
             <CircleMarker
@@ -84,7 +84,7 @@ export default function EventsMap({
                 <span style={{ fontFamily: "var(--font-sans)" }}>
                   <strong>{e.name}</strong>
                   <br />
-                  <span style={{ color: "#575757" }}>{e.location}</span>
+                  <span style={{ color: "#414042" }}>{e.location}</span>
                 </span>
               </Tooltip>
             </CircleMarker>

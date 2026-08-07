@@ -27,7 +27,7 @@ export const Route = createFileRoute("/academy/athletes")({
   component: AthletesTrack,
 });
 
-const COLOR = "#FBAF43";
+const COLOR = "#FAAF40";
 
 /* placeholder tiers — replace with real athlete tracks */
 const TIERS = [

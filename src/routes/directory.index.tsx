@@ -86,7 +86,7 @@ function DirectoryPage() {
   );
 
   return (
-    <div style={{ fontFamily: "var(--font-sans)", color: "#14181F" }}>
+    <div style={{ fontFamily: "var(--font-sans)", color: "#414042" }}>
       <Nav />
       <main>
         {/* -------- Page header -------- */}
@@ -94,7 +94,7 @@ function DirectoryPage() {
           <div className="mx-auto max-w-[1240px] px-5 pt-14 pb-6 md:px-8 md:pt-20 md:pb-8">
             <div
               className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]"
-              style={{ color: "#4898D3" }}
+              style={{ color: "#4298D3" }}
             >
               Federation
             </div>
@@ -103,7 +103,7 @@ function DirectoryPage() {
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 800,
-                color: "#14181F",
+                color: "#414042",
                 fontStretch: "expanded",
               }}
             >
@@ -111,7 +111,7 @@ function DirectoryPage() {
             </h1>
             <p
               className="mt-4 max-w-[620px] text-base md:text-[17px]"
-              style={{ color: "#575757" }}
+              style={{ color: "#414042" }}
             >
               IYSF's network of national federations governing competitive
               Yogasana worldwide.
@@ -127,7 +127,7 @@ function DirectoryPage() {
               <Search
                 size={16}
                 className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2"
-                color="#575757"
+                color="#414042"
                 aria-hidden="true"
               />
               <input
@@ -135,7 +135,7 @@ function DirectoryPage() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search by federation or country"
-                className="w-full rounded-md border border-black/10 bg-white px-9 py-2.5 text-sm outline-none transition-colors focus:border-[#4898D3] focus:ring-2 focus:ring-[#4898D3]/25"
+                className="w-full rounded-md border border-black/10 bg-white px-9 py-2.5 text-sm outline-none transition-colors focus:border-[#4298D3] focus:ring-2 focus:ring-[#4298D3]/25"
               />
             </label>
 
@@ -152,11 +152,11 @@ function DirectoryPage() {
                     role="tab"
                     aria-selected={active}
                     onClick={() => setRegion(r)}
-                    className="rounded-full border px-3 py-1.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4898D3]"
+                    className="rounded-full border px-3 py-1.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]"
                     style={{
-                      borderColor: active ? "#14181F" : "rgba(0,0,0,0.12)",
-                      background: active ? "#14181F" : "#fff",
-                      color: active ? "#fff" : "#14181F",
+                      borderColor: active ? "#414042" : "rgba(0,0,0,0.12)",
+                      background: active ? "#414042" : "#fff",
+                      color: active ? "#fff" : "#414042",
                     }}
                   >
                     {r}
@@ -182,7 +182,7 @@ function DirectoryPage() {
                       fallback={
                         <div
                           className="flex h-full w-full items-center justify-center text-sm"
-                          style={{ color: "#575757" }}
+                          style={{ color: "#414042" }}
                         >
                           Loading map…
                         </div>
@@ -210,7 +210,7 @@ function DirectoryPage() {
                     <li
                       key={s}
                       className="flex items-center gap-2 text-xs"
-                      style={{ color: "#575757" }}
+                      style={{ color: "#414042" }}
                     >
                       <span
                         aria-hidden="true"
@@ -243,7 +243,7 @@ function DirectoryPage() {
               <div>
                 <div
                   className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]"
-                  style={{ color: "#EA088C" }}
+                  style={{ color: "#DE007A" }}
                 >
                   Member federations
                 </div>
@@ -276,7 +276,7 @@ function DirectoryPage() {
           <div className="mx-auto max-w-[1240px] px-5 py-14 md:px-8 md:py-20">
             <div
               className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]"
-              style={{ color: "#575757" }}
+              style={{ color: "#414042" }}
             >
               Membership
             </div>
@@ -285,14 +285,14 @@ function DirectoryPage() {
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 800,
-                color: "#14181F",
+                color: "#414042",
               }}
             >
               Becoming a Member Federation
             </h2>
             <p
               className="mt-4 max-w-[680px] text-base"
-              style={{ color: "#575757" }}
+              style={{ color: "#414042" }}
             >
               Placeholder copy — national bodies seeking recognition follow a
               staged review process covering governance, athlete safeguarding,
@@ -313,7 +313,7 @@ function DirectoryPage() {
                 >
                   <div
                     className="text-[13px]"
-                    style={{ fontFamily: "var(--font-mono)", color: "#4898D3" }}
+                    style={{ fontFamily: "var(--font-mono)", color: "#4298D3" }}
                   >
                     {String(i + 1).padStart(2, "0")}
                   </div>
@@ -322,12 +322,12 @@ function DirectoryPage() {
                     style={{
                       fontFamily: "var(--font-display)",
                       fontWeight: 700,
-                      color: "#14181F",
+                      color: "#414042",
                     }}
                   >
                     {s.t}
                   </h3>
-                  <p className="mt-2 text-sm" style={{ color: "#575757" }}>
+                  <p className="mt-2 text-sm" style={{ color: "#414042" }}>
                     {s.d}
                   </p>
                 </li>
@@ -338,8 +338,8 @@ function DirectoryPage() {
               <Link
                 to="/"
                 hash="join"
-                className="inline-block rounded-md px-5 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4898D3]"
-                style={{ background: "#FBAF43", color: "#3A2400" }}
+                className="inline-block rounded-md px-5 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]"
+                style={{ background: "#FAAF40", color: "#3A2400" }}
               >
                 Start your application
               </Link>
@@ -391,7 +391,7 @@ function FederationCard({
           role="img"
           aria-label={`Placeholder flag or crest for ${f.name}`}
         >
-          <Users size={16} color="#575757" aria-hidden="true" />
+          <Users size={16} color="#414042" aria-hidden="true" />
         </div>
 
         <div className="min-w-0 flex-1">
@@ -400,11 +400,11 @@ function FederationCard({
               {onSelect ? (
                 <button
                   onClick={onSelect}
-                  className="text-left text-[15px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4898D3]"
+                  className="text-left text-[15px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]"
                   style={{
                     fontFamily: "var(--font-display)",
                     fontWeight: 700,
-                    color: "#14181F",
+                    color: "#414042",
                   }}
                 >
                   {f.name}
@@ -413,17 +413,17 @@ function FederationCard({
                 <Link
                   to="/directory/$slug"
                   params={{ slug: f.slug }}
-                  className="text-[15px] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4898D3]"
+                  className="text-[15px] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]"
                   style={{
                     fontFamily: "var(--font-display)",
                     fontWeight: 700,
-                    color: "#14181F",
+                    color: "#414042",
                   }}
                 >
                   {f.name}
                 </Link>
               )}
-              <div className="mt-1 text-sm" style={{ color: "#575757" }}>
+              <div className="mt-1 text-sm" style={{ color: "#414042" }}>
                 {f.country} · {f.region}
               </div>
             </div>
@@ -432,7 +432,7 @@ function FederationCard({
               <button
                 onClick={onClose}
                 aria-label="Close federation details"
-                className="rounded-md p-1 text-[#575757] hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4898D3]"
+                className="rounded-md p-1 text-[#414042] hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]"
               >
                 <X size={16} aria-hidden="true" />
               </button>
@@ -441,12 +441,12 @@ function FederationCard({
 
           <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
             <StatusBadge status={f.status} />
-            <span className="text-xs" style={{ color: "#575757" }}>
+            <span className="text-xs" style={{ color: "#414042" }}>
               President: {f.president}
             </span>
             <span
               className="text-xs"
-              style={{ fontFamily: "var(--font-mono)", color: "#14181F" }}
+              style={{ fontFamily: "var(--font-mono)", color: "#414042" }}
             >
               Joined {f.joined}
             </span>
@@ -456,7 +456,7 @@ function FederationCard({
             <Link
               to="/directory/$slug"
               params={{ slug: f.slug }}
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-[#4898D3] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4898D3]"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-[#4298D3] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]"
             >
               View profile
               <ArrowRight size={14} aria-hidden="true" />
@@ -467,13 +467,13 @@ function FederationCard({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Visit ${f.name} website, opens in new tab`}
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-[#4898D3] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4898D3]"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-[#4298D3] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]"
               >
                 <ExternalLink size={14} aria-hidden="true" />
                 Visit website
               </a>
             ) : (
-              <span className="text-xs" style={{ color: "#575757" }}>
+              <span className="text-xs" style={{ color: "#414042" }}>
                 Website pending
               </span>
             )}
@@ -486,7 +486,7 @@ function FederationCard({
 
 function StatusBadge({ status }: { status: MembershipStatus }) {
   const color = STATUS_COLOR[status];
-  const darkText = color === "#FBAF43";
+  const darkText = color === "#FAAF40";
   return (
     <span
       className="rounded-full px-2.5 py-1 text-[11px] font-semibold"
@@ -509,7 +509,7 @@ function EmptyState() {
       >
         No federations match your search
       </p>
-      <p className="mt-2 text-sm" style={{ color: "#575757" }}>
+      <p className="mt-2 text-sm" style={{ color: "#414042" }}>
         Try a different keyword or select a different region.
       </p>
     </div>

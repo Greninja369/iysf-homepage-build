@@ -96,7 +96,7 @@ function JudgesPage() {
               </div>
               <div
                 className="mt-3 text-[14px] leading-snug"
-                style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#14181F" }}
+                style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#414042" }}
               >
                 {name}
               </div>

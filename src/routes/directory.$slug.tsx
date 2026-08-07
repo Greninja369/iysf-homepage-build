@@ -34,21 +34,21 @@ function FederationDetailPage() {
 
   if (!fed) {
     return (
-      <div style={{ fontFamily: "var(--font-sans)", color: "#14181F" }}>
+      <div style={{ fontFamily: "var(--font-sans)", color: "#414042" }}>
         <Nav />
         <main>
           <div className="mx-auto max-w-[1240px] px-5 py-20 md:px-8">
-            <Breadcrumb parentLabel="Directory" parentTo="/directory" current="Not found" color="#EA088C" />
+            <Breadcrumb parentLabel="Directory" parentTo="/directory" current="Not found" color="#DE007A" />
             <h1
               className="mt-4 text-[32px]"
-              style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#14181F" }}
+              style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#414042" }}
             >
               Federation not found
             </h1>
             <Link
               to="/directory"
               className="mt-6 inline-block text-sm font-semibold hover:underline"
-              style={{ color: "#4898D3" }}
+              style={{ color: "#4298D3" }}
             >
               ← Back to directory
             </Link>
@@ -63,7 +63,7 @@ function FederationDetailPage() {
   const { hosted, competed } = eventsForFederation(fed.id);
 
   return (
-    <div style={{ fontFamily: "var(--font-sans)", color: "#14181F" }}>
+    <div style={{ fontFamily: "var(--font-sans)", color: "#414042" }}>
       <Nav />
       <main>
         <section className="bg-white">
@@ -71,20 +71,20 @@ function FederationDetailPage() {
             <Breadcrumb parentLabel="Directory" parentTo="/directory" current={fed.name} color={color} />
             <span
               className="mt-4 inline-flex w-fit items-center rounded-full px-2.5 py-1 text-[10.5px] font-semibold uppercase tracking-[0.14em]"
-              style={{ background: color, color: color === "#FBAF43" ? "#3A2400" : "#fff" }}
+              style={{ background: color, color: color === "#FAAF40" ? "#3A2400" : "#fff" }}
             >
               {fed.status}
             </span>
             <h1
               className="mt-3 text-[32px] leading-[1.06] tracking-[-0.02em] md:text-[48px]"
-              style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#14181F" }}
+              style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#414042" }}
             >
               {fed.name}
             </h1>
-            <p className="mt-2 text-sm" style={{ fontFamily: "var(--font-mono)", color: "#575757" }}>
+            <p className="mt-2 text-sm" style={{ fontFamily: "var(--font-mono)", color: "#414042" }}>
               {fed.country} · {fed.region} · Joined {fed.joined}
             </p>
-            <p className="mt-5 max-w-[640px] text-base" style={{ color: "#575757" }}>
+            <p className="mt-5 max-w-[640px] text-base" style={{ color: "#414042" }}>
               {fed.summary}
             </p>
           </div>
@@ -95,7 +95,7 @@ function FederationDetailPage() {
             <div className="mx-auto max-w-[1240px] px-5 py-14 md:px-8 md:py-20">
               <div
                 className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]"
-                style={{ color: "#4898D3" }}
+                style={{ color: "#4298D3" }}
               >
                 Championship history
               </div>
@@ -106,11 +106,11 @@ function FederationDetailPage() {
                       to="/events/$slug"
                       params={{ slug: e.slug }}
                       className="text-[15px] hover:underline"
-                      style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#14181F" }}
+                      style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#414042" }}
                     >
                       {e.name}
                     </Link>
-                    <span className="text-xs" style={{ fontFamily: "var(--font-mono)", color: "#575757" }}>
+                    <span className="text-xs" style={{ fontFamily: "var(--font-mono)", color: "#414042" }}>
                       {e.date}
                     </span>
                   </li>

@@ -82,7 +82,7 @@ function EventsPage() {
   const hydrated = useHydrated();
 
   return (
-    <div style={{ fontFamily: "var(--font-sans)", color: "#14181F" }}>
+    <div style={{ fontFamily: "var(--font-sans)", color: "#414042" }}>
       <Nav />
       <main>
         {/* -------- Page header -------- */}
@@ -90,7 +90,7 @@ function EventsPage() {
           <div className="mx-auto max-w-[1240px] px-5 pt-14 pb-6 md:px-8 md:pt-20 md:pb-8">
             <div
               className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]"
-              style={{ color: "#4898D3" }}
+              style={{ color: "#4298D3" }}
             >
               Calendar
             </div>
@@ -99,7 +99,7 @@ function EventsPage() {
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 800,
-                color: "#14181F",
+                color: "#414042",
                 fontStretch: "expanded",
               }}
             >
@@ -107,7 +107,7 @@ function EventsPage() {
             </h1>
             <p
               className="mt-4 max-w-[600px] text-base md:text-[17px]"
-              style={{ color: "#575757" }}
+              style={{ color: "#414042" }}
             >
               Find and register for upcoming IYSF-sanctioned events worldwide.
             </p>
@@ -124,7 +124,7 @@ function EventsPage() {
               <Search
                 size={16}
                 className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2"
-                color="#575757"
+                color="#414042"
                 aria-hidden="true"
               />
               <input
@@ -132,7 +132,7 @@ function EventsPage() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search by event or location"
-                className="w-full rounded-md border border-black/10 bg-white px-9 py-2.5 text-sm outline-none transition-colors focus:border-[#4898D3] focus:ring-2 focus:ring-[#4898D3]/25"
+                className="w-full rounded-md border border-black/10 bg-white px-9 py-2.5 text-sm outline-none transition-colors focus:border-[#4298D3] focus:ring-2 focus:ring-[#4298D3]/25"
               />
             </label>
 
@@ -149,11 +149,11 @@ function EventsPage() {
                     role="tab"
                     aria-selected={active}
                     onClick={() => setRegion(r)}
-                    className="rounded-full border px-3 py-1.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4898D3]"
+                    className="rounded-full border px-3 py-1.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]"
                     style={{
-                      borderColor: active ? "#14181F" : "rgba(0,0,0,0.12)",
-                      background: active ? "#14181F" : "#fff",
-                      color: active ? "#fff" : "#14181F",
+                      borderColor: active ? "#414042" : "rgba(0,0,0,0.12)",
+                      background: active ? "#414042" : "#fff",
+                      color: active ? "#fff" : "#414042",
                     }}
                   >
                     {r}
@@ -166,6 +166,48 @@ function EventsPage() {
 
         {/* -------- Map + list -------- */}
         <section className="bg-white">
+          <div className="mx-auto max-w-[1240px] px-5 pt-10 md:px-8 md:pt-12">
+            <Link
+              to="/events/world-championship-2026"
+              className="block rounded-[14px] border p-6 transition-transform hover:-translate-y-0.5 md:p-8"
+              style={{
+                borderColor: "rgba(66,152,211,0.28)",
+                background: "rgba(66,152,211,0.06)",
+                boxShadow: "0 14px 34px -18px rgba(66,152,211,0.55)",
+              }}
+            >
+              <div
+                className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[10.5px] font-bold uppercase tracking-[0.2em] text-white"
+                style={{ background: "#DE007A" }}
+              >
+                Featured — next championship
+              </div>
+              <h2
+                className="mt-4 text-[26px] leading-[1.08] md:text-[36px]"
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontWeight: 800,
+                  color: "#414042",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                17th World Championship of Yogasana Sports
+              </h2>
+              <p className="mt-3 text-[15px] font-semibold" style={{ color: "#4298D3" }}>
+                Marina di Camerota, Italy · December 4–6, 2026 · Registration now open
+              </p>
+              <p className="mt-3 max-w-[720px] text-[15px] leading-relaxed" style={{ color: "#3a3a3a" }}>
+                Three days of competition on Italy's Cilento coast, with 150+ athletes from 30+
+                countries across individual, pair, and group categories.
+              </p>
+              <span
+                className="mt-5 inline-flex items-center rounded-[12px] px-5 py-3 text-[14px] font-bold"
+                style={{ background: "#FAAF40", color: "#414042" }}
+              >
+                View championship details
+              </span>
+            </Link>
+          </div>
           <div className="mx-auto max-w-[1240px] px-5 py-10 md:px-8 md:py-14">
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
               {/* Map column */}
@@ -179,7 +221,7 @@ function EventsPage() {
                       fallback={
                         <div
                           className="flex h-full w-full items-center justify-center text-sm"
-                          style={{ color: "#575757" }}
+                          style={{ color: "#414042" }}
                         >
                           Loading map…
                         </div>
@@ -223,7 +265,7 @@ function EventsPage() {
               <div>
                 <div
                   className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]"
-                  style={{ color: "#EA088C" }}
+                  style={{ color: "#DE007A" }}
                 >
                   Upcoming
                 </div>
@@ -256,7 +298,7 @@ function EventsPage() {
           <div className="mx-auto max-w-[1240px] px-5 py-14 md:px-8 md:py-20">
             <div
               className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]"
-              style={{ color: "#575757" }}
+              style={{ color: "#414042" }}
             >
               Archive
             </div>
@@ -265,7 +307,7 @@ function EventsPage() {
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 800,
-                color: "#14181F",
+                color: "#414042",
               }}
             >
               Past events
@@ -279,7 +321,7 @@ function EventsPage() {
                 >
                   <div
                     className="text-[13px]"
-                    style={{ fontFamily: "var(--font-mono)", color: "#14181F" }}
+                    style={{ fontFamily: "var(--font-mono)", color: "#414042" }}
                   >
                     {e.date}
                   </div>
@@ -291,13 +333,13 @@ function EventsPage() {
                       style={{
                         fontFamily: "var(--font-display)",
                         fontWeight: 700,
-                        color: "#14181F",
+                        color: "#414042",
                       }}
                     >
                       {e.name}
                     </Link>
                   </div>
-                  <div className="text-sm" style={{ color: "#575757" }}>
+                  <div className="text-sm" style={{ color: "#414042" }}>
                     {e.location}
                   </div>
                   <div className="flex items-center gap-3">
@@ -306,7 +348,7 @@ function EventsPage() {
                       to="/events/$slug"
                       params={{ slug: e.slug }}
                       className="text-xs font-semibold hover:underline"
-                      style={{ color: "#4898D3" }}
+                      style={{ color: "#4298D3" }}
                     >
                       View event →
                     </Link>
@@ -315,7 +357,7 @@ function EventsPage() {
                         to="/results/$slug"
                         params={{ slug: e.slug }}
                         className="text-xs font-semibold hover:underline"
-                        style={{ color: "#EA088C" }}
+                        style={{ color: "#DE007A" }}
                       >
                         Results →
                       </Link>
@@ -363,7 +405,7 @@ function EventCard({
   onClose?: () => void;
 }) {
   const color = TIER_COLOR[event.tier];
-  const darkOnColor = color === "#FBAF43";
+  const darkOnColor = color === "#FAAF40";
   return (
     <article
       className="overflow-hidden rounded-lg border bg-white transition-shadow"
@@ -404,11 +446,11 @@ function EventCard({
         {onSelect ? (
           <button
             onClick={onSelect}
-            className="text-left text-[17px] leading-tight hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4898D3]"
+            className="text-left text-[17px] leading-tight hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]"
             style={{
               fontFamily: "var(--font-display)",
               fontWeight: 700,
-              color: "#14181F",
+              color: "#414042",
             }}
           >
             {event.name}
@@ -419,7 +461,7 @@ function EventCard({
             style={{
               fontFamily: "var(--font-display)",
               fontWeight: 700,
-              color: "#14181F",
+              color: "#414042",
             }}
           >
             {event.name}
@@ -427,15 +469,15 @@ function EventCard({
         )}
         <div
           className="mt-2 flex items-center gap-1.5 text-sm"
-          style={{ color: "#575757" }}
+          style={{ color: "#414042" }}
         >
           <MapPin size={14} aria-hidden="true" /> {event.location}
         </div>
         <div className="mt-4 flex flex-wrap items-center gap-3">
           <button
             onClick={onRegister}
-            className="rounded-md px-4 py-2 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4898D3]"
-            style={{ background: "#FBAF43", color: "#3A2400" }}
+            className="rounded-md px-4 py-2 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]"
+            style={{ background: "#FAAF40", color: "#3A2400" }}
           >
             Register
           </button>
@@ -443,7 +485,7 @@ function EventCard({
             to="/events/$slug"
             params={{ slug: event.slug }}
             className="text-sm font-semibold hover:underline"
-            style={{ color: "#4898D3" }}
+            style={{ color: "#4298D3" }}
           >
             View event →
           </Link>
@@ -460,7 +502,7 @@ function TierBadge({ tier, muted }: { tier: Tier; muted?: boolean }) {
       className="inline-flex items-center rounded-full px-2.5 py-1 text-[10.5px] font-semibold uppercase tracking-[0.16em]"
       style={{
         background: muted ? `${color}18` : color,
-        color: muted ? color : color === "#FBAF43" ? "#3A2400" : "#fff",
+        color: muted ? color : color === "#FAAF40" ? "#3A2400" : "#fff",
       }}
     >
       {tier}
@@ -472,7 +514,7 @@ function EmptyState() {
   return (
     <div
       className="rounded-lg border border-dashed border-black/15 px-6 py-10 text-center text-sm"
-      style={{ color: "#575757" }}
+      style={{ color: "#414042" }}
     >
       No events match your search. Try clearing the filter or switching region.
     </div>
@@ -548,7 +590,7 @@ function RegisterModal({
           <div>
             <div
               className="text-[10.5px] font-semibold uppercase tracking-[0.22em]"
-              style={{ color: "#4898D3" }}
+              style={{ color: "#4298D3" }}
             >
               Register
             </div>
@@ -558,14 +600,14 @@ function RegisterModal({
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 800,
-                color: "#14181F",
+                color: "#414042",
               }}
             >
               {event.name}
             </h2>
             <div
               className="mt-1 text-[12px]"
-              style={{ fontFamily: "var(--font-mono)", color: "#575757" }}
+              style={{ fontFamily: "var(--font-mono)", color: "#414042" }}
             >
               {event.date} · {event.location}
             </div>
@@ -574,7 +616,7 @@ function RegisterModal({
             ref={closeBtnRef}
             onClick={onClose}
             aria-label="Close dialog"
-            className="inline-flex h-9 w-9 items-center justify-center rounded-md text-[#14181F] hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4898D3]"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-md text-[#414042] hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]"
           >
             <X size={18} />
           </button>
@@ -584,7 +626,7 @@ function RegisterModal({
           <div className="px-5 py-8 text-center">
             <div
               className="mx-auto mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full"
-              style={{ background: "#FBAF43", color: "#3A2400" }}
+              style={{ background: "#FAAF40", color: "#3A2400" }}
               aria-hidden="true"
             >
               ✓
@@ -594,12 +636,12 @@ function RegisterModal({
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 700,
-                color: "#14181F",
+                color: "#414042",
               }}
             >
               Thanks — we'll be in touch with next steps.
             </p>
-            <p className="mt-2 text-sm" style={{ color: "#575757" }}>
+            <p className="mt-2 text-sm" style={{ color: "#414042" }}>
               A confirmation has been queued to your federation contact.
             </p>
             <button
@@ -625,7 +667,7 @@ function RegisterModal({
                 required
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="w-full rounded-md border border-black/15 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#4898D3] focus:ring-2 focus:ring-[#4898D3]/25"
+                className="w-full rounded-md border border-black/15 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#4298D3] focus:ring-2 focus:ring-[#4298D3]/25"
               />
             </Field>
             <Field label="Email" htmlFor="rf-email">
@@ -635,7 +677,7 @@ function RegisterModal({
                 required
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className="w-full rounded-md border border-black/15 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#4898D3] focus:ring-2 focus:ring-[#4898D3]/25"
+                className="w-full rounded-md border border-black/15 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#4298D3] focus:ring-2 focus:ring-[#4298D3]/25"
               />
             </Field>
             <Field label="Federation" htmlFor="rf-fed">
@@ -645,13 +687,13 @@ function RegisterModal({
                 placeholder="e.g. national member federation"
                 value={form.federation}
                 onChange={(e) => setForm({ ...form, federation: e.target.value })}
-                className="w-full rounded-md border border-black/15 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#4898D3] focus:ring-2 focus:ring-[#4898D3]/25"
+                className="w-full rounded-md border border-black/15 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#4298D3] focus:ring-2 focus:ring-[#4298D3]/25"
               />
             </Field>
             <button
               type="submit"
-              className="mt-2 w-full rounded-md px-4 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4898D3]"
-              style={{ background: "#FBAF43", color: "#3A2400" }}
+              className="mt-2 w-full rounded-md px-4 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]"
+              style={{ background: "#FAAF40", color: "#3A2400" }}
             >
               Submit registration
             </button>
@@ -676,7 +718,7 @@ function Field({
       <label
         htmlFor={htmlFor}
         className="mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.18em]"
-        style={{ color: "#575757" }}
+        style={{ color: "#414042" }}
       >
         {label}
       </label>

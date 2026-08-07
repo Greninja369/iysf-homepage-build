@@ -99,7 +99,7 @@ function GovernancePage() {
               </dt>
               <dd
                 className="mt-2 text-[15px]"
-                style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#14181F" }}
+                style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#414042" }}
               >
                 {row.v}
               </dd>

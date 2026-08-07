@@ -44,25 +44,25 @@ function ResultsDetailPage() {
 
   if (!event || !event.results) {
     return (
-      <div style={{ fontFamily: "var(--font-sans)", color: "#14181F" }}>
+      <div style={{ fontFamily: "var(--font-sans)", color: "#414042" }}>
         <Nav />
         <main>
           <div className="mx-auto max-w-[1240px] px-5 py-20 md:px-8">
-            <Breadcrumb parentLabel="Results" parentTo="/results" current="Not found" color="#EA088C" />
+            <Breadcrumb parentLabel="Results" parentTo="/results" current="Not found" color="#DE007A" />
             <h1
               className="mt-4 text-[32px]"
-              style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#14181F" }}
+              style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#414042" }}
             >
               Results not found
             </h1>
-            <p className="mt-3 max-w-[560px] text-base" style={{ color: "#575757" }}>
+            <p className="mt-3 max-w-[560px] text-base" style={{ color: "#414042" }}>
               We couldn't find results for that championship. It may not have
               published standings yet.
             </p>
             <Link
               to="/results"
               className="mt-6 inline-block text-sm font-semibold hover:underline"
-              style={{ color: "#4898D3" }}
+              style={{ color: "#4298D3" }}
             >
               ← Back to results
             </Link>
@@ -82,7 +82,7 @@ function ResultsDetailPage() {
   const color = TIER_COLOR[event.tier];
 
   return (
-    <div style={{ fontFamily: "var(--font-sans)", color: "#14181F" }}>
+    <div style={{ fontFamily: "var(--font-sans)", color: "#414042" }}>
       <Nav />
       <main>
         <section className="bg-white">
@@ -90,13 +90,13 @@ function ResultsDetailPage() {
             <Breadcrumb parentLabel="Results" parentTo="/results" current={event.name} color={color} />
             <h1
               className="mt-4 text-[32px] leading-[1.06] tracking-[-0.02em] md:text-[48px]"
-              style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#14181F" }}
+              style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#414042" }}
             >
               {event.name}
             </h1>
             <div
               className="mt-3 text-sm"
-              style={{ fontFamily: "var(--font-mono)", color: "#575757" }}
+              style={{ fontFamily: "var(--font-mono)", color: "#414042" }}
             >
               {event.date} · {event.venue} · {event.location}
             </div>
@@ -106,7 +106,7 @@ function ResultsDetailPage() {
                 to="/events/$slug"
                 params={{ slug: event.slug }}
                 className="font-semibold hover:underline"
-                style={{ color: "#4898D3" }}
+                style={{ color: "#4298D3" }}
               >
                 Event details →
               </Link>
@@ -118,17 +118,17 @@ function ResultsDetailPage() {
           <div className="mx-auto max-w-[1240px] px-5 py-14 md:px-8 md:py-20">
             <div
               className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]"
-              style={{ color: "#EA088C" }}
+              style={{ color: "#DE007A" }}
             >
               Final standings
             </div>
             <h2
               className="text-[26px] md:text-[32px]"
-              style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#14181F" }}
+              style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#414042" }}
             >
               Results by division
             </h2>
-            <p className="mt-2 text-sm" style={{ color: "#575757" }}>
+            <p className="mt-2 text-sm" style={{ color: "#414042" }}>
               Athlete names and scores are placeholders pending official publication.
             </p>
 
@@ -142,7 +142,7 @@ function ResultsDetailPage() {
                   >
                     <h3
                       className="border-b border-black/[0.08] px-5 py-3 text-[15px]"
-                      style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#14181F" }}
+                      style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#414042" }}
                     >
                       {division} division
                     </h3>
@@ -151,7 +151,7 @@ function ResultsDetailPage() {
                         {division} division final standings for {event.name}
                       </caption>
                       <thead>
-                        <tr className="text-left" style={{ color: "#575757" }}>
+                        <tr className="text-left" style={{ color: "#414042" }}>
                           <th className="px-5 py-2 text-xs font-semibold uppercase tracking-[0.14em]">Rank</th>
                           <th className="px-5 py-2 text-xs font-semibold uppercase tracking-[0.14em]">Athlete</th>
                           <th className="px-5 py-2 text-xs font-semibold uppercase tracking-[0.14em]">Federation</th>
@@ -165,11 +165,11 @@ function ResultsDetailPage() {
                             <tr key={r.rank}>
                               <td
                                 className="px-5 py-3"
-                                style={{ fontFamily: "var(--font-mono)", color: "#14181F" }}
+                                style={{ fontFamily: "var(--font-mono)", color: "#414042" }}
                               >
                                 {r.rank}
                               </td>
-                              <td className="px-5 py-3" style={{ color: "#14181F" }}>
+                              <td className="px-5 py-3" style={{ color: "#414042" }}>
                                 {r.athlete}
                               </td>
                               <td className="px-5 py-3">
@@ -178,17 +178,17 @@ function ResultsDetailPage() {
                                     to="/directory/$slug"
                                     params={{ slug: fed.slug }}
                                     className="hover:underline"
-                                    style={{ color: "#4898D3" }}
+                                    style={{ color: "#4298D3" }}
                                   >
                                     {fed.name}
                                   </Link>
                                 ) : (
-                                  <span style={{ color: "#575757" }}>—</span>
+                                  <span style={{ color: "#414042" }}>—</span>
                                 )}
                               </td>
                               <td
                                 className="px-5 py-3"
-                                style={{ fontFamily: "var(--font-mono)", color: "#14181F" }}
+                                style={{ fontFamily: "var(--font-mono)", color: "#414042" }}
                               >
                                 {r.score}
                               </td>
@@ -211,7 +211,7 @@ function ResultsDetailPage() {
                 <div className="rounded-lg border border-black/[0.08] bg-white p-6">
                   <div
                     className="mb-2 text-[11px] font-semibold uppercase tracking-[0.22em]"
-                    style={{ color: "#4898D3" }}
+                    style={{ color: "#4298D3" }}
                   >
                     Host federation
                   </div>
@@ -219,11 +219,11 @@ function ResultsDetailPage() {
                     to="/directory/$slug"
                     params={{ slug: host.slug }}
                     className="text-lg hover:underline"
-                    style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#14181F" }}
+                    style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#414042" }}
                   >
                     {host.name}
                   </Link>
-                  <p className="mt-1 text-sm" style={{ color: "#575757" }}>
+                  <p className="mt-1 text-sm" style={{ color: "#414042" }}>
                     {host.country}
                   </p>
                 </div>
@@ -232,7 +232,7 @@ function ResultsDetailPage() {
               <div className="rounded-lg border border-black/[0.08] bg-white p-6">
                 <div
                   className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]"
-                  style={{ color: "#EA088C" }}
+                  style={{ color: "#DE007A" }}
                 >
                   Federations represented
                 </div>
@@ -243,7 +243,7 @@ function ResultsDetailPage() {
                       to="/directory/$slug"
                       params={{ slug: f.slug }}
                       className="rounded-full border px-3 py-1.5 text-xs font-medium hover:bg-black/[0.03]"
-                      style={{ borderColor: "rgba(0,0,0,0.12)", color: "#14181F" }}
+                      style={{ borderColor: "rgba(0,0,0,0.12)", color: "#414042" }}
                     >
                       {f.name}
                     </Link>
@@ -259,7 +259,7 @@ function ResultsDetailPage() {
             <div className="mx-auto max-w-[1240px] px-5 py-14 md:px-8 md:py-20">
               <div
                 className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]"
-                style={{ color: "#575757" }}
+                style={{ color: "#414042" }}
               >
                 Related results
               </div>
@@ -270,13 +270,13 @@ function ResultsDetailPage() {
                       to="/results/$slug"
                       params={{ slug: e.slug }}
                       className="text-[15px] hover:underline"
-                      style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#14181F" }}
+                      style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#414042" }}
                     >
                       {e.name}
                     </Link>
                     <span
                       className="text-xs"
-                      style={{ fontFamily: "var(--font-mono)", color: "#575757" }}
+                      style={{ fontFamily: "var(--font-mono)", color: "#414042" }}
                     >
                       {e.date}
                     </span>

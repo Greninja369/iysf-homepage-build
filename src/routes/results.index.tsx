@@ -59,14 +59,14 @@ function ResultsIndexPage() {
   const list = year ? all.filter((e) => eventMatchesYear(e.year, year)) : all;
 
   return (
-    <div style={{ fontFamily: "var(--font-sans)", color: "#14181F" }}>
+    <div style={{ fontFamily: "var(--font-sans)", color: "#414042" }}>
       <Nav />
       <main>
         <section className="bg-white">
           <div className="mx-auto max-w-[1240px] px-5 py-14 md:px-8 md:py-20">
             <div
               className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]"
-              style={{ color: "#EA088C" }}
+              style={{ color: "#DE007A" }}
             >
               Results
             </div>
@@ -75,7 +75,7 @@ function ResultsIndexPage() {
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 800,
-                color: "#14181F",
+                color: "#414042",
                 fontStretch: "expanded",
               }}
             >
@@ -83,7 +83,7 @@ function ResultsIndexPage() {
             </h1>
             <p
               className="mt-4 max-w-[640px] text-base md:text-[17px]"
-              style={{ color: "#575757" }}
+              style={{ color: "#414042" }}
             >
               Final standings from past IYSF championship editions. Names and
               scores below are placeholders pending publication of the
@@ -94,14 +94,14 @@ function ResultsIndexPage() {
               <Link
                 to="/events"
                 className="font-semibold hover:underline"
-                style={{ color: "#4898D3" }}
+                style={{ color: "#4298D3" }}
               >
                 Full championship calendar →
               </Link>
               <Link
                 to="/directory"
                 className="font-semibold hover:underline"
-                style={{ color: "#4898D3" }}
+                style={{ color: "#4298D3" }}
               >
                 Member federation directory →
               </Link>
@@ -110,7 +110,7 @@ function ResultsIndexPage() {
             {year && (
               <div
                 className="mt-6 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm"
-                style={{ borderColor: "rgba(0,0,0,0.12)", color: "#14181F" }}
+                style={{ borderColor: "rgba(0,0,0,0.12)", color: "#414042" }}
               >
                 <span style={{ fontFamily: "var(--font-mono)" }}>
                   Filtered: {year}
@@ -118,7 +118,7 @@ function ResultsIndexPage() {
                 <Link
                   to="/results"
                   className="font-semibold hover:underline"
-                  style={{ color: "#EA088C" }}
+                  style={{ color: "#DE007A" }}
                 >
                   clear filter
                 </Link>
@@ -132,10 +132,10 @@ function ResultsIndexPage() {
             {list.length === 0 ? (
               <div
                 className="rounded-lg border border-black/[0.08] bg-white p-8 text-center text-sm"
-                style={{ color: "#575757" }}
+                style={{ color: "#414042" }}
               >
                 No results match that year.{" "}
-                <Link to="/results" style={{ color: "#4898D3" }} className="font-semibold hover:underline">
+                <Link to="/results" style={{ color: "#4298D3" }} className="font-semibold hover:underline">
                   View all results
                 </Link>
               </div>
@@ -143,7 +143,7 @@ function ResultsIndexPage() {
               <ul className="divide-y divide-black/[0.08] rounded-lg border border-black/[0.08] bg-white">
                 {list.map((e) => {
                   const color = TIER_COLOR[e.tier];
-                  const darkOnColor = color === "#FBAF43";
+                  const darkOnColor = color === "#FAAF40";
                   return (
                     <li
                       key={e.id}
@@ -151,7 +151,7 @@ function ResultsIndexPage() {
                     >
                       <div
                         className="text-[13px]"
-                        style={{ fontFamily: "var(--font-mono)", color: "#575757" }}
+                        style={{ fontFamily: "var(--font-mono)", color: "#414042" }}
                       >
                         {e.date}
                       </div>
@@ -163,19 +163,19 @@ function ResultsIndexPage() {
                           style={{
                             fontFamily: "var(--font-display)",
                             fontWeight: 700,
-                            color: "#14181F",
+                            color: "#414042",
                           }}
                         >
                           {e.name}
                         </Link>
                         <div
                           className="mt-0.5 text-xs"
-                          style={{ fontFamily: "var(--font-mono)", color: "#575757" }}
+                          style={{ fontFamily: "var(--font-mono)", color: "#414042" }}
                         >
                           {divisionSummary(e.divisions)}
                         </div>
                       </div>
-                      <div className="text-sm" style={{ color: "#575757" }}>
+                      <div className="text-sm" style={{ color: "#414042" }}>
                         {e.location}
                       </div>
                       <span
@@ -188,7 +188,7 @@ function ResultsIndexPage() {
                         to="/events/$slug"
                         params={{ slug: e.slug }}
                         className="text-sm font-semibold hover:underline"
-                        style={{ color: "#4898D3" }}
+                        style={{ color: "#4298D3" }}
                       >
                         Event page →
                       </Link>

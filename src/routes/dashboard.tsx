@@ -43,7 +43,7 @@ function DashboardPage() {
           >
             Dashboard
           </h1>
-          <p className="mt-4 max-w-[70ch] text-[15px] leading-relaxed text-[#575757]">
+          <p className="mt-4 max-w-[70ch] text-[15px] leading-relaxed text-[#414042]">
             This signed-in area is a placeholder — it is not yet connected to real federation, judge,
             coach or athlete accounts. Nothing here reflects live account data.
           </p>
@@ -58,7 +58,7 @@ function DashboardPage() {
                 <h3 className="text-[18px] font-bold" style={{ color: IYSF.charcoal, fontFamily: "var(--font-display)" }}>
                   {l.label}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#575757]">{l.desc}</p>
+                <p className="mt-2 text-sm leading-relaxed text-[#414042]">{l.desc}</p>
               </Link>
             ))}
           </div>
