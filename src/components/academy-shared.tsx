@@ -35,7 +35,7 @@ export function TrackHeader({
         <Link
           to="/academy"
           className="text-[11px] font-semibold uppercase tracking-[0.22em] hover:underline"
-          style={{ color: "#4898D3", fontFamily: "var(--font-sans)" }}
+          style={{ color: "#4298D3", fontFamily: "var(--font-sans)" }}
         >
           Academy — {track}
         </Link>
@@ -44,7 +44,7 @@ export function TrackHeader({
           style={{
             fontFamily: "var(--font-display)",
             fontWeight: 800,
-            color: "#14181F",
+            color: "#414042",
             fontStretch: "expanded",
           }}
         >
@@ -52,7 +52,7 @@ export function TrackHeader({
         </h1>
         <p
           className="mt-4 max-w-[640px] text-base leading-relaxed md:text-[17px]"
-          style={{ color: "#575757" }}
+          style={{ color: "#414042" }}
         >
           {/* placeholder subcopy — replace with real academy description */}
           {sub}
@@ -69,7 +69,7 @@ export function TiersGrid({ tiers, color }: { tiers: Tier[]; color: string }) {
       <div className="mx-auto max-w-[1240px] px-5 py-16 md:px-8 md:py-20">
         <div
           className="mb-8 text-[11px] font-semibold uppercase tracking-[0.22em]"
-          style={{ color: "#575757" }}
+          style={{ color: "#414042" }}
         >
           Levels & tiers
         </div>
@@ -77,7 +77,7 @@ export function TiersGrid({ tiers, color }: { tiers: Tier[]; color: string }) {
           {tiers.map((t, i) => (
             <div
               key={t.name}
-              className="rounded-lg border border-black/10 bg-white p-6 transition-all focus-within:ring-2 focus-within:ring-[#4898D3] hover:-translate-y-0.5 hover:shadow-sm"
+              className="rounded-lg border border-black/10 bg-white p-6 transition-all focus-within:ring-2 focus-within:ring-[#4298D3] hover:-translate-y-0.5 hover:shadow-sm"
             >
               <div
                 className="mb-4 text-[10.5px] font-mono font-medium tracking-widest"
@@ -87,11 +87,11 @@ export function TiersGrid({ tiers, color }: { tiers: Tier[]; color: string }) {
               </div>
               <div
                 className="text-xl leading-tight"
-                style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#14181F" }}
+                style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#414042" }}
               >
                 {t.name}
               </div>
-              <p className="mt-3 text-sm leading-relaxed" style={{ color: "#575757" }}>
+              <p className="mt-3 text-sm leading-relaxed" style={{ color: "#414042" }}>
                 {/* placeholder tier description */}
                 {t.desc}
               </p>
@@ -117,7 +117,7 @@ export function GuidesList({
       <div className="mx-auto max-w-[1240px] px-5 py-16 md:px-8 md:py-20">
         <div
           className="mb-8 text-[11px] font-semibold uppercase tracking-[0.22em]"
-          style={{ color: "#575757" }}
+          style={{ color: "#414042" }}
         >
           Guides & standards
         </div>
@@ -130,11 +130,11 @@ export function GuidesList({
               <div>
                 <div
                   className="text-[15px] leading-snug"
-                  style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#14181F" }}
+                  style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#414042" }}
                 >
                   {g.title}
                 </div>
-                <p className="mt-2 text-sm leading-relaxed" style={{ color: "#575757" }}>
+                <p className="mt-2 text-sm leading-relaxed" style={{ color: "#414042" }}>
                   {/* placeholder guide description */}
                   {g.desc}
                 </p>
@@ -171,7 +171,7 @@ export function SupportingContent({ track, color }: { track: string; color: stri
           </div>
           <h2
             className="text-[28px] leading-tight tracking-[-0.01em] md:text-[36px]"
-            style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#14181F" }}
+            style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#414042" }}
           >
             {/* placeholder heading */}
             What IYSF expects from every certified {track.toLowerCase()}.
@@ -185,7 +185,7 @@ export function SupportingContent({ track, color }: { track: string; color: stri
             </p>
             <h3
               className="text-[15px] font-semibold uppercase tracking-[0.16em]"
-              style={{ color: "#14181F" }}
+              style={{ color: "#414042" }}
             >
               {/* placeholder subheading */}
               Method
@@ -196,7 +196,7 @@ export function SupportingContent({ track, color }: { track: string; color: stri
             </p>
             <h3
               className="text-[15px] font-semibold uppercase tracking-[0.16em]"
-              style={{ color: "#14181F" }}
+              style={{ color: "#414042" }}
             >
               {/* placeholder subheading */}
               Assessment
@@ -213,7 +213,7 @@ export function SupportingContent({ track, color }: { track: string; color: stri
               role="img"
               aria-label={`Image placeholder — ${track} in practice`}
               className="flex aspect-[4/3] items-center justify-center rounded-lg border border-dashed border-black/20 bg-white text-center text-xs"
-              style={{ color: "#575757", fontFamily: "var(--font-mono)" }}
+              style={{ color: "#414042", fontFamily: "var(--font-mono)" }}
             >
               Image placeholder — {track} in practice
             </div>
@@ -251,7 +251,7 @@ export function ClosingCta({
           </div>
           <p
             className="max-w-[540px] text-[18px] leading-snug"
-            style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#14181F" }}
+            style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#414042" }}
           >
             {/* placeholder closing line */}
             Download the full {track} guide, or reach the Academy directly with questions.
@@ -272,7 +272,7 @@ export function ClosingCta({
             </a>
             <a
               href="mailto:academy@iysf.example"
-              className="inline-flex items-center gap-2 rounded-md border border-black/15 px-4 py-2.5 text-sm font-semibold text-[#14181F] transition-colors hover:bg-black/5"
+              className="inline-flex items-center gap-2 rounded-md border border-black/15 px-4 py-2.5 text-sm font-semibold text-[#414042] transition-colors hover:bg-black/5"
             >
               <Mail size={15} aria-hidden="true" />
               Contact the Academy
@@ -281,7 +281,7 @@ export function ClosingCta({
           {relatedTo && relatedLabel && (
             <Link
               to={relatedTo}
-              className="text-xs text-[#575757] underline decoration-black/20 underline-offset-2 hover:text-[#14181F]"
+              className="text-xs text-[#414042] underline decoration-black/20 underline-offset-2 hover:text-[#414042]"
             >
               Related: {relatedLabel}
             </Link>

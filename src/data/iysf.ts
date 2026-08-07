@@ -39,16 +39,16 @@ export const REGIONS: (Region | "All")[] = [
 export const DIVISIONS: Division[] = ["Junior", "Adult", "Masters"];
 
 export const TIER_COLOR: Record<Tier, string> = {
-  "World Championship": "#EA088C",
-  "Continental Qualifier": "#4898D3",
-  "Junior Circuit": "#FBAF43",
-  "Academy Camp": "#575757",
+  "World Championship": "#DE007A",
+  "Continental Qualifier": "#4298D3",
+  "Junior Circuit": "#FAAF40",
+  "Academy Camp": "#414042",
 };
 
 export const STATUS_COLOR: Record<MembershipStatus, string> = {
-  "Full Member": "#4898D3",
-  Provisional: "#FBAF43",
-  Observer: "#EA088C",
+  "Full Member": "#4298D3",
+  Provisional: "#FAAF40",
+  Observer: "#DE007A",
 };
 
 /* ------------------------------ Federations ----------------------- */

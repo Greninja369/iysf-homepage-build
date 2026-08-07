@@ -50,7 +50,7 @@ const DOCS: RuleDoc[] = [
   {
     id: "judging-criteria",
     title: "Judging Criteria",
-    accent: "#FBAF43",
+    accent: "#FAAF40",
     version: "v0.0 — placeholder",
     effective: "Effective Jan 2026 — placeholder",
     updated: "Last updated — placeholder",
@@ -71,7 +71,7 @@ const DOCS: RuleDoc[] = [
   {
     id: "athlete-eligibility",
     title: "Athlete Eligibility",
-    accent: "#4898D3",
+    accent: "#4298D3",
     version: "v0.0 — placeholder",
     effective: "Effective Jan 2026 — placeholder",
     updated: "Last updated — placeholder",
@@ -91,7 +91,7 @@ const DOCS: RuleDoc[] = [
   {
     id: "anti-doping",
     title: "Anti-Doping Policy",
-    accent: "#EA088C",
+    accent: "#DE007A",
     version: "v0.0 — placeholder",
     effective: "Effective Jan 2026 — placeholder",
     updated: "Last updated — placeholder",
@@ -131,7 +131,7 @@ const DOCS: RuleDoc[] = [
   {
     id: "competition-format",
     title: "Competition Format",
-    accent: "#575757",
+    accent: "#414042",
     version: "v0.0 — placeholder",
     effective: "Effective Jan 2026 — placeholder",
     updated: "Last updated — placeholder",
@@ -162,7 +162,7 @@ function highlight(text: string, query: string) {
   const parts = text.split(re);
   return parts.map((p, i) =>
     p.toLowerCase() === q.toLowerCase() ? (
-      <mark key={i} className="rounded-[2px] px-0.5" style={{ background: "#FBAF4340", color: "#14181F" }}>
+      <mark key={i} className="rounded-[2px] px-0.5" style={{ background: "#FAAF4040", color: "#414042" }}>
         {p}
       </mark>
     ) : (
@@ -221,36 +221,36 @@ function RulesPage() {
   };
 
   return (
-    <div className="min-h-dvh bg-white" style={{ fontFamily: "var(--font-sans)", color: "#14181F" }}>
+    <div className="min-h-dvh bg-white" style={{ fontFamily: "var(--font-sans)", color: "#414042" }}>
       <Nav />
 
       <main id="rules-main">
         <section className="border-b border-black/10">
           <div className="mx-auto max-w-[1240px] px-5 py-12 md:px-8 md:py-16">
-            <div className="text-[11px] font-semibold uppercase tracking-[0.22em]" style={{ color: "#4898D3" }}>
+            <div className="text-[11px] font-semibold uppercase tracking-[0.22em]" style={{ color: "#4298D3" }}>
               Governance
             </div>
-            <h1 className="mt-3 text-3xl font-extrabold tracking-tight md:text-4xl" style={{ fontFamily: "var(--font-display)", color: "#14181F" }}>
+            <h1 className="mt-3 text-3xl font-extrabold tracking-tight md:text-4xl" style={{ fontFamily: "var(--font-display)", color: "#414042" }}>
               Rules &amp; Regulations
             </h1>
-            <p className="mt-3 max-w-[62ch] text-[15px] leading-relaxed text-[#575757]">
+            <p className="mt-3 max-w-[62ch] text-[15px] leading-relaxed text-[#414042]">
               The official rulebook governing competitive Yogasana under IYSF — published in five documents, updated as governance evolves.
             </p>
 
             <div className="mt-6 max-w-[560px]">
               <label htmlFor="rules-search" className="sr-only">Search rulebook content</label>
               <div className="relative">
-                <Search size={16} className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-[#575757]" aria-hidden />
+                <Search size={16} className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-[#414042]" aria-hidden />
                 <input
                   id="rules-search"
                   type="search"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Search across all rule documents…"
-                  className="w-full rounded-md border border-black/15 bg-white py-2.5 pl-10 pr-3 text-sm text-[#14181F] placeholder:text-[#575757] focus:border-[#4898D3] focus:outline-none focus:ring-2 focus:ring-[#4898D3]/30"
+                  className="w-full rounded-md border border-black/15 bg-white py-2.5 pl-10 pr-3 text-sm text-[#414042] placeholder:text-[#414042] focus:border-[#4298D3] focus:outline-none focus:ring-2 focus:ring-[#4298D3]/30"
                 />
               </div>
-              <div aria-live="polite" className="mt-2 text-xs text-[#575757]" style={{ fontFamily: "var(--font-mono)" }}>
+              <div aria-live="polite" className="mt-2 text-xs text-[#414042]" style={{ fontFamily: "var(--font-mono)" }}>
                 {q ? `${matchCount} of ${DOCS.length} documents match "${query}"` : "\u00a0"}
               </div>
             </div>
@@ -264,7 +264,7 @@ function RulesPage() {
               onClick={() => setMobileNavOpen((v) => !v)}
               aria-expanded={mobileNavOpen}
               aria-controls="rules-toc-mobile"
-              className="mt-6 flex w-full items-center justify-between rounded-md border border-black/15 bg-white px-4 py-3 text-sm font-medium text-[#14181F]"
+              className="mt-6 flex w-full items-center justify-between rounded-md border border-black/15 bg-white px-4 py-3 text-sm font-medium text-[#414042]"
             >
               <span>Contents — {DOCS.find((d) => d.id === activeId)?.title}</span>
               {mobileNavOpen ? <X size={16} /> : <Menu size={16} />}
@@ -291,7 +291,7 @@ function RulesPage() {
           <div className="grid gap-10 py-10 md:grid-cols-[240px_1fr] md:gap-12 md:py-14">
             <aside className="hidden md:block">
               <nav aria-label="Rulebook contents" className="sticky top-24">
-                <div className="mb-3 text-[10.5px] font-semibold uppercase tracking-[0.22em]" style={{ color: "#575757" }}>
+                <div className="mb-3 text-[10.5px] font-semibold uppercase tracking-[0.22em]" style={{ color: "#414042" }}>
                   Contents
                 </div>
                 <ul className="space-y-0.5">
@@ -302,7 +302,7 @@ function RulesPage() {
                       <li key={d.id}>
                         <button
                           onClick={() => scrollToDoc(d.id)}
-                          className={`flex w-full items-center gap-2 rounded-r px-3 py-2 text-left text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4898D3]/40 ${isActive ? "bg-black/[0.04] font-semibold text-[#14181F]" : "text-[#14181F]/85 hover:bg-black/[0.03]"} ${dimmed ? "opacity-40" : ""}`}
+                          className={`flex w-full items-center gap-2 rounded-r px-3 py-2 text-left text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]/40 ${isActive ? "bg-black/[0.04] font-semibold text-[#414042]" : "text-[#414042]/85 hover:bg-black/[0.03]"} ${dimmed ? "opacity-40" : ""}`}
                           style={{ borderLeft: `3px solid ${isActive ? d.accent : "transparent"}` }}
                           aria-current={isActive ? "true" : undefined}
                         >
@@ -318,10 +318,10 @@ function RulesPage() {
             <div className="min-w-0">
               {q && matchCount === 0 ? (
                 <div className="rounded-md border border-black/10 bg-[#FAFAFA] p-8 text-center">
-                  <div className="text-[11px] font-semibold uppercase tracking-[0.22em]" style={{ color: "#575757" }}>
+                  <div className="text-[11px] font-semibold uppercase tracking-[0.22em]" style={{ color: "#414042" }}>
                     No matches
                   </div>
-                  <p className="mt-2 text-sm text-[#14181F]">
+                  <p className="mt-2 text-sm text-[#414042]">
                     No rule content matches “{query}”. Try a shorter or different keyword.
                   </p>
                   <button onClick={() => setQuery("")} className="mt-4 rounded-md border border-black/15 px-3 py-1.5 text-xs font-medium hover:bg-black/5">
@@ -343,7 +343,7 @@ function RulesPage() {
                       >
                         <div
                           className="mb-1 inline-flex items-center gap-2 rounded-full px-2.5 py-1 text-[10.5px] font-semibold uppercase tracking-[0.18em]"
-                          style={{ background: `${d.accent}1A`, color: d.accent === "#FBAF43" ? "#3A2400" : d.accent }}
+                          style={{ background: `${d.accent}1A`, color: d.accent === "#FAAF40" ? "#3A2400" : d.accent }}
                         >
                           <span className="inline-block h-1.5 w-1.5 rounded-full" style={{ background: d.accent }} aria-hidden />
                           Document
@@ -351,12 +351,12 @@ function RulesPage() {
                         <h2
                           id={`${d.id}-title`}
                           className="mt-2 text-2xl font-extrabold tracking-tight md:text-[26px]"
-                          style={{ fontFamily: "var(--font-display)", color: "#14181F" }}
+                          style={{ fontFamily: "var(--font-display)", color: "#414042" }}
                         >
                           {highlight(d.title, query)}
                         </h2>
                         <div
-                          className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-[12px] text-[#575757]"
+                          className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-[12px] text-[#414042]"
                           style={{ fontFamily: "var(--font-mono)" }}
                         >
                           <span>{d.version}</span>
@@ -371,31 +371,31 @@ function RulesPage() {
                             href={d.pdfHref}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 rounded-md border border-black/15 bg-white px-3.5 py-2 text-sm font-medium text-[#14181F] transition-colors hover:bg-black/[0.04] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4898D3]/40"
+                            className="inline-flex items-center gap-2 rounded-md border border-black/15 bg-white px-3.5 py-2 text-sm font-medium text-[#414042] transition-colors hover:bg-black/[0.04] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]/40"
                           >
                             <FileDown size={15} style={{ color: d.accent }} aria-hidden />
                             <span>Download {d.title} PDF</span>
                           </a>
                           {d.id === "judging-criteria" && (
-                            <div className="mt-3 text-xs text-[#575757]">
+                            <div className="mt-3 text-xs text-[#414042]">
                               Related:{" "}
-                              <Link to="/academy/judging" className="underline decoration-black/20 underline-offset-2 hover:text-[#14181F]">
+                              <Link to="/academy/judging" className="underline decoration-black/20 underline-offset-2 hover:text-[#414042]">
                                 Judging Academy track
                               </Link>
                             </div>
                           )}
                           {(d.id === "athlete-eligibility" || d.id === "anti-doping") && (
-                            <div className="mt-3 text-xs text-[#575757]">
+                            <div className="mt-3 text-xs text-[#414042]">
                               Related:{" "}
-                              <Link to="/academy/athletes" className="underline decoration-black/20 underline-offset-2 hover:text-[#14181F]">
+                              <Link to="/academy/athletes" className="underline decoration-black/20 underline-offset-2 hover:text-[#414042]">
                                 Athletes Academy track
                               </Link>
                             </div>
                           )}
                           {d.id === "code-of-conduct" && (
-                            <div className="mt-3 text-xs text-[#575757]">
+                            <div className="mt-3 text-xs text-[#414042]">
                               Related:{" "}
-                              <Link to="/academy/coaching" className="underline decoration-black/20 underline-offset-2 hover:text-[#14181F]">
+                              <Link to="/academy/coaching" className="underline decoration-black/20 underline-offset-2 hover:text-[#414042]">
                                 Coaching Academy track
                               </Link>
                             </div>
@@ -403,17 +403,17 @@ function RulesPage() {
                         </div>
 
                         {/* placeholder rule content — replace with real policy text */}
-                        <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-[#14181F]/90">
+                        <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-[#414042]/90">
                           {d.blocks.map((b, i) => {
                             if (b.type === "p") return <p key={i}>{highlight(b.text, query)}</p>;
                             if (b.type === "h3")
                               return (
-                                <h3 key={i} className="pt-2 text-[15px] font-semibold text-[#14181F]" style={{ fontFamily: "var(--font-display)" }}>
+                                <h3 key={i} className="pt-2 text-[15px] font-semibold text-[#414042]" style={{ fontFamily: "var(--font-display)" }}>
                                   {highlight(b.text, query)}
                                 </h3>
                               );
                             return (
-                              <ul key={i} className="ml-5 list-disc space-y-1.5 marker:text-[#575757]">
+                              <ul key={i} className="ml-5 list-disc space-y-1.5 marker:text-[#414042]">
                                 {b.items.map((it, j) => (
                                   <li key={j}>{highlight(it, query)}</li>
                                 ))}

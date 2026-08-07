@@ -59,7 +59,7 @@ function LoginPage() {
             >
               Log in
             </h1>
-            <p className="mt-3 text-[15px] leading-relaxed text-[#575757]">
+            <p className="mt-3 text-[15px] leading-relaxed text-[#414042]">
               Federations, judges, coaches and athletes all sign in with the same IYSF account — your
               role determines what you see once inside.
             </p>
@@ -67,7 +67,7 @@ function LoginPage() {
             <div className="mt-8 rounded-lg border border-black/[0.08] bg-white p-6">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label htmlFor="login-email" className="mb-1.5 block text-sm font-semibold text-[#14181F]">
+                  <label htmlFor="login-email" className="mb-1.5 block text-sm font-semibold text-[#414042]">
                     Email
                   </label>
                   <input
@@ -76,11 +76,11 @@ function LoginPage() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full rounded-md border border-black/15 bg-white px-3.5 py-2.5 text-sm text-[#14181F] focus:border-[#4298D3] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]/30"
+                    className="w-full rounded-md border border-black/15 bg-white px-3.5 py-2.5 text-sm text-[#414042] focus:border-[#4298D3] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]/30"
                   />
                 </div>
                 <div>
-                  <label htmlFor="login-password" className="mb-1.5 block text-sm font-semibold text-[#14181F]">
+                  <label htmlFor="login-password" className="mb-1.5 block text-sm font-semibold text-[#414042]">
                     Password
                   </label>
                   <input
@@ -89,7 +89,7 @@ function LoginPage() {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full rounded-md border border-black/15 bg-white px-3.5 py-2.5 text-sm text-[#14181F] focus:border-[#4298D3] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]/30"
+                    className="w-full rounded-md border border-black/15 bg-white px-3.5 py-2.5 text-sm text-[#414042] focus:border-[#4298D3] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]/30"
                   />
                 </div>
 
@@ -116,14 +116,14 @@ function LoginPage() {
                 {forgotOpen && (
                   <div id="forgot-panel" className="mt-3 rounded-md border border-black/[0.08] bg-[#FAFAFA] p-4">
                     {resetSent ? (
-                      <p role="status" aria-live="polite" className="text-sm text-[#14181F]">
+                      <p role="status" aria-live="polite" className="text-sm text-[#414042]">
                         Reset link sent (placeholder) — password recovery isn't connected to an email
                         service yet.
                       </p>
                     ) : (
                       <form onSubmit={handleResetSubmit} className="space-y-3">
                         <div>
-                          <label htmlFor="reset-email" className="mb-1.5 block text-sm font-semibold text-[#14181F]">
+                          <label htmlFor="reset-email" className="mb-1.5 block text-sm font-semibold text-[#414042]">
                             Email for password reset
                           </label>
                           <input
@@ -132,7 +132,7 @@ function LoginPage() {
                             required
                             value={resetEmail}
                             onChange={(e) => setResetEmail(e.target.value)}
-                            className="w-full rounded-md border border-black/15 bg-white px-3.5 py-2.5 text-sm text-[#14181F] focus:border-[#4298D3] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]/30"
+                            className="w-full rounded-md border border-black/15 bg-white px-3.5 py-2.5 text-sm text-[#414042] focus:border-[#4298D3] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]/30"
                           />
                         </div>
                         <button
@@ -149,13 +149,13 @@ function LoginPage() {
               </div>
             </div>
 
-            <p className="mt-6 text-center text-sm text-[#575757]">
+            <p className="mt-6 text-center text-sm text-[#414042]">
               Don't have an account yet?{" "}
               <Link to="/" hash="join" className="font-semibold hover:underline" style={{ color: IYSF.magenta }}>
                 Join a federation
               </Link>
             </p>
-            <p className="mt-2 text-center text-sm text-[#575757]">
+            <p className="mt-2 text-center text-sm text-[#414042]">
               Looking for a federation, judge or coach instead?{" "}
               <Link to="/directory" className="font-semibold hover:underline" style={{ color: IYSF.blue }}>
                 Browse the directory

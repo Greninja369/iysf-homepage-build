@@ -25,9 +25,9 @@ export const Route = createFileRoute("/governance")({
   component: GovernancePage,
 });
 
-const AZURE = "#4898D3";
-const ORANGE = "#FBAF43";
-const MAGENTA = "#EA088C";
+const AZURE = "#4298D3";
+const ORANGE = "#FAAF40";
+const MAGENTA = "#DE007A";
 
 /* placeholder committee structure — offices and mandates are illustrative
    placeholders pending confirmation of the official organigram. */
@@ -58,7 +58,7 @@ const BODIES = [
   },
   {
     name: "Ethics & Disciplinary Panel",
-    accent: "#575757",
+    accent: "#414042",
     desc:
       "Independent review of Code of Conduct matters, appeals and disciplinary outcomes. (Placeholder description.)",
   },
@@ -107,7 +107,7 @@ function GovernancePage() {
   }));
 
   return (
-    <div style={{ fontFamily: "var(--font-sans)", color: "#14181F" }}>
+    <div style={{ fontFamily: "var(--font-sans)", color: "#414042" }}>
       <Nav />
       <main>
         {/* -------- Page header -------- */}
@@ -124,7 +124,7 @@ function GovernancePage() {
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 800,
-                color: "#14181F",
+                color: "#414042",
                 fontStretch: "expanded",
               }}
             >
@@ -132,7 +132,7 @@ function GovernancePage() {
             </h1>
             <p
               className="mt-4 max-w-[660px] text-base md:text-[17px]"
-              style={{ color: "#575757" }}
+              style={{ color: "#414042" }}
             >
               The International Yoga Sports Federation is a non-profit
               international federation founded in Lausanne, Switzerland in 2013
@@ -152,7 +152,7 @@ function GovernancePage() {
             <div>
               <div
                 className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]"
-                style={{ color: "#575757" }}
+                style={{ color: "#414042" }}
               >
                 Legal status
               </div>
@@ -161,7 +161,7 @@ function GovernancePage() {
                 style={{
                   fontFamily: "var(--font-display)",
                   fontWeight: 800,
-                  color: "#14181F",
+                  color: "#414042",
                 }}
               >
                 A Swiss non-profit federation, based in Lausanne
@@ -183,7 +183,7 @@ function GovernancePage() {
                   individuals. Athletes, judges and coaches take part through
                   their national member federation.
                 </p>
-                <p style={{ color: "#575757" }}>
+                <p style={{ color: "#414042" }}>
                   Registration numbers, statutes in force and officer terms are
                   placeholders on this page pending publication of the confirmed
                   governance file.
@@ -220,7 +220,7 @@ function GovernancePage() {
                 >
                   <dt
                     className="text-[10.5px] font-semibold uppercase tracking-[0.18em]"
-                    style={{ color: "#575757" }}
+                    style={{ color: "#414042" }}
                   >
                     {row.k}
                   </dt>
@@ -229,7 +229,7 @@ function GovernancePage() {
                     style={{
                       fontFamily: "var(--font-display)",
                       fontWeight: 700,
-                      color: "#14181F",
+                      color: "#414042",
                     }}
                   >
                     {row.v}
@@ -239,7 +239,7 @@ function GovernancePage() {
               <div className="col-span-2 rounded-lg border border-black/[0.08] bg-white p-5">
                 <dt
                   className="text-[10.5px] font-semibold uppercase tracking-[0.18em]"
-                  style={{ color: "#575757" }}
+                  style={{ color: "#414042" }}
                 >
                   Headquarters
                 </dt>
@@ -269,7 +269,7 @@ function GovernancePage() {
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 800,
-                color: "#14181F",
+                color: "#414042",
               }}
             >
               Board & committees
@@ -286,12 +286,12 @@ function GovernancePage() {
                     style={{
                       fontFamily: "var(--font-display)",
                       fontWeight: 700,
-                      color: "#14181F",
+                      color: "#414042",
                     }}
                   >
                     {b.name}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed" style={{ color: "#575757" }}>
+                  <p className="mt-2 text-sm leading-relaxed" style={{ color: "#414042" }}>
                     {b.desc}
                   </p>
                 </li>
@@ -308,7 +308,7 @@ function GovernancePage() {
           <div className="mx-auto max-w-[1240px] px-5 py-14 md:px-8 md:py-20">
             <div
               className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]"
-              style={{ color: "#575757" }}
+              style={{ color: "#414042" }}
             >
               Membership
             </div>
@@ -317,7 +317,7 @@ function GovernancePage() {
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 800,
-                color: "#14181F",
+                color: "#414042",
               }}
             >
               Three classes of membership
@@ -337,12 +337,12 @@ function GovernancePage() {
                   >
                     {status}
                   </span>
-                  <p className="mt-4 text-sm leading-relaxed" style={{ color: "#575757" }}>
+                  <p className="mt-4 text-sm leading-relaxed" style={{ color: "#414042" }}>
                     {STATUS_NOTE[status]}
                   </p>
                   <p
                     className="mt-4 text-[13px]"
-                    style={{ fontFamily: "var(--font-mono)", color: "#14181F" }}
+                    style={{ fontFamily: "var(--font-mono)", color: "#414042" }}
                   >
                     {n} listed in the directory (placeholder records)
                   </p>
@@ -374,7 +374,7 @@ function GovernancePage() {
           <div className="mx-auto max-w-[1240px] px-5 py-14 md:px-8 md:py-20">
             <div
               className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]"
-              style={{ color: "#575757" }}
+              style={{ color: "#414042" }}
             >
               Bylaws & policies
             </div>
@@ -383,12 +383,12 @@ function GovernancePage() {
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 800,
-                color: "#14181F",
+                color: "#414042",
               }}
             >
               Governing documents
             </h2>
-            <p className="mt-4 max-w-[680px] text-base" style={{ color: "#575757" }}>
+            <p className="mt-4 max-w-[680px] text-base" style={{ color: "#414042" }}>
               The full rulebook is published on the{" "}
               <Link to="/rules" className="font-semibold hover:underline" style={{ color: AZURE }}>
                 Rules & Regulations
@@ -408,12 +408,12 @@ function GovernancePage() {
                       style={{
                         fontFamily: "var(--font-display)",
                         fontWeight: 700,
-                        color: "#14181F",
+                        color: "#414042",
                       }}
                     >
                       {d.title}
                     </div>
-                    <p className="mt-1 text-sm" style={{ color: "#575757" }}>
+                    <p className="mt-1 text-sm" style={{ color: "#414042" }}>
                       {d.desc}
                     </p>
                   </div>
@@ -456,12 +456,12 @@ function GovernancePage() {
                   style={{
                     fontFamily: "var(--font-display)",
                     fontWeight: 700,
-                    color: "#14181F",
+                    color: "#414042",
                   }}
                 >
                   {c.t}
                 </div>
-                <p className="mt-2 text-sm" style={{ color: "#575757" }}>
+                <p className="mt-2 text-sm" style={{ color: "#414042" }}>
                   {c.d}
                 </p>
               </Link>

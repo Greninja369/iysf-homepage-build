@@ -384,7 +384,7 @@ function MembershipCta() {
         <Link
           to="/join-us"
           className="shrink-0 rounded-[12px] px-7 py-4 text-base font-bold text-white transition-transform hover:-translate-y-0.5"
-          style={{ background: "#14181F" }}
+          style={{ background: "#414042" }}
         >
           Join us
         </Link>

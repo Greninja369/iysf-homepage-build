@@ -67,7 +67,7 @@ function PoseBackdrop() {
             key={idx}
             d={d}
             fill="none"
-            stroke="#14181F"
+            stroke="#414042"
             strokeWidth="1.1"
             strokeLinecap="round"
             style={{
@@ -101,13 +101,13 @@ function Hero() {
       <div className="relative mx-auto w-full max-w-[1240px] px-5 py-24 md:px-8 md:py-32">
         <div
           className="mb-5 text-[11px] font-semibold uppercase tracking-[0.22em]"
-          style={{ color: "#EA088C" }}
+          style={{ color: "#DE007A" }}
         >
           Our history
         </div>
         <h1
           className="max-w-[16ch] text-[38px] leading-[1.02] tracking-[-0.02em] md:text-[76px]"
-          style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#14181F" }}
+          style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#414042" }}
         >
           {words.map((w, i) => (
             <span
@@ -129,18 +129,18 @@ function Hero() {
         </h1>
         <p
           className="mt-7 max-w-[680px] text-[17px] leading-relaxed md:text-[20px]"
-          style={{ color: "#14181F" }}
+          style={{ color: "#414042" }}
         >
           The global governing body for yoga āsana sport — a discipline that honors the art of
           stillness in motion.
         </p>
-        <p className="mt-5 max-w-[620px] text-base leading-relaxed" style={{ color: "#575757" }}>
+        <p className="mt-5 max-w-[620px] text-base leading-relaxed" style={{ color: "#414042" }}>
           We promote excellence in yogasana competition, grounded in integrity, inclusivity, and
           unity across generations. Since 2003, IYSF has been guiding the evolution of yoga as an
           international sport.
         </p>
 
-        <div className="mt-14 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em]" style={{ color: "#575757" }}>
+        <div className="mt-14 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em]" style={{ color: "#414042" }}>
           <ArrowDown size={14} className={reduced ? "" : "animate-bounce"} aria-hidden="true" />
           Scroll to explore
         </div>
@@ -164,7 +164,7 @@ function Origins() {
           </div>
           <h2
             className="text-[30px] leading-[1.08] tracking-[-0.015em] md:text-[42px]"
-            style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#14181F" }}
+            style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#414042" }}
           >
             On the shoulders of pioneers
           </h2>
@@ -205,23 +205,23 @@ function GhoshCup() {
         <Reveal>
           <div
             className="mb-4 text-[11px] font-semibold uppercase tracking-[0.22em]"
-            style={{ color: "#4898D3" }}
+            style={{ color: "#4298D3" }}
           >
             The Ghosh Cup revival · 2003–2014
           </div>
           <h2
             className="text-[30px] leading-[1.08] tracking-[-0.015em] md:text-[42px]"
-            style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#14181F" }}
+            style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#414042" }}
           >
             A legacy revived, internationally
           </h2>
-          <p className="mt-6 max-w-[620px] text-base leading-relaxed md:text-[17px]" style={{ color: "#575757" }}>
+          <p className="mt-6 max-w-[620px] text-base leading-relaxed md:text-[17px]" style={{ color: "#414042" }}>
             In 2003, the legacy of these competitions was revived internationally through the Bishnu
             Charan Ghosh Cup (often called the Ghosh Cup), held annually in Los Angeles. These
             championships ran every year from 2003 to 2014, attracting participants from around the
             world and sparking the global yoga sports movement.
           </p>
-          <p className="mt-4 max-w-[620px] text-base leading-relaxed md:text-[17px]" style={{ color: "#575757" }}>
+          <p className="mt-4 max-w-[620px] text-base leading-relaxed md:text-[17px]" style={{ color: "#414042" }}>
             In 2012, Honorable B.K.S. Iyengar endorsed our organization and Championship.
           </p>
           <a
@@ -229,9 +229,9 @@ function GhoshCup() {
             target="_blank"
             rel="noopener noreferrer"
             className="mt-7 inline-flex items-center gap-2.5 rounded-md border px-4 py-3 text-sm font-semibold transition-colors hover:bg-black/[0.03]"
-            style={{ borderColor: "rgba(20,24,31,0.15)", color: "#14181F" }}
+            style={{ borderColor: "rgba(20,24,31,0.15)", color: "#414042" }}
           >
-            <FileText size={16} color="#4898D3" aria-hidden="true" />
+            <FileText size={16} color="#4298D3" aria-hidden="true" />
             View the B.K.S. Iyengar endorsement letter (PDF, opens in a new tab)
           </a>
         </Reveal>
@@ -242,7 +242,7 @@ function GhoshCup() {
             role="img"
             aria-label="Portrait placeholder — Ghosh Cup era, Los Angeles 2003 to 2014"
           >
-            <span className="text-xs" style={{ color: "#575757", fontFamily: "var(--font-mono)" }}>
+            <span className="text-xs" style={{ color: "#414042", fontFamily: "var(--font-mono)" }}>
               Portrait placeholder — Ghosh Cup era (2003–2014)
             </span>
           </div>
@@ -263,7 +263,7 @@ function Lausanne() {
         <Reveal>
           <div
             className="mb-4 text-[11px] font-semibold uppercase tracking-[0.22em]"
-            style={{ color: "#FBAF43" }}
+            style={{ color: "#FAAF40" }}
           >
             From legacy to leadership · 2013–2014
           </div>
@@ -287,7 +287,7 @@ function Lausanne() {
             <span
               className="absolute inset-0 rounded-full border"
               style={{
-                borderColor: "rgba(251,175,67,0.35)",
+                borderColor: "rgba(250,175,64,0.35)",
                 opacity: inView ? 1 : 0,
                 transform: inView || reduced ? "scale(1)" : "scale(0.6)",
                 transition: reduced ? undefined : "opacity 700ms ease, transform 900ms cubic-bezier(.2,.7,.3,1)",
@@ -296,7 +296,7 @@ function Lausanne() {
             <span
               className="absolute h-[110px] w-[110px] rounded-full border"
               style={{
-                borderColor: "rgba(251,175,67,0.55)",
+                borderColor: "rgba(250,175,64,0.55)",
                 opacity: inView ? 1 : 0,
                 transform: inView || reduced ? "scale(1)" : "scale(0.6)",
                 transition: reduced ? undefined : "opacity 700ms ease 140ms, transform 900ms cubic-bezier(.2,.7,.3,1) 140ms",
@@ -310,10 +310,10 @@ function Lausanne() {
                 transition: reduced ? undefined : "opacity 500ms ease 260ms, transform 600ms cubic-bezier(.2,.9,.3,1) 260ms",
               }}
             >
-              <MapPin size={30} color="#FBAF43" aria-hidden="true" />
+              <MapPin size={30} color="#FAAF40" aria-hidden="true" />
               <span
                 className="text-[11px] uppercase tracking-[0.18em]"
-                style={{ color: "#FBAF43", fontFamily: "var(--font-mono)" }}
+                style={{ color: "#FAAF40", fontFamily: "var(--font-mono)" }}
               >
                 Lausanne, CH
               </span>
@@ -340,7 +340,7 @@ const TIMELINE = [
   { year: "2025", host: "Cyberjaya", place: "Malaysia", note: "The most recent World Championship edition." },
 ];
 
-const ACCENTS = ["#4898D3", "#FBAF43", "#EA088C"];
+const ACCENTS = ["#4298D3", "#FAAF40", "#DE007A"];
 
 function TimelinePoint({
   item,
@@ -383,11 +383,11 @@ function TimelinePoint({
           </div>
           <div
             className="mt-1 text-[18px] leading-tight"
-            style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#14181F" }}
+            style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#414042" }}
           >
             {item.host}
           </div>
-          <div className="mt-0.5 text-sm" style={{ color: "#575757" }}>
+          <div className="mt-0.5 text-sm" style={{ color: "#414042" }}>
             {item.place}
           </div>
           <button
@@ -395,7 +395,7 @@ function TimelinePoint({
             onClick={onToggle}
             aria-expanded={open}
             className="mt-2 text-xs font-semibold underline-offset-4 hover:underline"
-            style={{ color: "#575757" }}
+            style={{ color: "#414042" }}
           >
             {open ? "Hide detail" : "Show detail"}
           </button>
@@ -410,7 +410,7 @@ function TimelinePoint({
           {open && (
             <div
               className="mt-3 max-w-[260px] rounded-md border border-black/10 bg-white p-3 text-xs leading-relaxed"
-              style={{ color: "#575757" }}
+              style={{ color: "#414042" }}
             >
               {item.note}
             </div>
@@ -432,17 +432,17 @@ function Timeline() {
         <Reveal>
           <div
             className="mb-4 text-[11px] font-semibold uppercase tracking-[0.22em]"
-            style={{ color: "#EA088C" }}
+            style={{ color: "#DE007A" }}
           >
             Championship history
           </div>
           <h2
             className="max-w-[16ch] text-[30px] leading-[1.08] tracking-[-0.015em] md:text-[42px]"
-            style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#14181F" }}
+            style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#414042" }}
           >
             Two decades of world championships
           </h2>
-          <p className="mt-6 max-w-[720px] text-base leading-relaxed md:text-[17px]" style={{ color: "#575757" }}>
+          <p className="mt-6 max-w-[720px] text-base leading-relaxed md:text-[17px]" style={{ color: "#414042" }}>
             These championships showcase IYSF's commitment to technical rigor, artistic expression,
             and cultural celebration. Every event is judged using our standardized scoring system
             and features divisions for youth, adult, and masters athletes.
@@ -463,7 +463,7 @@ function Timeline() {
               y1="1"
               x2="1000"
               y2="1"
-              stroke="#4898D3"
+              stroke="#4298D3"
               strokeWidth="2"
               strokeDasharray="1000"
               style={{
@@ -481,7 +481,7 @@ function Timeline() {
           <span
             className="absolute left-3 top-0 w-[2px] md:hidden"
             style={{
-              background: "#4898D3",
+              background: "#4298D3",
               height: reduced || inView ? "100%" : "0%",
               transition: reduced ? undefined : "height 2200ms ease-out",
             }}
@@ -569,17 +569,17 @@ function GlobalMovement() {
         <Reveal>
           <div
             className="mb-4 text-[11px] font-semibold uppercase tracking-[0.22em]"
-            style={{ color: "#4898D3" }}
+            style={{ color: "#4298D3" }}
           >
             A global movement
           </div>
           <h2
             className="max-w-[18ch] text-[30px] leading-[1.08] tracking-[-0.015em] md:text-[42px]"
-            style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#14181F" }}
+            style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#414042" }}
           >
             Federations across five continents
           </h2>
-          <p className="mt-6 max-w-[720px] text-base leading-relaxed md:text-[17px]" style={{ color: "#575757" }}>
+          <p className="mt-6 max-w-[720px] text-base leading-relaxed md:text-[17px]" style={{ color: "#414042" }}>
             Today, IYSF supports national federations in over 25 countries... We are actively
             expanding our community, supporting federations across Africa, the Middle East, Asia,
             the Americas, and Europe, while working toward establishing continental councils and
@@ -595,7 +595,7 @@ function GlobalMovement() {
             {hydrated ? (
               <Suspense
                 fallback={
-                  <div className="flex h-full items-center justify-center text-sm" style={{ color: "#575757" }}>
+                  <div className="flex h-full items-center justify-center text-sm" style={{ color: "#414042" }}>
                     Loading map…
                   </div>
                 }
@@ -604,7 +604,7 @@ function GlobalMovement() {
                   events={pins}
                   selectedId={null}
                   onSelect={() => {}}
-                  tierColor={{ member: "#4898D3" }}
+                  tierColor={{ member: "#4298D3" }}
                 />
               </Suspense>
             ) : (
@@ -621,13 +621,13 @@ function GlobalMovement() {
                 <div key={s.label} className="rounded-lg border border-black/10 p-5">
                   <div
                     className="text-[38px] leading-none"
-                    style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#14181F" }}
+                    style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#414042" }}
                   >
                     <CountUp value={s.value} suffix={s.suffix} />
                   </div>
                   <div
                     className="mt-2 text-[10.5px] font-semibold uppercase tracking-[0.2em]"
-                    style={{ color: "#575757" }}
+                    style={{ color: "#414042" }}
                   >
                     {s.label}
                   </div>
@@ -642,15 +642,15 @@ function GlobalMovement() {
                   className="rounded-full border px-3 py-1.5 text-[13px]"
                   style={{
                     borderColor: "rgba(20,24,31,0.12)",
-                    color: i < lit ? "#14181F" : "#8A8F98",
-                    background: i < lit ? "rgba(72,152,211,0.10)" : "transparent",
+                    color: i < lit ? "#414042" : "#8A8F98",
+                    background: i < lit ? "rgba(66,152,211,0.10)" : "transparent",
                     transition: reduced ? undefined : "background 400ms ease, color 400ms ease",
                   }}
                 >
                   {c.name}
                 </li>
               ))}
-              <li className="rounded-full px-3 py-1.5 text-[13px] italic" style={{ color: "#575757" }}>
+              <li className="rounded-full px-3 py-1.5 text-[13px] italic" style={{ color: "#414042" }}>
                 and others rejoining
               </li>
             </ul>
@@ -673,7 +673,7 @@ function Olympic() {
         <Reveal>
           <div
             className="mb-4 text-[11px] font-semibold uppercase tracking-[0.22em]"
-            style={{ color: "#FBAF43" }}
+            style={{ color: "#FAAF40" }}
           >
             Toward Olympic recognition
           </div>
@@ -696,7 +696,7 @@ function Olympic() {
           <div className="flex items-baseline justify-between">
             <span
               className="text-[13px]"
-              style={{ fontFamily: "var(--font-mono)", color: "#FBAF43" }}
+              style={{ fontFamily: "var(--font-mono)", color: "#FAAF40" }}
             >
               25+ federations today
             </span>
@@ -716,7 +716,7 @@ function Olympic() {
             <span
               className="block h-full rounded-full"
               style={{
-                background: "linear-gradient(90deg,#FBAF43,#EA088C)",
+                background: "linear-gradient(90deg,#FAAF40,#DE007A)",
                 width: reduced || inView ? `${pct}%` : "0%",
                 transition: reduced ? undefined : "width 1600ms cubic-bezier(.2,.7,.3,1)",
               }}
@@ -736,10 +736,10 @@ function Olympic() {
 
 function JoinMovement() {
   const cards = [
-    { title: "Compete at our next World Championship", to: "/events" as const, hash: undefined, color: "#4898D3" },
-    { title: "Start or grow your national federation", to: "/directory" as const, hash: undefined, color: "#FBAF43" },
-    { title: "Become a certified judge or coach", to: "/academy" as const, hash: undefined, color: "#EA088C" },
-    { title: "Support the journey to Olympic recognition", to: "/" as const, hash: "join", color: "#14181F" },
+    { title: "Compete at our next World Championship", to: "/events" as const, hash: undefined, color: "#4298D3" },
+    { title: "Start or grow your national federation", to: "/directory" as const, hash: undefined, color: "#FAAF40" },
+    { title: "Become a certified judge or coach", to: "/academy" as const, hash: undefined, color: "#DE007A" },
+    { title: "Support the journey to Olympic recognition", to: "/" as const, hash: "join", color: "#414042" },
   ];
   return (
     <section className="bg-white">
@@ -747,11 +747,11 @@ function JoinMovement() {
         <Reveal>
           <h2
             className="max-w-[18ch] text-[30px] leading-[1.08] tracking-[-0.015em] md:text-[42px]"
-            style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#14181F" }}
+            style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#414042" }}
           >
             Join the movement
           </h2>
-          <p className="mt-5 max-w-[640px] text-base leading-relaxed md:text-[17px]" style={{ color: "#575757" }}>
+          <p className="mt-5 max-w-[640px] text-base leading-relaxed md:text-[17px]" style={{ color: "#414042" }}>
             Whether you are an athlete, coach, judge, organizer, or simply passionate about yoga,
             there's a place for you in IYSF:
           </p>
@@ -767,7 +767,7 @@ function JoinMovement() {
               >
                 <span
                   className="text-[18px] leading-snug"
-                  style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#14181F" }}
+                  style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#414042" }}
                 >
                   {c.title}
                 </span>
@@ -785,7 +785,7 @@ function JoinMovement() {
         <Reveal delay={120}>
           <p
             className="mt-12 max-w-[760px] text-[19px] leading-snug md:text-[26px]"
-            style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#14181F" }}
+            style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#414042" }}
           >
             Together, we're writing the next chapter of yoga's evolution as a sport — honoring
             tradition, embracing excellence, and inspiring the world.
@@ -802,7 +802,7 @@ function KeepUpdated() {
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
   return (
-    <section style={{ background: "#FBAF43" }}>
+    <section style={{ background: "#FAAF40" }}>
       <div className="mx-auto max-w-[1240px] px-5 py-16 md:px-8 md:py-20">
         <div className="grid gap-8 md:grid-cols-[1fr_1fr] md:items-center">
           <div>
@@ -843,12 +843,12 @@ function KeepUpdated() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
                 className="w-full rounded-md border border-black/10 bg-white px-4 py-3 text-sm outline-none focus:ring-2"
-                style={{ color: "#14181F" }}
+                style={{ color: "#414042" }}
               />
               <button
                 type="submit"
                 className="shrink-0 rounded-md px-5 py-3 text-sm font-semibold transition-transform hover:-translate-y-0.5"
-                style={{ background: "#14181F", color: "#fff" }}
+                style={{ background: "#414042", color: "#fff" }}
               >
                 Subscribe
               </button>

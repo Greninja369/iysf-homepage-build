@@ -27,7 +27,7 @@ export const Route = createFileRoute("/academy/coaching")({
   component: CoachingTrack,
 });
 
-const COLOR = "#EA088C";
+const COLOR = "#DE007A";
 
 /* placeholder tiers — replace with real coaching tiers */
 const TIERS = [

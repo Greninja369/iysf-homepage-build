@@ -71,7 +71,7 @@ function DonatePage() {
           >
             Support the campaign for Olympic recognition
           </h1>
-          <p className="mt-4 max-w-[70ch] text-[15px] leading-relaxed text-[#575757]">
+          <p className="mt-4 max-w-[70ch] text-[15px] leading-relaxed text-[#414042]">
             Every contribution helps IYSF move closer to Olympic recognition for Yogasana sport, while
             supporting the athletes and judges who compete and officiate under our banner. Read more about{" "}
             <Link to="/about/history" className="font-semibold hover:underline" style={{ color: IYSF.blue }}>
@@ -87,7 +87,7 @@ function DonatePage() {
                   <h2 className="text-2xl font-extrabold" style={{ fontFamily: "var(--font-display)", color: IYSF.charcoal }}>
                     Thank you{name ? `, ${name}` : ""}.
                   </h2>
-                  <p className="mx-auto mt-3 max-w-[50ch] text-sm leading-relaxed text-[#575757]">
+                  <p className="mx-auto mt-3 max-w-[50ch] text-sm leading-relaxed text-[#414042]">
                     No payment has been processed — the payment processor for donations isn't connected
                     yet. This confirmation is a placeholder while the donation flow is being built.
                   </p>
@@ -103,7 +103,7 @@ function DonatePage() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-8">
                   <fieldset>
-                    <legend className="mb-3 text-sm font-semibold text-[#14181F]">Frequency</legend>
+                    <legend className="mb-3 text-sm font-semibold text-[#414042]">Frequency</legend>
                     <div className="flex gap-3">
                       {(["once", "monthly"] as const).map((f) => (
                         <label
@@ -112,7 +112,7 @@ function DonatePage() {
                           style={{
                             borderColor: frequency === f ? IYSF.blue : "rgba(0,0,0,0.15)",
                             background: frequency === f ? "rgba(66,152,211,0.08)" : "#fff",
-                            color: frequency === f ? IYSF.blue : "#14181F",
+                            color: frequency === f ? IYSF.blue : "#414042",
                           }}
                         >
                           <input
@@ -130,7 +130,7 @@ function DonatePage() {
                   </fieldset>
 
                   <fieldset>
-                    <legend className="mb-3 text-sm font-semibold text-[#14181F]">Amount (USD)</legend>
+                    <legend className="mb-3 text-sm font-semibold text-[#414042]">Amount (USD)</legend>
                     <div className="grid grid-cols-4 gap-3">
                       {PRESETS.map((p) => (
                         <button
@@ -145,7 +145,7 @@ function DonatePage() {
                           style={{
                             borderColor: preset === p ? IYSF.blue : "rgba(0,0,0,0.15)",
                             background: preset === p ? IYSF.blue : "#fff",
-                            color: preset === p ? "#fff" : "#14181F",
+                            color: preset === p ? "#fff" : "#414042",
                           }}
                         >
                           ${p}
@@ -153,7 +153,7 @@ function DonatePage() {
                       ))}
                     </div>
                     <div className="mt-3">
-                      <label htmlFor="custom-amount" className="mb-1.5 block text-sm font-semibold text-[#14181F]">
+                      <label htmlFor="custom-amount" className="mb-1.5 block text-sm font-semibold text-[#414042]">
                         Custom amount
                       </label>
                       <input
@@ -167,14 +167,14 @@ function DonatePage() {
                           setPreset(null);
                         }}
                         placeholder="Enter another amount"
-                        className="w-full rounded-md border border-black/15 bg-white px-3.5 py-2.5 text-sm text-[#14181F] focus:border-[#4298D3] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]/30"
+                        className="w-full rounded-md border border-black/15 bg-white px-3.5 py-2.5 text-sm text-[#414042] focus:border-[#4298D3] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]/30"
                       />
                     </div>
                   </fieldset>
 
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div>
-                      <label htmlFor="donor-name" className="mb-1.5 block text-sm font-semibold text-[#14181F]">
+                      <label htmlFor="donor-name" className="mb-1.5 block text-sm font-semibold text-[#414042]">
                         Name
                       </label>
                       <input
@@ -183,11 +183,11 @@ function DonatePage() {
                         required
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="w-full rounded-md border border-black/15 bg-white px-3.5 py-2.5 text-sm text-[#14181F] focus:border-[#4298D3] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]/30"
+                        className="w-full rounded-md border border-black/15 bg-white px-3.5 py-2.5 text-sm text-[#414042] focus:border-[#4298D3] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]/30"
                       />
                     </div>
                     <div>
-                      <label htmlFor="donor-email" className="mb-1.5 block text-sm font-semibold text-[#14181F]">
+                      <label htmlFor="donor-email" className="mb-1.5 block text-sm font-semibold text-[#414042]">
                         Email
                       </label>
                       <input
@@ -196,7 +196,7 @@ function DonatePage() {
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full rounded-md border border-black/15 bg-white px-3.5 py-2.5 text-sm text-[#14181F] focus:border-[#4298D3] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]/30"
+                        className="w-full rounded-md border border-black/15 bg-white px-3.5 py-2.5 text-sm text-[#414042] focus:border-[#4298D3] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]/30"
                       />
                     </div>
                   </div>
@@ -209,7 +209,7 @@ function DonatePage() {
                     Donate {amount ? `$${amount}` : ""}
                     {frequency === "monthly" ? " / month" : ""}
                   </button>
-                  <p className="text-xs text-[#575757]">
+                  <p className="text-xs text-[#414042]">
                     No payment is processed by this form yet — the payment processor is not connected.
                   </p>
                 </form>
@@ -220,14 +220,14 @@ function DonatePage() {
               <h2 className="text-lg font-bold" style={{ fontFamily: "var(--font-display)", color: IYSF.charcoal }}>
                 What your donation funds
               </h2>
-              <p className="mt-1 text-xs uppercase tracking-[0.18em] text-[#575757]">
+              <p className="mt-1 text-xs uppercase tracking-[0.18em] text-[#414042]">
                 Illustrative allocation — placeholder, not final
               </p>
               <ul className="mt-4 space-y-5">
                 {FUNDS.map((f) => (
                   <li key={f.title}>
-                    <h3 className="text-sm font-bold text-[#14181F]">{f.title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-[#575757]">{f.desc}</p>
+                    <h3 className="text-sm font-bold text-[#414042]">{f.title}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-[#414042]">{f.desc}</p>
                   </li>
                 ))}
               </ul>

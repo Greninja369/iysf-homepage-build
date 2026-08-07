@@ -44,7 +44,7 @@ function EventDetailPage() {
 
   if (!event) {
     return (
-      <div style={{ fontFamily: "var(--font-sans)", color: "#14181F" }}>
+      <div style={{ fontFamily: "var(--font-sans)", color: "#414042" }}>
         <Nav />
         <main>
           <section className="mx-auto max-w-[1240px] px-5 py-20 md:px-8">
@@ -54,13 +54,13 @@ function EventDetailPage() {
             >
               Event not found
             </h1>
-            <p className="mt-3 text-sm" style={{ color: "#575757" }}>
+            <p className="mt-3 text-sm" style={{ color: "#414042" }}>
               We couldn't find that event in the championship calendar.
             </p>
             <Link
               to="/events"
               className="mt-6 inline-block text-sm font-semibold hover:underline"
-              style={{ color: "#4898D3" }}
+              style={{ color: "#4298D3" }}
             >
               ← Back to events
             </Link>
@@ -72,7 +72,7 @@ function EventDetailPage() {
   }
 
   const color = TIER_COLOR[event.tier];
-  const darkOnColor = color === "#FBAF43";
+  const darkOnColor = color === "#FAAF40";
   const hostFederation = getFederationById(event.hostFederationId);
   const federations = federationsInEvent(event);
   const related = relatedEvents(event);
@@ -82,7 +82,7 @@ function EventDetailPage() {
   const topThree = resultDivision ? event.results?.[resultDivision]?.slice(0, 3) : undefined;
 
   return (
-    <div style={{ fontFamily: "var(--font-sans)", color: "#14181F" }}>
+    <div style={{ fontFamily: "var(--font-sans)", color: "#414042" }}>
       <Nav />
       <main>
         <section className="bg-white">
@@ -102,7 +102,7 @@ function EventDetailPage() {
               </span>
               <span
                 className="text-[13px]"
-                style={{ fontFamily: "var(--font-mono)", color: "#575757" }}
+                style={{ fontFamily: "var(--font-mono)", color: "#414042" }}
               >
                 {event.date}
               </span>
@@ -112,15 +112,15 @@ function EventDetailPage() {
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 800,
-                color: "#14181F",
+                color: "#414042",
               }}
             >
               {event.name}
             </h1>
-            <div className="mt-3 text-sm" style={{ color: "#575757" }}>
+            <div className="mt-3 text-sm" style={{ color: "#414042" }}>
               {event.venue} · {event.location} · {event.region}
             </div>
-            <p className="mt-6 max-w-[680px] text-base" style={{ color: "#575757" }}>
+            <p className="mt-6 max-w-[680px] text-base" style={{ color: "#414042" }}>
               {event.summary}
             </p>
 
@@ -128,7 +128,7 @@ function EventDetailPage() {
               <Link
                 to="/rules"
                 className="text-sm font-semibold hover:underline"
-                style={{ color: "#4898D3" }}
+                style={{ color: "#4298D3" }}
               >
                 Rules &amp; competition format →
               </Link>
@@ -143,7 +143,7 @@ function EventDetailPage() {
               <div>
                 <div
                   className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]"
-                  style={{ color: "#4898D3" }}
+                  style={{ color: "#4298D3" }}
                 >
                   Divisions
                 </div>
@@ -152,7 +152,7 @@ function EventDetailPage() {
                     <span
                       key={d}
                       className="rounded-full border px-3 py-1.5 text-xs font-medium"
-                      style={{ borderColor: "rgba(0,0,0,0.12)", color: "#14181F" }}
+                      style={{ borderColor: "rgba(0,0,0,0.12)", color: "#414042" }}
                     >
                       {d}
                     </span>
@@ -163,7 +163,7 @@ function EventDetailPage() {
               <div>
                 <div
                   className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]"
-                  style={{ color: "#EA088C" }}
+                  style={{ color: "#DE007A" }}
                 >
                   Schedule
                 </div>
@@ -172,7 +172,7 @@ function EventDetailPage() {
                     <li key={i} className="px-4 py-3">
                       <div
                         className="text-[12px] font-semibold uppercase tracking-[0.14em]"
-                        style={{ color: "#575757" }}
+                        style={{ color: "#414042" }}
                       >
                         {s.day}
                       </div>
@@ -181,12 +181,12 @@ function EventDetailPage() {
                         style={{
                           fontFamily: "var(--font-display)",
                           fontWeight: 700,
-                          color: "#14181F",
+                          color: "#414042",
                         }}
                       >
                         {s.label}
                       </div>
-                      <div className="mt-1 text-sm" style={{ color: "#575757" }}>
+                      <div className="mt-1 text-sm" style={{ color: "#414042" }}>
                         {s.detail}
                       </div>
                     </li>
@@ -204,7 +204,7 @@ function EventDetailPage() {
               <div className="mb-8">
                 <div
                   className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]"
-                  style={{ color: "#575757" }}
+                  style={{ color: "#414042" }}
                 >
                   Host federation
                 </div>
@@ -218,12 +218,12 @@ function EventDetailPage() {
                     style={{
                       fontFamily: "var(--font-display)",
                       fontWeight: 700,
-                      color: "#14181F",
+                      color: "#414042",
                     }}
                   >
                     {hostFederation.name}
                   </div>
-                  <div className="mt-1 text-sm" style={{ color: "#575757" }}>
+                  <div className="mt-1 text-sm" style={{ color: "#414042" }}>
                     {hostFederation.country}
                   </div>
                 </Link>
@@ -233,7 +233,7 @@ function EventDetailPage() {
             <div>
               <div
                 className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]"
-                style={{ color: "#575757" }}
+                style={{ color: "#414042" }}
               >
                 Federations represented
               </div>
@@ -243,13 +243,13 @@ function EventDetailPage() {
                     key={f.id}
                     to="/directory/$slug"
                     params={{ slug: f.slug }}
-                    className="rounded-full border border-black/[0.12] bg-white px-3 py-1.5 text-xs font-medium hover:border-[#4898D3] hover:text-[#4898D3]"
+                    className="rounded-full border border-black/[0.12] bg-white px-3 py-1.5 text-xs font-medium hover:border-[#4298D3] hover:text-[#4298D3]"
                   >
                     {f.name}
                   </Link>
                 ))}
                 {federations.length === 0 && (
-                  <span className="text-sm" style={{ color: "#575757" }}>
+                  <span className="text-sm" style={{ color: "#414042" }}>
                     Federation participation to be confirmed.
                   </span>
                 )}
@@ -266,7 +266,7 @@ function EventDetailPage() {
               <div className="mx-auto max-w-[1240px] px-5 py-10 md:px-8 md:py-14">
                 <div
                   className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]"
-                  style={{ color: "#EA088C" }}
+                  style={{ color: "#DE007A" }}
                 >
                   Results
                 </div>
@@ -275,7 +275,7 @@ function EventDetailPage() {
                   style={{
                     fontFamily: "var(--font-display)",
                     fontWeight: 800,
-                    color: "#14181F",
+                    color: "#414042",
                   }}
                 >
                   {resultDivision} division — top 3
@@ -293,8 +293,8 @@ function EventDetailPage() {
                         >
                           #{row.rank}
                         </span>
-                        <span style={{ color: "#14181F" }}>{row.athlete}</span>
-                        <span style={{ fontFamily: "var(--font-mono)", color: "#575757" }}>
+                        <span style={{ color: "#414042" }}>{row.athlete}</span>
+                        <span style={{ fontFamily: "var(--font-mono)", color: "#414042" }}>
                           {row.score}
                         </span>
                       </li>
@@ -306,14 +306,14 @@ function EventDetailPage() {
                     to="/results/$slug"
                     params={{ slug: event.slug }}
                     className="rounded-md px-4 py-2 text-sm font-semibold transition-all hover:-translate-y-0.5"
-                    style={{ background: "#FBAF43", color: "#3A2400" }}
+                    style={{ background: "#FAAF40", color: "#3A2400" }}
                   >
                     Full results →
                   </Link>
                   <Link
                     to="/results"
                     className="text-sm font-semibold hover:underline"
-                    style={{ color: "#4898D3" }}
+                    style={{ color: "#4298D3" }}
                   >
                     All championship results →
                   </Link>
@@ -329,7 +329,7 @@ function EventDetailPage() {
             <div className="mx-auto max-w-[1240px] px-5 py-10 md:px-8 md:py-14">
               <div
                 className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]"
-                style={{ color: "#575757" }}
+                style={{ color: "#414042" }}
               >
                 Related events
               </div>
@@ -338,7 +338,7 @@ function EventDetailPage() {
                 style={{
                   fontFamily: "var(--font-display)",
                   fontWeight: 800,
-                  color: "#14181F",
+                  color: "#414042",
                 }}
               >
                 You may also be interested in
@@ -362,12 +362,12 @@ function EventDetailPage() {
                       style={{
                         fontFamily: "var(--font-display)",
                         fontWeight: 700,
-                        color: "#14181F",
+                        color: "#414042",
                       }}
                     >
                       {r.name}
                     </div>
-                    <div className="mt-1 text-sm" style={{ color: "#575757" }}>
+                    <div className="mt-1 text-sm" style={{ color: "#414042" }}>
                       {r.location}
                     </div>
                   </Link>
@@ -400,13 +400,13 @@ function RegistrationSection({ event }: { event: NonNullable<ReturnType<typeof g
       <div className="mx-auto max-w-[1240px] px-5 py-10 md:px-8 md:py-14">
         <div
           className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]"
-          style={{ color: "#4898D3" }}
+          style={{ color: "#4298D3" }}
         >
           Register
         </div>
         <h2
           className="text-[24px] md:text-[30px]"
-          style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#14181F" }}
+          style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#414042" }}
         >
           Register for this event
         </h2>
@@ -416,18 +416,18 @@ function RegistrationSection({ event }: { event: NonNullable<ReturnType<typeof g
             <div className="rounded-lg border border-black/[0.08] px-5 py-8 text-center">
               <div
                 className="mx-auto mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full"
-                style={{ background: "#FBAF43", color: "#3A2400" }}
+                style={{ background: "#FAAF40", color: "#3A2400" }}
                 aria-hidden="true"
               >
                 ✓
               </div>
               <p
                 className="text-[16px]"
-                style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#14181F" }}
+                style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#414042" }}
               >
                 Thanks — we'll be in touch with next steps.
               </p>
-              <p className="mt-2 text-sm" style={{ color: "#575757" }}>
+              <p className="mt-2 text-sm" style={{ color: "#414042" }}>
                 A confirmation has been queued to your federation contact.
               </p>
             </div>
@@ -444,7 +444,7 @@ function RegistrationSection({ event }: { event: NonNullable<ReturnType<typeof g
                 <label
                   htmlFor="ef-name"
                   className="mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.18em]"
-                  style={{ color: "#575757" }}
+                  style={{ color: "#414042" }}
                 >
                   Full name
                 </label>
@@ -453,14 +453,14 @@ function RegistrationSection({ event }: { event: NonNullable<ReturnType<typeof g
                   required
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full rounded-md border border-black/15 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#4898D3] focus:ring-2 focus:ring-[#4898D3]/25"
+                  className="w-full rounded-md border border-black/15 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#4298D3] focus:ring-2 focus:ring-[#4298D3]/25"
                 />
               </div>
               <div>
                 <label
                   htmlFor="ef-email"
                   className="mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.18em]"
-                  style={{ color: "#575757" }}
+                  style={{ color: "#414042" }}
                 >
                   Email
                 </label>
@@ -470,14 +470,14 @@ function RegistrationSection({ event }: { event: NonNullable<ReturnType<typeof g
                   required
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full rounded-md border border-black/15 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#4898D3] focus:ring-2 focus:ring-[#4898D3]/25"
+                  className="w-full rounded-md border border-black/15 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#4298D3] focus:ring-2 focus:ring-[#4298D3]/25"
                 />
               </div>
               <div>
                 <label
                   htmlFor="ef-fed"
                   className="mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.18em]"
-                  style={{ color: "#575757" }}
+                  style={{ color: "#414042" }}
                 >
                   Federation
                 </label>
@@ -487,14 +487,14 @@ function RegistrationSection({ event }: { event: NonNullable<ReturnType<typeof g
                   placeholder="e.g. national member federation"
                   value={form.federation}
                   onChange={(e) => setForm({ ...form, federation: e.target.value })}
-                  className="w-full rounded-md border border-black/15 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#4898D3] focus:ring-2 focus:ring-[#4898D3]/25"
+                  className="w-full rounded-md border border-black/15 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#4298D3] focus:ring-2 focus:ring-[#4298D3]/25"
                 />
               </div>
               <div>
                 <label
                   htmlFor="ef-div"
                   className="mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.18em]"
-                  style={{ color: "#575757" }}
+                  style={{ color: "#414042" }}
                 >
                   Division
                 </label>
@@ -504,7 +504,7 @@ function RegistrationSection({ event }: { event: NonNullable<ReturnType<typeof g
                   onChange={(e) =>
                     setForm({ ...form, division: e.target.value as Division })
                   }
-                  className="w-full rounded-md border border-black/15 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#4898D3] focus:ring-2 focus:ring-[#4898D3]/25"
+                  className="w-full rounded-md border border-black/15 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#4298D3] focus:ring-2 focus:ring-[#4298D3]/25"
                 >
                   {event.divisions.map((d) => (
                     <option key={d} value={d}>
@@ -515,8 +515,8 @@ function RegistrationSection({ event }: { event: NonNullable<ReturnType<typeof g
               </div>
               <button
                 type="submit"
-                className="mt-2 w-full rounded-md px-4 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4898D3]"
-                style={{ background: "#FBAF43", color: "#3A2400" }}
+                className="mt-2 w-full rounded-md px-4 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]"
+                style={{ background: "#FAAF40", color: "#3A2400" }}
               >
                 Submit registration
               </button>

@@ -75,7 +75,7 @@ const SECTIONS = [
 
 function PrivacyPage() {
   return (
-    <div className="min-h-dvh bg-white" style={{ fontFamily: "var(--font-sans)", color: "#14181F" }}>
+    <div className="min-h-dvh bg-white" style={{ fontFamily: "var(--font-sans)", color: "#414042" }}>
       <Nav />
       <main id="privacy-main">
         <section className="border-b border-black/10">
@@ -89,12 +89,12 @@ function PrivacyPage() {
             >
               Privacy Policy
             </h1>
-            <p className="mt-4 max-w-[70ch] text-[15px] leading-relaxed text-[#575757]">
+            <p className="mt-4 max-w-[70ch] text-[15px] leading-relaxed text-[#414042]">
               This is a placeholder privacy policy pending legal review. It describes, in general terms,
               what personal data IYSF's site flows may collect and how they might be used — it is not a
               finalized legal document.
             </p>
-            <div className="mt-4 text-xs" style={{ fontFamily: "var(--font-mono)", color: "#575757" }}>
+            <div className="mt-4 text-xs" style={{ fontFamily: "var(--font-mono)", color: "#414042" }}>
               Version v0.0 — placeholder / Last updated — placeholder
             </div>
           </div>
@@ -104,7 +104,7 @@ function PrivacyPage() {
           <div className="grid gap-10 md:grid-cols-[240px_1fr] md:gap-12">
             <aside className="hidden md:block">
               <nav aria-label="Privacy policy contents" className="sticky top-24">
-                <div className="mb-3 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#575757]">
+                <div className="mb-3 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#414042]">
                   Contents
                 </div>
                 <ul className="space-y-0.5">
@@ -112,7 +112,7 @@ function PrivacyPage() {
                     <li key={s.id}>
                       <a
                         href={`#${s.id}`}
-                        className="block rounded-r px-3 py-2 text-sm text-[#14181F]/85 hover:bg-black/[0.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]/40"
+                        className="block rounded-r px-3 py-2 text-sm text-[#414042]/85 hover:bg-black/[0.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4298D3]/40"
                         style={{ borderLeft: "3px solid transparent" }}
                       >
                         {s.title}
@@ -125,7 +125,7 @@ function PrivacyPage() {
 
             <div className="min-w-0">
               <nav aria-label="Privacy policy contents" className="mb-10 rounded-lg border border-black/[0.08] bg-[#FAFAFA] p-5 md:hidden">
-                <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#575757]">
+                <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#414042]">
                   Contents
                 </div>
                 <ul className="space-y-1">
@@ -144,11 +144,11 @@ function PrivacyPage() {
                   <section key={s.id} id={s.id} className="scroll-mt-24">
                     <h2
                       className="text-2xl font-extrabold tracking-tight md:text-[26px]"
-                      style={{ fontFamily: "var(--font-display)", color: "#14181F" }}
+                      style={{ fontFamily: "var(--font-display)", color: "#414042" }}
                     >
                       {s.title}
                     </h2>
-                    <div className="mt-4 space-y-4 text-[15px] leading-relaxed text-[#14181F]/90">
+                    <div className="mt-4 space-y-4 text-[15px] leading-relaxed text-[#414042]/90">
                       {s.body.map((p, i) => (
                         <p key={i}>{p}</p>
                       ))}

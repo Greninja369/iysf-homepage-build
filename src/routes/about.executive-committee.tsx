@@ -124,7 +124,7 @@ function ExecutiveCommitteePage() {
                   <th
                     scope="row"
                     className="px-5 py-3.5 text-left font-semibold"
-                    style={{ color: "#14181F" }}
+                    style={{ color: "#414042" }}
                   >
                     {name}
                   </th>

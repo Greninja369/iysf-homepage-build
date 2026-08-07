@@ -49,7 +49,7 @@ const STEPS = [
 
 function JoinUsPage() {
   return (
-    <div style={{ fontFamily: "var(--font-sans)", color: "#14181F" }} className="bg-white">
+    <div style={{ fontFamily: "var(--font-sans)", color: "#414042" }} className="bg-white">
       <Nav />
       <main>
         <PageHeader
@@ -84,7 +84,7 @@ function JoinUsPage() {
                 </span>
                 <h3
                   className="mt-4 text-[17px]"
-                  style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#14181F" }}
+                  style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#414042" }}
                 >
                   {s.t}
                 </h3>
@@ -100,7 +100,7 @@ function JoinUsPage() {
           <div className="mx-auto max-w-[1240px] px-5 py-14 md:px-8 md:py-16">
             <h2
               className="text-[26px] leading-[1.08] tracking-[-0.015em] md:text-[36px]"
-              style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#14181F" }}
+              style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#414042" }}
             >
               Start your application
             </h2>
