@@ -6,7 +6,7 @@ import { JoinForm } from "../components/join-form";
 import { PhotoPlaceholder } from "../components/page-shell";
 import { upcomingEvents } from "../data/iysf";
 import { Reveal } from "../components/history-motion";
-import heroImage from "../assets/hero-championship.jpg";
+import heroVideo from "../assets/hero-video.mp4.asset.json";
 import aboutCompetition from "../assets/about-competition.jpg";
 import aboutSport from "../assets/about-sport.jpg";
 import aboutChampions from "../assets/about-champions.jpg";
@@ -59,55 +59,70 @@ const H2 = (extra?: React.CSSProperties): React.CSSProperties => ({
 /* ------------------------------- Hero ------------------------------- */
 function Hero() {
   return (
-    <section className="relative isolate min-h-[560px] overflow-hidden md:min-h-[680px]">
-      <img
-        src={heroImage}
-        alt="Athletes competing at an IYSF World Championship"
-        className="absolute inset-0 h-full w-full object-cover object-center"
-        fetchPriority="high"
+    <section aria-label="IYSF championship film" className="relative isolate overflow-hidden bg-black">
+      <video
+        src={heroVideo.url}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        className="h-[58vh] min-h-[420px] w-full object-cover object-center md:h-[78vh]"
       />
       <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(to top, rgba(65,64,66,0.94) 0%, rgba(65,64,66,0.72) 38%, rgba(65,64,66,0.28) 100%)",
-        }}
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-24"
+        style={{ background: "linear-gradient(to top, rgba(255,255,255,0.9), rgba(255,255,255,0))" }}
       />
-      <div className="relative mx-auto flex min-h-[560px] max-w-[1320px] flex-col justify-end px-5 pb-16 pt-24 md:min-h-[680px] md:px-8 md:pb-20">
-        <div className="max-w-[820px]">
-          <div
-            className="mb-5 inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-white"
-            style={{ background: IYSF.magenta }}
-          >
-            World Yogasana Championships
-          </div>
-          <h1
-            className="text-[42px] leading-[1.02] text-white md:text-[76px]"
-            style={{ fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-0.025em" }}
-          >
-            A practice, judged as a sport.
-          </h1>
-          <p className="mt-5 max-w-[520px] text-lg font-medium text-white/90 md:text-xl">
-            64 member federations. Is yours one of them?
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Link
-              to="/"
-              hash="join"
-              className="rounded-[12px] px-7 py-4 text-base font-bold text-white transition-transform hover:-translate-y-0.5"
-              style={{ background: IYSF.orange, boxShadow: "0 16px 36px -16px rgba(250,175,64,0.95)" }}
-            >
-              Join a federation
-            </Link>
-            <Link
-              to="/events"
-              className="rounded-[12px] border-2 border-white px-6 py-[13px] text-base font-bold text-white transition-colors hover:bg-white/15"
-            >
-              See results
-            </Link>
-          </div>
-        </div>
+    </section>
+  );
+}
 
+/* --------------------------- Overview (moved hero copy) --------------------------- */
+function Overview() {
+  return (
+    <section id="overview" className="bg-white">
+      <div className="mx-auto max-w-[1320px] px-5 py-20 md:px-8 md:py-24">
+        <Reveal>
+          <div className="max-w-[860px]">
+            <div
+              className="mb-5 inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-white"
+              style={{ background: IYSF.magenta }}
+            >
+              World Yogasana Championships
+            </div>
+            <h1
+              className="text-[38px] leading-[1.04] md:text-[64px]"
+              style={{
+                fontFamily: "var(--font-display)",
+                fontWeight: 800,
+                letterSpacing: "-0.025em",
+                color: IYSF.charcoal,
+              }}
+            >
+              A practice, judged as a sport.
+            </h1>
+            <p className="mt-5 max-w-[560px] text-lg font-medium md:text-xl" style={{ color: "rgba(65,64,66,0.78)" }}>
+              64 member federations. Is yours one of them?
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Link
+                to="/"
+                hash="join"
+                className="rounded-[12px] px-7 py-4 text-base font-bold text-white transition-transform hover:-translate-y-0.5"
+                style={{ background: IYSF.orange, boxShadow: "0 16px 36px -16px rgba(250,175,64,0.95)" }}
+              >
+                Join a federation
+              </Link>
+              <Link
+                to="/events"
+                className="rounded-[12px] border-2 px-6 py-[13px] text-base font-bold transition-colors hover:bg-black/5"
+                style={{ borderColor: IYSF.charcoal, color: IYSF.charcoal }}
+              >
+                See results
+              </Link>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -527,6 +542,7 @@ function Index() {
       <Nav />
       <main>
         <Hero />
+        <Overview />
         <MissionStrip />
         <StatStrip />
         <AboutPreview />
