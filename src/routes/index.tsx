@@ -160,20 +160,20 @@ function StatStrip() {
           <Reveal
             key={s}
             delay={i * 90}
-            className="px-2 py-6 text-center text-[13px] font-bold uppercase tracking-[0.14em] text-white md:text-[14px]"
+            className="flex items-center justify-center px-3 py-5 text-center text-[12px] font-bold uppercase leading-snug tracking-[0.12em] text-white md:py-6 md:text-[14px] md:tracking-[0.14em]"
+            style={{
+              borderLeft: i % 2 === 1 ? "1px solid rgba(255,255,255,0.25)" : undefined,
+              borderTop: i > 1 ? "1px solid rgba(255,255,255,0.2)" : undefined,
+            }}
           >
-            <span
-              className="block"
-              style={i > 0 ? { borderLeft: "1px solid rgba(255,255,255,0.25)" } : undefined}
-            >
-              {s}
-            </span>
+            <span className="block">{s}</span>
           </Reveal>
         ))}
       </div>
     </section>
   );
 }
+
 
 /* --------------------------- About preview -------------------------- */
 function AboutPreview() {
