@@ -146,15 +146,11 @@ export function Nav() {
     <>
     <Link
       to="/events/world-championship-2026"
-      className="block w-full text-center text-[10.5px] font-bold uppercase leading-tight tracking-[0.12em] text-white transition-opacity hover:opacity-90 sm:text-[12px] sm:tracking-[0.18em]"
-      style={{ background: IYSF.magenta, fontFamily: "var(--font-sans)", padding: "7px 14px" }}
+      className="block w-full text-center text-[12px] font-bold uppercase tracking-[0.18em] text-white transition-opacity hover:opacity-90"
+      style={{ background: IYSF.magenta, fontFamily: "var(--font-sans)", padding: "7px 16px" }}
     >
-      <span className="sm:hidden">Register Now — World Championship, Italy · Dec 4–6, 2026 →</span>
-      <span className="hidden sm:inline">
-        Register Now — 17th World Yogasana Championship, Italy · Dec 4–6, 2026 →
-      </span>
+      Register Now — 17th World Yogasana Championship, Italy · Dec 4–6, 2026 →
     </Link>
-
     <header
       className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur"
       style={{ borderBottom: `1px solid ${IYSF.blueLine}`, fontFamily: "var(--font-sans)" }}
