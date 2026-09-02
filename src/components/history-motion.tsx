@@ -47,14 +47,12 @@ export function Reveal({
   as: Tag = "div",
   className = "",
   id,
-  style,
 }: {
   children: React.ReactNode;
   delay?: number;
   as?: React.ElementType;
   className?: string;
   id?: string;
-  style?: React.CSSProperties;
 }) {
   const [ref, inView] = useInView<HTMLDivElement>(0.15);
   const reduced = usePrefersReducedMotion();
@@ -65,9 +63,8 @@ export function Reveal({
       className={className}
       style={
         reduced
-          ? style
+          ? undefined
           : {
-              ...style,
               opacity: inView ? 1 : 0,
               transform: inView ? "none" : "translateY(18px)",
               transition: `opacity 700ms cubic-bezier(.2,.7,.3,1) ${delay}ms, transform 700ms cubic-bezier(.2,.7,.3,1) ${delay}ms`,
