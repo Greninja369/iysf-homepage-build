@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageShell, PageHeader, Section, Prose, InfoCard } from "../components/page-shell";
+import { PageShell, PageHeader, Section, Prose, InfoCard, PhotoPlaceholder } from "../components/page-shell";
 import { IYSF } from "../components/site-chrome";
 
 export const Route = createFileRoute("/about/executive-committee")({
