@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageShell, PageHeader, Section, Prose, InfoCard } from "../components/page-shell";
+import { PageShell, PageHeader, Section, Prose, InfoCard, PhotoPlaceholder } from "../components/page-shell";
 import { IYSF } from "../components/site-chrome";
 
 export const Route = createFileRoute("/about/executive-committee")({
@@ -93,8 +93,9 @@ function ExecutiveCommitteePage() {
           ))}
         </ul>
         <p className="mt-6 text-sm" style={{ color: IYSF.charcoal }}>
-          Officer photographs are pending individual sign-off and will be added once approved.
+          Umang Dawn's photograph is pending sign-off and will be added once approved.
         </p>
+
       </Section>
 
       <Section heading="Honorary members" tint>
@@ -106,14 +107,14 @@ function ExecutiveCommitteePage() {
             <caption className="sr-only">IYSF honorary members and their past roles</caption>
             <thead>
               <tr style={{ background: IYSF.blueWash }}>
-                {["Name", "Country", "Past role"].map((h) => (
+                {["", "Name", "Country", "Past role"].map((h, i) => (
                   <th
-                    key={h}
+                    key={h || `col-${i}`}
                     scope="col"
                     className="px-5 py-3 text-[10.5px] font-bold uppercase tracking-[0.18em]"
                     style={{ color: IYSF.charcoal }}
                   >
-                    {h}
+                    {h || <span className="sr-only">Portrait</span>}
                   </th>
                 ))}
               </tr>
@@ -121,6 +122,9 @@ function ExecutiveCommitteePage() {
             <tbody>
               {HONORARY.map(([name, country, role]) => (
                 <tr key={name} style={{ borderTop: `1px solid ${IYSF.blueLine}` }}>
+                  <td className="py-3.5 pl-5 pr-0">
+                    <PhotoPlaceholder name={name} size="sm" />
+                  </td>
                   <th
                     scope="row"
                     className="px-5 py-3.5 text-left font-semibold"
@@ -138,6 +142,7 @@ function ExecutiveCommitteePage() {
               ))}
             </tbody>
           </table>
+
         </div>
       </Section>
     </PageShell>

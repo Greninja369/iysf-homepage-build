@@ -283,7 +283,7 @@ function FeaturedOfficers() {
           </Link>
         </div>
         <p className="mt-4 text-xs" style={{ color: "rgba(65,64,66,0.6)" }}>
-          Portraits are labeled placeholders — approved headshots will replace them.
+          Umang Dawn's portrait is a labeled placeholder pending sign-off.
         </p>
       </div>
     </section>

@@ -2,6 +2,8 @@ import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { Nav, Footer, IYSF } from "./site-chrome";
+import { photoFor } from "../data/officer-photos";
+
 
 /* Shared shell for the content pages added in the full-site build.
    Reuses the existing Nav/Footer and brand palette — no new colors. */
@@ -124,6 +126,18 @@ export function PhotoPlaceholder({
   accent?: string;
 }) {
   const dim = size === "sm" ? "h-16 w-16 text-[15px]" : "h-24 w-24 text-[22px]";
+  const src = photoFor(name);
+  if (src) {
+    return (
+      <img
+        src={src}
+        alt={`Portrait of ${name}`}
+        loading="lazy"
+        className={`${dim} rounded-full object-cover`}
+        style={{ border: `2px solid ${IYSF.blueLine}` }}
+      />
+    );
+  }
   return (
     <div
       className={`flex ${dim} items-center justify-center rounded-full font-bold`}
@@ -136,6 +150,7 @@ export function PhotoPlaceholder({
     </div>
   );
 }
+
 
 export function InfoCard({
   title,
