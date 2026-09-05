@@ -117,9 +117,6 @@ function CoachesPage() {
             </li>
           ))}
         </ul>
-        <p className="mt-6 text-sm" style={{ color: IYSF.charcoal }}>
-          Coach photographs are pending individual sign-off and will be added once approved.
-        </p>
       </Section>
     </PageShell>
   );

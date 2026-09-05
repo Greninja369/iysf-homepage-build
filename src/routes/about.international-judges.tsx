@@ -106,9 +106,6 @@ function JudgesPage() {
             </li>
           ))}
         </ul>
-        <p className="mt-6 text-sm" style={{ color: IYSF.charcoal }}>
-          Portraits are placeholders pending individual photo sign-off.
-        </p>
       </Section>
     </PageShell>
   );
