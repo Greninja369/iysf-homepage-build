@@ -2,6 +2,8 @@ import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { Nav, Footer, IYSF } from "./site-chrome";
+import { photoFor } from "../data/officer-photos";
+
 
 /* Shared shell for the content pages added in the full-site build.
    Reuses the existing Nav/Footer and brand palette — no new colors. */
