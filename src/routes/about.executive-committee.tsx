@@ -107,14 +107,14 @@ function ExecutiveCommitteePage() {
             <caption className="sr-only">IYSF honorary members and their past roles</caption>
             <thead>
               <tr style={{ background: IYSF.blueWash }}>
-                {["Name", "Country", "Past role"].map((h) => (
+                {["", "Name", "Country", "Past role"].map((h, i) => (
                   <th
-                    key={h}
+                    key={h || `col-${i}`}
                     scope="col"
                     className="px-5 py-3 text-[10.5px] font-bold uppercase tracking-[0.18em]"
                     style={{ color: IYSF.charcoal }}
                   >
-                    {h}
+                    {h || <span className="sr-only">Portrait</span>}
                   </th>
                 ))}
               </tr>
@@ -122,6 +122,9 @@ function ExecutiveCommitteePage() {
             <tbody>
               {HONORARY.map(([name, country, role]) => (
                 <tr key={name} style={{ borderTop: `1px solid ${IYSF.blueLine}` }}>
+                  <td className="py-3.5 pl-5 pr-0">
+                    <PhotoPlaceholder name={name} size="sm" />
+                  </td>
                   <th
                     scope="row"
                     className="px-5 py-3.5 text-left font-semibold"
@@ -139,6 +142,7 @@ function ExecutiveCommitteePage() {
               ))}
             </tbody>
           </table>
+
         </div>
       </Section>
     </PageShell>
