@@ -93,8 +93,9 @@ function ExecutiveCommitteePage() {
           ))}
         </ul>
         <p className="mt-6 text-sm" style={{ color: IYSF.charcoal }}>
-          Officer photographs are pending individual sign-off and will be added once approved.
+          Umang Dawn's photograph is pending sign-off and will be added once approved.
         </p>
+
       </Section>
 
       <Section heading="Honorary members" tint>
