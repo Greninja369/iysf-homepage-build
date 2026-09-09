@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { CalendarDays, MapPin, Users, Globe2, Trophy, Plane, ImageIcon, Mail } from "lucide-react";
 import { PageShell, Section, Prose } from "../components/page-shell";
@@ -63,27 +63,31 @@ const GALLERY = [
   "Podium",
 ];
 
-function PrimaryButton({ children, to }: { children: string; to: string }) {
+function PrimaryButton({ children, href }: { children: string; href: string }) {
   return (
-    <Link
-      to={to}
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       className="inline-flex items-center rounded-[12px] px-6 py-3.5 text-[15px] font-bold transition-transform hover:-translate-y-0.5"
       style={{ background: IYSF.orange, color: IYSF.charcoal }}
     >
       {children}
-    </Link>
+    </a>
   );
 }
 
-function SecondaryButton({ children, to }: { children: string; to: string }) {
+function SecondaryButton({ children, href }: { children: string; href: string }) {
   return (
-    <Link
-      to={to}
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       className="inline-flex items-center rounded-[12px] border-2 px-6 py-3 text-[15px] font-bold transition-colors hover:bg-white"
       style={{ borderColor: IYSF.blue, color: IYSF.blue }}
     >
       {children}
-    </Link>
+    </a>
   );
 }
 
@@ -134,8 +138,8 @@ function WorldChampionship2026() {
             </span>
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
-            <PrimaryButton to="/contact">Athlete Registration</PrimaryButton>
-            <SecondaryButton to="/contact">Book Accommodation</SecondaryButton>
+            <PrimaryButton href="https://pci.jotform.com/form/261821599724366">Athlete Registration</PrimaryButton>
+            <SecondaryButton href="https://app.winddoc.com/short/26mb/">Book Accommodation</SecondaryButton>
           </div>
         </div>
       </section>
@@ -256,7 +260,7 @@ function WorldChampionship2026() {
           </p>
         </Prose>
         <div className="mt-6">
-          <PrimaryButton to="/contact">Book Accommodation</PrimaryButton>
+          <PrimaryButton href="https://app.winddoc.com/short/26mb/">Book Accommodation</PrimaryButton>
         </div>
         <p
           className="mt-6 inline-flex items-start gap-2 rounded-[10px] p-4 text-[14px]"
@@ -316,7 +320,7 @@ function WorldChampionship2026() {
               Championship.
             </p>
             <div className="mt-5">
-              <PrimaryButton to="/contact">Athlete Registration</PrimaryButton>
+              <PrimaryButton href="https://pci.jotform.com/form/261821599724366">Athlete Registration</PrimaryButton>
             </div>
           </div>
           <div
@@ -334,7 +338,7 @@ function WorldChampionship2026() {
               the venue.
             </p>
             <div className="mt-5">
-              <SecondaryButton to="/contact">Book Accommodation</SecondaryButton>
+              <SecondaryButton href="https://app.winddoc.com/short/26mb/">Book Accommodation</SecondaryButton>
             </div>
           </div>
         </div>
