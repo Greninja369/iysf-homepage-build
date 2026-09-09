@@ -122,7 +122,7 @@ export function JoinForm() {
   return (
     <section id="join" className="bg-white">
       <div className="mx-auto max-w-[1240px] px-5 py-20 md:px-8 md:py-24">
-        <div className="grid gap-10 md:grid-cols-[0.85fr_1.15fr] md:gap-16">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <div>
             <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]" style={{ color: "#DE007A" }}>
               Membership
@@ -159,7 +159,7 @@ export function JoinForm() {
             </ul>
           </div>
 
-          <div className="rounded-[14px] border border-[rgba(66,152,211,0.28)] bg-white p-6 shadow-[0_14px_34px_-18px_rgba(66,152,211,0.55)] md:p-8">
+          <div className="min-w-0 rounded-[14px] border border-[rgba(66,152,211,0.28)] bg-white p-5 shadow-[0_14px_34px_-18px_rgba(66,152,211,0.55)] sm:p-6 md:p-8">
             {status === "done" ? (
               <div className="flex min-h-[320px] flex-col items-start justify-center">
                 <div
@@ -189,8 +189,8 @@ export function JoinForm() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={onSubmit} noValidate className="grid gap-5 sm:grid-cols-2">
-                <Field id="organisation_name" label="Organisation name" error={errors.organisation_name} className="sm:col-span-2">
+              <form onSubmit={onSubmit} noValidate className="grid grid-cols-1 gap-5 md:grid-cols-2">
+                <Field id="organisation_name" label="Organisation name" error={errors.organisation_name} className="min-w-0 md:col-span-2">
                   <input
                     id="organisation_name"
                     name="organisation_name"
@@ -202,7 +202,7 @@ export function JoinForm() {
                   />
                 </Field>
 
-                <Field id="country" label="Country" error={errors.country}>
+                <Field id="country" label="Country" error={errors.country} className="min-w-0">
                   <input
                     id="country"
                     value={values.country}
@@ -213,7 +213,7 @@ export function JoinForm() {
                   />
                 </Field>
 
-                <Field id="region" label="Region" error={errors.region}>
+                <Field id="region" label="Region" error={errors.region} className="min-w-0">
                   <select
                     id="region"
                     value={values.region}
@@ -230,7 +230,7 @@ export function JoinForm() {
                   </select>
                 </Field>
 
-                <Field id="contact_name" label="Primary contact" error={errors.contact_name}>
+                <Field id="contact_name" label="Primary contact" error={errors.contact_name} className="min-w-0">
                   <input
                     id="contact_name"
                     value={values.contact_name}
@@ -241,7 +241,7 @@ export function JoinForm() {
                   />
                 </Field>
 
-                <Field id="contact_role" label="Role (optional)" error={errors.contact_role}>
+                <Field id="contact_role" label="Role (optional)" error={errors.contact_role} className="min-w-0">
                   <input
                     id="contact_role"
                     value={values.contact_role}
@@ -251,7 +251,7 @@ export function JoinForm() {
                   />
                 </Field>
 
-                <Field id="email" label="Email" error={errors.email}>
+                <Field id="email" label="Email" error={errors.email} className="min-w-0">
                   <input
                     id="email"
                     type="email"
@@ -263,11 +263,11 @@ export function JoinForm() {
                   />
                 </Field>
 
-                <Field id="phone" label="Phone (optional)" error={errors.phone}>
+                <Field id="phone" label="Phone (optional)" error={errors.phone} className="min-w-0">
                   <input id="phone" value={values.phone} onChange={set("phone")} maxLength={40} className={fieldCls} />
                 </Field>
 
-                <Field id="website" label="Website (optional)" error={errors.website}>
+                <Field id="website" label="Website (optional)" error={errors.website} className="min-w-0">
                   <input
                     id="website"
                     value={values.website}
@@ -278,7 +278,7 @@ export function JoinForm() {
                   />
                 </Field>
 
-                <Field id="athletes_estimate" label="Registered athletes (optional)" error={errors.athletes_estimate}>
+                <Field id="athletes_estimate" label="Registered athletes (optional)" error={errors.athletes_estimate} className="min-w-0">
                   <input
                     id="athletes_estimate"
                     value={values.athletes_estimate}
@@ -288,7 +288,7 @@ export function JoinForm() {
                   />
                 </Field>
 
-                <Field id="membership_type" label="Membership sought" error={errors.membership_type} className="sm:col-span-2">
+                <Field id="membership_type" label="Membership sought" error={errors.membership_type} className="min-w-0 md:col-span-2">
                   <select
                     id="membership_type"
                     value={values.membership_type}
@@ -305,7 +305,7 @@ export function JoinForm() {
                   </select>
                 </Field>
 
-                <Field id="message" label="Notes (optional)" error={errors.message} className="sm:col-span-2">
+                <Field id="message" label="Notes (optional)" error={errors.message} className="min-w-0 md:col-span-2">
                   <textarea
                     id="message"
                     rows={4}
@@ -317,16 +317,16 @@ export function JoinForm() {
                 </Field>
 
                 {serverError ? (
-                  <p role="alert" className="text-sm font-medium sm:col-span-2" style={{ color: "#DE007A" }}>
+                  <p role="alert" className="text-sm font-medium md:col-span-2" style={{ color: "#DE007A" }}>
                     {serverError}
                   </p>
                 ) : null}
 
-                <div className="flex flex-wrap items-center gap-4 sm:col-span-2">
+                <div className="flex flex-col items-stretch gap-3 md:col-span-2 sm:flex-row sm:items-center sm:gap-4">
                   <button
                     type="submit"
                     disabled={status === "saving"}
-                    className="rounded-md px-5 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-60"
+                    className="w-full rounded-md px-5 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                     style={{ background: "#FAAF40", color: "#3A2400" }}
                   >
                     {status === "saving" ? "Submitting…" : "Submit application"}
