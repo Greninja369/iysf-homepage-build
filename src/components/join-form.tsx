@@ -35,9 +35,9 @@ const EMPTY: FormState = {
   message: "",
 };
 
-const labelCls = "block text-[10.5px] font-semibold uppercase tracking-[0.2em] text-[#414042]";
+const labelCls = "block text-xs font-semibold uppercase tracking-[0.16em] text-[#414042]";
 const fieldCls =
-  "mt-2 w-full rounded-md border border-black/15 bg-white px-3.5 py-2.5 text-sm text-[#414042] outline-none transition-colors focus:border-[#4298D3] focus:ring-2 focus:ring-[#4298D3]/20";
+  "mt-2 block w-full min-w-0 rounded-md border border-black/15 bg-white px-3.5 py-2.5 text-base text-[#414042] outline-none transition-colors focus:border-[#4298D3] focus:ring-2 focus:ring-[#4298D3]/20";
 
 function Field({
   id,

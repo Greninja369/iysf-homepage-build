@@ -253,7 +253,10 @@ export function Nav() {
       </div>
 
       {open && (
-        <div className="absolute inset-x-0 top-full max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain bg-white shadow-xl xl:hidden" style={{ borderTop: `1px solid ${IYSF.blueLine}` }}>
+        <div
+          className="absolute inset-x-0 top-full overflow-y-auto overscroll-contain bg-white shadow-xl xl:hidden"
+          style={{ borderTop: `1px solid ${IYSF.blueLine}`, maxHeight: "calc(100dvh - 4rem)" }}
+        >
           <nav className="mx-auto flex max-w-[1320px] flex-col gap-0.5 px-5 py-3 pb-[max(1rem,env(safe-area-inset-bottom))]">
             <MobileLink to="/" label="Home" onDone={() => setOpen(false)} />
             <MobileGroup title="About" items={ABOUT_ITEMS} onDone={() => setOpen(false)} />
@@ -317,7 +320,7 @@ function MobileGroup({
   return (
     <div className="py-1">
       <div
-        className="px-3 pb-1 pt-2 text-[10.5px] font-bold uppercase tracking-[0.2em]"
+        className="px-3 pb-1 pt-2 text-xs font-bold uppercase tracking-[0.16em]"
         style={{ color: IYSF.blue }}
       >
         {title}
