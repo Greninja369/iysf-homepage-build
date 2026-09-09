@@ -146,12 +146,13 @@ export function Nav() {
     <>
     <Link
       to="/events/world-championship-2026"
-      className="block w-full text-center text-[10.5px] font-bold uppercase leading-tight tracking-[0.12em] text-white transition-opacity hover:opacity-90 sm:text-[12px] sm:tracking-[0.18em]"
-      style={{ background: IYSF.magenta, fontFamily: "var(--font-sans)", padding: "7px 14px" }}
+      className="flex h-8 w-full items-center overflow-hidden text-[10.5px] font-bold uppercase leading-none tracking-[0.12em] text-white transition-opacity hover:opacity-90 sm:text-[12px] sm:tracking-[0.18em]"
+      style={{ background: IYSF.magenta, fontFamily: "var(--font-sans)" }}
+      aria-label="Register now for the 17th World Yogasana Championship"
     >
-      <span className="sm:hidden">Register Now — World Championship, Italy · Dec 4–6, 2026 →</span>
-      <span className="hidden sm:inline">
-        Register Now — 17th World Yogasana Championship, Italy · Dec 4–6, 2026 →
+      <span className="iysf-marquee-track flex min-w-max items-center whitespace-nowrap motion-reduce:mx-auto">
+        <span className="px-5">Register Now — 17th World Yogasana Championship, Italy · Dec 4–6, 2026 →</span>
+        <span className="px-5" aria-hidden="true">Register Now — 17th World Yogasana Championship, Italy · Dec 4–6, 2026 →</span>
       </span>
     </Link>
 
@@ -159,12 +160,12 @@ export function Nav() {
       className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur"
       style={{ borderBottom: `1px solid ${IYSF.blueLine}`, fontFamily: "var(--font-sans)" }}
     >
-      <div className="mx-auto flex max-w-[1320px] items-center justify-between gap-4 px-5 py-3 md:px-8">
-        <Link to="/" aria-label="IYSF home">
+      <div className="mx-auto grid max-w-[1320px] grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-5 py-3 md:px-8 xl:grid-cols-[auto_minmax(0,1fr)_auto]">
+        <Link to="/" aria-label="IYSF home" className="min-w-0 justify-self-start">
           <IysfWordmark />
         </Link>
 
-        <nav className="hidden items-center gap-5 xl:flex">
+        <nav className="hidden min-w-0 items-center justify-center gap-5 xl:flex">
           <Link
             to="/"
             className="group relative text-[13px] font-semibold transition-colors"
@@ -210,7 +211,7 @@ export function Nav() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
           <Link
             to="/contact"
             className="hidden text-[13px] font-semibold transition-colors hover:opacity-70 lg:inline-block"
@@ -234,7 +235,7 @@ export function Nav() {
           </Link>
           <Link
             to="/join-us"
-            className="rounded-[10px] px-4 py-2 text-[13px] font-bold text-white transition-all hover:-translate-y-0.5"
+            className="hidden rounded-[10px] px-4 py-2 text-[13px] font-bold text-white transition-all hover:-translate-y-0.5 sm:inline-flex"
             style={{ background: IYSF.orange, boxShadow: "0 10px 22px -12px rgba(250,175,64,0.9)" }}
           >
             Join us
@@ -252,8 +253,11 @@ export function Nav() {
       </div>
 
       {open && (
-        <div className="max-h-[70vh] overflow-y-auto bg-white xl:hidden" style={{ borderTop: `1px solid ${IYSF.blueLine}` }}>
-          <nav className="mx-auto flex max-w-[1320px] flex-col gap-0.5 px-5 py-3">
+        <div
+          className="absolute inset-x-0 top-full overflow-y-auto overscroll-contain bg-white shadow-xl xl:hidden"
+          style={{ borderTop: `1px solid ${IYSF.blueLine}`, maxHeight: "calc(100dvh - 4rem)" }}
+        >
+          <nav className="mx-auto flex max-w-[1320px] flex-col gap-0.5 px-5 py-3 pb-[max(1rem,env(safe-area-inset-bottom))]">
             <MobileLink to="/" label="Home" onDone={() => setOpen(false)} />
             <MobileGroup title="About" items={ABOUT_ITEMS} onDone={() => setOpen(false)} />
             <MobileGroup title="Officials" items={OFFICIALS_ITEMS} onDone={() => setOpen(false)} />
@@ -316,7 +320,7 @@ function MobileGroup({
   return (
     <div className="py-1">
       <div
-        className="px-3 pb-1 pt-2 text-[10.5px] font-bold uppercase tracking-[0.2em]"
+        className="px-3 pb-1 pt-2 text-xs font-bold uppercase tracking-[0.16em]"
         style={{ color: IYSF.blue }}
       >
         {title}
@@ -374,8 +378,8 @@ function FooterInner({ minimal = false }: { minimal?: boolean }) {
           <SocialRow />
         </div>
       ) : (
-      <div className="mx-auto grid max-w-[1320px] gap-10 px-5 py-14 md:grid-cols-[1.3fr_1fr_1fr] md:px-8">
-        <div>
+      <div className="mx-auto grid max-w-[1320px] grid-cols-1 gap-10 px-5 py-14 md:grid-cols-[1.3fr_1fr_1fr] md:px-8">
+        <div className="min-w-0">
           <IysfWordmark light />
           <p className="mt-4 max-w-[320px] text-sm leading-relaxed text-white/70">
             International Yoga Sports Federation — the global governing body for Yogasana sport.
@@ -385,11 +389,11 @@ function FooterInner({ minimal = false }: { minimal?: boolean }) {
           </div>
         </div>
 
-        <div>
+        <div className="min-w-0">
           <div className="mb-4 text-[10.5px] font-bold uppercase tracking-[0.22em]" style={{ color: IYSF.orange }}>
             Explore
           </div>
-          <ul className="grid grid-cols-2 gap-y-2.5">
+          <ul className="grid grid-cols-1 gap-x-5 gap-y-2.5 min-[380px]:grid-cols-2">
             {links.map((l) => (
               <li key={l.label}>
                 <Link to={l.to} hash={l.hash} className="text-sm text-white/80 hover:text-white">
@@ -400,7 +404,7 @@ function FooterInner({ minimal = false }: { minimal?: boolean }) {
           </ul>
         </div>
 
-        <div>
+        <div className="min-w-0">
           <div className="mb-4 text-[10.5px] font-bold uppercase tracking-[0.22em]" style={{ color: IYSF.orange }}>
             Headquarters
           </div>

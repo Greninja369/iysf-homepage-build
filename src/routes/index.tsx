@@ -83,7 +83,7 @@ function Overview() {
     <section id="overview" className="bg-white">
       <div className="mx-auto max-w-[1320px] px-5 py-20 md:px-8 md:py-24">
         <Reveal>
-          <div className="max-w-[860px]">
+          <div className="mx-auto max-w-[860px] text-center md:mx-0 md:text-left">
             <div
               className="mb-5 inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-white"
               style={{ background: IYSF.magenta }}
@@ -101,21 +101,21 @@ function Overview() {
             >
               A practice, judged as a sport.
             </h1>
-            <p className="mt-5 max-w-[560px] text-lg font-medium md:text-xl" style={{ color: "rgba(65,64,66,0.78)" }}>
+            <p className="mx-auto mt-5 max-w-[560px] text-lg font-medium md:mx-0 md:text-xl" style={{ color: "rgba(65,64,66,0.78)" }}>
               64 member federations. Is yours one of them?
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+            <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center md:justify-start">
               <Link
                 to="/"
                 hash="join"
-                className="rounded-[12px] px-7 py-4 text-base font-bold text-white transition-transform hover:-translate-y-0.5"
+                className="rounded-[12px] px-7 py-4 text-center text-base font-bold text-white transition-transform hover:-translate-y-0.5"
                 style={{ background: IYSF.orange, boxShadow: "0 16px 36px -16px rgba(250,175,64,0.95)" }}
               >
                 Join a federation
               </Link>
               <Link
                 to="/events"
-                className="rounded-[12px] border-2 px-6 py-[13px] text-base font-bold transition-colors hover:bg-black/5"
+                className="rounded-[12px] border-2 px-6 py-[13px] text-center text-base font-bold transition-colors hover:bg-black/5"
                 style={{ borderColor: IYSF.charcoal, color: IYSF.charcoal }}
               >
                 See results
@@ -160,7 +160,7 @@ function StatStrip() {
           <Reveal
             key={s}
             delay={i * 90}
-            className="flex items-center justify-center px-3 py-5 text-center text-[12px] font-bold uppercase leading-snug tracking-[0.12em] text-white md:py-6 md:text-[14px] md:tracking-[0.14em]"
+            className="flex min-h-20 min-w-0 items-center justify-center px-2 py-5 text-center text-[11px] font-bold uppercase leading-snug tracking-[0.08em] text-white sm:px-3 sm:text-[12px] sm:tracking-[0.12em] md:py-6 md:text-[14px] md:tracking-[0.14em]"
             style={{
               borderLeft: i % 2 === 1 ? "1px solid rgba(255,255,255,0.25)" : undefined,
               borderTop: i > 1 ? "1px solid rgba(255,255,255,0.2)" : undefined,
@@ -205,7 +205,7 @@ function AboutPreview() {
           </div>
         </Reveal>
         <Reveal delay={100}>
-          <div className="grid grid-cols-2 gap-4">
+           <div className="grid grid-cols-1 gap-4 min-[380px]:grid-cols-2">
             {[
               { src: aboutCompetition, alt: "Athlete mid-routine at an IYSF championship" },
               { src: aboutSport, alt: "Judges scoring a competition round" },
@@ -219,7 +219,7 @@ function AboutPreview() {
                 loading="lazy"
                 width={900}
                 height={700}
-                className="h-36 w-full rounded-[12px] object-cover md:h-44"
+                 className="aspect-[4/3] h-auto w-full rounded-[12px] object-cover"
                 style={{ border: `1px solid ${IYSF.blueLine}` }}
               />
             ))}
@@ -251,9 +251,9 @@ function FeaturedOfficers() {
             day-to-day decisions, from championship oversight to international recognition work.
           </p>
         </Reveal>
-        <div className="mt-10 grid grid-cols-2 gap-5 md:grid-cols-5">
+        <div className="mt-10 flex flex-wrap justify-center gap-5">
           {officers.map((o, i) => (
-            <Reveal key={o.name} delay={i * 70}>
+            <Reveal key={o.name} delay={i * 70} className="w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(20%-1rem)]">
               <Link
                 to="/about/executive-committee"
                 className="flex h-full flex-col items-center p-5 text-center transition-transform hover:-translate-y-1"
@@ -301,7 +301,7 @@ function UpcomingEvents() {
             Upcoming events
           </h2>
         </Reveal>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
           {next.map((e, i) => (
             <Reveal key={e.slug} delay={i * 80}>
               <Link
@@ -402,10 +402,10 @@ function WhyJoin() {
             Why join IYSF
           </h2>
         </Reveal>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
           {benefits.map(({ Icon, title, desc }, i) => (
             <Reveal key={title} delay={i * 90}>
-              <div className="h-full p-7" style={CARD}>
+              <div className="h-full p-6 sm:p-7" style={CARD}>
                 <span
                   className="inline-flex h-12 w-12 items-center justify-center rounded-[12px]"
                   style={{ background: "rgba(66,152,211,0.12)" }}
@@ -427,7 +427,7 @@ function WhyJoin() {
         </div>
 
         <Reveal delay={120}>
-          <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
+          <div className="mt-10 grid grid-cols-1 gap-4 min-[380px]:grid-cols-2 md:grid-cols-4">
             {strip.map((s) => (
               <img
                 key={s.src}
@@ -436,7 +436,7 @@ function WhyJoin() {
                 loading="lazy"
                 width={720}
                 height={512}
-                className="h-32 w-full rounded-[12px] object-cover md:h-36"
+                className="aspect-[4/3] h-auto w-full rounded-[12px] object-cover md:aspect-auto md:h-36"
                 style={{ border: `1px solid ${IYSF.blueLine}` }}
               />
             ))}
@@ -499,20 +499,20 @@ function News() {
             </Link>
           </Reveal>
 
-          <div className="grid gap-4 content-start">
+          <div className="grid content-start gap-4">
             {rows.map((r, i) => (
               <Reveal key={r.title} delay={i * 70}>
-                <Link to="/events" className="group flex items-center gap-4 p-3 transition-transform hover:-translate-y-0.5" style={CARD}>
+                <Link to="/events" className="group grid min-w-0 grid-cols-[6rem_minmax(0,1fr)] items-center gap-3 p-3 transition-transform hover:-translate-y-0.5 sm:grid-cols-[7rem_minmax(0,1fr)] sm:gap-4" style={CARD}>
                   <img
                     src={r.img}
                     alt=""
                     loading="lazy"
                     width={680}
                     height={512}
-                    className="h-20 w-28 shrink-0 rounded-[10px] object-cover"
+                    className="h-20 w-24 rounded-[10px] object-cover sm:w-28"
                   />
                   <h3
-                    className="text-[15px] font-bold leading-snug"
+                    className="min-w-0 text-[14px] font-bold leading-snug sm:text-[15px]"
                     style={{ color: IYSF.charcoal, fontFamily: "var(--font-display)" }}
                   >
                     {r.title}
