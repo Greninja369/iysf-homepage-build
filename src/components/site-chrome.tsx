@@ -61,6 +61,7 @@ const ACADEMY_ITEMS: Item[] = [
 const RULES_EVENTS_LINKS: Item[] = [
   { label: "Rules", to: "/rules" },
   { label: "Events", to: "/events" },
+  { label: "Sponsorship", to: "/sponsorship" },
   { label: "Championship Results", to: "/results" },
 ];
 
@@ -214,13 +215,6 @@ export function Nav() {
 
         <div className="flex shrink-0 items-center gap-2">
           <Link
-            to="/sponsorship"
-            className="hidden text-[13px] font-semibold transition-colors hover:opacity-70 lg:inline-block"
-            style={{ color: IYSF.charcoal }}
-          >
-            Sponsorship
-          </Link>
-          <Link
             to="/contact"
             className="hidden text-[13px] font-semibold transition-colors hover:opacity-70 lg:inline-block"
             style={{ color: IYSF.charcoal }}
@@ -272,7 +266,6 @@ export function Nav() {
             {RULES_EVENTS_LINKS.map((l) => (
               <MobileLink key={l.label} to={l.to} label={l.label} onDone={() => setOpen(false)} />
             ))}
-            <MobileLink to="/sponsorship" label="Sponsorship" onDone={() => setOpen(false)} />
             <MobileGroup title="Academy" items={ACADEMY_ITEMS} onDone={() => setOpen(false)} />
             {TAIL_LINKS.map((l) => (
               <MobileLink key={l.label} to={l.to} label={l.label} onDone={() => setOpen(false)} />

@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { CalendarDays, MapPin, Users, Globe2, Trophy, Plane, ImageIcon, Mail } from "lucide-react";
+import { CalendarDays, MapPin, Users, Globe2, Trophy, Plane, Mail } from "lucide-react";
 import { PageShell, Section, Prose } from "../components/page-shell";
 import { IYSF } from "../components/site-chrome";
 import eventLogo from "../assets/world-championship-2026-logo.png.asset.json";
