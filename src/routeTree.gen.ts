@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SponsorshipRouteImport } from './routes/sponsorship'
 import { Route as RulesRouteImport } from './routes/rules'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as LoginRouteImport } from './routes/login'
@@ -41,6 +42,11 @@ import { Route as AboutExecutiveCommitteeRouteImport } from './routes/about.exec
 import { Route as AboutChampionsRouteImport } from './routes/about.champions'
 import { Route as AboutAthletesCommissionRouteImport } from './routes/about.athletes-commission'
 
+const SponsorshipRoute = SponsorshipRouteImport.update({
+  id: '/sponsorship',
+  path: '/sponsorship',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RulesRoute = RulesRouteImport.update({
   id: '/rules',
   path: '/rules',
@@ -211,6 +217,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
   '/rules': typeof RulesRoute
+  '/sponsorship': typeof SponsorshipRoute
   '/about/athletes-commission': typeof AboutAthletesCommissionRoute
   '/about/champions': typeof AboutChampionsRoute
   '/about/executive-committee': typeof AboutExecutiveCommitteeRoute
@@ -243,6 +250,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
   '/rules': typeof RulesRoute
+  '/sponsorship': typeof SponsorshipRoute
   '/about/athletes-commission': typeof AboutAthletesCommissionRoute
   '/about/champions': typeof AboutChampionsRoute
   '/about/executive-committee': typeof AboutExecutiveCommitteeRoute
@@ -277,6 +285,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
   '/rules': typeof RulesRoute
+  '/sponsorship': typeof SponsorshipRoute
   '/about/athletes-commission': typeof AboutAthletesCommissionRoute
   '/about/champions': typeof AboutChampionsRoute
   '/about/executive-committee': typeof AboutExecutiveCommitteeRoute
@@ -312,6 +321,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/privacy'
     | '/rules'
+    | '/sponsorship'
     | '/about/athletes-commission'
     | '/about/champions'
     | '/about/executive-committee'
@@ -344,6 +354,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/privacy'
     | '/rules'
+    | '/sponsorship'
     | '/about/athletes-commission'
     | '/about/champions'
     | '/about/executive-committee'
@@ -377,6 +388,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/privacy'
     | '/rules'
+    | '/sponsorship'
     | '/about/athletes-commission'
     | '/about/champions'
     | '/about/executive-committee'
@@ -411,6 +423,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   PrivacyRoute: typeof PrivacyRoute
   RulesRoute: typeof RulesRoute
+  SponsorshipRoute: typeof SponsorshipRoute
   AboutAthletesCommissionRoute: typeof AboutAthletesCommissionRoute
   AboutChampionsRoute: typeof AboutChampionsRoute
   AboutExecutiveCommitteeRoute: typeof AboutExecutiveCommitteeRoute
@@ -431,6 +444,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sponsorship': {
+      id: '/sponsorship'
+      path: '/sponsorship'
+      fullPath: '/sponsorship'
+      preLoaderRoute: typeof SponsorshipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/rules': {
       id: '/rules'
       path: '/rules'
@@ -681,6 +701,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   PrivacyRoute: PrivacyRoute,
   RulesRoute: RulesRoute,
+  SponsorshipRoute: SponsorshipRoute,
   AboutAthletesCommissionRoute: AboutAthletesCommissionRoute,
   AboutChampionsRoute: AboutChampionsRoute,
   AboutExecutiveCommitteeRoute: AboutExecutiveCommitteeRoute,

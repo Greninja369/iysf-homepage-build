@@ -1,9 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { CalendarDays, MapPin, Users, Globe2, Trophy, Plane, ImageIcon, Mail } from "lucide-react";
+import { CalendarDays, MapPin, Users, Globe2, Trophy, Plane, Mail } from "lucide-react";
 import { PageShell, Section, Prose } from "../components/page-shell";
 import { IYSF } from "../components/site-chrome";
 import eventLogo from "../assets/world-championship-2026-logo.png.asset.json";
+import galleryOpening from "../assets/delegation-1.jpg";
+import galleryIndividual from "../assets/delegation-2.jpg";
+import galleryFloor from "../assets/event-1.jpg";
+import galleryMedal from "../assets/delegation-3.jpg";
 
 export const Route = createFileRoute("/events/world-championship-2026")({
   head: () => ({
@@ -56,11 +60,12 @@ const EXPECT = [
 ];
 
 const GALLERY = [
-  "Opening ceremony",
-  "Individual category",
-  "Competition floor",
-  "Medal ceremony",
-  "Podium",
+  { caption: "Opening Ceremony", src: galleryOpening },
+  { caption: "Individual Category", src: galleryIndividual },
+  { caption: "Competition Floor", src: galleryFloor },
+  { caption: "Medal Ceremony", src: galleryMedal },
+  { caption: "Individual Category – Italy Podium", src: galleryIndividual },
+  { caption: "Group Category – Italy Podium", src: galleryOpening },
 ];
 
 function PrimaryButton({ children, href }: { children: string; href: string }) {
@@ -110,10 +115,6 @@ function WorldChampionship2026() {
               className="block w-full object-cover"
             />
           </div>
-          <p className="mt-2 text-[12px]" style={{ color: IYSF.charcoal }}>
-            Event artwork placeholder — to be swapped once the final 2026 championship logo is signed off.
-          </p>
-
           <div
             className="mt-8 inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-white"
             style={{ background: IYSF.magenta }}
@@ -140,6 +141,7 @@ function WorldChampionship2026() {
           <div className="mt-8 flex flex-wrap gap-3">
             <PrimaryButton href="https://pci.jotform.com/form/261821599724366">Athlete Registration</PrimaryButton>
             <SecondaryButton href="https://app.winddoc.com/short/26mb/">Book Accommodation</SecondaryButton>
+            <SecondaryButton href="/sponsorship">Become a Sponsor</SecondaryButton>
           </div>
         </div>
       </section>
@@ -275,30 +277,26 @@ function WorldChampionship2026() {
       </Section>
 
       {/* ---------------- Gallery ---------------- */}
-      <Section heading="Moments from previous editions" kicker="Photo gallery" tint>
+      <Section heading="Moments from the Malaysian Championship" kicker="Photo gallery" tint>
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {GALLERY.map((label) => (
+          {GALLERY.map(({ caption, src }) => (
             <li
-              key={label}
-              className="flex aspect-[4/3] flex-col items-center justify-center gap-3 rounded-[12px] border bg-white text-center"
+              key={caption}
+              className="overflow-hidden rounded-[12px] border bg-white"
               style={{ borderColor: IYSF.blueLine }}
             >
-              <ImageIcon size={22} color={IYSF.blue} aria-hidden="true" />
-              <div
-                className="text-[12px] font-bold uppercase tracking-[0.16em]"
-                style={{ color: IYSF.charcoal }}
-              >
-                {label}
-              </div>
-              <div className="text-[11.5px]" style={{ color: IYSF.charcoal }}>
-                Photo placeholder
+              <img
+                src={src}
+                alt={caption}
+                loading="lazy"
+                className="aspect-[4/3] w-full object-cover"
+              />
+              <div className="px-4 py-3 text-[12px] font-bold uppercase tracking-[0.16em]" style={{ color: IYSF.charcoal }}>
+                {caption}
               </div>
             </li>
           ))}
         </ul>
-        <p className="mt-5 text-sm" style={{ color: IYSF.charcoal }}>
-          Gallery slots will be filled with IYSF's own championship photography once available.
-        </p>
       </Section>
 
       {/* ---------------- Join us in Italy ---------------- */}

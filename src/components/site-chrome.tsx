@@ -61,6 +61,7 @@ const ACADEMY_ITEMS: Item[] = [
 const RULES_EVENTS_LINKS: Item[] = [
   { label: "Rules", to: "/rules" },
   { label: "Events", to: "/events" },
+  { label: "Sponsorship", to: "/sponsorship" },
   { label: "Championship Results", to: "/results" },
 ];
 
@@ -76,6 +77,7 @@ export const EXPLORE_LINKS: Item[] = [
   { label: "Governance", to: "/about/governance" },
   { label: "Rules", to: "/rules" },
   { label: "Events", to: "/events" },
+  { label: "Sponsorship", to: "/sponsorship" },
   { label: "Results", to: "/results" },
   { label: "Academy", to: "/academy" },
   { label: "Directory", to: "/directory" },
