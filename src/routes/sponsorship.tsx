@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { ImageIcon, Quote } from "lucide-react";
 import { PageHeader, PageShell, Prose, Section } from "../components/page-shell";
 import { IYSF } from "../components/site-chrome";
-import rajashreePortrait from "../assets/Rajashree.jpg";
 
 export const Route = createFileRoute("/sponsorship")({
   head: () => ({
@@ -57,12 +57,17 @@ function SponsorshipPage() {
 
       <Section>
         <div className="max-w-[820px]">
-          <img
-            src={rajashreePortrait}
-            alt="IYSF President Rajashree Choudhury"
-            className="aspect-[4/3] w-full rounded-[12px] border object-cover object-top"
+          <div
+            className="flex aspect-[4/3] w-full flex-col items-center justify-center gap-3 rounded-[12px] border border-dashed text-center"
             style={{ borderColor: IYSF.blueLine, boxShadow: IYSF.blueShadow }}
-          />
+            role="img"
+            aria-label="President portrait placeholder"
+          >
+            <ImageIcon size={28} color={IYSF.blue} aria-hidden="true" />
+            <span className="text-[12px] font-bold uppercase tracking-[0.16em]" style={{ color: IYSF.charcoal }}>
+              President portrait placeholder
+            </span>
+          </div>
           <div className="mt-6">
             <SponsorButtons />
           </div>
@@ -89,11 +94,22 @@ function SponsorshipPage() {
 
           <p>Every Federation President, every athlete, every coach, every teacher, every parent, every volunteer, and every supporter who trusted this vision has helped carry IYSF forward. Your friendship and trust have given this movement its strength.</p>
 
-          <p><strong>This is our journey. This is our celebration.</strong></p>
+          <blockquote
+            className="my-8 rounded-[10px] border-l-[3px] px-5 py-5 text-[20px] leading-snug"
+            style={{ background: "#fff", borderColor: IYSF.magenta, color: IYSF.charcoal, fontFamily: "var(--font-display)", fontWeight: 800 }}
+          >
+            <Quote size={20} color={IYSF.magenta} className="mb-3" aria-hidden="true" />
+            This is our journey. This is our celebration.
+          </blockquote>
 
           <p>This year, we are opening the doors even wider from our youngest athletes to our Masters because Yoga Asana belongs to every generation. I want this World Competition to be a gathering where we don't simply witness extraordinary performances, but where we celebrate <strong>discipline, courage, friendship, unity, and the human spirit.</strong></p>
 
-          <p><strong>A Humble Request for Your Support</strong></p>
+          <h2
+            className="pt-6 text-[24px] leading-tight md:text-[28px]"
+            style={{ color: IYSF.charcoal, fontFamily: "var(--font-display)", fontWeight: 800 }}
+          >
+            A Humble Request for Your Support
+          </h2>
 
           <p>As you know, IYSF is a <strong>nonprofit organization</strong>, and creating an international event of this scale requires the support of our global community.</p>
 
@@ -111,9 +127,15 @@ function SponsorshipPage() {
 
           <p>Let us show the world what happens when we come together with one purpose:</p>
 
-          <p><strong>Unity through Yoga Asana.</strong></p>
-          <p><strong>Discipline through Sport.</strong></p>
-          <p><strong>And humanity beyond all boundaries.</strong></p>
+          <blockquote
+            className="my-8 rounded-[10px] border-l-[3px] px-5 py-5 text-[20px] leading-relaxed"
+            style={{ background: "#fff", borderColor: IYSF.orange, color: IYSF.charcoal, fontFamily: "var(--font-display)", fontWeight: 800 }}
+          >
+            <Quote size={20} color={IYSF.orange} className="mb-3" aria-hidden="true" />
+            <span className="block">Unity through Yoga Asana.</span>
+            <span className="block">Discipline through Sport.</span>
+            <span className="block">And humanity beyond all boundaries.</span>
+          </blockquote>
 
           <p>I look forward to welcoming you personally, sharing this special moment with you, and celebrating everything we have built together.</p>
 
