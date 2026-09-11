@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import type { ReactNode } from "react";
 import {
   BedDouble,
   Bus,
@@ -87,7 +88,7 @@ function FaqItem({
   title: string;
   icon: typeof Plane;
   kicker: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <details
@@ -331,16 +332,6 @@ function WorldChampionship2026() {
         <div className="mt-6">
           <PrimaryButton href="https://app.winddoc.com/short/26mb/">Book Accommodation</PrimaryButton>
         </div>
-        <p
-          className="mt-6 inline-flex items-start gap-2 rounded-[10px] p-4 text-[14px]"
-          style={{ background: IYSF.blueWash, color: IYSF.charcoal }}
-        >
-          <Plane size={16} color={IYSF.blue} aria-hidden="true" />
-          <span>
-            Travel note: athletes and guests are strongly encouraged to purchase flight insurance
-            when booking travel.
-          </span>
-        </p>
       </Section>
 
       {/* ---------------- Frequently asked questions ---------------- */}
