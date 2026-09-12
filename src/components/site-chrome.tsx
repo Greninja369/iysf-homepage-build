@@ -145,6 +145,7 @@ function Dropdown({
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const { session } = useSession();
   return (
     <>
     <Link
