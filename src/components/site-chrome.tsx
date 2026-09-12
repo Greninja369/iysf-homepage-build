@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Menu, X, Facebook, Instagram, Youtube, ChevronDown } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import logoSrc from "../assets/iysf-logo.png";
+import { useSession } from "@/hooks/use-session";
 
 export const IYSF = {
   blue: "#4298D3",
@@ -144,6 +145,7 @@ function Dropdown({
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const { session } = useSession();
   return (
     <>
     <Link
@@ -222,11 +224,11 @@ export function Nav() {
             Contact
           </Link>
           <Link
-            to="/login"
+            to={session ? "/dashboard" : "/login"}
             className="hidden text-[13px] font-semibold transition-colors hover:opacity-70 lg:inline-block"
             style={{ color: IYSF.charcoal }}
           >
-            Log in
+            {session ? "My account" : "Log in"}
           </Link>
           <Link
             to="/donate"
@@ -272,7 +274,11 @@ export function Nav() {
             ))}
             <div className="my-2 h-px" style={{ background: IYSF.blueLine }} />
             <MobileLink to="/contact" label="Contact" onDone={() => setOpen(false)} />
-            <MobileLink to="/login" label="Log in" onDone={() => setOpen(false)} />
+            <MobileLink
+              to={session ? "/dashboard" : "/login"}
+              label={session ? "My account" : "Log in"}
+              onDone={() => setOpen(false)}
+            />
             <Link
               to="/donate"
               onClick={() => setOpen(false)}
