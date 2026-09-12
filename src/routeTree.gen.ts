@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SponsorshipRouteImport } from './routes/sponsorship'
 import { Route as RulesRouteImport } from './routes/rules'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as JoinUsRouteImport } from './routes/join-us'
@@ -51,6 +52,11 @@ const SponsorshipRoute = SponsorshipRouteImport.update({
 const RulesRoute = RulesRouteImport.update({
   id: '/rules',
   path: '/rules',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -220,6 +226,7 @@ export interface FileRoutesByFullPath {
   '/join-us': typeof JoinUsRoute
   '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/rules': typeof RulesRoute
   '/sponsorship': typeof SponsorshipRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
@@ -253,6 +260,7 @@ export interface FileRoutesByTo {
   '/join-us': typeof JoinUsRoute
   '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/rules': typeof RulesRoute
   '/sponsorship': typeof SponsorshipRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
@@ -289,6 +297,7 @@ export interface FileRoutesById {
   '/join-us': typeof JoinUsRoute
   '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/rules': typeof RulesRoute
   '/sponsorship': typeof SponsorshipRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
@@ -325,6 +334,7 @@ export interface FileRouteTypes {
     | '/join-us'
     | '/login'
     | '/privacy'
+    | '/reset-password'
     | '/rules'
     | '/sponsorship'
     | '/dashboard'
@@ -358,6 +368,7 @@ export interface FileRouteTypes {
     | '/join-us'
     | '/login'
     | '/privacy'
+    | '/reset-password'
     | '/rules'
     | '/sponsorship'
     | '/dashboard'
@@ -393,6 +404,7 @@ export interface FileRouteTypes {
     | '/join-us'
     | '/login'
     | '/privacy'
+    | '/reset-password'
     | '/rules'
     | '/sponsorship'
     | '/_authenticated/dashboard'
@@ -429,6 +441,7 @@ export interface RootRouteChildren {
   JoinUsRoute: typeof JoinUsRoute
   LoginRoute: typeof LoginRoute
   PrivacyRoute: typeof PrivacyRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
   RulesRoute: typeof RulesRoute
   SponsorshipRoute: typeof SponsorshipRoute
   AboutAthletesCommissionRoute: typeof AboutAthletesCommissionRoute
@@ -463,6 +476,13 @@ declare module '@tanstack/react-router' {
       path: '/rules'
       fullPath: '/rules'
       preLoaderRoute: typeof RulesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -725,6 +745,7 @@ const rootRouteChildren: RootRouteChildren = {
   JoinUsRoute: JoinUsRoute,
   LoginRoute: LoginRoute,
   PrivacyRoute: PrivacyRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
   RulesRoute: RulesRoute,
   SponsorshipRoute: SponsorshipRoute,
   AboutAthletesCommissionRoute: AboutAthletesCommissionRoute,
