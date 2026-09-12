@@ -16,9 +16,9 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as JoinUsRouteImport } from './routes/join-us'
 import { Route as GovernanceRouteImport } from './routes/governance'
 import { Route as DonateRouteImport } from './routes/donate'
-import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AcademyRouteImport } from './routes/academy'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ResultsIndexRouteImport } from './routes/results.index'
 import { Route as EventsIndexRouteImport } from './routes/events.index'
@@ -41,6 +41,7 @@ import { Route as AboutGovernanceRouteImport } from './routes/about.governance'
 import { Route as AboutExecutiveCommitteeRouteImport } from './routes/about.executive-committee'
 import { Route as AboutChampionsRouteImport } from './routes/about.champions'
 import { Route as AboutAthletesCommissionRouteImport } from './routes/about.athletes-commission'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 
 const SponsorshipRoute = SponsorshipRouteImport.update({
   id: '/sponsorship',
@@ -77,11 +78,6 @@ const DonateRoute = DonateRouteImport.update({
   path: '/donate',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DashboardRoute = DashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -90,6 +86,10 @@ const ContactRoute = ContactRouteImport.update({
 const AcademyRoute = AcademyRouteImport.update({
   id: '/academy',
   path: '/academy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -205,12 +205,16 @@ const AboutAthletesCommissionRoute = AboutAthletesCommissionRouteImport.update({
   path: '/about/athletes-commission',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/academy': typeof AcademyRouteWithChildren
   '/contact': typeof ContactRoute
-  '/dashboard': typeof DashboardRoute
   '/donate': typeof DonateRoute
   '/governance': typeof GovernanceRoute
   '/join-us': typeof JoinUsRoute
@@ -218,6 +222,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/rules': typeof RulesRoute
   '/sponsorship': typeof SponsorshipRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
   '/about/athletes-commission': typeof AboutAthletesCommissionRoute
   '/about/champions': typeof AboutChampionsRoute
   '/about/executive-committee': typeof AboutExecutiveCommitteeRoute
@@ -243,7 +248,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
-  '/dashboard': typeof DashboardRoute
   '/donate': typeof DonateRoute
   '/governance': typeof GovernanceRoute
   '/join-us': typeof JoinUsRoute
@@ -251,6 +255,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/rules': typeof RulesRoute
   '/sponsorship': typeof SponsorshipRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
   '/about/athletes-commission': typeof AboutAthletesCommissionRoute
   '/about/champions': typeof AboutChampionsRoute
   '/about/executive-committee': typeof AboutExecutiveCommitteeRoute
@@ -276,9 +281,9 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/academy': typeof AcademyRouteWithChildren
   '/contact': typeof ContactRoute
-  '/dashboard': typeof DashboardRoute
   '/donate': typeof DonateRoute
   '/governance': typeof GovernanceRoute
   '/join-us': typeof JoinUsRoute
@@ -286,6 +291,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/rules': typeof RulesRoute
   '/sponsorship': typeof SponsorshipRoute
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/about/athletes-commission': typeof AboutAthletesCommissionRoute
   '/about/champions': typeof AboutChampionsRoute
   '/about/executive-committee': typeof AboutExecutiveCommitteeRoute
@@ -314,7 +320,6 @@ export interface FileRouteTypes {
     | '/'
     | '/academy'
     | '/contact'
-    | '/dashboard'
     | '/donate'
     | '/governance'
     | '/join-us'
@@ -322,6 +327,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/rules'
     | '/sponsorship'
+    | '/dashboard'
     | '/about/athletes-commission'
     | '/about/champions'
     | '/about/executive-committee'
@@ -347,7 +353,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/contact'
-    | '/dashboard'
     | '/donate'
     | '/governance'
     | '/join-us'
@@ -355,6 +360,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/rules'
     | '/sponsorship'
+    | '/dashboard'
     | '/about/athletes-commission'
     | '/about/champions'
     | '/about/executive-committee'
@@ -379,9 +385,9 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/academy'
     | '/contact'
-    | '/dashboard'
     | '/donate'
     | '/governance'
     | '/join-us'
@@ -389,6 +395,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/rules'
     | '/sponsorship'
+    | '/_authenticated/dashboard'
     | '/about/athletes-commission'
     | '/about/champions'
     | '/about/executive-committee'
@@ -414,9 +421,9 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AcademyRoute: typeof AcademyRouteWithChildren
   ContactRoute: typeof ContactRoute
-  DashboardRoute: typeof DashboardRoute
   DonateRoute: typeof DonateRoute
   GovernanceRoute: typeof GovernanceRoute
   JoinUsRoute: typeof JoinUsRoute
@@ -493,13 +500,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DonateRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/dashboard': {
-      id: '/dashboard'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof DashboardRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -512,6 +512,13 @@ declare module '@tanstack/react-router' {
       path: '/academy'
       fullPath: '/academy'
       preLoaderRoute: typeof AcademyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -668,8 +675,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutAthletesCommissionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
 interface AcademyRouteChildren {
   AcademyAthletesRoute: typeof AcademyAthletesRoute
@@ -692,9 +717,9 @@ const AcademyRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AcademyRoute: AcademyRouteWithChildren,
   ContactRoute: ContactRoute,
-  DashboardRoute: DashboardRoute,
   DonateRoute: DonateRoute,
   GovernanceRoute: GovernanceRoute,
   JoinUsRoute: JoinUsRoute,
