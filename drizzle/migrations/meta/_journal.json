@@ -8,6 +8,13 @@
       "when": 1789193033361,
       "tag": "0000_create_profiles",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1789317767480,
+      "tag": "0001_create_event_registrations_and_sponsorship_enquiries",
+      "breakpoints": true
     }
   ]
 }
