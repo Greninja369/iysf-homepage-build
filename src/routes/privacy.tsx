@@ -26,7 +26,7 @@ const SECTIONS = [
     id: "data-we-collect",
     title: "What data we collect",
     body: [
-      "IYSF may collect information submitted through the site's contact form (name, email, message), the federation membership application (organizational and contact details), and the donation flow (name, email and donation amount; no payment card data is collected directly, as no payment processor is connected yet).",
+      "IYSF collects information submitted through the site's contact form (name, email, message), the federation membership application (organisational and contact details), event registrations, sponsorship enquiries and the donation form (name, email and amount). No payment card data is collected on this site.",
     ],
   },
   {
@@ -61,14 +61,14 @@ const SECTIONS = [
     id: "your-rights",
     title: "Your rights",
     body: [
-      "depending on your jurisdiction, you may have rights to access, correct, delete, or restrict the processing of your personal data. The process for exercising these rights will be described here once finalized.",
+      "Depending on your jurisdiction, you may have rights to access, correct, delete or restrict the processing of your personal data. Write to the address below to exercise them.",
     ],
   },
   {
     id: "contact-for-data-requests",
     title: "Contact for data requests",
     body: [
-      "for any data request in the meantime, contact us at the address below.",
+      "For any data request, contact us at the address below.",
     ],
   },
 ] as const;

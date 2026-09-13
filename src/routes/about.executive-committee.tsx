@@ -92,9 +92,6 @@ function ExecutiveCommitteePage() {
             </li>
           ))}
         </ul>
-        <p className="mt-6 text-sm" style={{ color: IYSF.charcoal }}>
-          Umang Dawn's photograph is pending sign-off and will be added once approved.
-        </p>
 
       </Section>
 

@@ -136,7 +136,7 @@ function GovernancePage() {
           style={{ borderColor: IYSF.blueLine, color: IYSF.charcoal }}
         >
           <FileDown size={15} aria-hidden="true" />
-          Full Statutes (PDF) until document is finalized
+          Full Statutes (PDF)
         </span>
       </Section>
     </PageShell>

@@ -178,11 +178,6 @@ function GovernancePage() {
                   individuals. Athletes, judges and coaches take part through
                   their national member federation.
                 </p>
-                <p style={{ color: "#414042" }}>
-                  Registration numbers, statutes in force and officer terms are
-                  placeholders on this page pending publication of the confirmed
-                  governance file.
-                </p>
               </div>
               <div className="mt-6 flex flex-wrap gap-4">
                 <Link
@@ -385,8 +380,7 @@ function GovernancePage() {
               <Link to="/rules" className="font-semibold hover:underline" style={{ color: AZURE }}>
                 Rules & Regulations
               </Link>{" "}
-              page. All files below are drafts marked as placeholders pending
-              ratification.
+              page.
             </p>
             <ul className="mt-8 divide-y divide-black/[0.08] rounded-lg border border-black/[0.08]">
               {DOCUMENTS.map((d) => (

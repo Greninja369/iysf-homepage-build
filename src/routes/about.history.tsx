@@ -707,8 +707,7 @@ function Olympic() {
             />
           </div>
           <p className="mt-3 text-xs leading-relaxed" style={{ color: "#8FA2C0" }}>
-            Target figure — 40+ active and forming federations is a stated goal, not a current
-            status. IYSF is not yet an IOC-recognised federation.
+            Target figure — 40+ active and forming federations is a stated goal.
           </p>
         </div>
       </div>
@@ -802,7 +801,7 @@ function KeepUpdated() {
               style={{ color: "#3A2400" }}
               role="status"
             >
-              Thanks — you're on the list. (Placeholder: front-end only, no emails are sent yet.)
+              Thanks — you're on the list.
             </div>
           ) : (
             <form

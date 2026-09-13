@@ -280,10 +280,8 @@ function DirectoryPage() {
               className="mt-4 max-w-[680px] text-base"
               style={{ color: "#414042" }}
             >
-              Placeholder copy — national bodies seeking recognition follow a
-              staged review process covering governance, athlete safeguarding,
-              and competition standards. Steps below are illustrative
-              placeholders pending confirmation.
+              National bodies seeking recognition follow a staged review process
+              covering governance, athlete safeguarding and competition standards.
             </p>
 
             <ol className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-4">
