@@ -288,10 +288,10 @@ function DirectoryPage() {
 
             <ol className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-4">
               {[
-                { t: "Apply", d: "Submit federation details and documentation. (placeholder)" },
-                { t: "Review", d: "IYSF reviews eligibility and standards compliance. (placeholder)" },
-                { t: "Provisional status", d: "Approved federations begin as Provisional members. (placeholder)" },
-                { t: "Ratification", d: "Full membership granted after a review period. (placeholder)" },
+                { t: "Apply", d: "Submit federation details and documentation." },
+                { t: "Review", d: "IYSF reviews eligibility and standards compliance." },
+                { t: "Provisional status", d: "Approved federations begin as Provisional members." },
+                { t: "Ratification", d: "Full membership granted after a review period." },
               ].map((s, i) => (
                 <li
                   key={s.t}

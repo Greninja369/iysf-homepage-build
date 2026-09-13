@@ -219,7 +219,7 @@ function DonatePage() {
                 What your donation funds
               </h2>
               <p className="mt-1 text-xs uppercase tracking-[0.18em] text-[#414042]">
-                Illustrative allocation — placeholder, not final
+                Illustrative allocation, not final
               </p>
               <ul className="mt-4 space-y-5">
                 {FUNDS.map((f) => (

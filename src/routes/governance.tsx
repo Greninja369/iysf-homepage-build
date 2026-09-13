@@ -34,31 +34,31 @@ const BODIES = [
     name: "Congress",
     accent: AZURE,
     desc:
-      "The general assembly of member federations. Full Members hold voting rights; Provisional and Observer federations attend without a vote. (Placeholder description.)",
+      "The general assembly of member federations. Full Members hold voting rights; Provisional and Observer federations attend without a vote.",
   },
   {
     name: "Executive Committee",
     accent: ORANGE,
     desc:
-      "Elected officers responsible for day-to-day governance, budget oversight and sanctioning of international events. (Placeholder description.)",
+      "Elected officers responsible for day-to-day governance, budget oversight and sanctioning of international events.",
   },
   {
     name: "Technical Committee",
     accent: MAGENTA,
     desc:
-      "Owns the competition format, judging criteria and the certification standards published through the IYSF Academy. (Placeholder description.)",
+      "Owns the competition format, judging criteria and the certification standards published through the IYSF Academy.",
   },
   {
     name: "Athletes' Commission",
     accent: AZURE,
     desc:
-      "Represents competing athletes in rule-making, safeguarding and anti-doping consultation. (Placeholder description.)",
+      "Represents competing athletes in rule-making, safeguarding and anti-doping consultation.",
   },
   {
     name: "Ethics & Disciplinary Panel",
     accent: "#414042",
     desc:
-      "Independent review of Code of Conduct matters, appeals and disciplinary outcomes. (Placeholder description.)",
+      "Independent review of Code of Conduct matters, appeals and disciplinary outcomes.",
   },
 ];
 
@@ -337,7 +337,7 @@ function GovernancePage() {
                     className="mt-4 text-[13px]"
                     style={{ fontFamily: "var(--font-mono)", color: "#414042" }}
                   >
-                    {n} listed in the directory (placeholder records)
+                    {n} listed in the directory
                   </p>
                 </li>
               ))}
@@ -415,7 +415,7 @@ function GovernancePage() {
                     rel="noopener noreferrer"
                     className="inline-flex w-fit shrink-0 items-center gap-2 rounded-md border px-3 py-2 text-xs font-semibold transition-colors hover:bg-black/[0.03]"
                     style={{ borderColor: AZURE, color: AZURE }}
-                    aria-label={`Download ${d.title} PDF (draft placeholder)`}
+                    aria-label={`Download ${d.title} PDF`}
                   >
                     <FileDown size={14} aria-hidden="true" />
                     Download PDF

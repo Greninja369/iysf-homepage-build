@@ -26,49 +26,49 @@ const SECTIONS = [
     id: "data-we-collect",
     title: "What data we collect",
     body: [
-      "Placeholder — IYSF may collect information submitted through the site's contact form (name, email, message), the federation membership application (organizational and contact details), and the donation flow (name, email and donation amount; no payment card data is collected directly, as no payment processor is connected yet).",
+      "IYSF may collect information submitted through the site's contact form (name, email, message), the federation membership application (organizational and contact details), and the donation flow (name, email and donation amount; no payment card data is collected directly, as no payment processor is connected yet).",
     ],
   },
   {
     id: "how-it-is-used",
     title: "How it is used",
     body: [
-      "Placeholder — data submitted through these flows would be used to respond to inquiries, evaluate federation membership applications, and record donation intent. This section is a placeholder pending legal review and should not be relied on as a finalized policy.",
+      "data submitted through these flows would be used to respond to inquiries, evaluate federation membership applications, and record donation intent. This section is a placeholder pending legal review and should not be relied on as a finalized policy.",
     ],
   },
   {
     id: "retention",
     title: "Retention",
     body: [
-      "Placeholder — retention periods for contact, membership and donation records have not yet been confirmed. A finalized retention schedule will be published here.",
+      "retention periods for contact, membership and donation records have not yet been confirmed. A finalized retention schedule will be published here.",
     ],
   },
   {
     id: "third-party-processors",
     title: "Third-party processors",
     body: [
-      "Placeholder — IYSF has not yet confirmed which, if any, third-party processors (e.g. email delivery, payment processing, hosting) are used to handle personal data. This section will name specific processors once contracted.",
+      "IYSF has not yet confirmed which, if any, third-party processors (e.g. email delivery, payment processing, hosting) are used to handle personal data. This section will name specific processors once contracted.",
     ],
   },
   {
     id: "international-transfers",
     title: "International transfers",
     body: [
-      "Placeholder — as a Swiss non-profit with member federations across six continents, IYSF anticipates some cross-border data transfers. The safeguards applicable to such transfers have not yet been finalized.",
+      "as a Swiss non-profit with member federations across six continents, IYSF anticipates some cross-border data transfers. The safeguards applicable to such transfers have not yet been finalized.",
     ],
   },
   {
     id: "your-rights",
     title: "Your rights",
     body: [
-      "Placeholder — depending on your jurisdiction, you may have rights to access, correct, delete, or restrict the processing of your personal data. The process for exercising these rights will be described here once finalized.",
+      "depending on your jurisdiction, you may have rights to access, correct, delete, or restrict the processing of your personal data. The process for exercising these rights will be described here once finalized.",
     ],
   },
   {
     id: "contact-for-data-requests",
     title: "Contact for data requests",
     body: [
-      "Placeholder — for any data request in the meantime, contact us at the address below.",
+      "for any data request in the meantime, contact us at the address below.",
     ],
   },
 ] as const;
@@ -95,7 +95,7 @@ function PrivacyPage() {
               finalized legal document.
             </p>
             <div className="mt-4 text-xs" style={{ fontFamily: "var(--font-mono)", color: "#414042" }}>
-              Version v0.0 — placeholder / Last updated — placeholder
+              Version v0.0 / Last updated
             </div>
           </div>
         </section>
