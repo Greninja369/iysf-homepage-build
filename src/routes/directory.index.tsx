@@ -33,11 +33,6 @@ export const Route = createFileRoute("/directory/")({
   component: DirectoryPage,
 });
 
-/* ------------------------------------------------------------------ */
-/* placeholder federation data — replace with real member list.        */
-/* Names, countries, contacts, years, and links are ALL placeholders.  */
-/* ------------------------------------------------------------------ */
-/* Map is the same Leaflet component used on the Events page (client-only). */
 const PinMap = lazy(() => import("../components/events-map"));
 
 function useHydrated() {
@@ -89,7 +84,6 @@ function DirectoryPage() {
     <div style={{ fontFamily: "var(--font-sans)", color: "#414042" }}>
       <Nav />
       <main>
-        {/* -------- Page header -------- */}
         <section className="bg-white">
           <div className="mx-auto max-w-[1240px] px-5 pt-14 pb-6 md:px-8 md:pt-20 md:pb-8">
             <div
@@ -119,7 +113,6 @@ function DirectoryPage() {
           </div>
         </section>
 
-        {/* -------- Controls bar (sticky) -------- */}
         <div className="sticky top-[61px] z-30 border-y border-black/[0.06] bg-white/95 backdrop-blur">
           <div className="mx-auto flex max-w-[1240px] flex-col gap-3 px-5 py-4 md:flex-row md:items-center md:px-8">
             <label className="relative block flex-1">
@@ -167,11 +160,9 @@ function DirectoryPage() {
           </div>
         </div>
 
-        {/* -------- Map + list -------- */}
         <section className="bg-white">
           <div className="mx-auto max-w-[1240px] px-5 py-10 md:px-8 md:py-14">
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
-              {/* Map column */}
               <div>
                 <div
                   className="overflow-hidden rounded-lg border border-black/[0.08]"
@@ -204,7 +195,6 @@ function DirectoryPage() {
                   )}
                 </div>
 
-                {/* Legend */}
                 <ul className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2">
                   {(Object.keys(STATUS_COLOR) as MembershipStatus[]).map((s) => (
                     <li
@@ -222,7 +212,6 @@ function DirectoryPage() {
                   ))}
                 </ul>
 
-                {/* Inline reveal below map when a pin is selected */}
                 <div
                   aria-live="polite"
                   className="mt-4 motion-safe:transition-all motion-safe:duration-200"
@@ -239,7 +228,6 @@ function DirectoryPage() {
                 </div>
               </div>
 
-              {/* List column */}
               <div>
                 <div
                   className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]"
@@ -267,8 +255,6 @@ function DirectoryPage() {
           </div>
         </section>
 
-        {/* -------- Becoming a member federation -------- */}
-        {/* placeholder membership process — example steps only, not confirmed official criteria */}
         <section
           className="border-t border-black/[0.06]"
           style={{ background: "#FAFAFA" }}
@@ -294,18 +280,16 @@ function DirectoryPage() {
               className="mt-4 max-w-[680px] text-base"
               style={{ color: "#414042" }}
             >
-              Placeholder copy — national bodies seeking recognition follow a
-              staged review process covering governance, athlete safeguarding,
-              and competition standards. Steps below are illustrative
-              placeholders pending confirmation.
+              National bodies seeking recognition follow a staged review process
+              covering governance, athlete safeguarding and competition standards.
             </p>
 
             <ol className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-4">
               {[
-                { t: "Apply", d: "Submit federation details and documentation. (placeholder)" },
-                { t: "Review", d: "IYSF reviews eligibility and standards compliance. (placeholder)" },
-                { t: "Provisional status", d: "Approved federations begin as Provisional members. (placeholder)" },
-                { t: "Ratification", d: "Full membership granted after a review period. (placeholder)" },
+                { t: "Apply", d: "Submit federation details and documentation." },
+                { t: "Review", d: "IYSF reviews eligibility and standards compliance." },
+                { t: "Provisional status", d: "Approved federations begin as Provisional members." },
+                { t: "Ratification", d: "Full membership granted after a review period." },
               ].map((s, i) => (
                 <li
                   key={s.t}
@@ -359,10 +343,6 @@ function DirectoryPage() {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* Federation card (list + inline pin reveal)                          */
-/* placeholder federation data — replace with real member list         */
-/* ------------------------------------------------------------------ */
 function FederationCard({
   federation: f,
   onSelect,
@@ -384,7 +364,6 @@ function FederationCard({
       }}
     >
       <div className="flex items-start gap-3">
-        {/* placeholder flag/logo slot — replace with real federation crest */}
         <div
           className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-black/[0.08]"
           style={{ background: "#FAFAFA" }}

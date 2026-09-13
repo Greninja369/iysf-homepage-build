@@ -12,7 +12,6 @@ export function usePrefersReducedMotion() {
   return reduced;
 }
 
-/** Returns [ref, inView]. inView is true immediately when reduced motion is on. */
 export function useInView<T extends HTMLElement>(threshold = 0.2) {
   const ref = useRef<T>(null);
   const reduced = usePrefersReducedMotion();
@@ -79,7 +78,6 @@ export function Reveal({
   );
 }
 
-/** Counts up to `value` when scrolled into view; final value immediately when reduced motion. */
 export function CountUp({
   value,
   suffix = "",

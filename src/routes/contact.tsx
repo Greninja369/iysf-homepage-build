@@ -76,9 +76,6 @@ function ContactPage() {
                 <br />
                 Lausanne, Switzerland
               </address>
-              <p className="mt-4 text-sm" style={{ color: IYSF.charcoal }}>
-                Telephone details coming soon.
-              </p>
             </div>
           </div>
           <div>

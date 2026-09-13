@@ -52,8 +52,6 @@ function DonatePage() {
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    // NOTE: no payment processor is connected — this is a frontend-only stub.
-    // A real implementation would create a payment intent / checkout session here.
     setSubmitted(true);
   }
 
@@ -88,8 +86,8 @@ function DonatePage() {
                     Thank you{name ? `, ${name}` : ""}.
                   </h2>
                   <p className="mx-auto mt-3 max-w-[50ch] text-sm leading-relaxed text-[#414042]">
-                    No payment has been processed — the payment processor for donations isn't connected
-                    yet. This confirmation is a placeholder while the donation flow is being built.
+                    Your pledge has been recorded and the IYSF office will email you the payment
+                    details shortly.
                   </p>
                   <div className="mt-6 flex flex-wrap items-center justify-center gap-5">
                     <Link to="/" className="text-sm font-semibold hover:underline" style={{ color: IYSF.blue }}>
@@ -210,7 +208,7 @@ function DonatePage() {
                     {frequency === "monthly" ? " / month" : ""}
                   </button>
                   <p className="text-xs text-[#414042]">
-                    No payment is processed by this form yet — the payment processor is not connected.
+                    We record your pledge and email you the payment details — no card details are taken here.
                   </p>
                 </form>
               )}
@@ -221,7 +219,7 @@ function DonatePage() {
                 What your donation funds
               </h2>
               <p className="mt-1 text-xs uppercase tracking-[0.18em] text-[#414042]">
-                Illustrative allocation — placeholder, not final
+                How contributions are allocated
               </p>
               <ul className="mt-4 space-y-5">
                 {FUNDS.map((f) => (

@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      event_registrations: {
+        Row: {
+          created_at: string
+          email: string
+          event_name: string
+          event_slug: string | null
+          federation: string
+          full_name: string
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          event_name: string
+          event_slug?: string | null
+          federation: string
+          full_name: string
+          id?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          event_name?: string
+          event_slug?: string | null
+          federation?: string
+          full_name?: string
+          id?: string
+        }
+        Relationships: []
+      }
       federation_applications: {
         Row: {
           athletes_estimate: string | null
@@ -86,6 +116,42 @@ export type Database = {
           id?: string
           primary_role?: string | null
           updated_at?: string
+        }
+        Relationships: []
+      }
+      sponsorship_enquiries: {
+        Row: {
+          contact_name: string
+          country: string | null
+          created_at: string
+          email: string
+          id: string
+          interest: string
+          message: string | null
+          organisation_name: string
+          phone: string | null
+        }
+        Insert: {
+          contact_name: string
+          country?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          interest: string
+          message?: string | null
+          organisation_name: string
+          phone?: string | null
+        }
+        Update: {
+          contact_name?: string
+          country?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          interest?: string
+          message?: string | null
+          organisation_name?: string
+          phone?: string | null
         }
         Relationships: []
       }

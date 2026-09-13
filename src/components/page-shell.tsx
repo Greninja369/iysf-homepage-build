@@ -4,10 +4,6 @@ import { ArrowRight } from "lucide-react";
 import { Nav, Footer, IYSF } from "./site-chrome";
 import { photoFor } from "../data/officer-photos";
 
-
-/* Shared shell for the content pages added in the full-site build.
-   Reuses the existing Nav/Footer and brand palette — no new colors. */
-
 export function PageHeader({
   kicker,
   title,
@@ -101,11 +97,6 @@ export function Prose({ children }: { children: ReactNode }) {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* Headshot placeholder. No external imagery is used anywhere — this   */
-/* renders initials on a tinted brand circle and is clearly labeled as */
-/* a placeholder until approved photos are uploaded.                   */
-/* ------------------------------------------------------------------ */
 export function initialsOf(name: string) {
   return name
     .replace(/^Dr\.\s*/, "")
@@ -151,7 +142,6 @@ export function PhotoPlaceholder({
   );
 }
 
-
 export function InfoCard({
   title,
   meta,
@@ -163,7 +153,6 @@ export function InfoCard({
   meta?: string;
   children?: ReactNode;
   accent?: string;
-  /** render a labeled headshot placeholder above the name */
   photo?: boolean;
 }) {
   return (
@@ -238,7 +227,6 @@ export function ComingSoon({
   );
 }
 
-/* Consistent footer CTA required on every new page: Home + Join flow. */
 export function JoinCta() {
   return (
     <section style={{ background: IYSF.orange }}>

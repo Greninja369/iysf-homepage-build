@@ -39,8 +39,6 @@ function useHydrated() {
   return h;
 }
 
-/* ----------------------------- Hero ----------------------------- */
-
 const POSES = [
   "M60 12a7 7 0 1 0 0.1 0M60 20v34M60 26 34 40M60 26l26 14M60 54 42 92M60 54l18 38",
   "M52 14a7 7 0 1 0 .1 0M52 22v26M52 28l30-8M52 28 26 40M52 48 30 88M52 48l38 12",
@@ -149,8 +147,6 @@ function Hero() {
   );
 }
 
-/* --------------------------- Origins ---------------------------- */
-
 function Origins() {
   return (
     <section style={{ background: "#F3EFE8" }}>
@@ -195,8 +191,6 @@ function Origins() {
     </section>
   );
 }
-
-/* --------------------------- Ghosh Cup -------------------------- */
 
 function GhoshCup() {
   return (
@@ -251,8 +245,6 @@ function GhoshCup() {
     </section>
   );
 }
-
-/* ------------------------- Lausanne ----------------------------- */
 
 function Lausanne() {
   const [ref, inView] = useInView<HTMLDivElement>(0.3);
@@ -327,8 +319,6 @@ function Lausanne() {
     </section>
   );
 }
-
-/* --------------------------- Timeline --------------------------- */
 
 const TIMELINE = [
   { year: "2003–2013", host: "Annual Ghosh Cup", place: "USA", note: "Held annually in Los Angeles, the championship that sparked the global yoga sports movement." },
@@ -450,7 +440,6 @@ function Timeline() {
         </Reveal>
 
         <div ref={ref} className="relative mt-14">
-          {/* desktop drawn line */}
           <svg
             className="pointer-events-none absolute left-0 top-3 hidden h-[2px] w-full md:block"
             viewBox="0 0 1000 2"
@@ -472,7 +461,6 @@ function Timeline() {
               }}
             />
           </svg>
-          {/* mobile drawn line */}
           <span
             className="absolute left-3 top-0 w-[2px] md:hidden"
             style={{ background: "#E1E4E9", height: "100%" }}
@@ -505,8 +493,6 @@ function Timeline() {
     </section>
   );
 }
-
-/* ------------------------ Global movement ----------------------- */
 
 const COUNTRIES: { name: string; lat: number; lng: number }[] = [
   { name: "United States", lat: 38.9, lng: -77.0 },
@@ -661,8 +647,6 @@ function GlobalMovement() {
   );
 }
 
-/* --------------------------- Olympic ---------------------------- */
-
 function Olympic() {
   const [ref, inView] = useInView<HTMLDivElement>(0.35);
   const reduced = usePrefersReducedMotion();
@@ -723,16 +707,13 @@ function Olympic() {
             />
           </div>
           <p className="mt-3 text-xs leading-relaxed" style={{ color: "#8FA2C0" }}>
-            Target figure — 40+ active and forming federations is a stated goal, not a current
-            status. IYSF is not yet an IOC-recognised federation.
+            Target figure — 40+ active and forming federations is a stated goal.
           </p>
         </div>
       </div>
     </section>
   );
 }
-
-/* --------------------------- Join ------------------------------- */
 
 function JoinMovement() {
   const cards = [
@@ -796,8 +777,6 @@ function JoinMovement() {
   );
 }
 
-/* ------------------------- Newsletter --------------------------- */
-
 function KeepUpdated() {
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
@@ -822,7 +801,7 @@ function KeepUpdated() {
               style={{ color: "#3A2400" }}
               role="status"
             >
-              Thanks — you're on the list. (Placeholder: front-end only, no emails are sent yet.)
+              Thanks — you're on the list.
             </div>
           ) : (
             <form
@@ -859,8 +838,6 @@ function KeepUpdated() {
     </section>
   );
 }
-
-/* --------------------------- Page ------------------------------- */
 
 function HistoryPage() {
   return (

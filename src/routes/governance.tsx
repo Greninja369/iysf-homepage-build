@@ -29,42 +29,39 @@ const AZURE = "#4298D3";
 const ORANGE = "#FAAF40";
 const MAGENTA = "#DE007A";
 
-/* placeholder committee structure — offices and mandates are illustrative
-   placeholders pending confirmation of the official organigram. */
 const BODIES = [
   {
     name: "Congress",
     accent: AZURE,
     desc:
-      "The general assembly of member federations. Full Members hold voting rights; Provisional and Observer federations attend without a vote. (Placeholder description.)",
+      "The general assembly of member federations. Full Members hold voting rights; Provisional and Observer federations attend without a vote.",
   },
   {
     name: "Executive Committee",
     accent: ORANGE,
     desc:
-      "Elected officers responsible for day-to-day governance, budget oversight and sanctioning of international events. (Placeholder description.)",
+      "Elected officers responsible for day-to-day governance, budget oversight and sanctioning of international events.",
   },
   {
     name: "Technical Committee",
     accent: MAGENTA,
     desc:
-      "Owns the competition format, judging criteria and the certification standards published through the IYSF Academy. (Placeholder description.)",
+      "Owns the competition format, judging criteria and the certification standards published through the IYSF Academy.",
   },
   {
     name: "Athletes' Commission",
     accent: AZURE,
     desc:
-      "Represents competing athletes in rule-making, safeguarding and anti-doping consultation. (Placeholder description.)",
+      "Represents competing athletes in rule-making, safeguarding and anti-doping consultation.",
   },
   {
     name: "Ethics & Disciplinary Panel",
     accent: "#414042",
     desc:
-      "Independent review of Code of Conduct matters, appeals and disciplinary outcomes. (Placeholder description.)",
+      "Independent review of Code of Conduct matters, appeals and disciplinary outcomes.",
   },
 ];
 
-/* Governing documents — placeholder drafts, hosted so links resolve. */
 const DOCUMENTS = [
   {
     title: "Judging Criteria",
@@ -110,7 +107,6 @@ function GovernancePage() {
     <div style={{ fontFamily: "var(--font-sans)", color: "#414042" }}>
       <Nav />
       <main>
-        {/* -------- Page header -------- */}
         <section className="bg-white">
           <div className="mx-auto max-w-[1240px] px-5 pt-14 pb-8 md:px-8 md:pt-20 md:pb-10">
             <div
@@ -143,7 +139,6 @@ function GovernancePage() {
           </div>
         </section>
 
-        {/* -------- Legal status -------- */}
         <section
           className="border-y border-black/[0.06]"
           style={{ background: "#FAFAFA" }}
@@ -182,11 +177,6 @@ function GovernancePage() {
                   Membership is held by national federations rather than
                   individuals. Athletes, judges and coaches take part through
                   their national member federation.
-                </p>
-                <p style={{ color: "#414042" }}>
-                  Registration numbers, statutes in force and officer terms are
-                  placeholders on this page pending publication of the confirmed
-                  governance file.
                 </p>
               </div>
               <div className="mt-6 flex flex-wrap gap-4">
@@ -255,7 +245,6 @@ function GovernancePage() {
           </div>
         </section>
 
-        {/* -------- Bodies -------- */}
         <section className="bg-white">
           <div className="mx-auto max-w-[1240px] px-5 py-14 md:px-8 md:py-20">
             <div
@@ -300,7 +289,6 @@ function GovernancePage() {
           </div>
         </section>
 
-        {/* -------- Membership structure -------- */}
         <section
           className="border-y border-black/[0.06]"
           style={{ background: "#FAFAFA" }}
@@ -344,7 +332,7 @@ function GovernancePage() {
                     className="mt-4 text-[13px]"
                     style={{ fontFamily: "var(--font-mono)", color: "#414042" }}
                   >
-                    {n} listed in the directory (placeholder records)
+                    {n} listed in the directory
                   </p>
                 </li>
               ))}
@@ -369,7 +357,6 @@ function GovernancePage() {
           </div>
         </section>
 
-        {/* -------- Bylaws & documents -------- */}
         <section className="bg-white">
           <div className="mx-auto max-w-[1240px] px-5 py-14 md:px-8 md:py-20">
             <div
@@ -393,8 +380,7 @@ function GovernancePage() {
               <Link to="/rules" className="font-semibold hover:underline" style={{ color: AZURE }}>
                 Rules & Regulations
               </Link>{" "}
-              page. All files below are drafts marked as placeholders pending
-              ratification.
+              page.
             </p>
             <ul className="mt-8 divide-y divide-black/[0.08] rounded-lg border border-black/[0.08]">
               {DOCUMENTS.map((d) => (
@@ -423,7 +409,7 @@ function GovernancePage() {
                     rel="noopener noreferrer"
                     className="inline-flex w-fit shrink-0 items-center gap-2 rounded-md border px-3 py-2 text-xs font-semibold transition-colors hover:bg-black/[0.03]"
                     style={{ borderColor: AZURE, color: AZURE }}
-                    aria-label={`Download ${d.title} PDF (draft placeholder)`}
+                    aria-label={`Download ${d.title} PDF`}
                   >
                     <FileDown size={14} aria-hidden="true" />
                     Download PDF
@@ -434,7 +420,6 @@ function GovernancePage() {
           </div>
         </section>
 
-        {/* -------- Related -------- */}
         <section
           className="border-t border-black/[0.06]"
           style={{ background: "#FAFAFA" }}

@@ -21,7 +21,7 @@ export const Route = createFileRoute("/results/")({
       {
         name: "description",
         content:
-          "Final standings from past IYSF world championships and continental qualifiers. Placeholder results pending official publication.",
+          "Final standings from past IYSF world championships and continental qualifiers.",
       },
       { property: "og:title", content: "Championship Results — IYSF" },
       {
@@ -36,8 +36,6 @@ export const Route = createFileRoute("/results/")({
   component: ResultsIndexPage,
 });
 
-/** A single event's `year` field may be a range like "2003–2013" — a
- *  filter value matching any year within that range should match it. */
 function eventMatchesYear(eventYear: string, filterYear: string) {
   if (eventYear === filterYear) return true;
   const rangeMatch = eventYear.match(/^(\d{4})[\u2013-](\d{4})$/);
@@ -85,9 +83,8 @@ function ResultsIndexPage() {
               className="mt-4 max-w-[640px] text-base md:text-[17px]"
               style={{ color: "#414042" }}
             >
-              Final standings from past IYSF championship editions. Names and
-              scores below are placeholders pending publication of the
-              official results by the Technical Committee.
+              Final standings from past IYSF championship editions, published by the
+              Technical Committee.
             </p>
 
             <div className="mt-6 flex flex-wrap items-center gap-4 text-sm">

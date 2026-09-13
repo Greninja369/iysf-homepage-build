@@ -1,7 +1,6 @@
 import { Download, Mail } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
-/* placeholder track icon — replace with final illustration */
 export function TrackIcon({ color }: { color: string }) {
   return (
     <svg viewBox="0 0 48 48" className="h-10 w-10" aria-hidden="true">
@@ -54,7 +53,6 @@ export function TrackHeader({
           className="mt-4 max-w-[640px] text-base leading-relaxed md:text-[17px]"
           style={{ color: "#414042" }}
         >
-          {/* placeholder subcopy — replace with real academy description */}
           {sub}
         </p>
         <div className="mt-6 h-[3px] w-16" style={{ background: color }} />
@@ -92,7 +90,6 @@ export function TiersGrid({ tiers, color }: { tiers: Tier[]; color: string }) {
                 {t.name}
               </div>
               <p className="mt-3 text-sm leading-relaxed" style={{ color: "#414042" }}>
-                {/* placeholder tier description */}
                 {t.desc}
               </p>
             </div>
@@ -135,7 +132,6 @@ export function GuidesList({
                   {g.title}
                 </div>
                 <p className="mt-2 text-sm leading-relaxed" style={{ color: "#414042" }}>
-                  {/* placeholder guide description */}
                   {g.desc}
                 </p>
               </div>
@@ -173,36 +169,31 @@ export function SupportingContent({ track, color }: { track: string; color: stri
             className="text-[28px] leading-tight tracking-[-0.01em] md:text-[36px]"
             style={{ fontFamily: "var(--font-display)", fontWeight: 800, color: "#414042" }}
           >
-            {/* placeholder heading */}
             What IYSF expects from every certified {track.toLowerCase()}.
           </h2>
           <div className="mt-6 space-y-5 text-[15px] leading-relaxed" style={{ color: "#3a3a3a" }}>
-            {/* placeholder body copy — replace with real academy content */}
             <p>
-              Placeholder paragraph describing the philosophy of the {track} track. Real editorial
-              content will articulate the standards IYSF holds every {track.toLowerCase()} to, and
-              the reasoning behind them.
+              Every certified {track.toLowerCase()} works to a single set of IYSF standards, so an
+              athlete meets the same expectations in every member federation.
             </p>
             <h3
               className="text-[15px] font-semibold uppercase tracking-[0.16em]"
               style={{ color: "#414042" }}
             >
-              {/* placeholder subheading */}
               Method
             </h3>
             <p>
-              Placeholder paragraph outlining methodology. Structured so real copy fits without
-              redesign.
+              Training combines the published IYSF framework with supervised practice and review by
+              senior officials.
             </p>
             <h3
               className="text-[15px] font-semibold uppercase tracking-[0.16em]"
               style={{ color: "#414042" }}
             >
-              {/* placeholder subheading */}
               Assessment
             </h3>
             <p>
-              Placeholder paragraph outlining how competency is assessed under IYSF oversight.
+              Competency is assessed under IYSF oversight before certification is granted.
             </p>
           </div>
         </div>
@@ -253,7 +244,6 @@ export function ClosingCta({
             className="max-w-[540px] text-[18px] leading-snug"
             style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#414042" }}
           >
-            {/* placeholder closing line */}
             Download the full {track} guide, or reach the Academy directly with questions.
           </p>
         </div>

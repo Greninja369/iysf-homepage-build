@@ -1,12 +1,3 @@
-/* ------------------------------------------------------------------ */
-/* IYSF structured data model.                                         */
-/* Single source of truth for events, federations, and results so that  */
-/* one record can be referenced from listing, detail, results, and      */
-/* related-content sections without duplicating content.                */
-/* Championship editions/years are drawn from the published history;    */
-/* athlete names, standings, counts, venues and schedules are clearly   */
-/* marked placeholders pending confirmation.                            */
-/* ------------------------------------------------------------------ */
 
 export type Region =
   | "Africa"
@@ -51,8 +42,6 @@ export const STATUS_COLOR: Record<MembershipStatus, string> = {
   Observer: "#DE007A",
 };
 
-/* ------------------------------ Federations ----------------------- */
-
 export type Federation = {
   id: string;
   slug: string;
@@ -62,7 +51,6 @@ export type Federation = {
   status: MembershipStatus;
   president: string;
   joined: string;
-  /** external site — placeholder until real federation URLs are confirmed */
   website: string | null;
   athletes: string;
   judges: string;
@@ -72,8 +60,6 @@ export type Federation = {
   lng: number;
 };
 
-/* placeholder federation records — names, contacts, counts and
-   coordinates are placeholders pending the real member list. */
 export const FEDERATIONS: Federation[] = [
   {
     id: "f1",
@@ -221,8 +207,6 @@ export const FEDERATIONS: Federation[] = [
   },
 ];
 
-/* ------------------------------ Events ---------------------------- */
-
 export type ScheduleItem = { day: string; label: string; detail: string };
 
 export type Standing = {
@@ -239,7 +223,6 @@ export type EventRecord = {
   tier: Tier;
   region: Region;
   status: "upcoming" | "past";
-  /** display date string, rendered in monospace */
   date: string;
   dateISO: string;
   year: string;
@@ -251,7 +234,6 @@ export type EventRecord = {
   divisions: Division[];
   summary: string;
   schedule: ScheduleItem[];
-  /** final standings by division — present on past events only */
   results?: Partial<Record<Division, Standing[]>>;
 };
 
@@ -278,7 +260,6 @@ function resultsFor(feds: string[]): Partial<Record<Division, Standing[]>> {
   };
 }
 
-/* Upcoming calendar — dates, venues and coordinates are placeholders. */
 const UPCOMING_EVENTS: EventRecord[] = [
   {
     id: "u1",
@@ -402,8 +383,6 @@ const UPCOMING_EVENTS: EventRecord[] = [
   },
 ];
 
-/* Past championships — editions and hosts follow the published IYSF
-   history; standings, scores and athlete names are placeholders. */
 const PAST_EVENTS: EventRecord[] = [
   {
     id: "p2025",
@@ -556,8 +535,6 @@ const PAST_EVENTS: EventRecord[] = [
 
 export const EVENTS: EventRecord[] = [...UPCOMING_EVENTS, ...PAST_EVENTS];
 
-/* ------------------------------ Lookups --------------------------- */
-
 export const upcomingEvents = () => EVENTS.filter((e) => e.status === "upcoming");
 export const pastEvents = () =>
   EVENTS.filter((e) => e.status === "past").sort((a, b) =>
@@ -571,7 +548,6 @@ export const getFederation = (slug: string) =>
 export const getFederationById = (id: string | null) =>
   id ? FEDERATIONS.find((f) => f.id === id) : undefined;
 
-/** Events a federation hosts, has hosted, or has athletes in the standings of. */
 export function eventsForFederation(federationId: string) {
   const hosted = EVENTS.filter((e) => e.hostFederationId === federationId);
   const competed = EVENTS.filter(
@@ -585,7 +561,6 @@ export function eventsForFederation(federationId: string) {
   return { hosted, competed };
 }
 
-/** Federations represented in an event: host plus any in the standings. */
 export function federationsInEvent(event: EventRecord): Federation[] {
   const ids = new Set<string>();
   if (event.hostFederationId) ids.add(event.hostFederationId);
@@ -597,7 +572,6 @@ export function federationsInEvent(event: EventRecord): Federation[] {
     .filter((f): f is Federation => Boolean(f));
 }
 
-/** Related events — same region or same tier, excluding the event itself. */
 export function relatedEvents(event: EventRecord, limit = 3) {
   return EVENTS.filter(
     (e) =>
@@ -605,5 +579,4 @@ export function relatedEvents(event: EventRecord, limit = 3) {
   ).slice(0, limit);
 }
 
-/** Past events that have published (placeholder) standings. */
 export const eventsWithResults = () => pastEvents().filter((e) => e.results);

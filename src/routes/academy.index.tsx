@@ -23,7 +23,6 @@ export const Route = createFileRoute("/academy/")({
   component: AcademyOverview,
 });
 
-/* placeholder tracks — replace with real academy content */
 const TRACKS = [
   {
     slug: "judging" as const,
@@ -45,7 +44,6 @@ const TRACKS = [
   },
 ];
 
-/* placeholder stats — replace with real academy figures */
 const STATS = [
   { label: "Certified judges", value: "—" },
   { label: "Active coaches", value: "—" },
@@ -58,7 +56,6 @@ function AcademyOverview() {
     <div className="min-h-screen bg-white">
       <Nav />
 
-      {/* Header */}
       <section className="border-b border-black/5">
         <div className="mx-auto max-w-[1240px] px-5 pt-16 pb-12 md:px-8 md:pt-24 md:pb-16">
           <div
@@ -82,14 +79,12 @@ function AcademyOverview() {
             className="mt-5 max-w-[640px] text-base leading-relaxed md:text-[17px]"
             style={{ color: "#414042" }}
           >
-            {/* placeholder subcopy — replace with real academy description */}
             The IYSF Academy is the federation's resource center for judges, athletes, and coaches
             — standards, guides, and certification pathways in one place.
           </p>
         </div>
       </section>
 
-      {/* Track cards */}
       <section className="bg-white">
         <div className="mx-auto max-w-[1240px] px-5 py-14 md:px-8 md:py-20">
           <div className="grid gap-5 md:grid-cols-3">
@@ -126,7 +121,6 @@ function AcademyOverview() {
                   className="mt-3 text-sm leading-relaxed"
                   style={{ color: "#414042" }}
                 >
-                  {/* placeholder track description */}
                   {t.desc}
                 </p>
                 <span
@@ -141,12 +135,10 @@ function AcademyOverview() {
         </div>
       </section>
 
-      {/* Stats strip */}
       <section
         className="relative overflow-hidden"
         style={{ background: "#0D1830", color: "#B7C4DA" }}
       >
-        {/* drifting-ring texture consistent with homepage */}
         <div
           aria-hidden="true"
           className="iysf-ring-drift pointer-events-none absolute -right-40 -top-40 h-[520px] w-[520px] rounded-full border border-white/[0.06]"
@@ -173,7 +165,6 @@ function AcademyOverview() {
                     color: "#fff",
                   }}
                 >
-                  {/* placeholder value */}
                   {s.value}
                 </div>
                 <div

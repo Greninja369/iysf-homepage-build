@@ -29,14 +29,12 @@ export const Route = createFileRoute("/academy/judging")({
 
 const COLOR = "#4298D3";
 
-/* placeholder tiers — replace with real certification levels */
 const TIERS = [
   { name: "Level 1 — National", desc: "Entry-level certification for domestic events." },
   { name: "Level 2 — Continental", desc: "Certified to officiate at continental championships." },
   { name: "Level 3 — International", desc: "Cleared for IYSF world-tier competition." },
 ];
 
-/* placeholder guides — replace with real PDF links */
 const GUIDES = [
   { title: "Judging Standards Guide", desc: "The complete framework used across IYSF events.", pdf: "/documents/academy/judging/judging-standards-guide.pdf" },
   { title: "Scoring Rubric", desc: "Reference rubric for pose difficulty, execution, and form.", pdf: "/documents/academy/judging/scoring-rubric.pdf" },
