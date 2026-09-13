@@ -48,7 +48,6 @@ function LoginPage() {
   const [resetEmail, setResetEmail] = useState("");
   const [resetSent, setResetSent] = useState(false);
 
-  // Already signed in? Go straight to the dashboard.
   useEffect(() => {
     let active = true;
     supabase.auth.getSession().then(({ data }) => {

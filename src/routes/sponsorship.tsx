@@ -27,7 +27,6 @@ export const Route = createFileRoute("/sponsorship")({
 function SponsorButtons() {
   return (
     <div className="flex flex-col gap-3 sm:flex-row">
-      {/* TODO: Replace # with the Studio Sponsor URL. */}
       <a
         href="#"
         target="_blank"
@@ -37,7 +36,6 @@ function SponsorButtons() {
       >
         Studio Sponsor
       </a>
-      {/* TODO: Replace # with the Silver Sponsor URL. */}
       <a
         href="#"
         target="_blank"

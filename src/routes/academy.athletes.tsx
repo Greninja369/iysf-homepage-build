@@ -29,14 +29,12 @@ export const Route = createFileRoute("/academy/athletes")({
 
 const COLOR = "#FAAF40";
 
-/* placeholder tiers — replace with real athlete tracks */
 const TIERS = [
   { name: "Junior", desc: "Foundational development track for younger competitors." },
   { name: "Intermediate", desc: "Regional and national competition pathway." },
   { name: "Elite", desc: "World-tier athletes competing at IYSF championships." },
 ];
 
-/* placeholder guides — replace with real PDF links */
 const GUIDES = [
   { title: "Athlete Development Guide", desc: "Long-term development framework across tiers.", pdf: "/documents/academy/athletes/athlete-development-guide.pdf" },
   { title: "Competition Readiness Handbook", desc: "Preparation standards for sanctioned events.", pdf: "/documents/academy/athletes/competition-readiness-handbook.pdf" },

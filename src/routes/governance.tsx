@@ -29,8 +29,6 @@ const AZURE = "#4298D3";
 const ORANGE = "#FAAF40";
 const MAGENTA = "#DE007A";
 
-/* placeholder committee structure — offices and mandates are illustrative
-   placeholders pending confirmation of the official organigram. */
 const BODIES = [
   {
     name: "Congress",
@@ -64,7 +62,6 @@ const BODIES = [
   },
 ];
 
-/* Governing documents — placeholder drafts, hosted so links resolve. */
 const DOCUMENTS = [
   {
     title: "Judging Criteria",
@@ -110,7 +107,6 @@ function GovernancePage() {
     <div style={{ fontFamily: "var(--font-sans)", color: "#414042" }}>
       <Nav />
       <main>
-        {/* -------- Page header -------- */}
         <section className="bg-white">
           <div className="mx-auto max-w-[1240px] px-5 pt-14 pb-8 md:px-8 md:pt-20 md:pb-10">
             <div
@@ -143,7 +139,6 @@ function GovernancePage() {
           </div>
         </section>
 
-        {/* -------- Legal status -------- */}
         <section
           className="border-y border-black/[0.06]"
           style={{ background: "#FAFAFA" }}
@@ -255,7 +250,6 @@ function GovernancePage() {
           </div>
         </section>
 
-        {/* -------- Bodies -------- */}
         <section className="bg-white">
           <div className="mx-auto max-w-[1240px] px-5 py-14 md:px-8 md:py-20">
             <div
@@ -300,7 +294,6 @@ function GovernancePage() {
           </div>
         </section>
 
-        {/* -------- Membership structure -------- */}
         <section
           className="border-y border-black/[0.06]"
           style={{ background: "#FAFAFA" }}
@@ -369,7 +362,6 @@ function GovernancePage() {
           </div>
         </section>
 
-        {/* -------- Bylaws & documents -------- */}
         <section className="bg-white">
           <div className="mx-auto max-w-[1240px] px-5 py-14 md:px-8 md:py-20">
             <div
@@ -434,7 +426,6 @@ function GovernancePage() {
           </div>
         </section>
 
-        {/* -------- Related -------- */}
         <section
           className="border-t border-black/[0.06]"
           style={{ background: "#FAFAFA" }}

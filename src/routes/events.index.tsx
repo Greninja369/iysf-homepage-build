@@ -39,9 +39,6 @@ type EventItem = EventRecord;
 const UPCOMING: EventItem[] = upcomingEvents();
 const ARCHIVE: EventItem[] = pastEvents();
 
-/* ------------------------------------------------------------------ */
-/* Leaflet map — client-only via lazy component.                       */
-/* ------------------------------------------------------------------ */
 const EventsMap = lazy(() => import("../components/events-map"));
 
 function useHydrated() {
@@ -50,9 +47,6 @@ function useHydrated() {
   return h;
 }
 
-/* ------------------------------------------------------------------ */
-/* Page                                                                */
-/* ------------------------------------------------------------------ */
 function EventsPage() {
   const [query, setQuery] = useState("");
   const [region, setRegion] = useState<Region | "All">("All");
@@ -71,7 +65,6 @@ function EventsPage() {
     });
   }, [query, region]);
 
-  // If the current selection is filtered out, clear it.
   useEffect(() => {
     if (selectedId && !filtered.some((e) => e.id === selectedId)) {
       setSelectedId(null);
@@ -85,7 +78,6 @@ function EventsPage() {
     <div style={{ fontFamily: "var(--font-sans)", color: "#414042" }}>
       <Nav />
       <main>
-        {/* -------- Page header -------- */}
         <section className="bg-white">
           <div className="mx-auto max-w-[1240px] px-5 pt-14 pb-6 md:px-8 md:pt-20 md:pb-8">
             <div
@@ -114,7 +106,6 @@ function EventsPage() {
           </div>
         </section>
 
-        {/* -------- Controls bar (sticky) -------- */}
         <div
           className="sticky top-[61px] z-30 border-y border-black/[0.06] bg-white/95 backdrop-blur"
         >
@@ -164,7 +155,6 @@ function EventsPage() {
           </div>
         </div>
 
-        {/* -------- Map + list -------- */}
         <section className="bg-white">
           <div className="mx-auto max-w-[1240px] px-5 pt-10 md:px-8 md:pt-12">
             <Link
@@ -210,7 +200,6 @@ function EventsPage() {
           </div>
           <div className="mx-auto max-w-[1240px] px-5 py-10 md:px-8 md:py-14">
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
-              {/* Map column */}
               <div>
                 <div
                   className="overflow-hidden rounded-lg border border-black/[0.08]"
@@ -243,7 +232,6 @@ function EventsPage() {
                   )}
                 </div>
 
-                {/* Inline reveal below map when a pin is selected */}
                 <div
                   aria-live="polite"
                   className="mt-4 motion-safe:transition-all motion-safe:duration-200"
@@ -261,7 +249,6 @@ function EventsPage() {
                 </div>
               </div>
 
-              {/* List column */}
               <div>
                 <div
                   className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em]"
@@ -290,7 +277,6 @@ function EventsPage() {
           </div>
         </section>
 
-        {/* -------- Archive -------- */}
         <section
           className="border-t border-black/[0.06]"
           style={{ background: "#FAFAFA" }}
@@ -388,9 +374,6 @@ function EventsPage() {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* Event card (used in list + inline reveal)                           */
-/* ------------------------------------------------------------------ */
 function EventCard({
   event,
   onRegister,
@@ -521,10 +504,6 @@ function EmptyState() {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* Registration modal                                                  */
-/* PLACEHOLDER: front-end only — no backend submission wired yet.      */
-/* ------------------------------------------------------------------ */
 function RegisterModal({
   event,
   onClose,
@@ -538,7 +517,6 @@ function RegisterModal({
   const closeBtnRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
 
-  // Focus trap + Escape + return focus
   useEffect(() => {
     const previouslyFocused = document.activeElement as HTMLElement | null;
     firstFieldRef.current?.focus();
@@ -655,7 +633,6 @@ function RegisterModal({
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              // PLACEHOLDER: no backend wired — front-end confirmation only.
               setSubmitted(true);
             }}
             className="space-y-4 px-5 py-5"

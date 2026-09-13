@@ -163,7 +163,6 @@ function WorldChampionship2026() {
 
   return (
     <PageShell>
-      {/* ---------------- Hero ---------------- */}
       <section className="bg-white">
         <div className="mx-auto max-w-[1240px] px-5 pt-12 pb-10 md:px-8 md:pt-16">
           <div
@@ -208,7 +207,6 @@ function WorldChampionship2026() {
         </div>
       </section>
 
-      {/* ---------------- Intro + at a glance ---------------- */}
       <Section heading="Join the longest-running Yogasana Sports championship" tint>
         <Prose>
           <p>
@@ -243,7 +241,6 @@ function WorldChampionship2026() {
         </ul>
       </Section>
 
-      {/* ---------------- What to expect ---------------- */}
       <Section heading="What to expect">
         <ul className="grid gap-5 md:grid-cols-3">
           {EXPECT.map((e) => (
@@ -266,7 +263,6 @@ function WorldChampionship2026() {
         </ul>
       </Section>
 
-      {/* ---------------- Venue ---------------- */}
       <Section heading="The venue" tint>
         <div className="grid gap-6 md:grid-cols-2">
           <div
@@ -320,7 +316,6 @@ function WorldChampionship2026() {
         </div>
       </Section>
 
-      {/* ---------------- Stay ---------------- */}
       <Section heading="Where to stay">
         <Prose>
           <p>
@@ -334,7 +329,6 @@ function WorldChampionship2026() {
         </div>
       </Section>
 
-      {/* ---------------- Frequently asked questions ---------------- */}
       <Section heading="Frequently Asked Questions" kicker="Plan your journey" tint>
         <p className="max-w-[760px] text-[16px] leading-relaxed" style={{ color: IYSF.charcoal }}>
           Everything you need to know about travelling to Marina di Camerota, transfers,
@@ -438,7 +432,6 @@ function WorldChampionship2026() {
         </div>
       </Section>
 
-      {/* ---------------- Gallery ---------------- */}
       <Section heading="Moments from the Malaysian Championship" kicker="Photo gallery" tint>
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {GALLERY.map((caption) => (
@@ -466,7 +459,6 @@ function WorldChampionship2026() {
         </ul>
       </Section>
 
-      {/* ---------------- Join us in Italy ---------------- */}
       <Section heading="Join us in Italy">
         <div className="grid gap-5 md:grid-cols-2">
           <div
@@ -509,7 +501,6 @@ function WorldChampionship2026() {
         </div>
       </Section>
 
-      {/* ---------------- Keep updated ---------------- */}
       <section style={{ background: IYSF.charcoal }}>
         <div className="mx-auto max-w-[1240px] px-5 py-14 md:px-8">
           <div className="max-w-[620px]">

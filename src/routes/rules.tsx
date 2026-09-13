@@ -26,10 +26,6 @@ export const Route = createFileRoute("/rules")({
   component: RulesPage,
 });
 
-/* ------------------------------------------------------------------ */
-/* placeholder rulebook data — replace with real governance content.  */
-/* Version numbers, effective dates and PDF URLs are all placeholders.*/
-/* ------------------------------------------------------------------ */
 type RuleBlock =
   | { type: "p"; text: string }
   | { type: "h3"; text: string }
@@ -402,7 +398,6 @@ function RulesPage() {
                           )}
                         </div>
 
-                        {/* placeholder rule content — replace with real policy text */}
                         <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-[#414042]/90">
                           {d.blocks.map((b, i) => {
                             if (b.type === "p") return <p key={i}>{highlight(b.text, query)}</p>;

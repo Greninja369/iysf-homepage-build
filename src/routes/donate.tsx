@@ -52,8 +52,6 @@ function DonatePage() {
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    // NOTE: no payment processor is connected — this is a frontend-only stub.
-    // A real implementation would create a payment intent / checkout session here.
     setSubmitted(true);
   }
 

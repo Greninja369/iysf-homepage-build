@@ -36,8 +36,6 @@ export const Route = createFileRoute("/results/")({
   component: ResultsIndexPage,
 });
 
-/** A single event's `year` field may be a range like "2003–2013" — a
- *  filter value matching any year within that range should match it. */
 function eventMatchesYear(eventYear: string, filterYear: string) {
   if (eventYear === filterYear) return true;
   const rangeMatch = eventYear.match(/^(\d{4})[\u2013-](\d{4})$/);

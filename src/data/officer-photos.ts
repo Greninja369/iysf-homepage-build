@@ -1,5 +1,3 @@
-/* Approved officer headshots. Keys are the names rendered in the UI;
-   any name without an entry falls back to the initials placeholder. */
 import mritunjay from "../assets/Mritunjay.jpg";
 import sebastien from "../assets/Sebastien_Bonnet-300x244.jpg";
 import ainslie from "../assets/Ainslie_Faust-300x244.jpg";

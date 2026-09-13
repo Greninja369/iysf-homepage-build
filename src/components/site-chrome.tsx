@@ -36,8 +36,6 @@ export function IysfWordmark({ light = false }: { light?: boolean }) {
 
 type Item = { label: string; to: string; hash?: string };
 
-/* Flat, functional-first navigation: dropdowns only for tightly related
-   sub-pages; every main functional page is a direct top-level link. */
 const ABOUT_ITEMS: Item[] = [
   { label: "History", to: "/about/history" },
   { label: "Governance", to: "/about/governance" },
@@ -58,7 +56,6 @@ const ACADEMY_ITEMS: Item[] = [
   { label: "Coaching", to: "/academy/coaching" },
 ];
 
-/* Direct top-level links, in display order after the dropdowns. */
 const RULES_EVENTS_LINKS: Item[] = [
   { label: "Rules", to: "/rules" },
   { label: "Events", to: "/events" },
@@ -71,8 +68,6 @@ const TAIL_LINKS: Item[] = [
   { label: "Champions", to: "/about/champions" },
 ];
 
-/* Explore / quick-links list, shared by the footer and the homepage
-   "Quick links" block so new pages stay discoverable sitewide. */
 export const EXPLORE_LINKS: Item[] = [
   { label: "History", to: "/about/history" },
   { label: "Governance", to: "/about/governance" },
@@ -352,7 +347,6 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
   return <FooterInner minimal={minimal} />;
 }
 
-/* Social icons link to the federation's verified channel URLs. */
 function SocialRow() {
   return (
     <div className="flex items-center gap-3">
@@ -441,12 +435,6 @@ function FooterInner({ minimal = false }: { minimal?: boolean }) {
   );
 }
 
-
-/* ------------------------------------------------------------------ */
-/* Breadcrumb — used on every nested page (event detail, federation    */
-/* profile, results detail) to mirror the Academy "Academy — Judging"  */
-/* pattern and always offer a way back to the parent listing.          */
-/* ------------------------------------------------------------------ */
 export function Breadcrumb({
   parentLabel,
   parentTo,

@@ -136,7 +136,6 @@ function EventDetailPage() {
           </div>
         </section>
 
-        {/* Divisions + schedule */}
         <section className="border-t border-black/[0.06] bg-white">
           <div className="mx-auto max-w-[1240px] px-5 py-10 md:px-8 md:py-14">
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
@@ -197,7 +196,6 @@ function EventDetailPage() {
           </div>
         </section>
 
-        {/* Federations */}
         <section className="border-t border-black/[0.06]" style={{ background: "#FAFAFA" }}>
           <div className="mx-auto max-w-[1240px] px-5 py-10 md:px-8 md:py-14">
             {hostFederation && (
@@ -323,7 +321,6 @@ function EventDetailPage() {
           )
         )}
 
-        {/* Related events */}
         {related.length > 0 && (
           <section className="border-t border-black/[0.06]" style={{ background: "#FAFAFA" }}>
             <div className="mx-auto max-w-[1240px] px-5 py-10 md:px-8 md:py-14">
@@ -382,10 +379,6 @@ function EventDetailPage() {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* Registration form                                                   */
-/* PLACEHOLDER: front-end only — no backend submission wired yet.      */
-/* ------------------------------------------------------------------ */
 function RegistrationSection({ event }: { event: NonNullable<ReturnType<typeof getEvent>> }) {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
@@ -435,7 +428,6 @@ function RegistrationSection({ event }: { event: NonNullable<ReturnType<typeof g
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                // PLACEHOLDER: no backend wired — front-end confirmation only.
                 setSubmitted(true);
               }}
               className="space-y-4"

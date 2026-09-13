@@ -29,14 +29,12 @@ export const Route = createFileRoute("/academy/coaching")({
 
 const COLOR = "#DE007A";
 
-/* placeholder tiers — replace with real coaching tiers */
 const TIERS = [
   { name: "Assistant Coach", desc: "Entry-level coaching credential under supervision." },
   { name: "Coach", desc: "Certified head-coach status for club and national programs." },
   { name: "Senior Coach", desc: "Elite tier authorized to prepare international competitors." },
 ];
 
-/* placeholder guides — replace with real PDF links */
 const GUIDES = [
   { title: "Coaching Curriculum Guide", desc: "The IYSF coaching syllabus across all tiers.", pdf: "/documents/academy/coaching/coaching-curriculum-guide.pdf" },
   { title: "Session Planning Handbook", desc: "Reference structure for training programs.", pdf: "/documents/academy/coaching/session-planning-handbook.pdf" },

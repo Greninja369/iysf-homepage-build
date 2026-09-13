@@ -56,7 +56,6 @@ const H2 = (extra?: React.CSSProperties): React.CSSProperties => ({
   ...extra,
 });
 
-/* ------------------------------- Hero ------------------------------- */
 function Hero() {
   return (
     <section aria-label="IYSF championship film" className="relative isolate overflow-hidden bg-black">
@@ -77,7 +76,6 @@ function Hero() {
   );
 }
 
-/* --------------------------- Overview (moved hero copy) --------------------------- */
 function Overview() {
   return (
     <section id="overview" className="bg-white">
@@ -128,7 +126,6 @@ function Overview() {
   );
 }
 
-/* --------------------------- Mission strip --------------------------- */
 function MissionStrip() {
   return (
     <section className="bg-white" style={{ borderBottom: `1px solid ${IYSF.blueLine}` }}>
@@ -145,7 +142,6 @@ function MissionStrip() {
   );
 }
 
-/* ----------------------------- Stats bar ---------------------------- */
 function StatStrip() {
   const stats = [
     "Founded 2013",
@@ -174,8 +170,6 @@ function StatStrip() {
   );
 }
 
-
-/* --------------------------- About preview -------------------------- */
 function AboutPreview() {
   return (
     <section id="about" className="bg-white">
@@ -230,7 +224,6 @@ function AboutPreview() {
   );
 }
 
-/* -------------------------- Featured officers ------------------------ */
 function FeaturedOfficers() {
   const officers = [
     { name: "Rajashree Choudhury", role: "President (USA)", accent: IYSF.orange },
@@ -290,7 +283,6 @@ function FeaturedOfficers() {
   );
 }
 
-/* -------------------------- Upcoming events ------------------------- */
 function UpcomingEvents() {
   const next = upcomingEvents().slice(0, 3);
   return (
@@ -342,7 +334,6 @@ function UpcomingEvents() {
   );
 }
 
-/* ------------------------ Membership CTA band ----------------------- */
 function MembershipCta() {
   return (
     <section style={{ background: IYSF.orange }}>
@@ -368,8 +359,6 @@ function MembershipCta() {
   );
 }
 
-
-/* ---------------------------- Why join ------------------------------ */
 function WhyJoin() {
   const benefits = [
     {
@@ -450,8 +439,6 @@ function WhyJoin() {
   );
 }
 
-
-/* ------------------------------- News -------------------------------- */
 function News() {
   const rows = [
     { img: news1, title: "International judges complete the 2026 recertification cycle" },
@@ -526,9 +513,6 @@ function News() {
     </section>
   );
 }
-
-
-
 
 function Index() {
   useEffect(() => {
