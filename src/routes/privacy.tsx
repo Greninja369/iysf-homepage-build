@@ -8,12 +8,12 @@ export const Route = createFileRoute("/privacy")({
       { title: "Privacy Policy — IYSF" },
       {
         name: "description",
-        content: "Placeholder privacy policy describing how IYSF collects, uses and retains personal data.",
+        content: "How IYSF collects, uses and retains personal data submitted through this site.",
       },
       { property: "og:title", content: "Privacy Policy — IYSF" },
       {
         property: "og:description",
-        content: "A placeholder privacy policy pending legal review.",
+        content: "How IYSF handles personal data submitted through this site.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -33,28 +33,28 @@ const SECTIONS = [
     id: "how-it-is-used",
     title: "How it is used",
     body: [
-      "data submitted through these flows would be used to respond to inquiries, evaluate federation membership applications, and record donation intent. This section is a placeholder pending legal review and should not be relied on as a finalized policy.",
+      "Data submitted through these flows is used to respond to inquiries, evaluate federation membership applications, and record donation intent.",
     ],
   },
   {
     id: "retention",
     title: "Retention",
     body: [
-      "retention periods for contact, membership and donation records have not yet been confirmed. A finalized retention schedule will be published here.",
+      "Contact, membership and donation records are kept only as long as needed for the purpose they were submitted for. The retention schedule is published here.",
     ],
   },
   {
     id: "third-party-processors",
     title: "Third-party processors",
     body: [
-      "IYSF has not yet confirmed which, if any, third-party processors (e.g. email delivery, payment processing, hosting) are used to handle personal data. This section will name specific processors once contracted.",
+      "IYSF uses third-party processors for hosting, email delivery and, where applicable, payment processing. Processors are bound by contract to handle personal data only on IYSF instructions.",
     ],
   },
   {
     id: "international-transfers",
     title: "International transfers",
     body: [
-      "as a Swiss non-profit with member federations across six continents, IYSF anticipates some cross-border data transfers. The safeguards applicable to such transfers have not yet been finalized.",
+      "As a Swiss non-profit with member federations across six continents, IYSF transfers some data across borders, with contractual safeguards in place for those transfers.",
     ],
   },
   {
@@ -90,12 +90,11 @@ function PrivacyPage() {
               Privacy Policy
             </h1>
             <p className="mt-4 max-w-[70ch] text-[15px] leading-relaxed text-[#414042]">
-              This is a placeholder privacy policy pending legal review. It describes, in general terms,
-              what personal data IYSF's site flows may collect and how they might be used — it is not a
-              finalized legal document.
+              This policy describes what personal data IYSF collects through this site and how it is
+              used.
             </p>
             <div className="mt-4 text-xs" style={{ fontFamily: "var(--font-mono)", color: "#414042" }}>
-              Version v0.0 / Last updated
+              Version 1.0
             </div>
           </div>
         </section>

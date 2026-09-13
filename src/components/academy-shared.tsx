@@ -173,9 +173,8 @@ export function SupportingContent({ track, color }: { track: string; color: stri
           </h2>
           <div className="mt-6 space-y-5 text-[15px] leading-relaxed" style={{ color: "#3a3a3a" }}>
             <p>
-              Placeholder paragraph describing the philosophy of the {track} track. Real editorial
-              content will articulate the standards IYSF holds every {track.toLowerCase()} to, and
-              the reasoning behind them.
+              Every certified {track.toLowerCase()} works to a single set of IYSF standards, so an
+              athlete meets the same expectations in every member federation.
             </p>
             <h3
               className="text-[15px] font-semibold uppercase tracking-[0.16em]"
@@ -184,8 +183,8 @@ export function SupportingContent({ track, color }: { track: string; color: stri
               Method
             </h3>
             <p>
-              Placeholder paragraph outlining methodology. Structured so real copy fits without
-              redesign.
+              Training combines the published IYSF framework with supervised practice and review by
+              senior officials.
             </p>
             <h3
               className="text-[15px] font-semibold uppercase tracking-[0.16em]"
@@ -194,7 +193,7 @@ export function SupportingContent({ track, color }: { track: string; color: stri
               Assessment
             </h3>
             <p>
-              Placeholder paragraph outlining how competency is assessed under IYSF oversight.
+              Competency is assessed under IYSF oversight before certification is granted.
             </p>
           </div>
         </div>

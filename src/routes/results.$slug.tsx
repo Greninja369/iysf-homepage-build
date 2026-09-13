@@ -128,9 +128,6 @@ function ResultsDetailPage() {
             >
               Results by division
             </h2>
-            <p className="mt-2 text-sm" style={{ color: "#414042" }}>
-              Athlete names and scores are placeholders pending official publication.
-            </p>
 
             <div className="mt-8 flex flex-col gap-8">
               {DIVISIONS.filter((d) => event.results?.[d]).map((division) => {

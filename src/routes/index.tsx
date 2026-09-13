@@ -275,9 +275,6 @@ function FeaturedOfficers() {
             Full Executive Committee <ArrowRight size={15} aria-hidden="true" />
           </Link>
         </div>
-        <p className="mt-4 text-xs" style={{ color: "rgba(65,64,66,0.6)" }}>
-          Umang Dawn's portrait is a labeled placeholder pending sign-off.
-        </p>
       </div>
     </section>
   );

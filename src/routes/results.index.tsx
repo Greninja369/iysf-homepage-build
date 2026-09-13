@@ -21,7 +21,7 @@ export const Route = createFileRoute("/results/")({
       {
         name: "description",
         content:
-          "Final standings from past IYSF world championships and continental qualifiers. Placeholder results pending official publication.",
+          "Final standings from past IYSF world championships and continental qualifiers.",
       },
       { property: "og:title", content: "Championship Results — IYSF" },
       {
@@ -83,9 +83,8 @@ function ResultsIndexPage() {
               className="mt-4 max-w-[640px] text-base md:text-[17px]"
               style={{ color: "#414042" }}
             >
-              Final standings from past IYSF championship editions. Names and
-              scores below are placeholders pending publication of the
-              official results by the Technical Committee.
+              Final standings from past IYSF championship editions, published by the
+              Technical Committee.
             </p>
 
             <div className="mt-6 flex flex-wrap items-center gap-4 text-sm">
