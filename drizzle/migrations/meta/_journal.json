@@ -15,6 +15,13 @@
       "when": 1789317767480,
       "tag": "0001_create_event_registrations_and_sponsorship_enquiries",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1789540564465,
+      "tag": "0002_create_donation_pledges_and_newsletter_signups",
+      "breakpoints": true
     }
   ]
 }

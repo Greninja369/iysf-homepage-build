@@ -14,6 +14,33 @@ export type Database = {
   }
   public: {
     Tables: {
+      donation_pledges: {
+        Row: {
+          amount: string | null
+          created_at: string
+          email: string
+          frequency: string | null
+          full_name: string | null
+          id: string
+        }
+        Insert: {
+          amount?: string | null
+          created_at?: string
+          email: string
+          frequency?: string | null
+          full_name?: string | null
+          id?: string
+        }
+        Update: {
+          amount?: string | null
+          created_at?: string
+          email?: string
+          frequency?: string | null
+          full_name?: string | null
+          id?: string
+        }
+        Relationships: []
+      }
       event_registrations: {
         Row: {
           created_at: string
@@ -89,6 +116,27 @@ export type Database = {
           phone?: string | null
           region?: string
           website?: string | null
+        }
+        Relationships: []
+      }
+      newsletter_signups: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          source: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          source?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          source?: string | null
         }
         Relationships: []
       }
